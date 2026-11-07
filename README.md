@@ -2,7 +2,7 @@
 
 The maintained technical knowledge base for Brightdesk products and shared foundations.
 
-<badge>Bootstrap repository — implementation not yet present</badge>
+> **Status:** Bootstrap repository — implementation not yet present.
 
 ## Purpose
 
