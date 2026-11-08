@@ -1,0 +1,14 @@
+{
+  "name": "brightdesk-wiki",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Markdown-first technical knowledge base and link validation for Brightdesk.",
+  "engines": { "node": "24.22.2" },
+  "scripts": {
+    "check:node": "node scripts/check-node-version.mjs",
+    "check": "node --check scripts/check-doc-links.mjs",
+    "links": "node scripts/check-doc-links.mjs",
+    "test": "node --test"
+  }
+}
