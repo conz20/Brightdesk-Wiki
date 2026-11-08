@@ -45,7 +45,7 @@ function resolveLocalTarget({ rootDir, sourceFile, rawTarget }) {
   catch { fail(`${path.relative(rootDir, sourceFile)} contains an invalid encoded link: ${rawTarget}`); }
   const withoutSuffix = decoded.split(/[?#]/, 1)[0];
   if (!withoutSuffix) return null;
-  if (withoutSuffix.includes('\\\\')) fail(`${path.relative(rootDir, sourceFile)} contains a backslash path: ${rawTarget}`);
+  if (withoutSuffix.includes('\\')) fail(`${path.relative(rootDir, sourceFile)} contains a backslash path: ${rawTarget}`);
   const candidate = path.isAbsolute(withoutSuffix)
     ? path.resolve(rootDir, `.${withoutSuffix}`)
     : path.resolve(path.dirname(sourceFile), withoutSuffix);
