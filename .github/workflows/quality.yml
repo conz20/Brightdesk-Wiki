@@ -1,0 +1,34 @@
+name: Brightdesk Wiki quality
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Check Markdown documentation and local links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Brightdesk Wiki
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # pinned checkout action
+      - name: Set up Node.js 24.22.2
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # pinned setup-node action
+        with:
+          node-version: 24.22.2
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Verify the required Node.js runtime
+        run: npm run check:node
+      - name: Check link verifier syntax
+        run: npm run check
+      - name: Run link checker regression tests
+        run: npm test
+      - name: Check repository Markdown links
+        run: npm run links
