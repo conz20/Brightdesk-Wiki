@@ -1,49 +1,40 @@
-# Brightdesk-Wiki
+# Brightdesk Wiki
 
-Central technical documentation for the private Brightdesk ecosystem.
+The Markdown-first technical knowledge base for Brightdesk products and shared foundations.
 
-## Purpose and ownership
+> **Status:** Initial documentation structure and local-link validation are implemented. This repository is not a hosted website, and its presence does not prove that every guide or product feature is complete.
 
-Owns maintained developer guides, architecture references, product documentation indexes, onboarding material and operational runbooks. It documents verified behaviour and links to the source repository for each product.
+## Start here
 
-## Current verified status
+- [Documentation index](docs/index.md)
+- [Portfolio architecture](docs/architecture/overview.md)
+- [Development setup](docs/development/setup.md)
+- [Security and privacy boundaries](docs/security/boundaries.md)
+- [Release and platform status](docs/releases/status.md)
+- [Ten product guide entries](docs/products/)
 
-As of 7 November 2026, this repository has been created and is private. Its root currently contains only this README. No source implementation, package, published release, reusable service or passing test suite has been verified in this repository. The descriptions below are the intended scope, not a claim that these capabilities are already implemented.
+## Implemented foundation
 
-## First implementation stage
+- Markdown-first guides that remain readable directly in GitHub and local editors.
+- A recursive local Markdown link and image-reference checker in scripts/check-doc-links.mjs.
+- Regression tests for valid local links, missing targets, repository-root traversal, image references and symbolic-link safety.
+- A Node.js 24.22.2 requirement and pinned GitHub Actions quality workflow.
+- No hosted site generator, database, account system or paid publishing service.
 
-Proposed first deliverables: information architecture, contribution rules, versioned documentation policy and links to all ten products, the Suite, Brightdesk-AI and shared infrastructure. No documentation site or publishing workflow is claimed yet.
+## Commands
 
-## Ecosystem connections
+Run from this repository root:
 
-The customer-facing desktop experience is coordinated by [Brightdesk Office Suite](https://github.com/connormolloy12/Brightdesk-suite). The ten products remain in their own repositories:
+~~~sh
+npm ci --no-audit --no-fund
+npm run check:node
+npm run check
+npm test
+npm run links
+~~~
 
-- [Brightdesk Pages](https://github.com/connormolloy12/Brightdesk-Pages)
-- [Brightdesk Sheets](https://github.com/connormolloy12/Brightdesk-Sheets)
-- [Brightdesk Decks](https://github.com/connormolloy12/Brightdesk-Decks)
-- [Brightdesk Notes](https://github.com/connormolloy12/Brightdesk-Notes)
-- [Brightdesk Database](https://github.com/connormolloy12/Brightdesk-Database)
-- [Brightdesk Forms](https://github.com/connormolloy12/Brightdesk-Forms)
-- [Brightdesk Lists](https://github.com/connormolloy12/Brightdesk-Lists)
-- [Brightdesk Planner](https://github.com/connormolloy12/Brightdesk-Planner)
-- [Brightdesk To Do](https://github.com/connormolloy12/Brightdesk-To-Do)
-- [Brightdesk Workspace](https://github.com/connormolloy12/Brightdesk-Workspace)
+## Documentation rules
 
-[Brightdesk-AI](https://github.com/connormolloy12/Brightdesk-AI) is the separate private engineering control plane. This repository must not depend on AI being available at runtime. AI-specific models, prompts, agent orchestration and AI tests belong in Brightdesk-AI.
+Keep instructions short, literal and product-specific. Each product guide separates its intended role from features actually confirmed in that product repository. Link feature claims to a current README, implementation or test where possible. Clearly mark proposals, unsupported functionality and unverified platform support. Do not publish private Brightdesk-AI prompts, credentials, internal logs or private build artifacts.
 
-The shared architecture and dependency rules are documented in the [Brightdesk developer ecosystem architecture](https://github.com/connormolloy12/Brightdesk-suite/blob/main/docs/DEVELOPER_ECOSYSTEM_ARCHITECTURE.md).
-
-## Engineering rules
-
-- Preserve existing implementations and programming languages across the ecosystem; do not standardise by deleting or rewriting language choices.
-- Keep Rust supported where the component requires native/core functionality.
-- Use versioned, documented interfaces. Shared repositories must not depend on product repositories.
-- Add tests before implementing new behaviour and run the repository's full checks before proposing integration.
-- Keep repositories private and use least-privilege access.
-- Review third-party licences before adding code, fonts, icons or other assets.
-- Do not add paid services, metered APIs or paid build infrastructure without separate approval.
-- Do not publish a release or merge integration changes automatically.
-
-## Planned repository
-
-[Brightdesk-Release-Tools](https://github.com/connormolloy12/Brightdesk-Release-Tools) is still awaiting creation. It is not a dependency for this repository's first implementation stage.
+The local link checker verifies relative file and directory targets in Markdown links and image references. It does not validate remote websites, heading-anchor spelling, generated site behavior or whether a linked product feature works.
