@@ -8,6 +8,6 @@ When documenting calculations, supported formula syntax, sorting, cell formattin
 
 ## Verify current support
 
-Check the [Brightdesk Sheets repository](https://github.com/connormolloy12/Brightdesk-Sheets) for verified capabilities and current setup instructions.
+Check the [Brightdesk Sheets repository](https://github.com/conz20/Brightdesk-Sheets) for verified capabilities and current setup instructions.
 
 [Back to the documentation index](../index.md)

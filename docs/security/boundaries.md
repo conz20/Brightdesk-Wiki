@@ -8,8 +8,12 @@ Customers own their local documents and project data. Removing a product must no
 
 ## Network access
 
-Network access should be limited to clearly identified product needs such as official update checks, or a user-enabled optional feature. Do not add telemetry, external account identity, third-party synchronization or background uploads without a documented requirement and review.
+Customer-facing Suite and product network access is limited to two Brightdesk-controlled purposes:
 
+- Checking for and obtaining official Brightdesk product and Suite updates.
+- Discovering, downloading and updating official Brightdesk language resources and dictionary packs.
+
+All ordinary document editing and spelling must continue to work offline. Document text must never be sent to a remote spelling, grammar, AI or other service. Do not add telemetry, analytics, advertising, crash reporting, cloud storage or synchronisation, online collaboration, third-party dictionary downloads, customer accounts or unrelated remote features. Brightdesk-Services is optional owner-operated infrastructure and is not a customer runtime dependency.
 ## Engineering boundaries
 
 - Keep customer products independent of Brightdesk-AI credentials and model services.

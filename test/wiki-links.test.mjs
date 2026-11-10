@@ -57,3 +57,14 @@ test('symbolic-link targets are rejected', t => {
   fs.writeFileSync(path.join(rootDir, 'README.md'), '[Outside](docs/guide/alias.md)\n');
   assert.throws(() => checkMarkdownLinks({ rootDir }), /symbolic link/i);
 });
+
+
+test('Markdown links inside fenced code examples are ignored', t => {
+  const rootDir = fixture(t);
+  fs.writeFileSync(
+    path.join(rootDir, 'README.md'),
+    'Example:\n\n\`\`\`markdown\n[Not a link](missing-backtick-example.md)\n\`\`\`\n\n~~~text\n![Not an image link](missing-tilde-example.svg)\n~~~\n'
+  );
+  const result = checkMarkdownLinks({ rootDir });
+  assert.equal(result.localLinks, 0);
+});

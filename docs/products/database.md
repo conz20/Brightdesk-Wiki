@@ -4,10 +4,10 @@ Brightdesk Database is the product area for structured records organised into ta
 
 ## Guidance
 
-Document field types, validation, relationships, filtering, sorting and CSV behavior only when confirmed in source and tests. Be explicit about local persistence and any future service integrations.
+Document field types, validation, relationships, filtering, sorting and CSV behavior only when confirmed in source and tests. Keep data persistence local; do not imply a hosted database or remote service dependency.
 
 ## Verify current support
 
-Check the [Brightdesk Database repository](https://github.com/connormolloy12/Brightdesk-Database) for the actual data model, tests and supported import/export behavior.
+Check the [Brightdesk Database repository](https://github.com/conz20/Brightdesk-Database) for the actual data model, tests and supported import/export behavior.
 
 [Back to the documentation index](../index.md)

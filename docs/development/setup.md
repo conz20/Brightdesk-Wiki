@@ -25,7 +25,7 @@ npm test
 npm run links
 ~~~
 
-The Wiki link checker verifies local Markdown links and image paths only. It does not validate feature behavior, remote URLs or heading anchors.
+The Wiki link checker verifies inline Markdown links and image paths, ignores fenced code examples, and rejects missing targets, symbolic links and repository-root escapes. It does not validate reference-style links, raw HTML links, remote URLs or heading anchors.
 
 ## Verification records
 

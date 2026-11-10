@@ -8,6 +8,6 @@ Describe dates, priorities, progress states, assignments, board behavior and any
 
 ## Verify current support
 
-Check the [Brightdesk Planner repository](https://github.com/connormolloy12/Brightdesk-Planner) for current planning capabilities and storage behavior.
+Check the [Brightdesk Planner repository](https://github.com/conz20/Brightdesk-Planner) for current planning capabilities and storage behavior.
 
 [Back to the documentation index](../index.md)

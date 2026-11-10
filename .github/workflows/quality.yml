@@ -13,7 +13,7 @@ permissions:
 jobs:
   quality:
     name: Check Markdown documentation and local links
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, macOS, ARM64]
     steps:
       - name: Check out Brightdesk Wiki
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # pinned checkout action

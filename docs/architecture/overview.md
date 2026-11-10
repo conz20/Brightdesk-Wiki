@@ -18,7 +18,7 @@ The approved product scope is fixed at ten products: Pages, Sheets, Decks, Notes
 - **Extensions** — a future permissioned extension model; untrusted native code is not loaded by default.
 - **Wiki** — maintained technical knowledge and product guidance.
 - **Release Tools** — read-only release manifests, artifact inventories and verification helpers.
-- **Services** — optional device and synchronisation services; local product functionality must not depend on them.
+- **Services** — optional owner-operated service experiments only. They are never a customer runtime requirement and must not provide customer document storage, cloud synchronisation, online collaboration or remote AI.
 
 ## Engineering control plane
 
@@ -32,4 +32,4 @@ Products may consume a shared foundation only after its source, tests, versionin
 
 Microsoft productivity conventions are the primary product inspiration. Brightdesk uses original code, product identities, layouts and artwork. Adobe products and services are not dependencies, bundled items, integrations or requirements. Brightdesk excludes Outlook, OneDrive and Teams from its approved product scope.
 
-See the [Suite developer ecosystem architecture plan](https://github.com/connormolloy12/Brightdesk-suite/blob/main/docs/DEVELOPER_ECOSYSTEM_ARCHITECTURE.md) and [Brightdesk visual standard](https://github.com/connormolloy12/Brightdesk-suite/blob/main/docs/BRIGHTDESK_VISUAL_STANDARD.md) for the canonical contracts.
+See the [Suite developer ecosystem architecture plan](https://github.com/conz20/Brightdesk-suite/blob/main/docs/DEVELOPER_ECOSYSTEM_ARCHITECTURE.md) and [Brightdesk visual standard](https://github.com/conz20/Brightdesk-suite/blob/main/docs/BRIGHTDESK_VISUAL_STANDARD.md) for the canonical contracts.

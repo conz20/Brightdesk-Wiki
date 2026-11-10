@@ -8,6 +8,6 @@ Use this product for document-oriented work. Keep document-formatting behavior, 
 
 ## Verify current support
 
-Check the [Brightdesk Pages repository](https://github.com/connormolloy12/Brightdesk-Pages), especially its README, tests, release notes and current pull requests. A feature shown only in a design preview is not confirmed functionality.
+Check the [Brightdesk Pages repository](https://github.com/conz20/Brightdesk-Pages), especially its README, tests, release notes and current pull requests. A feature shown only in a design preview is not confirmed functionality.
 
 [Back to the documentation index](../index.md)

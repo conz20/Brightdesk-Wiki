@@ -4,10 +4,10 @@ Brightdesk Workspace is the product area for organising project work and related
 
 ## Guidance
 
-Describe workspace creation, page navigation, search, content blocks, checklists and sharing only when confirmed by the current implementation. Keep local workspace content distinct from optional future synchronized services.
+Describe workspace creation, page navigation, search, content blocks and checklists only when confirmed by the current implementation. Keep workspace content local; do not imply cloud synchronisation or online collaboration.
 
 ## Verify current support
 
-Check the [Brightdesk Workspace repository](https://github.com/connormolloy12/Brightdesk-Workspace) for verified functionality and data handling.
+Check the [Brightdesk Workspace repository](https://github.com/conz20/Brightdesk-Workspace) for verified functionality and data handling.
 
 [Back to the documentation index](../index.md)

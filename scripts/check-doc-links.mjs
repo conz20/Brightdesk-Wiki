@@ -28,6 +28,34 @@ function walkMarkdown(rootDir, currentDir = rootDir) {
   return files;
 }
 
+function stripFencedCode(markdown) {
+  const lines = markdown.split(/\r?\n/);
+  const output = [];
+  let fenceCharacter = null;
+  let fenceLength = 0;
+
+  for (const line of lines) {
+    if (fenceCharacter === null) {
+      const opening = line.match(/^ {0,3}(\`{3,}|~{3,})/);
+      if (opening) {
+        fenceCharacter = opening[1][0];
+        fenceLength = opening[1].length;
+      } else {
+        output.push(line);
+      }
+      continue;
+    }
+
+    const closing = line.match(/^ {0,3}(\`+|~+)\s*$/);
+    if (closing && closing[1][0] === fenceCharacter && closing[1].length >= fenceLength) {
+      fenceCharacter = null;
+      fenceLength = 0;
+    }
+  }
+
+  return output.join('\n');
+}
+
 function extractInlineLinks(markdown) {
   const links = [];
   const pattern = /!?\[[^\]]*\]\(\s*(?:<([^>]+)>|([^\s)]+))(?:\s+[^)]*)?\s*\)/g;
@@ -79,7 +107,7 @@ export function checkMarkdownLinks({ rootDir = DEFAULT_ROOT } = {}) {
   const markdownFiles = walkMarkdown(absoluteRoot);
   let localLinks = 0;
   for (const sourceFile of markdownFiles) {
-    const markdown = fs.readFileSync(sourceFile, 'utf8');
+    const markdown = stripFencedCode(fs.readFileSync(sourceFile, 'utf8'));
     for (const rawTarget of extractInlineLinks(markdown)) {
       if (verifyTarget({ rootDir: absoluteRoot, sourceFile, rawTarget })) localLinks += 1;
     }

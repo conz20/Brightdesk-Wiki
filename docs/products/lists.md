@@ -8,6 +8,6 @@ Document columns, record entry, search, filtering and sorting based on the curre
 
 ## Verify current support
 
-Check the [Brightdesk Lists repository](https://github.com/connormolloy12/Brightdesk-Lists) for verified features and data persistence behavior.
+Check the [Brightdesk Lists repository](https://github.com/conz20/Brightdesk-Lists) for verified features and data persistence behavior.
 
 [Back to the documentation index](../index.md)

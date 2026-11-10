@@ -8,6 +8,6 @@ Document task status, reminders, recurring tasks, due dates, prioritisation and 
 
 ## Verify current support
 
-Check the [Brightdesk To Do repository](https://github.com/connormolloy12/Brightdesk-To-Do) for the current task model and tested behavior.
+Check the [Brightdesk To Do repository](https://github.com/conz20/Brightdesk-To-Do) for the current task model and tested behavior.
 
 [Back to the documentation index](../index.md)

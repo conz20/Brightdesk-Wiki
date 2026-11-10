@@ -8,6 +8,6 @@ Describe the question types, validation, preview, response storage and export op
 
 ## Verify current support
 
-Check the [Brightdesk Forms repository](https://github.com/connormolloy12/Brightdesk-Forms) for the current builder, response workflow and data handling.
+Check the [Brightdesk Forms repository](https://github.com/conz20/Brightdesk-Forms) for the current builder, response workflow and data handling.
 
 [Back to the documentation index](../index.md)

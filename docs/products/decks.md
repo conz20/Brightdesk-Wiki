@@ -8,6 +8,6 @@ Describe presentation, theme, layout, playback and export behavior only when it 
 
 ## Verify current support
 
-Check the [Brightdesk Decks repository](https://github.com/connormolloy12/Brightdesk-Decks) for the current implementation and supported formats.
+Check the [Brightdesk Decks repository](https://github.com/conz20/Brightdesk-Decks) for the current implementation and supported formats.
 
 [Back to the documentation index](../index.md)
