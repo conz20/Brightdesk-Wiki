@@ -6,6 +6,10 @@ Brightdesk is developed as a coordinated family of ten customer products, an int
 
 The approved product scope is fixed at ten products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace. Brightdesk-suite coordinates the customer-facing desktop experience, product management, local file workflows and release process. Each product repository remains the owner of its own product implementation and tests; an individual product window should open directly into that product's workspace.
 
+## Supported desktop platforms
+
+The Suite and all ten products are desktop software for **Windows, macOS and Linux**. Android, iOS, iPhone, iPad and other mobile targets are not supported or planned. Do not add mobile application projects, mobile build targets, or mobile installers. Responsive layouts that accommodate different desktop window sizes remain valid; they are not separate mobile editions.
+
 ## Shared engineering infrastructure
 
 The current portfolio contains 25 private repositories: the Suite, the ten customer products, Brightdesk-AI, and twelve shared engineering foundations. These infrastructure repositories do not add customer products or imply that every package is already consumed.
