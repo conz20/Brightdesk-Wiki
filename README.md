@@ -1,30 +1,29 @@
 # Brightdesk Wiki
 
-The maintained technical knowledge base for Brightdesk products and shared foundations.
+## Repository purpose
 
-> **Status:** Bootstrap repository — implementation not yet present.
-
-## Purpose
-
-Provide a single navigable home for architecture decisions, product guides, development instructions, support procedures and verified technical knowledge.
+The maintained technical knowledge base for Brightdesk products, shared foundations, engineering workflows, and release operations.
 
 ## Current status
 
-The verified repository currently contains only this README. No documentation structure, static-site configuration, content catalogue, search index or publishing workflow has been confirmed.
+Bootstrap scope recorded; initial information architecture is under development on the existing draft pull request.
 
-## Planned content areas
+## Immediate engineering goals
 
-- Product guides for Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
-- Suite installation, updates, local files and troubleshooting.
-- Developer setup, test commands and architecture.
-- Shared foundation API and compatibility documentation.
-- Security, privacy, licensing and third-party notices.
-- Release and support procedures with clear evidence dates.
+Create a versioned documentation structure, architecture index, product guides, contribution rules, and link/freshness checks.
 
-## Documentation rules
+## Scope and safety boundaries
 
-Keep user instructions short and literal. Keep technical details separate from end-user guides. Every claim about product features or platform support must link to a verified implementation or test. Mark proposals and unsupported features clearly. Do not publish private Brightdesk-AI prompts, credentials, private reports or internal-only material.
+Documentation must reflect the ten approved customer products and separate private engineering infrastructure from customer-facing software.
 
-## Initial acceptance gate
+## Supported development platforms
 
-Choose a simple Markdown-first structure and link it from the Suite and product READMEs. Add a link checker and document freshness validation before introducing a site generator or hosted service. Prefer free, repository-native documentation.
+Brightdesk customer software is desktop-only: Windows, macOS, and Linux. This repository does not create Android, iPhone, iPad, or other mobile editions.
+
+## Contribution and completion standard
+
+Work is developed on a feature branch and reviewed through a pull request. Do not merge unverified changes or bypass required checks. Keep tests, documentation, and implementation aligned. Mark work complete only when the relevant current commit has passed its required verification.
+
+## Brightdesk portfolio
+
+This repository is part of the Brightdesk engineering portfolio. The customer suite contains exactly ten products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do, and Workspace. Brightdesk-AI and shared engineering repositories are not additional customer products.
