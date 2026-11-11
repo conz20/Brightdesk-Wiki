@@ -33,6 +33,10 @@ npm test
 npm run links
 ~~~
 
+## Desktop platform scope
+
+Brightdesk products are desktop software for Windows, macOS and Linux only. Mobile applications, mobile editions, Android/iOS builds and mobile installers are not part of the product scope. Responsive layout rules may still support resizing a desktop window; they do not create a mobile product.
+
 ## Documentation rules
 
 Keep instructions short, literal and product-specific. Each product guide separates its intended role from features actually confirmed in that product repository. Link feature claims to a current README, implementation or test where possible. Clearly mark proposals, unsupported functionality and unverified platform support. Do not publish private Brightdesk-AI prompts, credentials, internal logs or private build artifacts.
