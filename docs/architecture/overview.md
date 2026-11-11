@@ -6,19 +6,24 @@ Brightdesk is developed as a coordinated family of ten customer products, an int
 
 The approved product scope is fixed at ten products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace. Brightdesk-suite coordinates the customer-facing desktop experience, product management, local file workflows and release process. Each product repository remains the owner of its own product implementation and tests; an individual product window should open directly into that product's workspace.
 
-## Shared foundations
+## Shared engineering infrastructure
 
-- **Design System** — shared visual tokens, navigation states and product-window shell rules.
-- **Fonts** — source and licence metadata for fonts that may be redistributed; no font may be bundled without explicit rights review.
-- **Localization** — language catalogues, regional conventions and dictionary-pack licensing.
-- **Engine** — shared Rust/native performance primitives and their language bindings.
-- **Common Libraries** — small reusable, language-specific libraries with verified consumers.
-- **Common Actions** — reusable, pinned GitHub Actions and CI components.
-- **Developer Tools** — local developer utilities and documented setup aids.
-- **Extensions** — a future permissioned extension model; untrusted native code is not loaded by default.
-- **Wiki** — maintained technical knowledge and product guidance.
-- **Release Tools** — read-only release manifests, artifact inventories and verification helpers.
-- **Services** — optional owner-operated service experiments only. They are never a customer runtime requirement and must not provide customer document storage, cloud synchronisation, online collaboration or remote AI.
+The current portfolio contains 25 private repositories: the Suite, the ten customer products, Brightdesk-AI, and twelve shared engineering foundations. These infrastructure repositories do not add customer products or imply that every package is already consumed.
+
+- **Brightdesk-Design-System** — shared visual tokens, navigation states, accessible components and product-window shell rules.
+- **Brightdesk-Fonts** — font source/provenance and licence metadata; no font may be bundled without explicit redistribution and embedding review.
+- **Brightdesk-Localization** — language catalogues, regional conventions, dictionary-pack licensing and offline language-resource metadata.
+- **Brightdesk-Engine** — shared Rust/native performance primitives and their language bindings.
+- **Brightdesk-Common-Libs** — small reusable, language-specific libraries with documented contracts and verified consumers.
+- **Brightdesk-Common-Actions** — reusable, pinned non-AI GitHub Actions and CI components.
+- **Brightdesk-Developer-Tools** — local developer diagnostics, utilities, SDKs and documented setup aids.
+- **Brightdesk-Extensions** — declarative extension manifests and permission contracts; a validated manifest is not a runtime or permission-enforcement system.
+- **Brightdesk-Wiki** — maintained technical knowledge and product guidance.
+- **Brightdesk-Release-Tools** — read-only release manifests, artifact inventories, checksum validation and release evidence.
+- **Brightdesk-Assets** — approved local visual assets, provenance, rights evidence, attribution and integrity validation; it is not a CDN or runtime asset service.
+- **Brightdesk-Type-Preview** — local font-preview and installed-font metadata contracts; it is not a hosted font service and does not own font binaries.
+ 
+**Optional experiment:** **Brightdesk-Services** is owner-operated, loopback-only engineering experimentation. It is never a customer runtime requirement and must not provide customer document storage, cloud synchronisation, online collaboration or remote AI.
 
 ## Engineering control plane
 
