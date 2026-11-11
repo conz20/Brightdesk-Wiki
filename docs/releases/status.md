@@ -1,5 +1,9 @@
 # Release and platform status
 
+## Supported platform scope
+
+Brightdesk ships desktop products for Windows, macOS and Linux only. Android/iOS builds, mobile editions and mobile installers are out of scope.
+
 ## Target package formats
 
 The approved desktop packaging targets are:
