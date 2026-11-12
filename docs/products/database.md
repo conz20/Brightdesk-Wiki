@@ -1,21 +1,33 @@
 ---
 layout: default
 title: Brightdesk Database
-description: Help and guide status for Brightdesk Database.
-status: Needs review
+description: What Brightdesk Database can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/database.html
 ---
 
 # Brightdesk Database
 
-Brightdesk Database is the product area for structured records organised into tables and typed fields.
+Brightdesk Database is for keeping structured records in tables with typed fields.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create, rename and delete local tables.
+- Add fields for text, numbers, dates, email addresses, web addresses, checkboxes and choice lists.
+- Add, edit, search, sort and delete records.
+- Set required values and use the available field validation.
+- Export a table to CSV.
+
+## What is not included in this first version
+
+SQL queries, table relationships, a query designer, form or report designers, database import, online hosting and collaboration are not included in the current feature set.
+
+## Keeping your work
+
+Database records are kept locally on this device. The product does not provide online database hosting or shared editing.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Database repository and its workspace tests. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
