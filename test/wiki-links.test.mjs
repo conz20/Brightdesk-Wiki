@@ -96,5 +96,5 @@ test('Jekyll output links resolve to their Markdown source files', t => {
 test('a missing Jekyll output link still fails when no Markdown source exists', t => {
   const rootDir = fixture(t);
   fs.writeFileSync(path.join(rootDir, 'docs/guide/index.md'), '[Missing](not-here.html)\\n');
-  assert.throws(() => checkMarkdownLinks({ rootDir }), /not-here\\.html/i);
+  assert.throws(() => checkMarkdownLinks({ rootDir }), /not-here\.html/i);
 });
