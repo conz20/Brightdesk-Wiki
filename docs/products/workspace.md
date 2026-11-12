@@ -1,33 +1,70 @@
 ---
 layout: default
 title: Brightdesk Workspace
-description: What Brightdesk Workspace can do and what is not included yet.
+description: Bring project pages, notes and checklists together in Brightdesk Workspace.
 status: Source-confirmed
 permalink: /products/workspace.html
 ---
 
 # Brightdesk Workspace
 
-Brightdesk Workspace is for bringing project pages, notes and structured content together in one local workspace.
+Use Workspace to bring related project information together in workspaces and pages.
 
-## What you can do
+## Create a workspace
 
-- Create, rename and delete workspaces.
-- Create, rename and delete pages within a workspace.
-- Add, edit, delete and reorder paragraph, heading, bullet, callout, divider and checklist blocks.
-- Add, edit, complete and remove checklist items.
-- Search page titles and block content.
+1. In the left panel, find **Your workspaces**.
+2. Choose the **＋** button labelled **Create workspace**.
+3. Enter a **Workspace name**.
+4. Choose **Create**.
 
-## What is not included in this first version
+A new workspace includes a **Getting started** page.
 
-Live collaboration, shared workspaces, accounts, cloud sync, permissions, external integrations and connected multi-user components are not included in the current feature set.
+## Add a page
 
-## Keeping your work
+1. Under **Pages**, choose the **＋** button labelled **Add page**.
+2. Enter a page title when prompted.
+3. The new page appears in the page list. Select it to work on it.
 
-Workspace pages are saved on this device. The current product does not provide shared online workspaces or cloud synchronisation.
+Use **Find a page** to search page titles and page content.
+
+## Add content to a page
+
+1. Open the page you want to edit.
+2. Choose a content type from the block-type list:
+   - **Text**
+   - **Heading**
+   - **Bullet point**
+   - **Callout**
+   - **Checklist**
+   - **Divider**
+3. For Text, Heading, Bullet point or Callout, enter the content in the text field.
+4. Choose **Add to page**.
+
+## Use a checklist
+
+1. Add a **Checklist** block to the page.
+2. Enter an item in **Add a checklist item**.
+3. Choose **Add item**.
+4. Select the checkbox when the item is complete.
+5. You can edit an item or remove it with its adjacent controls.
+
+## Organise your page
+
+- Use the **↑** and **↓** controls on a block to move it up or down.
+- Choose **Rename page** to change the current page title.
+- Choose **Rename workspace** to change the workspace name.
+- Use **Delete page** or **Delete workspace** only when you intend to remove that content.
+
+## Save your work
+
+Workspaces and pages are saved on this device as you work. The workspace displays a local-save status.
+
+## What to know
+
+Workspace currently supports local workspaces and pages with text, heading, bullet, callout, divider and checklist blocks. Live collaboration, shared workspaces, accounts, cloud sync, permissions, external integrations and connected multi-user components are not included in the current stated scope.
 
 ## Guide status
 
-This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Workspace repository and its workspace tests. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
+**Source-confirmed.** Workspace creation, page creation and search, content blocks, checklist items, block reordering and local saving are present in the current Workspace implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
 
 [Back to Brightdesk Help](../index.html)
