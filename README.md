@@ -1,11 +1,12 @@
 # Brightdesk Wiki
 
-The Markdown-first technical knowledge base for Brightdesk products and shared foundations.
+The Markdown-first knowledge base for Brightdesk products and shared foundations.
 
 > **Status:** Initial documentation structure and local-link validation are implemented. This repository is not a hosted website, and its presence does not prove that every guide or product feature is complete.
 
 ## Start here
 
+- **[Customer start here](docs/customer-start-here.md)** — choose the right product and find the help you need.
 - [Documentation index](docs/index.md)
 - [Portfolio architecture](docs/architecture/overview.md)
 - [Development setup](docs/development/setup.md)
@@ -16,7 +17,7 @@ The Markdown-first technical knowledge base for Brightdesk products and shared f
 ## Implemented foundation
 
 - Markdown-first guides that remain readable directly in GitHub and local editors.
-- A recursive local Markdown link and image-reference checker in scripts/check-doc-links.mjs.
+- A recursive local Markdown link and image-reference checker in `scripts/check-doc-links.mjs`.
 - Regression tests for valid local links, missing targets, repository-root traversal, image references and symbolic-link safety.
 - A Node.js 24.22.2 requirement and pinned GitHub Actions quality workflow.
 - No hosted site generator, database, account system or paid publishing service.
