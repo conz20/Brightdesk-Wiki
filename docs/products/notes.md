@@ -1,21 +1,32 @@
 ---
 layout: default
 title: Brightdesk Notes
-description: Help and guide status for Brightdesk Notes.
-status: Needs review
+description: What Brightdesk Notes can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/notes.html
 ---
 
 # Brightdesk Notes
 
-Brightdesk Notes is the product area for capturing and editing notes. Its intended workspace prioritises note access and a clear writing surface.
+Brightdesk Notes is for capturing and editing quick notes and ideas.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create and edit quick notes.
+- Keep note text saved locally as you work.
+- Export a note as Markdown or plain text.
+- Use the shared display-language and spelling tools where supported.
+
+## What is not included in this first version
+
+The current Notes workflow is a quick-note editor. Notebook hierarchies, sections, linked pages, attachments and collaborative notebooks are not included in the current feature promise.
+
+## Keeping your work
+
+Notes are saved on your device. Shared notebooks and cloud synchronisation are not part of this version.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Notes repository. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
