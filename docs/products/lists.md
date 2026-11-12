@@ -1,21 +1,33 @@
 ---
 layout: default
 title: Brightdesk Lists
-description: Help and guide status for Brightdesk Lists.
-status: Needs review
+description: What Brightdesk Lists can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/lists.html
 ---
 
 # Brightdesk Lists
 
-Brightdesk Lists is the product area for organising information into custom lists and structured records.
+Brightdesk Lists is for organising information into separate lists and structured records.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create, rename and delete lists.
+- Add, edit and delete records with a title, status, priority, due date and notes.
+- Add custom text, date and choice columns.
+- Search across records.
+- Filter records by status and sort by a selected column.
+
+## What is not included in this first version
+
+Shared editing, user permissions, attachments, automation, connected data sources and online forms are not included in the current feature set.
+
+## Keeping your work
+
+List data is saved locally on the current device. Shared lists and cloud synchronisation are not part of this version.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Lists repository and its workspace tests. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
