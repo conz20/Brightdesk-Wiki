@@ -1,38 +1,32 @@
 # Brightdesk Wiki
 
-The Markdown-first knowledge base for Brightdesk products and shared foundations.
+The private Markdown source repository for the separate online Brightdesk customer-help website.
 
-> **Status:** Initial Markdown documentation, local-link validation and an experimental Jekyll site scaffold are present on this draft branch. The Jekyll build and generated output have not been verified. No public website is approved, configured or deployed.
+> **Status:** Customer-help content and a Jekyll site scaffold are under review on the open draft pull request. No production website has been deployed yet.
 
-## Start here
+## Customer help
 
-- **[Customer start here](docs/customer-start-here.md)** — choose the right product and find the help you need.
-- [Documentation index](docs/index.md)
-- [Portfolio architecture](docs/architecture/overview.md)
-- [Repository inventory](docs/architecture/repository-inventory.md) — maintainer reference for the current 27-repository portfolio.
-- [Development setup](docs/development/setup.md)
-- [Security and privacy boundaries](docs/security/boundaries.md)
-- [Release and platform status](docs/releases/status.md)
+- [Customer start page](docs/customer-start-here.md) — choose the right product and understand guide status.
+- [Customer help index](docs/index.md)
 - [Ten product guide entries](docs/products/)
 
-## This Wiki is separate from the software
+The public website will be separate from Brightdesk Suite and all ten desktop products. It will not be installed, bundled, shown in the App Centre or required for offline use.
 
-Brightdesk Wiki is a private Markdown knowledge resource being prepared separately from the software. It is **not** a Brightdesk customer product, desktop application, Suite component, App Centre entry, installer payload, runtime dependency, Start-menu item or file installed on a customer's computer.
+## Website build
 
-The source is maintained in this private GitHub repository and is readable online only by people who have repository access. It is not currently a public help website or a customer-distributed help package. Brightdesk Suite and the ten products must continue to install, launch and work offline without the Wiki. No product may depend on Wiki availability or internet access for installation, updates, spelling, dictionaries or ordinary work. Do not advertise public customer access until a separate publishing route has been explicitly approved and verified.
+The approved publishing path is Cloudflare Pages Free with Jekyll. The GitHub repository remains private, and the Cloudflare GitHub App must be scoped to this repository only.
 
-## Implemented foundation
+- Jekyll: `4.4.1` (build-time dependency only).
+- Ruby: `3.4.4` (pinned in `.ruby-version`).
+- Cloudflare Pages build command: `bundle exec jekyll build`.
+- Cloudflare Pages output directory: `_site`.
+- Jekyll source directory: `docs/`.
 
-- Markdown-first guides that remain readable directly in GitHub and local editors.
-- A recursive local Markdown link and image-reference checker in `scripts/check-doc-links.mjs`.
-- Regression tests for valid local links, missing targets, repository-root traversal, image references and symbolic-link safety.
-- A Node.js 24.22.2 requirement and pinned GitHub Actions quality workflow.
-- An experimental Jekyll configuration is present, but no verified static-site build or deployment workflow exists.
-- No database, account system, analytics, paid publishing service or customer runtime dependency.
+Only the customer-help index, start page and ten product guide pages are intended for publication. Architecture, development, security and release documents remain private and are excluded from the generated site. The public-output check rejects internal files, private GitHub links, JavaScript and external resources.
 
-## Commands
+## Local checks
 
-Run from this repository root:
+The repository also uses Node.js `24.22.2` for its documentation validation scripts:
 
 ~~~sh
 npm ci --no-audit --no-fund
@@ -40,14 +34,13 @@ npm run check:node
 npm run check
 npm test
 npm run links
+bundle install
+bundle exec jekyll build
+npm run check:site
 ~~~
 
-## Desktop platform scope
-
-Brightdesk products are desktop software for Windows, macOS and Linux only. Mobile applications, mobile editions, Android/iOS builds and mobile installers are not part of the product scope. Responsive layout rules may still support resizing a desktop window; they do not create a mobile product.
+A successful local build or passing CI does not mean the production website has been deployed. Deployment requires a separately verified Cloudflare Pages project and public URL.
 
 ## Documentation rules
 
-Keep instructions short, literal and product-specific. Each product guide separates its intended role from features actually confirmed in that product repository. Link feature claims to a current README, implementation or test where possible. Clearly mark proposals, unsupported functionality and unverified platform support. Do not publish private Brightdesk-AI prompts, credentials, internal logs or private build artifacts.
-
-The local link checker verifies relative file and directory targets in Markdown links and image references. It does not validate remote websites, heading-anchor spelling, generated Jekyll output, deployment privacy or whether a linked product feature works. The Jekyll scaffold remains unpublished and unapproved for deployment.
+Keep customer instructions short, literal and product-specific. Do not invent interface labels or claim that an untested workflow works. Use the guide labels to distinguish verified workflows from source-confirmed, planned, under-test and unavailable features. Never publish private Brightdesk-AI prompts, credentials, internal logs, customer documents or private build artefacts.
