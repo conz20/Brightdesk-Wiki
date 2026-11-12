@@ -1,6 +1,11 @@
 # Brightdesk documentation
 
-Use this index to find the current technical and product guidance. Pages are maintained as ordinary Markdown in the Brightdesk Wiki repository.
+Use this index to find the right Brightdesk answer. Start with the [customer start page](customer-start-here.md) if you are not sure which product or guide you need. Pages are maintained as ordinary Markdown in the Brightdesk Wiki repository.
+
+## Customer help
+
+- [Start here: find the Brightdesk help you need](customer-start-here.md) — choose a product, understand guide labels and request missing help.
+- [Product guide directory](products/) — guidance for the ten approved products.
 
 ## Architecture and engineering
 
