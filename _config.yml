@@ -1,0 +1,18 @@
+title: Brightdesk Help
+description: Official customer help for Brightdesk desktop products.
+url: ""
+baseurl: ""
+source: docs
+destination: _site
+markdown: kramdown
+permalink: /:categories/:title.html
+strict_front_matter: true
+safe: true
+show_excerpts: false
+
+# Only customer-help pages are built. Maintainer and internal documents stay private.
+exclude:
+  - architecture
+  - development
+  - security
+  - releases
