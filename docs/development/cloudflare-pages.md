@@ -1,51 +1,57 @@
-# Proposal: separate public help website
+# Maintainer setup: separate Brightdesk customer-help website
 
-## Approval status
+## Approval
 
-**Not approved for deployment.** This document records a possible future approach only. The presence of a Jekyll scaffold or deployment instructions is not owner approval to create a public website, connect a hosting account, install a GitHub App, grant repository access or publish customer documentation. Obtain explicit approval before any hosting or publication step.
+**Owner-approved implementation:** Cloudflare Pages Free with Jekyll, exclusively for the Brightdesk Wiki. The approval does not authorise changing GitHub repository visibility, publishing other repositories, adding a customer login, deploying application code or making the Wiki part of any desktop product.
 
-The GitHub repository must remain private. If a separate public help site is approved later, a static build may use only explicitly reviewed customer-facing pages from `docs/`. The current branch does not yet have a verified Jekyll build, generated-output privacy audit or deployment workflow. No claim is made that the generated site is safe or ready to publish.
+The repository `conz20/Brightdesk-Wiki` stays private. The generated help website is public and read-only. Keep the source repository and the public website clearly separate.
+
+**Deployment status:** Not deployed. The Cloudflare account connection and Pages project must be configured by an authorised account owner. Do not claim the site is live until a real deployment succeeds and its public URL is checked.
 
 ## Cloudflare Pages project settings
 
-Only after explicit owner approval, a separate deployment plan and a completed generated-output review, a maintainer could evaluate the following settings:
+Use the Cloudflare Dashboard:
 
-- Create a Pages project using the Git integration.
-- Any GitHub App authorisation would require a separate explicit approval and must be scoped to **only** `conz20/Brightdesk-Wiki`. Do not grant access to all repositories.
-- Select `conz20/Brightdesk-Wiki` and set the production branch to `main`.
-- Keep the root directory at the repository root (`/`).
-- Build command: `bundle exec jekyll build`.
-- Build output directory: `_site`.
-- Set `RUBY_VERSION=3.4.4` in both preview and production environments. The root `.ruby-version` file also records the same version.
-- Do not create or expose a public hostname, buy a custom domain or deploy a preview until publication is explicitly approved.
+1. Open **Workers & Pages** and choose **Create application**, then **Pages**, then **Connect to Git**.
+2. Connect the GitHub account `conz20`.
+3. When GitHub asks to install the **Cloudflare Workers & Pages** GitHub App, choose **Only select repositories** and select only `conz20/Brightdesk-Wiki`. Never grant access to all Brightdesk repositories.
+4. Select `conz20/Brightdesk-Wiki` and set the production branch to `main`.
+5. Keep the root directory at the repository root (`/`).
+6. Set the build command to `bundle exec jekyll build`.
+7. Set the build output directory to `_site`.
+8. Set `RUBY_VERSION=3.4.4`. The root `.ruby-version` file records the same version.
+9. Start with the Cloudflare-provided `*.pages.dev` hostname. A custom domain is not part of this approval.
 
-Official setup references:
+Do not choose a paid plan or enable paid add-ons, Workers, Pages Functions, databases, analytics or external integrations.
+
+## Build and publication boundary
+
+- Jekyll reads only from `docs/` and writes to `_site/`.
+- The published customer pages are the help index, the customer start page, the ten approved product guides and the local stylesheet.
+- `docs/architecture/`, `docs/development/`, `docs/security/` and `docs/releases/` are excluded from the public build.
+- Root-level README, package files, GitHub workflows, tests and scripts are not part of the Jekyll source directory.
+- The public-output audit checks required customer pages, allowed file types, internal paths, private GitHub links, JavaScript and external resources.
+- The site has no login, customer document upload, form, database, analytics script, ad or tracking widget.
+- Do not add public support/contact forms unless a separately approved design and privacy review authorises them.
+- Do not embed third-party fonts, remote scripts, remote images or external resources.
+- Cloudflare may process connection metadata to deliver and protect the website. Do not describe the hosting layer as collecting no data whatsoever.
+
+A static public site cannot keep individual pages private. Anything generated into `_site/` must be safe for anyone on the internet to read.
+
+## Verification and rollout
+
+1. Keep the GitHub repository private and confirm the Cloudflare GitHub App is scoped to this repository only.
+2. Verify the production branch is `main` and build settings match the configuration above.
+3. Complete the exact-head GitHub quality workflow, including Node.js 24.22.2 checks, regression tests, Markdown link validation, Jekyll build and public-output audit.
+4. Review the generated output and a Cloudflare preview URL for unwanted internal files, private links, incorrect pages, broken navigation, keyboard/focus issues, mobile-width overflow and reduced-motion behavior.
+5. Confirm no paid service or add-on has been enabled.
+6. After PR review and merge approval, the `main` deployment may be enabled. Verify the resulting public URL before describing the Wiki as available to customers.
+
+Do not deploy from the draft pull request. A passing CI check or a preview build is not proof of a successful production deployment.
+
+## Official references
 
 - [Cloudflare Pages Jekyll guide](https://developers.cloudflare.com/pages/framework-guides/deploy-a-jekyll-site/)
 - [Cloudflare Pages build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/)
 - [Cloudflare Pages GitHub integration and repository access](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/)
 - [Cloudflare Pages Free limits](https://developers.cloudflare.com/pages/platform/limits/)
-
-## Privacy and scope controls
-
-- Keep `Brightdesk-Wiki` private. A public website does not require a public source repository.
-- Scope the Cloudflare GitHub App to this repository only.
-- Publish only the customer-facing material in `docs/index.md`, `docs/customer-start-here.md` and `docs/products/`.
-- Do not publish `docs/architecture/`, `docs/development/`, `docs/security/`, `docs/releases/`, private logs, credentials, internal prompts or build artefacts.
-- Do not add Pages Functions, forms, databases, accounts, analytics, tracking scripts, advertising, embedded third-party fonts or external JavaScript.
-- The public site is read-only and has no customer document upload or login feature.
-- A static site cannot provide private access controls for individual pages. Anything included in `_site` must be safe for the public internet.
-- Hosting providers may process connection metadata to deliver and protect the site; do not describe the hosting layer as collecting no data whatsoever.
-
-## Required gates before any deployment
-
-1. Obtain explicit owner approval for public customer documentation and for the selected hosting provider.
-2. Implement and run a real, pinned Jekyll build on the existing private macOS runner; the current workflow does not do this.
-3. The `npm run check:site` command invokes the public-output audit and is run by the quality workflow after the Jekyll build. Its regression tests use synthetic fixtures; the workflow must also pass against the actual generated `_site/` output.
-4. Check that only the intended customer pages are generated and that all links resolve within the generated site.
-5. Inspect `_site/` for internal material, private prompts, repository/issue links, credentials, source maps, logs or unintended files before any preview or production publication.
-6. Confirm that the GitHub repository remains private and any separately approved hosting integration is limited to this repository.
-7. Confirm the provider plan and all optional services before use; do not enable paid add-ons, Workers, Functions or analytics.
-8. Do not deploy a preview or production site until all preceding checks and owner approvals are complete.
-
-Until all gates above are satisfied, keep the Jekyll scaffold as un-deployed draft source. Do not use a paid tier, buy a domain, change GitHub repository visibility, connect an account, authorise a GitHub App or deploy a preview/production site.
