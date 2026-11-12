@@ -26,7 +26,7 @@ The current account plan has not been confirmed through an account billing/plan 
 - Generated output: `_site/`.
 - Intended customer pages: help homepage, customer start page and exactly ten approved product guides, plus local CSS.
 
-Architecture, development, security and release/maintainer documents must remain outside the generated public website. The public-output audit rejects internal files, private GitHub links, JavaScript and external resources. A synthetic test pass is not a real generated-site privacy review.
+Architecture, development, security and release/maintainer documents must remain outside the generated public website. The public-output audit rejects internal files, private GitHub links, scripts, forms, editable controls, event handlers, executable URLs and external resources. A synthetic test pass is not a real generated-site privacy review.
 
 ## Local checks
 
