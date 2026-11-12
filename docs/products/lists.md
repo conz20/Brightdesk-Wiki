@@ -1,33 +1,60 @@
 ---
 layout: default
 title: Brightdesk Lists
-description: What Brightdesk Lists can do and what is not included yet.
+description: Create lists, add records and organise them with columns and filters.
 status: Source-confirmed
 permalink: /products/lists.html
 ---
 
 # Brightdesk Lists
 
-Brightdesk Lists is for organising information into separate lists and structured records.
+Use Lists to organise projects, stock, contacts or other information as structured records.
 
-## What you can do
+## Create a list
 
-- Create, rename and delete lists.
-- Add, edit and delete records with a title, status, priority, due date and notes.
-- Add custom text, date and choice columns.
-- Search across records.
-- Filter records by status and sort by a selected column.
+1. Under **Your lists**, enter a name in **New list name**.
+2. Add a description if you need one.
+3. Choose **Create list**.
+4. Select your list in the left-hand panel.
 
-## What is not included in this first version
+A new list includes the columns **Title**, **Status**, **Priority**, **Due date** and **Notes**.
 
-Shared editing, user permissions, attachments, automation, connected data sources and online forms are not included in the current feature set.
+## Add or edit a record
 
-## Keeping your work
+1. Open your list.
+2. Choose **Add record**.
+3. Complete the fields shown.
+4. Choose **Add record** to save the new item.
+5. To change an existing item, choose **Edit**, update its fields and choose **Save changes**.
+6. Choose **Delete** only when you intend to remove a record.
 
-List data is saved locally on the current device. Shared lists and cloud synchronisation are not part of this version.
+## Add a custom column
+
+1. Expand **Add a custom column**.
+2. Enter a **Column name**.
+3. Choose **Text**, **Date** or **Choice** as the column type.
+4. For a Choice column, enter the available choices separated by commas.
+5. Choose **Add column**.
+
+The new column is available when you add or edit records.
+
+## Search, filter and sort
+
+- Enter a word in **Search this list** to find matching records.
+- Use **Filter by status** to show all statuses, Not started, In progress or Done.
+- Choose a field in **Sort by column**.
+- Choose **A to Z** or **Z to A** under **Sort direction**, then choose **Sort**.
+
+## Save your list
+
+Your lists and records are saved on this device as you work. The workspace shows a local-save status.
+
+## What to know
+
+Lists is a local structured-list tool. Shared editing, user permissions, attachments, automation, connected data sources and online forms are not included in the current stated scope.
 
 ## Guide status
 
-This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Lists repository and its workspace tests. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
+**Source-confirmed.** List creation, record editing, custom columns, search, status filtering and sorting are present in the current Lists implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
 
 [Back to Brightdesk Help](../index.html)
