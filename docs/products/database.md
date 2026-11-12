@@ -1,54 +1,58 @@
 ---
 layout: default
 title: Brightdesk Database
-description: A practical starting guide for building local tables and records in Brightdesk Database.
+description: Create tables, define fields and manage local records in Brightdesk Database.
 status: Needs review
 permalink: /products/database.html
 ---
 
 # Brightdesk Database
 
-Use Database to organise local information in tables with named fields.
+Use Database to keep structured information in tables with named fields.
 
 ## Create a table
 
-1. Open Brightdesk Database.
-2. Enter a name in **New table name**.
+1. Open Brightdesk Database. A new database starts with **Table1**.
+2. Under **Tables**, enter a name in **New table name**.
 3. Choose **Create table**.
-4. Select the table when you want to work with its fields and records.
-
-You can rename a table later. Deleting a table removes that table, so check that it is the one you intend to remove.
+4. Select a table in the left-hand list to work with it.
 
 ## Add fields
 
-1. Enter a name in **Field name**.
-2. Choose a field type.
-3. For a choice-list field, provide the available choices when prompted.
-4. Mark the field as required when every record must contain a value.
-5. Choose **Add field**.
+1. Expand **Manage fields**.
+2. Under **Add a field**, enter a **Field name**.
+3. Choose a **Field type**: Text, Number, Date, Email, Web address, Checkbox or Choice list.
+4. For a Choice list, enter the available choices separated by commas.
+5. Select **Required field** when every record must have a value.
+6. Choose **Add field**.
 
-The documented field types are text, number, date, email, web address, checkbox and choice list.
+Your new field appears as a column in the table. The system ID field is managed by Database.
 
-## Add and manage records
+## Add and update records
 
-1. Choose **Add record**.
-2. Enter values in the fields.
-3. Complete any required fields.
-4. Save the record using the form control.
-5. Select a record to edit it, or use the available controls to delete it.
+1. Expand **Add a record**.
+2. Complete the fields shown for the selected table.
+3. Choose **Add record**.
+4. To update a value later, edit it directly in the table. The change is saved on this device.
+5. Choose **Delete** on a record only when you intend to remove it.
 
-Use the search field to find records. Use the sort control to organise the records by a supported field.
+## Find and sort records
 
-## Export your table
+- Enter words in **Search records** to find matching values.
+- Choose a field in **Sort records** to sort the table.
 
-Choose **Export CSV** to create a CSV copy of the table. Database data is kept locally on this device.
+## Rename, delete or export a table
+
+- Choose **Rename table** to change the selected table's name.
+- Choose **Delete table** only when you intend to remove that table and its records. Database must keep at least one table.
+- Choose **Export CSV** to export the current table.
 
 ## Current feature boundaries
 
-Database does not currently include SQL query execution, table relationships, a query designer, form or report designers, database import, online hosting or collaboration.
+Database is a local table-and-record tool. SQL query execution, table relationships, a query designer, form and report designers, database import, online hosting and collaboration are not included in the current stated scope.
 
 ## Guide status
 
-**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
+**Needs review.** These steps are based on the current Database interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)

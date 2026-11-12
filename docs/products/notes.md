@@ -1,36 +1,42 @@
 ---
 layout: default
 title: Brightdesk Notes
-description: A practical starting guide for writing and exporting quick notes in Brightdesk Notes.
+description: Capture and export quick notes with Brightdesk Notes.
 status: Needs review
 permalink: /products/notes.html
 ---
 
 # Brightdesk Notes
 
-Use Notes to capture short notes, reminders and ideas.
+Use Notes to capture quick thoughts, reminders and short pieces of information.
 
 ## Write a note
 
-1. Open Brightdesk Notes.
-2. Create or open a note using the controls shown in the workspace.
-3. Click in the writing area and enter your text.
-4. Continue editing the note as needed. Note text is saved locally as you work.
+1. Open Brightdesk Notes. A new note starts with the title **Untitled note**.
+2. Select the title field and enter a name for the note.
+3. Click in the notes writing area and type.
+4. Your note text is saved on this device as you work.
 
-Use a clear title or first line so the note is easy to recognise later.
+## Add a date or simple checklist marker
 
-## Export a note
+1. Place the cursor in the note where you want the item.
+2. Open **Insert**.
+3. Choose **Date** to insert the current date.
+4. Choose **Divider** to add a visual separator.
+5. Choose **Checklist item** to insert an unchecked box marker.
 
-Export a note when you need a copy outside Brightdesk Notes. The documented export formats are:
+These insertions add text to the note; they are not a separate task-management list.
 
-- Markdown (`.md`).
-- Plain text (`.txt`).
+## Export or clear a note
 
-Choose the format offered by the export control and save the file where you can find it.
+1. Open **Home**.
+2. Choose **Export note** to export the current note.
+3. Choose the format offered by the export control. The product documentation lists Markdown and plain text.
+4. Choose **Clear note** only when you intend to remove the current note text, then confirm the prompt.
 
 ## Language and spelling
 
-Use the shared Brightdesk display-language and spelling tools where they are available in your installed version. The languages and dictionaries offered depend on what is installed and verified on your device.
+Use the shared Brightdesk language and spelling tools where they are available in your installed version. The languages and dictionaries offered depend on what is installed and verified on your device.
 
 ## Current feature boundaries
 
@@ -38,6 +44,6 @@ The current Notes workflow is a quick-note editor. Notebook hierarchies, section
 
 ## Guide status
 
-**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
+**Needs review.** These steps are based on the current Notes interface and product documentation. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
