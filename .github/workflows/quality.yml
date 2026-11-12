@@ -25,6 +25,8 @@ jobs:
         # Pinned ruby/setup-ruby installs the selected interpreter in the Actions tool cache.
         # It does not use a system package manager or change machine-wide Ruby settings.
         uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # pinned ruby/setup-ruby action
+        env:
+          RUNNER_TOOL_CACHE: ${{ runner.temp }}/ruby-toolcache
         with:
           ruby-version: '3.4.4'
           bundler-cache: true
