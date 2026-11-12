@@ -84,12 +84,28 @@ function resolveLocalTarget({ rootDir, sourceFile, rawTarget }) {
   return candidate;
 }
 
+function statLocalTarget(candidate) {
+  try {
+    return { candidate, stat: fs.lstatSync(candidate) };
+  } catch (error) {
+    if (error.code !== 'ENOENT' || path.extname(candidate).toLowerCase() !== '.html') return null;
+    const markdownSource = candidate.slice(0, -'.html'.length) + '.md';
+    try {
+      return { candidate: markdownSource, stat: fs.lstatSync(markdownSource) };
+    } catch (fallbackError) {
+      if (fallbackError.code === 'ENOENT') return null;
+      throw fallbackError;
+    }
+  }
+}
+
 function verifyTarget({ rootDir, sourceFile, rawTarget }) {
-  const candidate = resolveLocalTarget({ rootDir, sourceFile, rawTarget });
+  let candidate = resolveLocalTarget({ rootDir, sourceFile, rawTarget });
   if (!candidate) return false;
-  let stat;
-  try { stat = fs.lstatSync(candidate); }
-  catch { fail(`${path.relative(rootDir, sourceFile)} links to missing target: ${rawTarget}`); }
+  const resolved = statLocalTarget(candidate);
+  if (!resolved) fail(`${path.relative(rootDir, sourceFile)} links to missing target: ${rawTarget}`);
+  candidate = resolved.candidate;
+  const { stat } = resolved;
   if (stat.isSymbolicLink()) fail(`${path.relative(rootDir, sourceFile)} links to a symbolic link: ${rawTarget}`);
   if (!stat.isFile() && !stat.isDirectory()) fail(`${path.relative(rootDir, sourceFile)} links to an unsupported target: ${rawTarget}`);
   const realRoot = fs.realpathSync(rootDir);
