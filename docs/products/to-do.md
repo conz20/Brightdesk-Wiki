@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk To Do
+description: Help and guide status for Brightdesk To Do.
+status: Needs review
+permalink: /products/to-do.html
+---
+
 # Brightdesk To Do
 
-Brightdesk To Do is the product area for individual task capture and task-list organization. Its intended workspace provides task views beside a searchable task list.
+Brightdesk To Do is the product area for individual task capture and task-list organisation.
 
-## Guidance
+## What this guide covers
 
-Document task status, reminders, recurring tasks, due dates, prioritisation and grouping only when verified in the current code and tests. Avoid assuming parity with an external task manager.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk To Do repository](https://github.com/conz20/Brightdesk-To-Do) for the current task model and tested behavior.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
