@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Notes
+description: Help and guide status for Brightdesk Notes.
+status: Needs review
+permalink: /products/notes.html
+---
+
 # Brightdesk Notes
 
 Brightdesk Notes is the product area for capturing and editing notes. Its intended workspace prioritises note access and a clear writing surface.
 
-## Guidance
+## What this guide covers
 
-Keep storage, autosave, search, formatting and export claims tied to the implemented behavior. Notes is a local-first product; do not describe cloud storage, synchronisation or online collaboration as available or planned.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Notes repository](https://github.com/conz20/Brightdesk-Notes) for current implementation details, tests and supported file workflows.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
