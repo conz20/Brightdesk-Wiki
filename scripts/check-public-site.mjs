@@ -8,6 +8,7 @@ const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
 const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css']
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'));
+const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const FORBIDDEN_PATHS = [
   /^(architecture|development|security|releases)\//i,
   /(^|\/)README\.html$/i,
@@ -46,6 +47,9 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (!fileSet.has(required)) fail('required customer page or asset is missing: ' + required);
   }
   for (const file of files) {
+    if (!ALLOWED_FILES.has(file)) {
+      fail('file is outside the approved customer-help allowlist: ' + file);
+    }
     if (FORBIDDEN_PATHS.some(pattern => pattern.test(file))) {
       fail('internal or repository-only content was included: ' + file);
     }
