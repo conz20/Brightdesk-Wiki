@@ -23,8 +23,11 @@ jobs:
           package-manager-cache: false
       - name: Set up Ruby 3.4.4
         uses: ruby/setup-ruby@7f797815d8adceb1c412e7abefdd1ab4abc47a5f # v1.335.0
+        env:
+          RUNNER_TOOL_CACHE: ${{ runner.tool_cache }}
         with:
           ruby-version: 3.4.4
+          self-hosted: true
       - name: Install locked Node dependencies
         run: npm ci --no-audit --no-fund
       - name: Install pinned Jekyll dependency
