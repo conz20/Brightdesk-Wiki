@@ -38,3 +38,10 @@ test('quality workflow always runs Jekyll build and the generated-output privacy
   assert.match(workflow, /run:\s*npm run check:site/);
   assert.doesNotMatch(workflow, /if:\s*steps\.ruby\.outputs\.available/);
 });
+
+test('Ruby 3.4.4 builds Psych against a pinned, checksum-verified libyaml source', () => {
+  assert.match(workflow, /yaml-0\\.2\\.5\\.tar\\.gz/);
+  assert.match(workflow, /c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4/);
+  assert.match(workflow, /--with-libyaml-source-dir=\\$libyaml_dir/);
+  assert.match(workflow, /test -x "\\$libyaml_dir\\/configure"/);
+});
