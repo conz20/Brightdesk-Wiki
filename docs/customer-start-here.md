@@ -7,6 +7,8 @@ permalink: /customer-start-here.html
 
 # Start here: find the Brightdesk help you need
 
+> **Availability:** This guide is draft content in the private Wiki source. It is not yet available from a public help website or installed product.
+
 Start with what you want to do. You do not need to know a technical term.
 
 ## Choose the right product
