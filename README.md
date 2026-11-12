@@ -14,7 +14,7 @@ The public website will be separate from Brightdesk Suite and all ten desktop pr
 
 ## Website build
 
-The approved publishing path is Cloudflare Pages Free with Jekyll. The GitHub repository remains private, and the Cloudflare GitHub App must be scoped to this repository only.
+A possible publishing path is Cloudflare Pages Free with Jekyll, but this is only a proposal. **No public site or hosting provider has been approved, configured or connected.** Keep the GitHub repository private. Do not authorise a Cloudflare GitHub App, connect an account or deploy a preview until the owner explicitly approves the publishing plan.
 
 - Jekyll: `4.4.1` (build-time dependency only).
 - Ruby: `3.4.4` (pinned in `.ruby-version`).
