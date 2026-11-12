@@ -41,7 +41,7 @@ Official setup references:
 
 1. Obtain explicit owner approval for public customer documentation and for the selected hosting provider.
 2. Implement and run a real, pinned Jekyll build on the existing private macOS runner; the current workflow does not do this.
-3. The `scripts/check-public-site.mjs` audit script now exists and has synthetic-fixture regression tests. It is not yet wired into the package scripts or quality workflow and has not been run against a real generated Jekyll site.
+3. The `npm run check:site` command invokes the public-output audit and is run by the quality workflow after the Jekyll build. Its regression tests use synthetic fixtures; the workflow must also pass against the actual generated `_site/` output.
 4. Check that only the intended customer pages are generated and that all links resolve within the generated site.
 5. Inspect `_site/` for internal material, private prompts, repository/issue links, credentials, source maps, logs or unintended files before any preview or production publication.
 6. Confirm that the GitHub repository remains private and any separately approved hosting integration is limited to this repository.
