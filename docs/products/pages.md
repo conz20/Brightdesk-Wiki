@@ -1,21 +1,34 @@
 ---
 layout: default
 title: Brightdesk Pages
-description: Help and guide status for Brightdesk Pages.
-status: Needs review
+description: What Brightdesk Pages can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/pages.html
 ---
 
 # Brightdesk Pages
 
-Brightdesk Pages is the product area for document creation, writing and page layout. Its intended workspace is centred on a document canvas, with editing and page controls above it.
+Brightdesk Pages is for writing letters, reports and other formatted documents.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create and edit text documents.
+- Apply basic text formatting, headings, paragraph alignment, lists and simple tables.
+- Choose A4, US Letter or US Legal page sizes.
+- Set portrait or landscape orientation and choose a margin preset.
+- Save and reopen Brightdesk project data.
+- Import and export supported document formats.
+
+## What is not included in this first version
+
+Pages is an early document-editor foundation. Advanced page-layout tools, macros, collaboration and guaranteed loss-free file conversion are not included in the current feature promise.
+
+## Keeping your work
+
+Your document project data is intended to remain on your device. The current product does not provide cloud collaboration or shared online editing.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Pages repository. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
