@@ -1,12 +1,12 @@
 # Maintainer setup: separate Brightdesk customer-help website
 
-## Approval
+## Approval status
 
-**Owner-approved implementation:** Cloudflare Pages Free with Jekyll, exclusively for the Brightdesk Wiki. The approval does not authorise changing GitHub repository visibility, publishing other repositories, adding a customer login, deploying application code or making the Wiki part of any desktop product.
+**Public publishing is not approved or configured.** This document describes a possible future deployment only. No owner approval for a public help website is recorded here. The existence of this proposal, a Jekyll configuration or a passing build must not be treated as permission to connect a hosting account, authorise a GitHub App, expose content or deploy a public site.
 
-The repository `conz20/Brightdesk-Wiki` stays private. The generated help website is public and read-only. Keep the source repository and the public website clearly separate.
+The repository `conz20/Brightdesk-Wiki` must remain private. The Jekyll output is a draft and is not a customer-accessible website. Any future public deployment requires explicit owner approval after review of the exact generated output, hosting plan and data-processing boundary.
 
-**Deployment status:** Not deployed. The Cloudflare account connection and Pages project must be configured by an authorised account owner. Do not claim the site is live until a real deployment succeeds and its public URL is checked.
+**Deployment status:** Not deployed. No Cloudflare account connection or Pages project is confirmed. Do not claim the site is live until separately approved deployment succeeds and its public URL is checked.
 
 ## Cloudflare Pages project settings
 
