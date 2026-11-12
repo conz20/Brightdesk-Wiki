@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 24.22.2
           package-manager-cache: false
-      - name: Build Ruby 3.4.4 in the runner-local tool cache
+      - name: Build checksum-verified libyaml and Ruby 3.4.4 in runner-local cache
         shell: bash
         env:
           RUNNER_TOOL_CACHE: ${{ runner.temp }}/ruby-toolcache
@@ -33,12 +33,32 @@ jobs:
             echo "::error::This build is pinned for the macOS ARM64 runner."
             exit 1
           fi
-          for tool in git curl tar make clang perl; do
+          for tool in git curl tar make clang perl shasum; do
             if ! command -v "$tool" >/dev/null 2>&1; then
               echo "::error::Required local build tool is unavailable: $tool"
               exit 1
             fi
           done
+
+          libyaml_version="0.2.5"
+          libyaml_sha256="c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
+          libyaml_archive="$RUNNER_TEMP/yaml-$libyaml_version.tar.gz"
+          libyaml_source="$RUNNER_TEMP/libyaml-source"
+          libyaml_prefix="$RUNNER_TEMP/libyaml-$libyaml_version"
+
+          curl --fail --location --retry 3 --retry-all-errors --connect-timeout 20 \
+            "https://github.com/yaml/libyaml/releases/download/$libyaml_version/yaml-$libyaml_version.tar.gz" \
+            --output "$libyaml_archive"
+          printf '%s  %s\n' "$libyaml_sha256" "$libyaml_archive" | shasum -a 256 --check -
+          mkdir -p "$libyaml_source"
+          tar -xzf "$libyaml_archive" -C "$libyaml_source"
+          cd "$libyaml_source/yaml-$libyaml_version"
+          ./configure --prefix="$libyaml_prefix" --disable-static
+          make -j "$(sysctl -n hw.ncpu)"
+          make check
+          make install
+          test -f "$libyaml_prefix/include/yaml.h"
+          test -f "$libyaml_prefix/lib/pkgconfig/yaml-0.1.pc"
 
           ruby_build_dir="$RUNNER_TEMP/ruby-build-source"
           ruby_build_revision="573f87a93b27195b97c2a72b5c6fbc0a266d73d0"
@@ -49,10 +69,16 @@ jobs:
 
           prefix="$RUNNER_TOOL_CACHE/Ruby/3.4.4/$(uname -m)"
           mkdir -p "$(dirname "$prefix")"
-          "$ruby_build_dir/bin/ruby-build" 3.4.4 "$prefix"
+          export PKG_CONFIG_PATH="$libyaml_prefix/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+          export RUBY_CONFIGURE_OPTS="--with-libyaml-dir=$libyaml_prefix"
+          if ! "$ruby_build_dir/bin/ruby-build" 3.4.4 "$prefix"; then
+            find "$RUBY_BUILD_BUILD_PATH" -path '*/ext/psych/mkmf.log' -print -exec cat {} \; || true
+            exit 1
+          fi
           touch "$prefix.complete"
           "$prefix/bin/ruby" --version
           "$prefix/bin/gem" --version
+          "$prefix/bin/ruby" -rpsych -e 'abort "Psych/libyaml is unavailable" unless Psych.libyaml_version; puts "Psych #{Psych::VERSION}; libyaml #{Psych.libyaml_version}"'
       - name: Activate the runner-local Ruby and install pinned Jekyll dependencies
         # The action only activates the Ruby already built in the temporary tool cache.
         uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # pinned ruby/setup-ruby action
