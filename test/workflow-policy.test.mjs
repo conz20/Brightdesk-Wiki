@@ -13,9 +13,11 @@ test('quality workflow keeps repository permissions read-only', () => {
   assert.match(workflow, /permissions:\s*\n\s+contents:\s*read/);
 });
 
-test('Ruby setup installs into the writable runner tool cache', () => {
-  const rubyStep = workflow.split('      - name: Set up Ruby 3.4.4')[1]?.split('      - name: ')[0] ?? '';
-  assert.match(rubyStep, /RUNNER_TOOL_CACHE:\s*\$\{\{\s*runner\.tool_cache\s*\}\}/);
-  assert.doesNotMatch(rubyStep, /self-hosted:\s*true/);
-  assert.match(rubyStep, /ruby-version:\s*3\.4\.4/);
+test('Jekyll verification is deferred when exact Ruby 3.4.4 is unavailable', () => {
+  assert.match(workflow, /Check whether Ruby 3\.4\.4 is preinstalled/);
+  assert.match(workflow, /RUBY_VERSION == "3\.4\.4"/);
+  assert.match(workflow, /Jekyll build and generated-output audit are deferred/);
+  assert.match(workflow, /if: steps\.ruby\.outputs\.available == 'true'/);
+  assert.match(workflow, /if: steps\.ruby\.outputs\.available != 'true'/);
+  assert.doesNotMatch(workflow, /ruby\/setup-ruby@/);
 });
