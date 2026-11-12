@@ -21,33 +21,46 @@ jobs:
         with:
           node-version: 24.22.2
           package-manager-cache: false
-      - name: Inspect local Ruby build prerequisites (read-only)
+      - name: Build Ruby 3.4.4 in the runner-local tool cache
         shell: bash
+        env:
+          RUNNER_TOOL_CACHE: ${{ runner.temp }}/ruby-toolcache
+          RUBY_BUILD_BUILD_PATH: ${{ runner.temp }}/ruby-build-build
+          RUBY_BUILD_CACHE_PATH: ${{ runner.temp }}/ruby-build-cache
         run: |
-          sw_vers
-          for tool in ruby-build brew xcodebuild clang make autoconf pkg-config; do
-            if command -v "$tool" >/dev/null 2>&1; then
-              printf '%s: available\n' "$tool"
-            else
-              printf '%s: unavailable\n' "$tool"
+          set -euo pipefail
+          if [[ "$(uname -m)" != "arm64" ]]; then
+            echo "::error::This build is pinned for the macOS ARM64 runner."
+            exit 1
+          fi
+          for tool in git curl tar make clang perl; do
+            if ! command -v "$tool" >/dev/null 2>&1; then
+              echo "::error::Required local build tool is unavailable: $tool"
+              exit 1
             fi
           done
-          if command -v brew >/dev/null 2>&1; then
-            printf 'openssl@3: '
-            brew --prefix openssl@3 2>/dev/null || true
-            printf 'libyaml: '
-            brew --prefix libyaml 2>/dev/null || true
-            printf 'gmp: '
-            brew --prefix gmp 2>/dev/null || true
-          fi
-      - name: Set up Ruby 3.4.4 and install locked Jekyll dependencies
-        # Pinned ruby/setup-ruby installs the selected interpreter in the Actions tool cache.
-        # It does not use a system package manager or change machine-wide Ruby settings.
+
+          ruby_build_dir="$RUNNER_TEMP/ruby-build-source"
+          ruby_build_revision="573f87a93b27195b97c2a72b5c6fbc0a266d73d0"
+          git init -q "$ruby_build_dir"
+          git -C "$ruby_build_dir" remote add origin https://github.com/rbenv/ruby-build.git
+          git -C "$ruby_build_dir" fetch --no-tags --depth=1 origin "$ruby_build_revision"
+          git -C "$ruby_build_dir" checkout --quiet --detach FETCH_HEAD
+
+          prefix="$RUNNER_TOOL_CACHE/Ruby/3.4.4/$(uname -m)"
+          mkdir -p "$(dirname "$prefix")"
+          "$ruby_build_dir/bin/ruby-build" 3.4.4 "$prefix"
+          touch "$prefix.complete"
+          "$prefix/bin/ruby" --version
+          "$prefix/bin/gem" --version
+      - name: Activate the runner-local Ruby and install pinned Jekyll dependencies
+        # The action only activates the Ruby already built in the temporary tool cache.
         uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # pinned ruby/setup-ruby action
         env:
           RUNNER_TOOL_CACHE: ${{ runner.temp }}/ruby-toolcache
         with:
           ruby-version: '3.4.4'
+          self-hosted: true
           bundler-cache: true
       - name: Install locked Node dependencies
         run: npm ci --no-audit --no-fund
