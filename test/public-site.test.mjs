@@ -66,3 +66,19 @@ test('unlisted customer help pages are rejected until explicitly approved', t =>
   fs.writeFileSync(path.join(siteRoot, 'extra-guide.html'), '<!doctype html>extra');
   assert.throws(() => checkPublicSite({ siteRoot }), /outside the approved customer-help allowlist/i);
 });
+
+test('symbolic-link files are rejected instead of being followed into generated output', {
+  skip: process.platform === 'win32'
+}, t => {
+  const siteRoot = siteFixture(t);
+  fs.symlinkSync(path.join(siteRoot, 'index.html'), path.join(siteRoot, 'linked-index.html'), 'file');
+  assert.throws(() => checkPublicSite({ siteRoot }), /symbolic link is not allowed in generated output/i);
+});
+
+test('symbolic-link directories are rejected instead of being walked into generated output', {
+  skip: process.platform === 'win32'
+}, t => {
+  const siteRoot = siteFixture(t);
+  fs.symlinkSync(path.join(siteRoot, 'products'), path.join(siteRoot, 'linked-products'), 'dir');
+  assert.throws(() => checkPublicSite({ siteRoot }), /symbolic link is not allowed in generated output/i);
+});
