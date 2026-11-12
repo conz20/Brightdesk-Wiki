@@ -1,21 +1,33 @@
 ---
 layout: default
 title: Brightdesk Decks
-description: Help and guide status for Brightdesk Decks.
-status: Needs review
+description: What Brightdesk Decks can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/decks.html
 ---
 
 # Brightdesk Decks
 
-Brightdesk Decks is the product area for slide presentations. Its intended workspace places slide navigation beside a central presentation canvas.
+Brightdesk Decks is for creating and presenting slide presentations.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create a presentation and edit slide titles and body text.
+- Add, duplicate and delete slides.
+- Choose from the included basic slide themes.
+- Start presentation mode for the current deck.
+- Import and export supported PowerPoint files.
+
+## What is not included in this first version
+
+Decks is an early slide-editor foundation. Advanced layouts, transitions, embedded media, animation and full PowerPoint round-trip fidelity are not included in the current feature promise. Unsupported objects or formatting may not be preserved when a presentation is imported or exported.
+
+## Keeping your work
+
+Decks is designed for local desktop use. Online collaboration and cloud-shared presentations are not part of this version.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Decks repository. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
