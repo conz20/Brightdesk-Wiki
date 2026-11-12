@@ -64,6 +64,12 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
   for (const file of htmlFiles) {
     const html = fs.readFileSync(path.join(rootDir, file), 'utf8');
     if (!/<!doctype html>/i.test(html)) fail(file + ' is missing an HTML doctype');
+    if (/<(?:form|input|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
+      fail(file + ' contains interactive or editable controls; customer help must remain read-only');
+    }
+    if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) || /\b(?:href|src)\s*=\s*["']?\s*(?:javascript|data|vbscript):/i.test(html)) {
+      fail(file + ' contains an active HTML event handler or executable URL');
+    }
     if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
     if (/https?:\/\//i.test(html)) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
