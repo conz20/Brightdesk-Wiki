@@ -1,53 +1,45 @@
 ---
 layout: default
 title: Brightdesk Decks
-description: Create slides, choose a theme and present with Brightdesk Decks.
-status: Source-confirmed
+description: A practical starting guide for creating and presenting slides in Brightdesk Decks.
+status: Needs review
 permalink: /products/decks.html
 ---
 
 # Brightdesk Decks
 
-Use Decks to build a presentation one slide at a time.
+Use Decks to create slide presentations.
 
-## Create your first slides
+## Create a presentation
 
-1. Open Brightdesk Decks. A new presentation starts with one slide.
-2. Click the slide title area and enter your presentation title.
-3. Click the slide text area and enter a short introduction.
-4. Open **Home** and choose **New slide** to add another slide.
-5. Use **Next** and **Previous** below the slide to move between slides.
+1. Open Brightdesk Decks and start a presentation.
+2. Select a slide and edit its title and body text.
+3. Add a slide when you need another part of the presentation.
+4. Duplicate a slide when you want to reuse its content.
+5. Delete a slide when it is no longer needed.
 
-## Add and organise slides
+Review the slide order and wording before presenting.
 
-- Choose **Duplicate** on the **Home** tab to make a copy of the current slide.
-- Choose **Delete** on the **Home** tab to remove the current slide. A presentation must keep at least one slide.
-- Open **Insert** and choose **Title slide** or **Text slide** to add a slide with starter text.
+## Choose a theme
 
-## Choose a design
+Choose one of the basic themes included with Decks. The theme gives the presentation a consistent starting appearance.
 
-1. Open the **Design** tab.
-2. Choose **Lavender**, **Midnight** or **Paper**.
-3. The selected theme is applied to the presentation workspace.
+## Present your slides
 
-## Present your deck
+Start presentation mode from the current deck when you are ready to show it. Check the presentation before using it in front of an audience.
 
-1. Select the slide where you want to begin.
-2. Open **Slide Show**.
-3. Choose **From current slide**.
-4. During the presentation, click or use the arrow keys to move between slides.
-5. Press **Esc** to leave presentation mode.
+## Import and export
 
-## Save your work
+Decks supports importing and exporting PowerPoint files. Use the file controls available in your installed version and check the resulting presentation after import or export.
 
-Slide title and text changes are saved on this device as you work. Use **Save project** to save a project file, **Open** to open a saved project, or **Export** to use the export options available in your installed version.
+Some advanced PowerPoint objects and formatting may not be preserved.
 
-## What to know
+## Current feature boundaries
 
-Decks supports a core slide-editing and presenting workflow. Advanced layouts, transitions, embedded media, animation and full PowerPoint round-trip fidelity are not promised.
+Decks is an early slide-editor foundation. Advanced layouts, transitions, embedded media, animation and complete PowerPoint round-trip fidelity are not promised.
 
 ## Guide status
 
-**Source-confirmed.** Slide editing, adding, duplicating and deleting slides, themes and presentation controls are present in the current Decks implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
+**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
 
-[Back to Brightdesk Help](../index.html)
+[Back to Brightdesk documentation](../index.md)
