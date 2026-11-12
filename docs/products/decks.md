@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Decks
+description: Help and guide status for Brightdesk Decks.
+status: Needs review
+permalink: /products/decks.html
+---
+
 # Brightdesk Decks
 
-Brightdesk Decks is the product area for slide presentations. Its intended workspace places slide navigation beside a central presentation canvas, with slide controls available in the editing area.
+Brightdesk Decks is the product area for slide presentations. Its intended workspace places slide navigation beside a central presentation canvas.
 
-## Guidance
+## What this guide covers
 
-Describe presentation, theme, layout, playback and export behavior only when it is confirmed by the current source and tests. A concept image illustrates layout intent; it does not establish working slide features.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Decks repository](https://github.com/conz20/Brightdesk-Decks) for the current implementation and supported formats.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
