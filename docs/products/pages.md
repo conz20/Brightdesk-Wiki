@@ -1,49 +1,47 @@
 ---
 layout: default
 title: Brightdesk Pages
-description: Create, format and organise documents in Brightdesk Pages.
-status: Source-confirmed
+description: A practical starting guide for creating and formatting documents in Brightdesk Pages.
+status: Needs review
 permalink: /products/pages.html
 ---
 
 # Brightdesk Pages
 
-Use Pages to write letters, reports and other formatted documents.
+Use Pages to write letters, reports and other text documents.
 
-## Create and edit a document
+## Create a document
 
-1. Open Brightdesk Pages. A new document opens with the title **Untitled document**.
-2. Click the large document writing area and start typing.
-3. To name your document, select **Untitled document** in the title field and enter a new name.
-4. Your changes are saved on this device as you work. The status at the top of the workspace shows when the document is saved locally.
+1. Open Brightdesk Pages. A new document is ready to edit.
+2. Select the document title and give your work a useful name.
+3. Click in the document area and start writing.
+4. Select text to apply the available formatting, such as headings, paragraph alignment and lists.
+5. Use a simple table when you need information arranged in rows and columns.
 
-## Format your writing
+## Set up the page
 
-1. Select the text you want to change.
-2. Open the **Home** tab.
-3. Choose **Bold**, **Italic** or **Underline** to format the selected text.
-4. Choose **Heading 1** or **Heading 2** to make a heading.
-5. Use **Bullets**, **Numbering** or **Quote** to format a paragraph.
+Choose the page options that suit your document:
 
-## Add items and change the page
+- Paper size: A4, US Letter or US Legal.
+- Orientation: portrait or landscape.
+- Margins: choose one of the available presets.
 
-- Open **Insert** and choose **Table 2 × 2**, **Horizontal line** or **Date**.
-- Open **Layout** to choose **Paper** size (A4, US Letter or US Legal), **Orientation** (Portrait or Landscape) and **Margins**.
-- Open **Review** to see the **Word count** or switch **Spell check** on or off.
-- Open **View** to change the zoom or use **Focus mode**.
+Check the page before exporting so the layout is suitable for the intended use.
 
-## Open and save a project
+## Save, open and export
 
-- Choose **Save project** to save a Brightdesk project file.
-- Choose **Open** to open a saved project.
-- Use **Export** for the document export options available in your installed version.
+- **Save project** saves your Brightdesk project data on this device.
+- **Open** lets you open supported existing files or project data.
+- **Export** creates an output file using one of the formats supported by your installed version. PDF export is available.
 
-## What to know
+Keep the Brightdesk project as your working copy when you expect to make further edits.
 
-Pages provides core document writing, formatting and page setup. It is not a promise of full Microsoft Word feature compatibility. Advanced page-layout tools, macros, collaboration and perfect round-trip conversion are not included in the current stated scope.
+## Current feature boundaries
+
+Pages is an early document editor. Advanced page-layout tools, macros, collaboration and perfect round-trip conversion with other word processors are not promised. Only use file types offered by the current Open and Export controls.
 
 ## Guide status
 
-**Source-confirmed.** The controls and actions above are present in the current Pages implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
+**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
 
-[Back to Brightdesk Help](../index.html)
+[Back to Brightdesk documentation](../index.md)
