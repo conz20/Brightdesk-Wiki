@@ -13,11 +13,15 @@ test('quality workflow keeps repository permissions read-only', () => {
   assert.match(workflow, /permissions:\s*\n\s+contents:\s*read/);
 });
 
-test('quality workflow provisions exact Ruby in a writable runner-local tool cache', () => {
+test('quality workflow builds exact Ruby in a writable runner-local tool cache', () => {
+  assert.match(workflow, /ruby-build@|573f87a93b27195b97c2a72b5c6fbc0a266d73d0/);
+  assert.match(workflow, /ruby-build[\s\S]*3\.4\.4/);
+  assert.match(workflow, /RUNNER_TOOL_CACHE:\s*\$\{\{\s*runner\.temp\s*\}\}\/ruby-toolcache/);
+  assert.match(workflow, /touch "\$prefix\.complete"/);
   assert.match(workflow, /uses:\s*ruby\/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199/);
+  assert.match(workflow, /self-hosted:\s*true/);
   assert.match(workflow, /ruby-version:\s*['"]3\.4\.4['"]/);
   assert.match(workflow, /bundler-cache:\s*true/);
-  assert.match(workflow, /RUNNER_TOOL_CACHE:\s*\$\{\{\s*runner\.temp\s*\}\}\/ruby-toolcache/);
   assert.doesNotMatch(workflow, /Check whether Ruby 3\.4\.4 is preinstalled/);
   assert.doesNotMatch(workflow, /Jekyll build and generated-output audit are deferred/);
   assert.doesNotMatch(workflow, /if:\s*steps\.ruby\.outputs\.available/);
