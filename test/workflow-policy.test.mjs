@@ -13,8 +13,9 @@ test('quality workflow keeps repository permissions read-only', () => {
   assert.match(workflow, /permissions:\s*\n\s+contents:\s*read/);
 });
 
-test('Ruby setup uses the writable self-hosted runner tool cache', () => {
+test('Ruby setup installs into the writable runner tool cache', () => {
   const rubyStep = workflow.split('      - name: Set up Ruby 3.4.4')[1]?.split('      - name: ')[0] ?? '';
-  assert.match(rubyStep, /RUNNER_TOOL_CACHE:\\s*\\$\\{\\{\\s*runner\\.tool_cache\\s*\\}\\}/);
-  assert.match(rubyStep, /self-hosted:\\s*true/);
+  assert.match(rubyStep, /RUNNER_TOOL_CACHE:\s*\$\{\{\s*runner\.tool_cache\s*\}\}/);
+  assert.doesNotMatch(rubyStep, /self-hosted:\s*true/);
+  assert.match(rubyStep, /ruby-version:\s*3\.4\.4/);
 });
