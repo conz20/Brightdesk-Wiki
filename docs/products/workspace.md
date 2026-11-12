@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Workspace
+description: Help and guide status for Brightdesk Workspace.
+status: Needs review
+permalink: /products/workspace.html
+---
+
 # Brightdesk Workspace
 
 Brightdesk Workspace is the product area for organising project work and related content in a connected workspace.
 
-## Guidance
+## What this guide covers
 
-Describe workspace creation, page navigation, search, content blocks and checklists only when confirmed by the current implementation. Keep workspace content local; do not imply cloud synchronisation or online collaboration.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Workspace repository](https://github.com/conz20/Brightdesk-Workspace) for verified functionality and data handling.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
