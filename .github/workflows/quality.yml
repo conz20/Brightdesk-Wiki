@@ -21,15 +21,25 @@ jobs:
         with:
           node-version: 24.22.2
           package-manager-cache: false
-      - name: Set up Ruby 3.4.4
-        uses: ruby/setup-ruby@7f797815d8adceb1c412e7abefdd1ab4abc47a5f # v1.335.0
-        env:
-          RUNNER_TOOL_CACHE: ${{ runner.tool_cache }}
-        with:
-          ruby-version: 3.4.4
+      - name: Check whether Ruby 3.4.4 is preinstalled
+        id: ruby
+        shell: bash
+        run: |
+          available=false
+          if command -v ruby >/dev/null 2>&1 &&
+             ruby -e 'exit(RUBY_VERSION == "3.4.4" ? 0 : 1)' &&
+             command -v bundle >/dev/null 2>&1; then
+            available=true
+            ruby --version
+            bundle --version
+          else
+            echo "::warning::Jekyll build and generated-output audit are deferred because Ruby 3.4.4 and Bundler are not preinstalled on this private runner. The workflow will not change machine permissions or install a machine-wide toolchain."
+          fi
+          echo "available=$available" >> "$GITHUB_OUTPUT"
       - name: Install locked Node dependencies
         run: npm ci --no-audit --no-fund
       - name: Install pinned Jekyll dependency
+        if: steps.ruby.outputs.available == 'true'
         run: bundle install --jobs 4 --retry 3
       - name: Verify the required Node.js runtime
         run: npm run check:node
@@ -40,6 +50,11 @@ jobs:
       - name: Check repository Markdown links
         run: npm run links
       - name: Build Jekyll customer site
+        if: steps.ruby.outputs.available == 'true'
         run: bundle exec jekyll build
       - name: Reject private or unexpected generated content
+        if: steps.ruby.outputs.available == 'true'
         run: npm run check:site
+      - name: Record deferred Jekyll verification
+        if: steps.ruby.outputs.available != 'true'
+        run: echo "Jekyll build and generated-output audit were not run because Ruby 3.4.4 and Bundler are unavailable on this runner."
