@@ -1,21 +1,34 @@
 ---
 layout: default
 title: Brightdesk Forms
-description: Help and guide status for Brightdesk Forms.
-status: Needs review
+description: What Brightdesk Forms can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/forms.html
 ---
 
 # Brightdesk Forms
 
-Brightdesk Forms is the product area for creating forms and working with their responses.
+Brightdesk Forms is for creating local forms and reviewing their responses.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create and edit form titles and descriptions.
+- Add short-answer, long-answer, single-choice, multiple-choice and date questions.
+- Mark questions as required.
+- Preview a form and validate submitted answers.
+- Submit responses on this device.
+- Review saved responses and delete individual responses.
+
+## What is not included in this first version
+
+Online publishing, public response links, branching logic, scoring, file attachments, cloud response collection and collaboration are not included in the current feature set.
+
+## Keeping your work
+
+Forms and their responses are handled locally on this device. The current product does not collect responses through an online service.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Forms repository and its workspace tests. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
