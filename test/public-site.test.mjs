@@ -82,3 +82,31 @@ test('symbolic-link directories are rejected instead of being walked into genera
   fs.symlinkSync(path.join(siteRoot, 'products'), path.join(siteRoot, 'linked-products'), 'dir');
   assert.throws(() => checkPublicSite({ siteRoot }), /symbolic link is not allowed in generated output/i);
 });
+
+
+test('interactive and editable controls are rejected from the customer help site', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><form><label>Comment <input name="comment"></label><button>Submit</button></form>'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /interactive or editable controls/i);
+});
+
+test('inline event handlers and executable URLs are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><a href="javascript:alert(1)" onclick="alert(1)">Open</a>'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /active HTML event handler or executable URL/i);
+});
+
+test('embedded frames and plugin content are rejected from customer pages', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><iframe src="/external"></iframe>'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /interactive or editable controls/i);
+});
