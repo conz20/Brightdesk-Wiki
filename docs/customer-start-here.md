@@ -10,7 +10,7 @@ permalink: /customer-start-here.html
 
 Brightdesk Suite is the starting point for the ten approved Brightdesk desktop products. Use it to choose the products you want in your Suite and open each product in its own window.
 
-Brightdesk is designed for local use. You do not need a customer account, sign-in, password or subscription to use the products. Your work is kept on your device.
+Brightdesk is free forever. There are no subscriptions, paid tiers, customer accounts, sign-ins or passwords. The products are designed for local use, and your work is kept on your device.
 
 ## Before you start
 
