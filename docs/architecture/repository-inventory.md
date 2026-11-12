@@ -58,7 +58,7 @@ That is **27 repositories**. The extra infrastructure repositories do not add to
 | [Brightdesk-Services](https://github.com/conz20/Brightdesk-Services) | Optional owner-operated experimental infrastructure only; never a customer runtime dependency. |
 | [Brightdesk-Type-Preview](https://github.com/conz20/Brightdesk-Type-Preview) | Local/offline font preview and installed-font metadata; not a hosted font service. |
 | [Brightdesk-Voice](https://github.com/conz20/Brightdesk-Voice) | Separate private audio research/prototype infrastructure. No customer-product integration or release is approved. |
-| [Brightdesk-Wiki](https://github.com/conz20/Brightdesk-Wiki) | Private Markdown knowledge source; no public hosted help site or customer-facing distribution is currently approved. It is not installed or required by Brightdesk software. |
+| [Brightdesk-Wiki](https://github.com/conz20/Brightdesk-Wiki) | Private Markdown source for the separate customer-help website; Cloudflare Pages Free with Jekyll is owner-approved but not yet deployed. It is not installed or required by Brightdesk software. |
 
 ## Product and dependency boundaries
 
