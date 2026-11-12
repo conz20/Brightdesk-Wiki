@@ -27,7 +27,6 @@ jobs:
           RUNNER_TOOL_CACHE: ${{ runner.tool_cache }}
         with:
           ruby-version: 3.4.4
-          self-hosted: true
       - name: Install locked Node dependencies
         run: npm ci --no-audit --no-fund
       - name: Install pinned Jekyll dependency
