@@ -1,21 +1,34 @@
 ---
 layout: default
 title: Brightdesk Sheets
-description: Help and guide status for Brightdesk Sheets.
-status: Needs review
+description: What Brightdesk Sheets can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/sheets.html
 ---
 
 # Brightdesk Sheets
 
-Brightdesk Sheets is the product area for spreadsheets and structured cell-based work. Its intended workspace uses a spreadsheet grid with row and column headers and formula controls.
+Brightdesk Sheets is for working with spreadsheet grids, tables, calculations and data.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Enter and edit values in a spreadsheet grid.
+- Use the formula bar to work with calculations.
+- Use basic arithmetic and the supported range functions: SUM, AVERAGE, MIN, MAX, COUNT and COUNTA.
+- Add rows and columns.
+- Sort a selected column.
+- Import and export supported CSV and XLSX files.
+
+## What is not included in this first version
+
+Sheets is a basic spreadsheet foundation. VBA or other macros, pivot tables, advanced formula coverage and exact Excel round-trip compatibility are not included in the current feature promise.
+
+## Keeping your work
+
+The current workbook data is saved on your device. Online collaboration and cloud sharing are not part of this version.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Sheets repository. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
