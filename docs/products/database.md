@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Database
+description: Help and guide status for Brightdesk Database.
+status: Needs review
+permalink: /products/database.html
+---
+
 # Brightdesk Database
 
 Brightdesk Database is the product area for structured records organised into tables and typed fields.
 
-## Guidance
+## What this guide covers
 
-Document field types, validation, relationships, filtering, sorting and CSV behavior only when confirmed in source and tests. Keep data persistence local; do not imply a hosted database or remote service dependency.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Database repository](https://github.com/conz20/Brightdesk-Database) for the actual data model, tests and supported import/export behavior.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
