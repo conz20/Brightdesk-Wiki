@@ -1,40 +1,43 @@
 ---
 layout: default
 title: Brightdesk Notes
-description: Capture and keep quick notes with Brightdesk Notes.
-status: Source-confirmed
+description: A practical starting guide for writing and exporting quick notes in Brightdesk Notes.
+status: Needs review
 permalink: /products/notes.html
 ---
 
 # Brightdesk Notes
 
-Use Notes to capture quick thoughts, reminders and short pieces of information.
+Use Notes to capture short notes, reminders and ideas.
 
 ## Write a note
 
-1. Open Brightdesk Notes. A new note starts with the title **Untitled note**.
-2. Select the title field and enter a name for your note.
-3. Click the notes writing area and type.
-4. Your note is saved on this device as you work. The workspace displays a message confirming local saving.
+1. Open Brightdesk Notes.
+2. Create or open a note using the controls shown in the workspace.
+3. Click in the writing area and enter your text.
+4. Continue editing the note as needed. Note text is saved locally as you work.
 
-## Add helpful items
+Use a clear title or first line so the note is easy to recognise later.
 
-1. Open the **Insert** tab.
-2. Choose **Date** to add today's date at the cursor.
-3. Choose **Divider** to add a visual break.
-4. Choose **Checklist item** to insert an unchecked box that you can use in your note.
+## Export a note
 
-## Export or clear a note
+Export a note when you need a copy outside Brightdesk Notes. The documented export formats are:
 
-- Open **Home** and choose **Export note** to export the current note.
-- Choose **Clear note** to remove the note text. Confirm the prompt only when you intend to clear it.
+- Markdown (`.md`).
+- Plain text (`.txt`).
 
-## What to know
+Choose the format offered by the export control and save the file where you can find it.
+
+## Language and spelling
+
+Use the shared Brightdesk display-language and spelling tools where they are available in your installed version. The languages and dictionaries offered depend on what is installed and verified on your device.
+
+## Current feature boundaries
 
 The current Notes workflow is a quick-note editor. Notebook hierarchies, sections, linked pages, attachments and collaborative notebooks are not described as finished features.
 
 ## Guide status
 
-**Source-confirmed.** The note editor, local saving, insert tools and export/clear commands are present in the current Notes implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
+**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
 
-[Back to Brightdesk Help](../index.html)
+[Back to Brightdesk documentation](../index.md)
