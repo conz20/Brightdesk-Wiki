@@ -24,6 +24,8 @@ Use the Cloudflare Dashboard:
 
 Do not choose a paid plan or enable paid add-ons, Workers, Pages Functions, databases, analytics or external integrations.
 
+Cloudflare's published Free-plan limits currently state 500 builds per month, one concurrent build per account, a 20-minute build timeout and up to 20,000 files per site. Recheck the official [Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before configuring the project because provider limits can change. The intended Wiki output is far below the published file limit.
+
 ## Build and publication boundary
 
 - Jekyll reads only from `docs/` and writes to `_site/`.
