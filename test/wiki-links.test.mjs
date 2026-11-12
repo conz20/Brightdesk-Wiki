@@ -48,6 +48,22 @@ test('query strings, fragments and encoded path segments resolve to local files'
   assert.equal(result.localLinks, 1);
 });
 
+test('Jekyll .html routes are accepted when backed by a matching Markdown source', t => {
+  const rootDir = fixture(t);
+  fs.mkdirSync(path.join(rootDir, 'docs', 'products'), { recursive: true });
+  fs.writeFileSync(
+    path.join(rootDir, 'docs/index.md'),
+    '---\\npermalink: /index.html\\n---\\n# Help home\\n'
+  );
+  fs.writeFileSync(
+    path.join(rootDir, 'docs/products/database.md'),
+    '---\\npermalink: /products/database.html\\n---\\n[Back to help](../index.html)\\n'
+  );
+
+  const result = checkMarkdownLinks({ rootDir });
+  assert.equal(result.localLinks, 1);
+});
+
 test('symbolic-link targets are rejected', t => {
   const rootDir = fixture(t);
   const outside = path.join(rootDir, 'outside.md');
