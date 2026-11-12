@@ -1,52 +1,56 @@
 ---
 layout: default
 title: Brightdesk Sheets
-description: Enter data, calculate values and organise a spreadsheet in Brightdesk Sheets.
-status: Source-confirmed
+description: A practical starting guide for entering data and using basic formulas in Brightdesk Sheets.
+status: Needs review
 permalink: /products/sheets.html
 ---
 
 # Brightdesk Sheets
 
-Use Sheets to organise information in a grid and calculate values with supported formulas.
+Use Sheets to work with information in a spreadsheet grid.
 
 ## Enter information
 
-1. Open Brightdesk Sheets. A new spreadsheet opens with the title **Untitled spreadsheet**.
-2. Click a cell in the grid, such as **A1**.
-3. Type a value and move to another cell. Press **Enter** to save the value and move down one row.
-4. To rename the spreadsheet, select its title field and enter a new name.
+1. Open Brightdesk Sheets and choose a cell in the grid.
+2. Type a value into the selected cell.
+3. Move to another cell to continue filling in the workbook.
+4. Select a cell and use the formula bar when you need to view or edit its value or formula.
 
-## Use a formula
+## Use a basic calculation
 
-1. Select the cell where you want the answer to appear.
-2. Enter a formula in the formula field on the **Home** tab, or type it directly into the selected cell.
-3. Start a formula with an equals sign. For example, `=A1+B1` adds two cells.
-4. A range formula can look like `=SUM(A1:A5)`.
+Sheets supports basic arithmetic and these range functions:
 
-The current calculation engine supports basic arithmetic and the **SUM**, **AVERAGE**, **MIN**, **MAX**, **COUNT** and **COUNTA** functions. Formula results update in the grid.
+- `SUM` — add values.
+- `AVERAGE` — calculate the average.
+- `MIN` and `MAX` — find the smallest or largest value.
+- `COUNT` — count numeric values.
+- `COUNTA` — count non-empty values.
 
-## Add rows or columns
+Check the result in the grid after entering a formula. Formula support is limited to the functions implemented by your installed version.
 
-- On **Home**, choose **+ Row** or **+ Column**.
-- You can also open **Insert** and choose **New row** or **New column**.
+## Organise the grid
 
-## Sort the sheet
+- Add rows or columns when you need more space.
+- Select a column and use the available sort control to organise its values.
+- Check the selected column and sort direction before applying a sort.
 
-1. Select a cell in the column you want to sort.
-2. Open **Data**.
-3. Choose **Sort A → Z** or **Sort Z → A**.
+## Open, save and export
 
-## Save and export
+Sheets supports CSV and XLSX import and export.
 
-Your workbook data is saved on this device as you work. Use **Save project** to save a project file, **Open** to open a saved project, or **Export** to use the export options available in your installed version.
+- Use **Open** to choose a supported workbook or CSV file.
+- Use **Save project** to keep the Brightdesk project data on this device.
+- Use **Export** to create a supported output file, such as CSV or XLSX.
 
-## What to know
+Keep a Brightdesk project copy when you plan to continue editing the workbook.
 
-Sheets is a basic spreadsheet foundation. Do not assume support for macros, pivot tables, every Excel formula or exact compatibility with complex Excel workbooks.
+## Current feature boundaries
+
+Sheets is a basic spreadsheet foundation. VBA and macros, pivot tables, advanced formula coverage and exact Excel round-trip compatibility are not promised.
 
 ## Guide status
 
-**Source-confirmed.** The grid, formula field, row and column controls, sorting commands and calculation engine are present in the current Sheets implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
+**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
 
-[Back to Brightdesk Help](../index.html)
+[Back to Brightdesk documentation](../index.md)
