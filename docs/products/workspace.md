@@ -1,70 +1,60 @@
 ---
 layout: default
 title: Brightdesk Workspace
-description: Bring project pages, notes and checklists together in Brightdesk Workspace.
-status: Source-confirmed
+description: A practical starting guide for creating workspaces, pages and content blocks in Brightdesk Workspace.
+status: Needs review
 permalink: /products/workspace.html
 ---
 
 # Brightdesk Workspace
 
-Use Workspace to bring related project information together in workspaces and pages.
+Use Workspace to keep related pages and written information together on this device.
 
 ## Create a workspace
 
-1. In the left panel, find **Your workspaces**.
-2. Choose the **＋** button labelled **Create workspace**.
-3. Enter a **Workspace name**.
+1. Open Brightdesk Workspace.
+2. Choose the **＋** control for creating a workspace.
+3. Enter a workspace name.
 4. Choose **Create**.
 
-A new workspace includes a **Getting started** page.
+Use **Rename workspace** to change its name. Check that you have selected the right workspace before deleting it.
 
 ## Add a page
 
-1. Under **Pages**, choose the **＋** button labelled **Add page**.
-2. Enter a page title when prompted.
-3. The new page appears in the page list. Select it to work on it.
+1. Select the workspace.
+2. Choose **Add page**.
+3. Enter the page content or title requested by the page form.
+4. Save the page.
 
-Use **Find a page** to search page titles and page content.
+Use the page controls to rename or delete a page. Search for a page by its title when the workspace contains several pages.
 
-## Add content to a page
+## Add content blocks
 
-1. Open the page you want to edit.
-2. Choose a content type from the block-type list:
-   - **Text**
-   - **Heading**
-   - **Bullet point**
-   - **Callout**
-   - **Checklist**
-   - **Divider**
-3. For Text, Heading, Bullet point or Callout, enter the content in the text field.
-4. Choose **Add to page**.
+Choose a block type, enter its content and select **Add to page**.
 
-## Use a checklist
+The documented block types are:
 
-1. Add a **Checklist** block to the page.
-2. Enter an item in **Add a checklist item**.
-3. Choose **Add item**.
-4. Select the checkbox when the item is complete.
-5. You can edit an item or remove it with its adjacent controls.
+- Paragraph.
+- Heading.
+- Bullet list.
+- Callout.
+- Divider.
+- Checklist.
 
-## Organise your page
+You can edit, delete and reorder blocks. Checklist items can be added, edited, completed and removed.
 
-- Use the **↑** and **↓** controls on a block to move it up or down.
-- Choose **Rename page** to change the current page title.
-- Choose **Rename workspace** to change the workspace name.
-- Use **Delete page** or **Delete workspace** only when you intend to remove that content.
+## Search your workspace
 
-## Save your work
+Use the page search field to find page titles and content inside blocks.
 
-Workspaces and pages are saved on this device as you work. The workspace displays a local-save status.
+Workspaces and pages are saved locally on this device.
 
-## What to know
+## Current feature boundaries
 
-Workspace currently supports local workspaces and pages with text, heading, bullet, callout, divider and checklist blocks. Live collaboration, shared workspaces, accounts, cloud sync, permissions, external integrations and connected multi-user components are not included in the current stated scope.
+Workspace does not currently include live collaboration, shared workspaces, customer accounts, cloud sync, permissions, external integrations or connected multi-user components.
 
 ## Guide status
 
-**Source-confirmed.** Workspace creation, page creation and search, content blocks, checklist items, block reordering and local saving are present in the current Workspace implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
+**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
 
-[Back to Brightdesk Help](../index.html)
+[Back to Brightdesk documentation](../index.md)
