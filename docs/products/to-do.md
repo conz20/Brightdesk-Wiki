@@ -1,21 +1,34 @@
 ---
 layout: default
 title: Brightdesk To Do
-description: Help and guide status for Brightdesk To Do.
-status: Needs review
+description: What Brightdesk To Do can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/to-do.html
 ---
 
 # Brightdesk To Do
 
-Brightdesk To Do is the product area for individual task capture and task-list organisation.
+Brightdesk To Do is for managing daily tasks, due dates and personal priorities.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create tasks with a title and optional notes.
+- Edit tasks, set due dates and choose a priority.
+- Mark tasks as important or add them to My Day.
+- Complete, restore and delete tasks.
+- Use the My Day, Important, Planned, Tasks and Completed views.
+- Search task titles and notes.
+
+## What is not included in this first version
+
+Operating-system notifications, recurring reminders, shared task lists, accounts and cloud sync are not included in the current feature set.
+
+## Keeping your work
+
+Task data is saved on this device. Shared task lists and online synchronisation are not part of this version.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current To Do repository and its workspace tests. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
