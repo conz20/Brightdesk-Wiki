@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Pages
+description: Help and guide status for Brightdesk Pages.
+status: Needs review
+permalink: /products/pages.html
+---
+
 # Brightdesk Pages
 
-Brightdesk Pages is the product area for document creation, writing and page layout. Its intended workspace is centred on the document canvas, with editing and page controls above it.
+Brightdesk Pages is the product area for document creation, writing and page layout. Its intended workspace is centred on a document canvas, with editing and page controls above it.
 
-## Guidance
+## What this guide covers
 
-Use this product for document-oriented work. Keep document-formatting behavior, page-size support and import/export compatibility tied to the current implementation and tests rather than assuming feature parity with other office suites.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Pages repository](https://github.com/conz20/Brightdesk-Pages), especially its README, tests, release notes and current pull requests. A feature shown only in a design preview is not confirmed functionality.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
