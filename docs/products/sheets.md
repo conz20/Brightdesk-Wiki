@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Sheets
+description: Help and guide status for Brightdesk Sheets.
+status: Needs review
+permalink: /products/sheets.html
+---
+
 # Brightdesk Sheets
 
-Brightdesk Sheets is the product area for spreadsheets and structured cell-based work. Its intended workspace uses a spreadsheet grid with row/column headers and formula controls.
+Brightdesk Sheets is the product area for spreadsheets and structured cell-based work. Its intended workspace uses a spreadsheet grid with row and column headers and formula controls.
 
-## Guidance
+## What this guide covers
 
-When documenting calculations, supported formula syntax, sorting, cell formatting or file compatibility, cite the current implementation and tests. Do not infer support for a formula because it is familiar from another spreadsheet product.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Sheets repository](https://github.com/conz20/Brightdesk-Sheets) for verified capabilities and current setup instructions.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
