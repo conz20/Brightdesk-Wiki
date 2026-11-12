@@ -13,8 +13,13 @@ test('quality workflow keeps repository permissions read-only', () => {
   assert.match(workflow, /permissions:\s*\n\s+contents:\s*read/);
 });
 
-test('quality workflow builds exact Ruby in a writable runner-local tool cache', () => {
-  assert.match(workflow, /ruby-build@|573f87a93b27195b97c2a72b5c6fbc0a266d73d0/);
+test('quality workflow builds pinned libyaml and Ruby in a runner-local cache', () => {
+  assert.match(workflow, /yaml\/libyaml\/releases\/download\/0\.2\.5\/yaml-0\.2\.5\.tar\.gz/);
+  assert.match(workflow, /c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4/);
+  assert.match(workflow, /shasum -a 256 -c/);
+  assert.match(workflow, /libyaml_prefix=.*RUNNER_TEMP/);
+  assert.match(workflow, /RUBY_CONFIGURE_OPTS=.*--with-libyaml-dir=/);
+  assert.match(workflow, /ruby-build_revision=.*573f87a93b27195b97c2a72b5c6fbc0a266d73d0/);
   assert.match(workflow, /ruby-build[\s\S]*3\.4\.4/);
   assert.match(workflow, /RUNNER_TOOL_CACHE:\s*\$\{\{\s*runner\.temp\s*\}\}\/ruby-toolcache/);
   assert.match(workflow, /touch "\$prefix\.complete"/);
