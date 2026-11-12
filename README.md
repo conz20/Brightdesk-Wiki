@@ -2,7 +2,7 @@
 
 The Markdown-first knowledge base for Brightdesk products and shared foundations.
 
-> **Status:** Initial documentation structure and local-link validation are implemented. This repository is not a hosted website, and its presence does not prove that every guide or product feature is complete.
+> **Status:** Initial Markdown documentation, local-link validation and an experimental Jekyll site scaffold are present on this draft branch. The Jekyll build and generated output have not been verified. No public website is approved, configured or deployed.
 
 ## Start here
 
@@ -27,7 +27,8 @@ The source is maintained in this private GitHub repository and is readable onlin
 - A recursive local Markdown link and image-reference checker in `scripts/check-doc-links.mjs`.
 - Regression tests for valid local links, missing targets, repository-root traversal, image references and symbolic-link safety.
 - A Node.js 24.22.2 requirement and pinned GitHub Actions quality workflow.
-- No hosted site generator, database, account system or paid publishing service.
+- An experimental Jekyll configuration is present, but no verified static-site build or deployment workflow exists.
+- No database, account system, analytics, paid publishing service or customer runtime dependency.
 
 ## Commands
 
@@ -49,4 +50,4 @@ Brightdesk products are desktop software for Windows, macOS and Linux only. Mobi
 
 Keep instructions short, literal and product-specific. Each product guide separates its intended role from features actually confirmed in that product repository. Link feature claims to a current README, implementation or test where possible. Clearly mark proposals, unsupported functionality and unverified platform support. Do not publish private Brightdesk-AI prompts, credentials, internal logs or private build artifacts.
 
-The local link checker verifies relative file and directory targets in Markdown links and image references. It does not validate remote websites, heading-anchor spelling, generated site behavior or whether a linked product feature works.
+The local link checker verifies relative file and directory targets in Markdown links and image references. It does not validate remote websites, heading-anchor spelling, generated Jekyll output, deployment privacy or whether a linked product feature works. The Jekyll scaffold remains unpublished and unapproved for deployment.
