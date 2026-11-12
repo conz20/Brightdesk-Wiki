@@ -9,10 +9,19 @@ The Markdown-first knowledge base for Brightdesk products and shared foundations
 - **[Customer start here](docs/customer-start-here.md)** — choose the right product and find the help you need.
 - [Documentation index](docs/index.md)
 - [Portfolio architecture](docs/architecture/overview.md)
+- [Repository inventory](docs/architecture/repository-inventory.md) — maintainer reference for the current 27-repository portfolio.
 - [Development setup](docs/development/setup.md)
 - [Security and privacy boundaries](docs/security/boundaries.md)
 - [Release and platform status](docs/releases/status.md)
 - [Ten product guide entries](docs/products/)
+
+## This Wiki is separate from the software
+
+Brightdesk Wiki is a separate online help and knowledge resource. It is **not** a Brightdesk customer product, desktop application, Suite component, App Centre entry, installer payload, runtime dependency, Start-menu item or file installed on a customer's computer.
+
+Customers may choose to visit the help resource separately. Brightdesk Suite and the ten products must continue to install, launch and work offline without the Wiki. No product may depend on Wiki availability or internet access for installation, updates, spelling, dictionaries or ordinary work.
+
+The Markdown source is maintained in this private GitHub repository and can be read online by people who have repository access. There is currently no public hosted documentation website. Do not advertise an unrestricted public help site until a separate publishing route has been explicitly approved and verified.
 
 ## Implemented foundation
 

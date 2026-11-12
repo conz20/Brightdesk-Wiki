@@ -10,9 +10,11 @@ The approved product scope is fixed at ten products: Pages, Sheets, Decks, Notes
 
 The Suite and all ten products are desktop software for **Windows, macOS and Linux**. Android, iOS, iPhone, iPad and other mobile targets are not supported or planned. Do not add mobile application projects, mobile build targets, or mobile installers. Responsive layouts that accommodate different desktop window sizes remain valid; they are not separate mobile editions.
 
-## Shared engineering infrastructure
+## Repository inventory
 
-The current portfolio contains 25 private repositories: the Suite, the ten customer products, Brightdesk-AI, and twelve shared engineering foundations. These infrastructure repositories do not add customer products or imply that every package is already consumed.
+The current portfolio contains **27 private repositories**: one Suite, exactly ten customer products, one separate Brightdesk-AI engineering repository, and fifteen shared, engineering and supporting repositories. See the [27-repository inventory](repository-inventory.md) for the full list and purpose of each repository. This count does not create additional customer products.
+
+## Shared engineering infrastructure
 
 - **Brightdesk-Design-System** — shared visual tokens, navigation states, accessible components and product-window shell rules.
 - **Brightdesk-Fonts** — font source/provenance and licence metadata; no font may be bundled without explicit redistribution and embedding review.
@@ -22,11 +24,13 @@ The current portfolio contains 25 private repositories: the Suite, the ten custo
 - **Brightdesk-Common-Actions** — reusable, pinned non-AI GitHub Actions and CI components.
 - **Brightdesk-Developer-Tools** — local developer diagnostics, utilities, SDKs and documented setup aids.
 - **Brightdesk-Extensions** — declarative extension manifests and permission contracts; a validated manifest is not a runtime or permission-enforcement system.
-- **Brightdesk-Wiki** — maintained technical knowledge and product guidance.
+- **Brightdesk-Wiki** — separate online help and knowledge resource; it is not installed or required by customer software.
 - **Brightdesk-Release-Tools** — read-only release manifests, artifact inventories, checksum validation and release evidence.
 - **Brightdesk-Assets** — approved local visual assets, provenance, rights evidence, attribution and integrity validation; it is not a CDN or runtime asset service.
 - **Brightdesk-Type-Preview** — local font-preview and installed-font metadata contracts; it is not a hosted font service and does not own font binaries.
- 
+- **Brightdesk-Printing** — shared local-first printing integration; discovery does not itself prove that a printer queue is configured or usable.
+- **Brightdesk-Voice** — separate private audio research and prototype infrastructure; no customer-product integration or release is approved.
+
 **Optional experiment:** **Brightdesk-Services** is owner-operated, loopback-only engineering experimentation. It is never a customer runtime requirement and must not provide customer document storage, cloud synchronisation, online collaboration or remote AI.
 
 ## Engineering control plane
