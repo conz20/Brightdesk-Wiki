@@ -1,0 +1,35 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+
+const css = fs.readFileSync(new URL('../docs/assets/css/site.css', import.meta.url), 'utf8');
+
+function relativeLuminance(hex) {
+  const match = /^#([0-9a-f]{6})$/i.exec(hex);
+  assert.ok(match, `Expected a six-digit hex colour, received ${hex}`);
+  const channels = match[1].match(/.{2}/g).map(value => parseInt(value, 16) / 255);
+  const linear = channels.map(value =>
+    value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4
+  );
+  return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+}
+
+function contrastRatio(first, second) {
+  const values = [relativeLuminance(first), relativeLuminance(second)].sort((a, b) => b - a);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+}
+
+test('keyboard focus indicator is visible against both page and content surfaces', () => {
+  const rule = css.match(/a:focus-visible\\s*\\{([^}]*)\\}/i);
+  assert.ok(rule, 'The stylesheet must provide a visible keyboard focus rule for links');
+  const outline = rule[1].match(/outline:\\s*(\\d+)px\\s+solid\\s+(#[0-9a-f]{6})/i);
+  assert.ok(outline, 'The focus rule must use a solid, explicit-colour outline');
+  assert.ok(Number(outline[1]) >= 2, 'The focus outline must be at least 2 CSS pixels wide');
+
+  for (const surface of ['#ffffff', '#f4f7fb']) {
+    assert.ok(
+      contrastRatio(outline[2], surface) >= 3,
+      `Focus outline ${outline[2]} must have at least 3:1 contrast against ${surface}`
+    );
+  }
+});
