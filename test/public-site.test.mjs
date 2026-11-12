@@ -53,3 +53,16 @@ test('unlisted output file types are rejected', t => {
   fs.writeFileSync(path.join(siteRoot, 'secret.json'), '{"private":true}');
   assert.throws(() => checkPublicSite({ siteRoot }), /unexpected public output file type/i);
 });
+
+test('only the approved customer homepage, start page, ten product guides and local CSS are allowed', t => {
+  const siteRoot = siteFixture(t);
+  fs.mkdirSync(path.join(siteRoot, 'owner-only'), { recursive: true });
+  fs.writeFileSync(path.join(siteRoot, 'owner-only/admin.html'), '<!doctype html>owner only');
+  assert.throws(() => checkPublicSite({ siteRoot }), /outside the approved customer-help allowlist/i);
+});
+
+test('unlisted customer help pages are rejected until explicitly approved', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'extra-guide.html'), '<!doctype html>extra');
+  assert.throws(() => checkPublicSite({ siteRoot }), /outside the approved customer-help allowlist/i);
+});
