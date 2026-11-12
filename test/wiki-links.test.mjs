@@ -98,3 +98,19 @@ test('a missing Jekyll output link still fails when no Markdown source exists', 
   fs.writeFileSync(path.join(rootDir, 'docs/guide/index.md'), '[Missing](not-here.html)\\n');
   assert.throws(() => checkMarkdownLinks({ rootDir }), /not-here\.html/i);
 });
+
+test('generated and vendored Markdown is excluded from the authored documentation check', t => {
+  const rootDir = fixture(t);
+  fs.writeFileSync(path.join(rootDir, 'README.md'), '# Brightdesk Help\\n');
+
+  const vendored = path.join(rootDir, 'vendor', 'bundle', 'third-party');
+  const generated = path.join(rootDir, '_site', 'generated');
+  fs.mkdirSync(vendored, { recursive: true });
+  fs.mkdirSync(generated, { recursive: true });
+  fs.writeFileSync(path.join(vendored, 'CHANGELOG.md'), '[External](API-Updates-in-v0.5.0)\\n');
+  fs.writeFileSync(path.join(generated, 'preview.md'), '[Generated](missing-generated-page.md)\\n');
+
+  const result = checkMarkdownLinks({ rootDir });
+  assert.equal(result.markdownFiles, 1);
+  assert.equal(result.localLinks, 0);
+});
