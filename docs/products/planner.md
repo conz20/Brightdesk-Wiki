@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Planner
+description: Help and guide status for Brightdesk Planner.
+status: Needs review
+permalink: /products/planner.html
+---
+
 # Brightdesk Planner
 
 Brightdesk Planner is the product area for organising plans, tasks and work into a planning view. Its intended workspace includes buckets and task cards arranged as a board.
 
-## Guidance
+## What this guide covers
 
-Describe dates, priorities, progress states, assignments, board behavior and any calendar view only when the current source and tests verify them. Do not imply integration with external calendars unless documented and tested.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Planner repository](https://github.com/conz20/Brightdesk-Planner) for current planning capabilities and storage behavior.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
