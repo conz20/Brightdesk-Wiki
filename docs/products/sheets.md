@@ -1,34 +1,52 @@
 ---
 layout: default
 title: Brightdesk Sheets
-description: What Brightdesk Sheets can do and what is not included yet.
+description: Enter data, calculate values and organise a spreadsheet in Brightdesk Sheets.
 status: Source-confirmed
 permalink: /products/sheets.html
 ---
 
 # Brightdesk Sheets
 
-Brightdesk Sheets is for working with spreadsheet grids, tables, calculations and data.
+Use Sheets to organise information in a grid and calculate values with supported formulas.
 
-## What you can do
+## Enter information
 
-- Enter and edit values in a spreadsheet grid.
-- Use the formula bar to work with calculations.
-- Use basic arithmetic and the supported range functions: SUM, AVERAGE, MIN, MAX, COUNT and COUNTA.
-- Add rows and columns.
-- Sort a selected column.
-- Import and export supported CSV and XLSX files.
+1. Open Brightdesk Sheets. A new spreadsheet opens with the title **Untitled spreadsheet**.
+2. Click a cell in the grid, such as **A1**.
+3. Type a value and move to another cell. Press **Enter** to save the value and move down one row.
+4. To rename the spreadsheet, select its title field and enter a new name.
 
-## What is not included in this first version
+## Use a formula
 
-Sheets is a basic spreadsheet foundation. VBA or other macros, pivot tables, advanced formula coverage and exact Excel round-trip compatibility are not included in the current feature promise.
+1. Select the cell where you want the answer to appear.
+2. Enter a formula in the formula field on the **Home** tab, or type it directly into the selected cell.
+3. Start a formula with an equals sign. For example, `=A1+B1` adds two cells.
+4. A range formula can look like `=SUM(A1:A5)`.
 
-## Keeping your work
+The current calculation engine supports basic arithmetic and the **SUM**, **AVERAGE**, **MIN**, **MAX**, **COUNT** and **COUNTA** functions. Formula results update in the grid.
 
-The current workbook data is saved on your device. Online collaboration and cloud sharing are not part of this version.
+## Add rows or columns
+
+- On **Home**, choose **+ Row** or **+ Column**.
+- You can also open **Insert** and choose **New row** or **New column**.
+
+## Sort the sheet
+
+1. Select a cell in the column you want to sort.
+2. Open **Data**.
+3. Choose **Sort A → Z** or **Sort Z → A**.
+
+## Save and export
+
+Your workbook data is saved on this device as you work. Use **Save project** to save a project file, **Open** to open a saved project, or **Export** to use the export options available in your installed version.
+
+## What to know
+
+Sheets is a basic spreadsheet foundation. Do not assume support for macros, pivot tables, every Excel formula or exact compatibility with complex Excel workbooks.
 
 ## Guide status
 
-This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Sheets repository. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
+**Source-confirmed.** The grid, formula field, row and column controls, sorting commands and calculation engine are present in the current Sheets implementation. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
 
 [Back to Brightdesk Help](../index.html)
