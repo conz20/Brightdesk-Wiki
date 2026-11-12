@@ -7,6 +7,8 @@ permalink: /index.html
 
 # Brightdesk Help
 
+> **Availability:** This is draft help content in a private repository. No public website or customer URL is currently available.
+
 Welcome to the separate online help resource for Brightdesk. Use it to find the right product guide and understand which instructions have been verified.
 
 [**Start here: find the help you need**](customer-start-here.html)
