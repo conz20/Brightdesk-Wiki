@@ -1,21 +1,32 @@
 ---
 layout: default
 title: Brightdesk Planner
-description: Help and guide status for Brightdesk Planner.
-status: Needs review
+description: What Brightdesk Planner can do and what is not included yet.
+status: Source-confirmed
 permalink: /products/planner.html
 ---
 
 # Brightdesk Planner
 
-Brightdesk Planner is the product area for organising plans, tasks and work into a planning view. Its intended workspace includes buckets and task cards arranged as a board.
+Brightdesk Planner is for organising plans, buckets and tasks in a planning board.
 
-## What this guide covers
+## What you can do
 
-This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
+- Create and rename plans.
+- Create, rename and delete buckets.
+- Create, edit, move, filter and delete tasks.
+- Add task descriptions, priority, progress, due dates, assignee text and labels.
+- Search tasks and filter them by supported task details.
+- Keep plans saved locally on this device.
+
+When a bucket is deleted, its tasks are moved to a remaining bucket rather than being deleted with it.
+
+## What is not included in this first version
+
+Connected user directories, automatic assignment, operating-system notifications, recurring reminders, cloud sync and shared plans are not included in the current feature set.
 
 ## Guide status
 
-**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
+This page is **source-confirmed**, not a completed step-by-step walkthrough. Its feature list reflects the current Planner repository and its workspace tests. The complete workflow has not yet been tested in a running installed desktop build, so button-by-button instructions and genuine screenshots are not claimed here.
 
-[Back to Brightdesk documentation](../index.md)
+[Back to Brightdesk Help](../index.html)
