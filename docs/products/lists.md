@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Lists
+description: Help and guide status for Brightdesk Lists.
+status: Needs review
+permalink: /products/lists.html
+---
+
 # Brightdesk Lists
 
 Brightdesk Lists is the product area for organising information into custom lists and structured records.
 
-## Guidance
+## What this guide covers
 
-Document columns, record entry, search, filtering and sorting based on the current implementation. Distinguish Lists from Database: their workflows may overlap, but their product purposes and interface design should remain clear.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Lists repository](https://github.com/conz20/Brightdesk-Lists) for verified features and data persistence behavior.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
