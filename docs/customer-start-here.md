@@ -25,9 +25,9 @@ Only use release installers that have passed the checks for your operating syste
 
 ## Use Home
 
-When Brightdesk Suite opens, Home shows the ten product cards. The page is headed **Your products**.
+When Brightdesk Suite opens, **Home** shows the product screen. The top bar reads **Your apps**, and the product grid is headed **Your products**.
 
-Each card shows whether that product is already in your Suite or is available to add. The ten products are:
+Each card shows whether that product is already **In your Suite** or **Available to add**. The ten products are:
 
 | Product | Use it for |
 | --- | --- |
@@ -75,12 +75,16 @@ The Files page provides **Open file** and **Save project** actions. It is not a 
 
 Use only file types offered by the current product. Keep a Brightdesk project copy when you plan to continue editing your work.
 
-## Notifications and Settings
+## Notifications, Settings and languages
 
-- Select the **Notifications** bell to view desktop notifications.
+- Select the **Notifications** bell to view notification history. Choose **Clear all** only when you intend to clear that history.
 - Select the **Settings** cogwheel to open Brightdesk Settings.
+- In Settings, choose **Languages & dictionaries** to open the language controls.
+- Choose **Display language** to change Brightdesk menus and labels.
+- Choose **Proofing language** to choose the language used for spelling checks. These are separate settings.
+- Use the installed or available language and spelling resources shown on that screen. Return with **Back to apps**.
 
-Update notifications and downloads are shown only when an official Brightdesk update is available. Downloading and installing an update require a deliberate action.
+The notification area can show official Brightdesk update notices when they are available. However, the current Suite does not yet have a configured update-publishing provider, so live update delivery is **not active or verified**. Do not expect an update download to be available until an approved Brightdesk release is actually published. Downloading and installing, when available, require a deliberate action.
 
 ## Keep your work local
 
