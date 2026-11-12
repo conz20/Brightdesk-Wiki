@@ -84,3 +84,17 @@ test('Markdown links inside fenced code examples are ignored', t => {
   const result = checkMarkdownLinks({ rootDir });
   assert.equal(result.localLinks, 0);
 });
+
+test('Jekyll output links resolve to their Markdown source files', t => {
+  const rootDir = fixture(t);
+  fs.writeFileSync(path.join(rootDir, 'README.md'), '[Guide](docs/guide/index.html)\\n');
+  fs.writeFileSync(path.join(rootDir, 'docs/guide/index.md'), '# Guide\\n');
+  const result = checkMarkdownLinks({ rootDir });
+  assert.equal(result.localLinks, 1);
+});
+
+test('a missing Jekyll output link still fails when no Markdown source exists', t => {
+  const rootDir = fixture(t);
+  fs.writeFileSync(path.join(rootDir, 'docs/guide/index.md'), '[Missing](not-here.html)\\n');
+  assert.throws(() => checkMarkdownLinks({ rootDir }), /not-here\\.html/i);
+});
