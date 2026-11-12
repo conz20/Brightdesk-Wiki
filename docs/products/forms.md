@@ -1,13 +1,21 @@
+---
+layout: default
+title: Brightdesk Forms
+description: Help and guide status for Brightdesk Forms.
+status: Needs review
+permalink: /products/forms.html
+---
+
 # Brightdesk Forms
 
 Brightdesk Forms is the product area for creating forms and working with their responses.
 
-## Guidance
+## What this guide covers
 
-Describe the question types, validation, preview, response storage and export options according to the product's actual code and tests. Do not imply that response collection is hosted or cloud-based unless a verified implementation says so.
+This page currently explains the product's intended purpose only. It does not yet provide verified step-by-step instructions for using individual features.
 
-## Verify current support
+## Guide status
 
-Check the [Brightdesk Forms repository](https://github.com/conz20/Brightdesk-Forms) for the current builder, response workflow and data handling.
+**Needs review.** Detailed instructions will be added after the complete workflow has been checked in a current product build. Do not assume support for a feature, file format, button or menu that is not described in a verified guide.
 
-[Back to the documentation index](../index.md)
+[Back to Brightdesk Help](../index.html)
