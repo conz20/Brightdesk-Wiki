@@ -1,57 +1,57 @@
 ---
 layout: default
 title: Brightdesk Planner
-description: Organise plans, buckets and tasks in Brightdesk Planner.
-status: Source-confirmed
+description: A practical starting guide for organising plans, buckets and tasks in Brightdesk Planner.
+status: Needs review
 permalink: /products/planner.html
 ---
 
 # Brightdesk Planner
 
-Use Planner to organise a project into a plan, buckets and tasks.
+Use Planner to organise work into plans, buckets and tasks.
 
 ## Create a plan
 
-1. Under **Your plans**, enter a name in **New plan name**.
-2. Choose **Create plan**.
-3. Select the plan in the left-hand panel.
+1. Open Brightdesk Planner.
+2. Enter a name in **New plan name**.
+3. Choose **Create plan**.
+4. Select the plan you want to work on.
 
-A new plan starts with a **To do** bucket.
+Use **Rename plan** when you need to change its name.
 
-## Add buckets
+## Organise buckets
+
+Create buckets to group related tasks:
 
 1. Enter a name in **New bucket name**.
 2. Choose **Add bucket**.
-3. Repeat for each stage or group you want in your plan.
+3. Repeat for any other groups you need.
+
+You can rename or delete buckets. When a bucket is deleted, its tasks are moved to a remaining bucket rather than being deleted with it.
 
 ## Add a task
 
-1. Under **Add a task**, enter a **Task title**.
-2. Add a description if it will help explain the work.
-3. Choose the task's **Bucket**.
-4. Choose a **Priority**: Low, Normal or High.
-5. Choose **Progress**: Not started, In progress or Completed.
-6. Add a **Due date** or **Assigned to** value when useful.
-7. Choose **Add task**.
+1. Enter a task title.
+2. Choose the bucket for the task.
+3. Set its priority and progress.
+4. Add a due date when needed.
+5. Add optional description, assignee text or labels where those fields are available.
+6. Save the task.
 
-## Update your plan
+You can edit, move or delete tasks later.
 
-- Use the task progress selector to change a task between **Not started**, **In progress** and **Completed**.
-- Choose **Edit** on a task to change its title.
-- Use **Delete** only when you intend to remove a task.
-- Choose **Rename plan** to change the plan name.
-- Use **Search tasks**, **Filter progress** and **Filter priority** to narrow the board.
+## Search and filter tasks
 
-## Save your work
+Use the search field to find tasks. Use the progress and priority filters to narrow the tasks shown.
 
-Your plans, buckets and tasks are saved on this device as you work. The workspace shows a local-save status.
+Plans are saved locally on this device.
 
-## What to know
+## Current feature boundaries
 
-Planner currently provides local plans and task boards. Connected user directories, automatic assignment, operating-system notifications, recurring reminders, cloud sync and shared plans are not included in the current stated scope.
+Planner does not currently provide connected user directories, automatic assignment, operating-system notifications, recurring reminders, cloud sync or shared plans.
 
 ## Guide status
 
-**Source-confirmed.** Plan and bucket creation, task entry, progress changes, title editing, searching and filtering are present in the current Planner implementation. The visible task editor does not expose every task field after creation, so this guide only describes the controls currently shown. This guide has not yet been checked through a complete live desktop workflow, so it is not labelled Verified.
+**Needs review.** This draft is based on the product's documented first-use workflow. The steps and visible control labels must be checked in a current desktop build before this guide is approved for customers.
 
-[Back to Brightdesk Help](../index.html)
+[Back to Brightdesk documentation](../index.md)
