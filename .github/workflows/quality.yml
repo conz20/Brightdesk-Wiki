@@ -40,4 +40,4 @@ jobs:
       - name: Build Jekyll customer site
         run: bundle exec jekyll build
       - name: Reject private or unexpected generated content
-        run: node scripts/check-public-site.mjs
+        run: npm run check:site
