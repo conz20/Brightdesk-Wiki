@@ -5,14 +5,13 @@ on:
     branches: [main]
   push:
     branches: [main]
-  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   quality:
-    name: Check Markdown documentation and local links
+    name: Check customer documentation and public site output
     runs-on: [self-hosted, macOS, ARM64]
     steps:
       - name: Check out Brightdesk Wiki
@@ -22,13 +21,23 @@ jobs:
         with:
           node-version: 24.22.2
           package-manager-cache: false
-      - name: Install locked dependencies
+      - name: Set up Ruby 3.4.4
+        uses: ruby/setup-ruby@7f797815d8adceb1c412e7abefdd1ab4abc47a5f # v1.335.0
+        with:
+          ruby-version: 3.4.4
+      - name: Install locked Node dependencies
         run: npm ci --no-audit --no-fund
+      - name: Install pinned Jekyll dependency
+        run: bundle install --jobs 4 --retry 3
       - name: Verify the required Node.js runtime
         run: npm run check:node
-      - name: Check link verifier syntax
+      - name: Check validation script syntax
         run: npm run check
-      - name: Run link checker regression tests
+      - name: Run documentation and public-output regression tests
         run: npm test
       - name: Check repository Markdown links
         run: npm run links
+      - name: Build Jekyll customer site
+        run: bundle exec jekyll build
+      - name: Reject private or unexpected generated content
+        run: node scripts/check-public-site.mjs
