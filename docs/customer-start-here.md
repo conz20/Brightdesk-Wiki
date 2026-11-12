@@ -1,5 +1,7 @@
 # Start here: find the Brightdesk help you need
 
+> **Availability:** This page is maintained in the private Brightdesk-Wiki repository. It is not currently a public website or help page available from the installed products.
+
 This page is for anyone who wants to use Brightdesk but is not sure where to look. Start with the thing you want to do, not a technical term.
 
 ## Choose the right product
@@ -40,7 +42,9 @@ These are product-purpose descriptions, not a promise that every workflow is alr
 
 ## If the answer is missing
 
-Request a guide through [Brightdesk Wiki issues](https://github.com/conz20/Brightdesk-Wiki/issues). Include:
+This private repository does not provide a public help desk or customer support form. Do not attempt to submit a request through GitHub unless you already have authorised repository access. Use a support contact supplied with an official Brightdesk release, if one is provided.
+
+When reporting a problem, include:
 - Which product you are using.
 - What you want to achieve.
 - What you tried.
