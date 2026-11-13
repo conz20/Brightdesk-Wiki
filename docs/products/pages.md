@@ -47,11 +47,12 @@ Open **Insert** and choose one of the available options:
 - Use **Spell check** to switch the editor's spell-check setting on or off.
 - Open **View** to change the zoom or switch **Focus mode** on or off.
 
-## Open and save a project
+## Save and export your document
 
 - Choose **Save project** to save Brightdesk project data.
 - Choose **Open** to open supported existing project or document data.
-- Choose **Export** to see the output formats available in your installed version.
+- Choose **Export** in the top bar to see the document formats available in your installed version.
+- To create a PDF copy, open **Home** and choose **PDF** in the **Export** group.
 
 ## Current feature boundaries
 
