@@ -198,7 +198,8 @@ test('meta refresh navigation is rejected', t => {
 
 test('CSS escapes are rejected because the site needs no escaped CSS values', t => {
   const siteRoot = siteFixture(t);
-  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@\\\\69mport \"//example.com/site.css\";');
+  const escapedImport = '@' + String.fromCharCode(92) + '69mport "//example.com/site.css";';
+  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), escapedImport);
   assert.throws(() => checkPublicSite({ siteRoot }), /CSS escape/i);
 });
 
