@@ -31,7 +31,7 @@ Use Forms to create local forms, surveys and quizzes, then review the responses 
 4. Select **Required** when an answer must be provided.
 5. Choose **Add question**.
 
-To change an existing question, edit it in the question list and choose **Save question**. Choose **Delete question** only when you intend to remove it and its saved answers.
+To change an existing question, edit it in the question list and choose **Save question**. Deleting a question also removes that question's answer from every saved response. It does not delete the whole response, but the removed answers cannot be recovered from that form.
 
 ## Preview and collect a response
 
