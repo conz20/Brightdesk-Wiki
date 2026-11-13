@@ -52,9 +52,11 @@ The owner has authorised publishing the customer Help website through **Cloudfla
 - No Cloudflare API token, paid plan, trial, domain purchase or upgrade is authorised.
 - The generated `*.pages.dev` hostname is a technical Pages origin only. It must not be advertised or used as the customer-facing Help address.
 
-A DNS check on 13 November 2026 found `brightdesk.com` pointed to a Sedo parking address and used Sedo nameservers. Domain ownership and registrar/DNS control have not been verified. The owner has not authorised a domain purchase or any nameserver/DNS change. Do not attempt either action.
+The owner has confirmed that they own `brightdesk.com`. A DNS check on 13 November 2026 found it delegated to Sedo parking nameservers. Sedo documents those nameservers as its domain-parking setup; this does **not** mean the domain is for sale. The registrar and authoritative DNS control panel have not yet been identified.
 
-Once the owner has obtained and confirmed control of `brightdesk.com`, add `help.brightdesk.com` as the Pages custom subdomain and configure its CNAME only after the custom domain is registered in Cloudflare Pages. If `brightdesk.com` cannot be obtained, wait for the owner to approve an alternative `.com` address. The site is **not yet published**. Do not publish the in-app Help links until the exact `.com` URL and deployed commit have been verified.
+Do not buy or transfer the domain. Before connecting the site, identify the registrar/DNS provider, preserve all existing DNS records and obtain approval for the exact DNS change. Cloudflare Pages will require a `help` CNAME pointing to the project's exact `*.pages.dev` hostname, added only after `help.brightdesk.com` has been registered under the Pages project's **Custom domains** settings.
+
+The target customer URL is **https://help.brightdesk.com**. The site is **not yet published**. Do not publish the in-app Help links until the exact `.com` URL and deployed commit have been verified.
 
 Cloudflare's GitHub App must not be granted access to any other Brightdesk repository. Customers can read only the published static help pages; they do not receive GitHub or source-repository access. The private source continues to contain owner-only maintainer material.
 
