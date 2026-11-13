@@ -6,7 +6,7 @@ Brightdesk Suite, the ten approved desktop products and Brightdesk Help remain f
 
 Brightdesk Help is a separate, static, read-only public website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency. It does not receive customer documents or product data.
 
-The source repository conz20/Brightdesk-Wiki remains private. The published output is restricted to the customer homepage, Suite getting-started page, exactly ten product guides and one local CSS file: 12 HTML pages and 13 static files total.
+The source repository conz20/Brightdesk-Wiki remains private. The published output is restricted to the customer homepage, Suite getting-started page, exactly ten product guides and one local CSS file: 12 customer pages and 13 static files total (12 HTML pages plus local CSS).
 
 ## Owner authorisation and cost boundary
 
