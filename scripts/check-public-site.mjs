@@ -71,14 +71,14 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       fail(file + ' contains an active HTML event handler or executable URL');
     }
     if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
-    if (/https?:\/\//i.test(html)) {
+    if (/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(html)) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
-  if (/https?:\/\//i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
+  if (/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
   return { files: files.length, htmlPages: htmlFiles.length };
 }
 
