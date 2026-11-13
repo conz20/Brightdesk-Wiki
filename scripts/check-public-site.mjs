@@ -94,10 +94,10 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (/<(?:form|input|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
       fail(file + ' contains interactive or editable controls; customer help must remain read-only');
     }
-    if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) || /\b(?:href|src)\s*=\s*["']?\s*(?:javascript|data|vbscript):/i.test(html)) {
     const urlAttributes = getNormalizedUrlAttributes(html);
-    if (/\son[a-z][a-z0-9_-]*\s*=\s*/i.test(html) ||
+    if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) ||
         urlAttributes.some(value => /^(?:javascript|data|vbscript):/i.test(value))) {
+      fail(file + ' contains an active HTML event handler or executable URL');
     }
     if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
     if (/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(html) ||
