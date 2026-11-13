@@ -6,41 +6,44 @@ const workflow = fs.readFileSync(new URL('../.github/workflows/quality.yml', imp
 const config = fs.readFileSync(new URL('../_config.yml', import.meta.url), 'utf8');
 const home = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
 const maintainerGuide = fs.readFileSync(new URL('../docs/development/github-pages.md', import.meta.url), 'utf8');
+const deployJob = workflow.split('\n  deploy:\n')[1] ?? '';
 
-test('production deployment is restricted to pushes on main or explicit manual dispatch', () => {
+const mainPublicationCondition = /github\.ref == 'refs\/heads\/main' && \(github\.event_name == 'push' \|\| \(github\.event_name == 'workflow_dispatch' && inputs\.confirm_publication == true\)\)/;
+
+test('production deployment is restricted to main pushes or explicit manual confirmation', () => {
   assert.match(workflow, /push:\s*\n\s+branches:\s*\[main\]/);
-  assert.match(workflow, /workflow_dispatch:/);
-  assert.match(workflow, /if:\s*github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'/);
-  assert.match(workflow, /needs:\s*quality/);
-  assert.doesNotMatch(workflow, /pull_request:\s*\n[\s\S]{0,500}deploy:/);
+  assert.match(workflow, /workflow_dispatch:[\s\S]*?confirm_publication:[\s\S]*?default:\s*false/);
+  assert.match(workflow, mainPublicationCondition);
+  assert.match(deployJob, /needs:\s*quality/);
+  assert.doesNotMatch(deployJob, /pull_request/i);
 });
 
 test('production deployment uses only the approved private macOS runner', () => {
-  assert.match(workflow, /deploy:[\s\S]*?runs-on:\s*\[self-hosted,\s*macOS,\s*ARM64\]/);
-  assert.doesNotMatch(workflow, /deploy:[\s\S]*?runs-on:\s*(?:ubuntu-latest|macos-latest|windows-latest)/);
+  assert.match(deployJob, /runs-on:\s*\[self-hosted,\s*macOS,\s*ARM64\]/);
+  assert.doesNotMatch(deployJob, /runs-on:\s*(?:ubuntu-latest|macos-latest|windows-latest)/);
 });
 
-test('Pages artifact is uploaded only after the generated-output privacy audit on main', () => {
+test('Pages artifact is uploaded only after the generated-output privacy audit', () => {
   const audit = workflow.indexOf('run: npm run check:site');
   const upload = workflow.indexOf('uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9');
   assert.ok(audit >= 0 && upload > audit, 'Pages artifact upload follows the privacy audit');
-  assert.match(workflow, /if:\s*github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'[\s\S]*?uses: actions\/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9/);
+  assert.match(workflow.slice(audit), new RegExp(mainPublicationCondition.source.replace(/^/, 'if:\\s*')));
   assert.match(workflow, /path:\s*_site\//);
 });
 
 test('production deployment uses immutable official GitHub Pages actions', () => {
   assert.match(workflow, /uses: actions\/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d/);
   assert.match(workflow, /uses: actions\/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9/);
-  assert.match(workflow, /uses: actions\/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346/);
+  assert.match(deployJob, /uses: actions\/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346/);
   for (const match of workflow.matchAll(/uses:\s*[^\s@]+@([^\s#]+)/g)) {
     assert.match(match[1], /^[0-9a-f]{40}$/, 'every external action is pinned to a full commit SHA');
   }
 });
 
-test('deployment permissions are least-privilege and use a protected Pages environment', () => {
-  assert.match(workflow, /deploy:[\s\S]*?permissions:\s*\n\s+actions:\s*read\s+pages:\s*write\s+id-token:\s*write/);
-  assert.match(workflow, /environment:\s*\n\s+name:\s*github-pages/);
-  assert.match(workflow, /url:\s*\$\{\{\s*steps\.deployment\.outputs\.page_url\s*\}\}/);
+test('deployment permissions are least-privilege and use the GitHub Pages environment', () => {
+  assert.match(deployJob, /permissions:\s*\n\s+actions:\s*read\s+contents:\s*read\s+pages:\s*write\s+id-token:\s*write/);
+  assert.match(deployJob, /environment:\s*\n\s+name:\s*github-pages/);
+  assert.match(deployJob, /url:\s*\$\{\{\s*steps\.deployment\.outputs\.page_url\s*\}\}/);
 });
 
 test('site configuration and customer homepage describe the intended public project URL truthfully', () => {
