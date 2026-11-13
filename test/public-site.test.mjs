@@ -158,3 +158,46 @@ test('a symbolic-link site output root is rejected rather than followed', {
     /site output root must not be a symbolic link/i
   );
 });
+
+
+test('external image candidates in srcset are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><img srcset="/local-small.png 1x, //images.example.com/large.png 2x">'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
+});
+
+test('external video poster resources are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><video poster="https://media.example.com/preview.jpg"></video>'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
+});
+
+test('inline styles and style elements are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><p style="background-image:url(//example.com/image.png)">Help</p>'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /inline CSS/i);
+});
+
+test('meta refresh navigation is rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><meta http-equiv="refresh" content="0;url=//example.com">'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /automatic navigation/i);
+});
+
+test('CSS escapes are rejected because the site needs no escaped CSS values', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@\\\\69mport \"//example.com/site.css\";');
+  assert.throws(() => checkPublicSite({ siteRoot }), /CSS escape/i);
+});
