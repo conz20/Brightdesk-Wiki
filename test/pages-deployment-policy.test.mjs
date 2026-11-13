@@ -74,7 +74,7 @@ test('customer Help address is the approved .com domain and DNS changes remain g
   assert.match(cloudflareGuide, /ns1\.sedoparking\.com.*ns2\.sedoparking\.com/i);
   assert.match(cloudflareGuide, /14 November 2026.*root.*A record.*64\.190\.63\.222/i);
   assert.match(cloudflareGuide, /help.*returned no CNAME/i);
-  assert.match(cloudflareGuide, /www hostname was not rechecked/i);
+  assert.match(cloudflareGuide, /www.*hostname was not rechecked/i);
   assert.doesNotMatch(cloudflareGuide, /64\.190\.63\.111/);
   assert.match(cloudflareGuide, /not a complete zone export/i);
   assert.match(cloudflareGuide, /Public DNS does not show whether the owner's Sedo account supports custom records/i);
