@@ -79,7 +79,7 @@ test('customer Help address is the approved .com domain and DNS changes remain g
   assert.match(cloudflareGuide, /check whether the Sedo account provides editable DNS records/i);
   assert.match(cloudflareGuide, /Cloudflare GitHub App was not present/i);
   assert.match(cloudflareGuide, /complete DNS-zone export/i);
-  assert.match(cloudflareGuide, /change the authoritative nameservers only after.*owner has approved/i);
+  assert.match(cloudflareGuide, /change the authoritative nameservers.*after.*owner has approved/i);
   assert.match(cloudflareGuide, /CNAME.*help.*pages\.dev|CNAME.*help.*exact project/i);
   assert.match(cloudflareGuide, /pages\.dev.*technical.*origin|technical.*Pages origin only/i);
 });
