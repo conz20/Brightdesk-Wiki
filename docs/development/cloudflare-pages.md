@@ -32,8 +32,8 @@ Use these exact settings:
 | Root directory | / (repository root) |
 | Build command | npm run build:cloudflare |
 | Build output directory | _site |
-| Node.js version | 24.22.2 (repository .node-version) |
-| Ruby version | 3.4.4 (repository .ruby-version) |
+| Node.js version | .node-version sets 24.22.2 |
+| Ruby version | .ruby-version sets 3.4.4 |
 | Preview branch | **None** |
 | Custom domains / DNS | None |
 
