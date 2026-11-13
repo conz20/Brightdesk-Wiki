@@ -30,6 +30,29 @@
 
 The Workspace repository's current README, committed `src/index.html`, `src/workspace-editor.js` and `docs/apps/WORKSPACE-SPEC.md` describe an implemented local desktop workflow. Its older `docs/DESIGN_BRIEF.md` still says **Scaffold only** and claims there is no runnable source. That statement conflicts with the newer source and README. Treat the design-brief status as stale; do not repeat it in customer help. The customer guide still remains `Needs review` until the running desktop workflow is tested.
 
+## Customer screenshots and practical examples
+
+Every public product guide should explain the product in plain language, provide numbered steps, include a small example with an expected result, and show genuine application screenshots with concise captions and useful alternative text.
+
+Required genuine screenshot set:
+| Area | First capture | Second capture |
+| --- | --- | --- |
+| Suite | Home showing the ten approved product cards | Apps or a product opened from the Suite |
+| Pages | Document with a heading and formatted text | Available export options |
+| Sheets | Sample cells with labels and values | Supported SUM formula and calculated total |
+| Decks | Presentation with multiple slides | Slide Show running |
+| Notes | Titled note with inserted content | Available export action |
+| Database | Table with named fields | Sample record and record search |
+| Forms | Questions view with sample questions | Preview or saved sample response |
+| Lists | List with a custom column | Search or filter results |
+| Planner | Plan with buckets and tasks | Task card showing progress |
+| To Do | My Day with sample tasks | Important or Completed view |
+| Workspace | Workspace page with content blocks | Checklist with an item completed |
+
+Capture images only from the actual running desktop product. Record product version, operating system and exact build or commit for every capture. Use fictional sample information. Remove personal information, local file paths and account details before publishing. Never present a design SVG, mock-up, generated illustration, HTML rendering or promotional collage as a genuine software screenshot. When a real capture is unavailable, keep the guide marked as needing review and do not show a fake substitute.
+
+The practical examples added to the customer guides are text instructions with expected outcomes. They are not screenshots and do not promote the guide to Verified.
+
 ## Required walkthrough before a guide is promoted
 
 1. Record the product version, operating system and exact build/commit tested.
@@ -43,7 +66,7 @@ The Workspace repository's current README, committed `src/index.html`, `src/work
 
 ## Release boundary
 
-This register is maintainer-only. The public website may contain only the help homepage, Suite getting-started page, the ten approved product guides and local CSS. Do not publish repository source links, build notes, this register or other maintainer documents.
+This register is maintainer-only. The public website may contain only the help homepage, Suite getting-started page, the ten approved product guides, local CSS and the single audited local search module. Do not publish repository source links, build notes, this register or other maintainer documents.
 
 
 ## Source review update — 13 November 2026

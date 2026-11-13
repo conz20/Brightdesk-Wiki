@@ -49,6 +49,15 @@ You can also open **Insert** and choose **Title slide** or **Text slide** to add
 
 The product documentation describes PowerPoint import and export. Check the presentation after transferring it, because some advanced PowerPoint objects and formatting may not be preserved.
 
+## Try this example: make a three-slide presentation
+
+1. On the first slide, enter **My project** as the title.
+2. Choose **Home → New slide** to add a second slide. Add two short project points.
+3. Add a third slide and enter the next steps.
+4. Open **Design** and choose **Lavender**, **Midnight** or **Paper**.
+5. Open **Slide Show → From current slide** on the first slide.
+
+**What you should have:** a simple three-slide presentation that you can move through with the arrow keys.
 ## Current feature boundaries
 
 Decks provides a core slide-editing and presenting workflow. Advanced layouts, transitions, embedded media, animation and complete PowerPoint round-trip fidelity are not promised.

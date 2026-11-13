@@ -47,6 +47,16 @@ Your new field appears as a column in the table. The system ID field is managed 
 - Choose **Delete table** only when you intend to remove that table and its records. Database must keep at least one table.
 - Choose **Export CSV** to export the current table.
 
+## Try this example: create a contacts table
+
+1. Create a table called **Contacts**.
+2. Add a field named **Name** and choose **Text**.
+3. Add a field named **Email** and choose **Email**.
+4. Add a field named **Follow-up needed** and choose **Checkbox**.
+5. Add one practice record using made-up contact details.
+6. Enter the name in **Search records** to find the record.
+
+**What you should have:** a local Contacts table with three useful fields and a searchable sample record. Use fictional details while practising.
 ## Current feature boundaries
 
 Database is a local table-and-record tool. SQL query execution, table relationships, a query designer, form and report designers, database import, online hosting and collaboration are not included in the current stated scope.

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
-const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css']
+const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js']
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'));
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const FORBIDDEN_PATHS = [
@@ -111,7 +111,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (FORBIDDEN_PATHS.some(pattern => pattern.test(file))) {
       fail('internal or repository-only content was included: ' + file);
     }
-    if (!/\.(html|css)$/i.test(file)) {
+    if (!/\.(html|css|js)$/i.test(file)) {
       fail('unexpected public output file type: ' + file);
     }
     if (!ALLOWED_FILES.has(file)) {
@@ -123,15 +123,26 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
   for (const file of htmlFiles) {
     const html = decodeHtmlCharacterReferences(fs.readFileSync(path.join(rootDir, file), 'utf8'));
     if (!/<!doctype html>/i.test(html)) fail(file + ' is missing an HTML doctype');
-    if (/<(?:form|input|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
+    if (/<(?:form|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
       fail(file + ' contains interactive or editable controls; customer help must remain read-only');
+    }
+    const searchInputs = [...html.matchAll(/<input\b[^>]*>/gi)].map(match => match[0]);
+    if (searchInputs.length !== 1 ||
+        !/^<input\b(?=[^>]*\bid=["']help-search["'])(?=[^>]*\btype=["']search["'])[^>]*>$/i.test(searchInputs[0])) {
+      fail(file + ' must contain only the accessible Brightdesk Help search field');
+    }
+    const scriptTags = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map(match => match[0]);
+    if (scriptTags.length !== 1 ||
+        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
+        /<script\b/i.test(html.replace(scriptTags[0], ''))) {
+      fail(file + ' must load only the approved local search script');
     }
     const urlAttributes = getNormalizedUrlAttributes(html);
     if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) ||
         urlAttributes.some(containsExecutableUrl)) {
       fail(file + ' contains an active HTML event handler or executable URL');
     }
-    if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
+
     if (/<style\b/i.test(html) || /\sstyle\s*=/i.test(html)) {
       fail(file + ' contains inline CSS; customer styling must use the approved local stylesheet');
     }
@@ -144,6 +155,10 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
   }
 
+  const searchScript = fs.readFileSync(path.join(rootDir, 'assets/js/search.js'), 'utf8');
+  if (/(?:https?:)?\/\/|\b(?:fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|localStorage|sessionStorage|eval|importScripts)\b|document\.cookie|new Function|new Worker/i.test(searchScript)) {
+    fail('the local search script must not use network access, executable code generation or visitor storage');
+  }
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
   if (/\\/.test(css)) fail('site CSS contains a CSS escape that could hide an external resource');
   if (/@import\b/i.test(css) || /(?:https?:)?\/\//i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
@@ -155,7 +170,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const siteRoot = process.argv[2] ? path.resolve(process.argv[2]) : DEFAULT_SITE_ROOT;
     const result = checkPublicSite({ siteRoot });
     console.log('Public Wiki check passed: ' + result.htmlPages + ' customer pages and ' + result.files +
-      ' static files; no private repository links, internal docs, scripts or external assets.');
+      ' static files; no private repository links, internal docs, external scripts or external assets.');
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

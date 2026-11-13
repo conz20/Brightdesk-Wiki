@@ -46,6 +46,16 @@ To change an existing question, edit it in the question list and choose **Save q
 2. Read the saved answers.
 3. Choose **Delete response** only when you intend to remove a response.
 
+## Try this example: make a short feedback form
+
+1. Create a form called **Product feedback**.
+2. Open **Questions** and set the form title to **Tell us what you think**.
+3. Add a **Short answer** question: **What did you use today?**
+4. Add a **Single choice** question with choices **Easy**, **Okay** and **Difficult**.
+5. Open **Preview**, enter sample answers and choose **Submit response**.
+6. Open **Responses** to see the saved sample response.
+
+**What you should have:** a two-question form and one response saved on this device. The form is not published online.
 ## Current feature boundaries
 
 Forms collects responses locally on the device. Online publishing, public response links, branching logic, scoring, file attachments, cloud response collection and collaboration are not included in the current stated scope.

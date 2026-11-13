@@ -45,6 +45,16 @@ Choose **Delete** only when you intend to remove a task.
 
 Your task information is saved on this device as you work. Check the local-save status in the workspace.
 
+## Try this example: organise today's errands
+
+1. Open **My Day**.
+2. Add a task called **Pick up groceries**.
+3. Add another task called **Post the parcel**.
+4. Edit a task to add a due date or set its priority.
+5. Use the star control to mark the most important task.
+6. Select the checkbox when you finish a task.
+
+**What you should have:** a short daily task list with a priority and a completed item after you finish one.
 ## Current feature boundaries
 
 To Do currently supports personal local task lists. Operating-system notifications, recurring reminders, shared task lists, customer accounts and cloud sync are not included in the current stated scope.

@@ -13,6 +13,13 @@ Brightdesk Suite, all ten approved Brightdesk products and this customer help ce
 
 [**Start here: find the help you need**](customer-start-here.html)
 
+## Search the Help centre
+
+Use the search field at the top of this page to search the instructions and examples across all 12 customer guides. Enter a product name, a feature or what you are trying to do. Search runs in your browser using the local Help files; it does not send your search to an external service.
+
+At the bottom of every page, choose one of the suggested tasks if you are not sure which product to open.
+
+Each guide includes a plain-English description, numbered steps and a small example with the expected result. Guide status tells you whether the steps have been checked in the running product.
 ## Browse the ten Brightdesk products
 
 | Product | What it is for |

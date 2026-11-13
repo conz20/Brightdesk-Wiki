@@ -6,7 +6,7 @@ Brightdesk Suite, the ten approved desktop products and Brightdesk Help remain f
 
 Brightdesk Help is a separate, static, read-only public website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency. It does not receive customer documents or product data.
 
-The source repository conz20/Brightdesk-Wiki remains private. The published output is restricted to the customer homepage, Suite getting-started page, exactly ten product guides and one local CSS file: 12 customer pages and 13 static files total (12 HTML pages plus local CSS).
+The source repository conz20/Brightdesk-Wiki remains private. The published output is restricted to the customer homepage, Suite getting-started page, exactly ten product guides, one local CSS file and one audited local search module: 12 customer pages and 14 static files total.
 
 ## Owner authorisation and cost boundary
 
@@ -23,7 +23,7 @@ The source repository conz20/Brightdesk-Wiki remains private. The published outp
 - The GitHub App installation must be scoped to **Only select repositories**, with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to any other Brightdesk source repository.
 - The source repository stays private. Do not change GitHub repository visibility or collaborator permissions.
 
-Cloudflare's current Free Pages limits include 500 builds per month and one concurrent build. The Help site is small (13 static files), and normal documentation updates should fit comfortably within those published limits.
+Cloudflare's current Free Pages limits include 500 builds per month and one concurrent build. The Help site is small (14 static files), and normal documentation updates should fit comfortably within those published limits.
 
 ## Cloudflare project configuration
 
@@ -77,7 +77,7 @@ The output audit requires exactly these files:
 
 No other output file or folder is permitted. Architecture, development, security, release and maintainer material stays in the private repository and outside the customer site. Do not publish repository READMEs, scripts, tests, workflows, lockfiles, credentials, prompts, internal reports, logs or customer documents.
 
-Customer output must remain static and read-only: no customer login, accounts, forms, uploads, comments, editing, administration controls, analytics scripts, ads, tracking scripts, external fonts, external images or external stylesheets. The output audit is the final authority; a deployment must not proceed when it fails.
+Customer output must remain static and read-only: no customer login, accounts, forms, uploads, comments, editing, administration controls, analytics scripts, ads, tracking scripts, external scripts, external fonts, external images or external stylesheets. The sole exception is the audited local search module, which runs fully in the browser without network requests, cookies or visitor storage. The output audit is the final authority; a deployment must not proceed when it fails.
 
 ## Privacy note
 
@@ -102,7 +102,7 @@ Before reporting the site as live:
 7. In Cloudflare Pages, add `help.brightdesk.com` under **Custom domains**. Cloudflare requires the subdomain to be added to the Pages project before the CNAME is created. The CNAME target must be the exact project `*.pages.dev` hostname.
 8. Add the `help` CNAME at the new authoritative DNS provider, then verify the custom domain obtains a valid HTTPS certificate and points to the correct Pages project.
 9. Confirm a production build completes, the Cloudflare Pages output audit passes, and the production deployment is from `main`.
-10. Open the homepage, Suite guide and all ten product guides. Check links, local CSS, narrow-screen layout, visible keyboard focus and reduced-motion styling.
+10. Open the homepage, Suite guide and all ten product guides. Check links, local CSS and search script, search results for common tasks, the bottom suggestions, narrow-screen layout, visible keyboard focus and reduced-motion styling.
 11. Record the exact `.com` URL and deployed commit SHA. The generated `pages.dev` address is not the customer-facing URL.
 12. Only after the `.com` URL is live, update the eleven in-app Help links to that exact address. Keep the existing Help-link pull requests unmerged until then.
 

@@ -38,6 +38,15 @@ These insertions add text to the note; they are not a separate task-management l
 
 Use the shared Brightdesk language and spelling tools where they are available in your installed version. The languages and dictionaries offered depend on what is installed and verified on your device.
 
+## Try this example: capture a quick idea
+
+1. Give the note the title **Weekend ideas**.
+2. Type a few lines about what you want to do.
+3. Choose **Insert → Date** to add today's date.
+4. Choose **Insert → Divider** to separate another thought.
+5. Choose **Insert → Checklist item** to add an unchecked marker.
+
+**What you should have:** one short note with a date, a divider and a checklist marker. The marker is text in the note, not a separate task list.
 ## Current feature boundaries
 
 The current Notes workflow is a quick-note editor. Notebook hierarchies, sections, linked pages, attachments and collaborative notebooks are not described as finished features.

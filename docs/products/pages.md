@@ -54,6 +54,15 @@ Open **Insert** and choose one of the available options:
 - Choose **Export** in the top bar to see the document formats available in your installed version.
 - To create a PDF copy, open **Home** and choose **PDF** in the **Export** group.
 
+## Try this example: write a meeting note
+
+1. Give the document the name **Team meeting notes**.
+2. Add a **Heading 1** called **Topics**.
+3. Write three bullet points for the things you want to discuss.
+4. Bold the most important action.
+5. Choose **Save project** to keep the editable Brightdesk project.
+
+**What you should have:** a short meeting document with a clear heading, bullet points and one highlighted action.
 ## Current feature boundaries
 
 Pages provides core document writing, formatting and page setup. It is not full word-processor feature parity. Advanced page-layout tools, macros, collaboration and perfect round-trip conversion are not promised.

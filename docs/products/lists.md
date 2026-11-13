@@ -51,6 +51,16 @@ Choose **Rename** to change the list name. Choose **Delete list** only when you 
 
 Lists are saved on this device as you work. Check the local-save status in the workspace.
 
+## Try this example: organise a reading list
+
+1. Create a list called **Books to read**.
+2. Choose **Add record** and enter a book title.
+3. Expand **Add a custom column**.
+4. Name the column **Genre**, choose **Choice**, and enter a few options separated by commas.
+5. Edit the book record and choose its genre.
+6. Use **Search this list** to find the title.
+
+**What you should have:** a local reading list with a custom Genre column that you can search and sort.
 ## Current feature boundaries
 
 Lists is a local structured-list tool. Shared editing, user permissions, attachments, automation, connected data sources and online forms are not included in the current stated scope.

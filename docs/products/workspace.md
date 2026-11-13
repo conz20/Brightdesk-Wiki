@@ -54,6 +54,16 @@ Use **Find a page** to search page titles and page content.
 
 Workspaces and pages are saved on this device as you work. Check the local-save status in the workspace.
 
+## Try this example: keep a small project together
+
+1. Create a workspace called **Home project**.
+2. Rename its starting page **Project notes**.
+3. Add a **Heading** block called **Things to do**.
+4. Add a **Text** block with a short description.
+5. Add a **Checklist** block and enter two items.
+6. Tick an item when it is complete.
+
+**What you should have:** one project page with a heading, notes and a checklist. It stays on this device.
 ## Current feature boundaries
 
 Workspace supports local workspaces and pages with text, heading, bullet, callout, divider and checklist blocks. Live collaboration, shared workspaces, accounts, cloud sync, permissions, external integrations and connected multi-user components are not included in the current stated scope.

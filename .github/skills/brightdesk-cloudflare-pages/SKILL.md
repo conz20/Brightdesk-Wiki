@@ -33,9 +33,9 @@ Do not add paid plans, paid add-ons, metered services, subscriptions, or trials.
 
 ## Required privacy and output boundary
 
-The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 12 HTML pages (Help homepage, Suite getting-started page, and ten approved product guides) plus one local CSS file, for 13 static files total.
+The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 12 HTML pages (Help homepage, Suite getting-started page, and ten approved product guides), one local CSS file and one audited local search module, for 14 static files total.
 
-The generated site must remain static and read-only. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images, external stylesheets, or customer-data collection. Do not publish internal architecture, development, security, release, maintainer, runner, or repository material.
+The generated site must remain static and read-only. Its only interactive element is the accessible Help search field, powered by the one audited local search module. The search must remain in-browser and must not make network requests, use cookies or visitor storage, or send search terms anywhere. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images, external stylesheets, or customer-data collection. Do not publish internal architecture, development, security, release, maintainer, runner, or repository material.
 
 Do not weaken the output allowlist or bypass the privacy audit to make a deployment pass. A failed build, test, link check, or output audit blocks deployment.
 

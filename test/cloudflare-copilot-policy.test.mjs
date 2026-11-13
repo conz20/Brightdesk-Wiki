@@ -33,7 +33,7 @@ test('Brightdesk Pages skill fixes the private project, build, runtime, and publ
     '24.22.2',
     '3.4.4',
     '12 HTML pages',
-    '13 static files',
+    '14 static files',
     'help.brightdesk.com',
     'Only select repositories',
     'Do not add paid plans',

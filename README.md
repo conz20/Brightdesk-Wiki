@@ -36,7 +36,7 @@ The initial Help website framework, build and privacy checks, maintainer setup d
 - Suite getting-started guide: **Source-confirmed**. Its complete workflow still needs a live walkthrough.
 - All ten product guides: **Needs review** until each workflow is tested in a current installed desktop build.
 - Genuine screenshots from the running Suite and all ten products: **not yet captured**.
-- Working homepage search and clickable suggested-help links at the bottom of pages: **not yet implemented or verified**.
+- Site-wide search and clickable task suggestions: **being implemented and tested in [PR #5](https://github.com/conz20/Brightdesk-Wiki/pull/5)**; not yet on main or in a live site.
 - Exact current `main` revision: must pass the complete quality workflow, including the real Jekyll build and generated-output privacy audit, before it is considered build-ready.
 - Live Cloudflare Pages deployment and the `.com` custom domain: **not configured or verified**.
 
@@ -60,7 +60,7 @@ Do not change nameservers or DNS records without a complete current zone export,
 - A browser review of all customer pages, navigation, keyboard use, narrow desktop windows, visible focus and reduced-motion behavior.
 - A verified Cloudflare Pages Free production connection, the approved custom domain with valid HTTPS, and a recorded deployed commit.
 
-The generated customer site must remain static and read-only. It must not contain accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images or customer-data collection. Keep architecture, development, security, release and maintainer material out of the generated customer output.
+The generated customer site remains static and read-only. Its only interactive element is the accessible Help search field, powered by one audited local JavaScript module that searches the published guide text in the browser. That module must not make network requests, use cookies or visitor storage, or send search terms anywhere. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images or customer-data collection. Keep architecture, development, security, release and maintainer material out of the generated customer output.
 
 ## Related work
 

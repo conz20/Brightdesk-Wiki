@@ -47,6 +47,16 @@ Use the delete control on a bucket only when you intend to remove it. Any tasks 
 
 Plans, buckets and tasks are saved on this device as you work. Check the local-save status in the workspace.
 
+## Try this example: plan a small project
+
+1. Create a plan called **Garden tidy-up**.
+2. Add buckets called **Doing** and **Done** alongside the starting **To do** bucket.
+3. Add a task called **Clear the garden path**.
+4. Set its priority and progress.
+5. Add a due date if one is useful.
+6. Use **Search tasks** or **Filter progress** to find it again.
+
+**What you should have:** a simple project board with a task grouped in a bucket. The plan is saved on this device.
 ## Current feature boundaries
 
 Planner currently provides local plans and task boards. Connected user directories, automatic assignment, operating-system notifications, recurring reminders, cloud sync and shared plans are not included in the current stated scope. The current task card editor only exposes title editing and a progress selector.

@@ -7,6 +7,7 @@
     <meta name="color-scheme" content="light">
     <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Brightdesk Help</title>
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+    <script type="module" src="{{ '/assets/js/search.js' | relative_url }}"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -18,10 +19,24 @@
         </a>
         <nav class="site-nav" aria-label="Main navigation">
           <a href="{{ '/index.html' | relative_url }}">Help home</a>
-          <a href="{{ '/customer-start-here.html' | relative_url }}">Start here</a>
+          <a href="{{ '/customer-start-here.html' | relative_url }}">Suite guide</a>
         </nav>
       </div>
+      <section class="help-search" aria-labelledby="help-search-label">
+        <label id="help-search-label" for="help-search">Search Brightdesk Help</label>
+        <input id="help-search" type="search" autocomplete="off"
+          placeholder="Try “PDF”, “formula”, “checklist” or a product name"
+          aria-describedby="help-search-hint help-search-status">
+        <p id="help-search-hint" class="search-hint">Search the instructions and examples in all 12 customer guides.</p>
+        <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a word or task to find a guide.</p>
+        <ul class="search-results" aria-label="Matching help guides" hidden></ul>
+      </section>
     </header>
+    <nav class="search-index" aria-label="Searchable help guide content" hidden>
+      {% for help_page in site.pages %}
+        <a href="{{ help_page.url | relative_url }}" data-search-text="{{ help_page.content | strip_html | strip_newlines | escape }}">{{ help_page.title | default: "Brightdesk Help" }}</a>
+      {% endfor %}
+    </nav>
     <main id="main" class="main-content">
       <article class="content-card">
         {% if page.status %}
@@ -31,6 +46,25 @@
       </article>
     </main>
     <footer class="site-footer">
+      <section class="footer-help" aria-labelledby="footer-help-title">
+        <h2 id="footer-help-title">Not sure where to start?</h2>
+        <p>Choose what you are trying to do. These links take you straight to the most useful guide.</p>
+        <nav aria-label="Suggestions by task">
+          <ul class="footer-suggestions">
+            <li><a href="{{ '/customer-start-here.html' | relative_url }}">Get started with Brightdesk Suite</a></li>
+            <li><a href="{{ '/products/pages.html' | relative_url }}">Write a document or letter</a></li>
+            <li><a href="{{ '/products/sheets.html' | relative_url }}">Work with numbers or a budget</a></li>
+            <li><a href="{{ '/products/decks.html' | relative_url }}">Create a presentation</a></li>
+            <li><a href="{{ '/products/notes.html' | relative_url }}">Capture a quick note</a></li>
+            <li><a href="{{ '/products/database.html' | relative_url }}">Store information in a table</a></li>
+            <li><a href="{{ '/products/forms.html' | relative_url }}">Create a form or survey</a></li>
+            <li><a href="{{ '/products/lists.html' | relative_url }}">Organise a list of records</a></li>
+            <li><a href="{{ '/products/planner.html' | relative_url }}">Plan a project with tasks</a></li>
+            <li><a href="{{ '/products/to-do.html' | relative_url }}">Manage personal tasks</a></li>
+            <li><a href="{{ '/products/workspace.html' | relative_url }}">Bring project notes together</a></li>
+          </ul>
+        </nav>
+      </section>
       <p>Brightdesk Help is a separate online resource. It is not part of the Brightdesk Suite or installed software.</p>
       <p>Guides describe only what has been checked. Unverified steps are clearly marked.</p>
     </footer>

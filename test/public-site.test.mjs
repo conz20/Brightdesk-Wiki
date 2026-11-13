@@ -11,8 +11,10 @@ function siteFixture(t) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'brightdesk-public-site-'));
   fs.mkdirSync(path.join(rootDir, 'products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
-  const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"></head><body>Brightdesk Help</body></html>\n';
+  fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\n');
+  const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\n';
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
   for (const product of PRODUCTS) {
@@ -25,7 +27,7 @@ function siteFixture(t) {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 13);
+  assert.equal(result.files, 14)
   assert.equal(result.htmlPages, 12);
 });
 
@@ -42,10 +44,27 @@ test('private Brightdesk repository links must never be published', t => {
   assert.throws(() => checkPublicSite({ siteRoot }), /external URL|private Brightdesk GitHub account/i);
 });
 
-test('JavaScript and external assets are rejected', t => {
+test('external JavaScript is rejected', t => {
   const siteRoot = siteFixture(t);
-  fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><script src="https://example.com/tracker.js"></script>');
-  assert.throws(() => checkPublicSite({ siteRoot }), /contains JavaScript/i);
+  fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><script type="module" src="https://example.com/tracker.js"></script><input id="help-search" type="search">');
+  assert.throws(() => checkPublicSite({ siteRoot }), /approved local search script/i);
+});
+
+test('only the dedicated Help search field is allowed', t => {
+  const siteRoot = siteFixture(t);
+  const indexPath = path.join(siteRoot, 'index.html');
+  const html = fs.readFileSync(indexPath, 'utf8').replace(
+    '<input id="help-search" type="search">',
+    '<input id="help-search" type="search"><input id="comment" type="text">'
+  );
+  fs.writeFileSync(indexPath, html);
+  assert.throws(() => checkPublicSite({ siteRoot }), /accessible Brightdesk Help search field/i);
+});
+
+test('the local search module cannot use network requests or visitor storage', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'assets/js/search.js'), 'fetch("https://example.com");');
+  assert.throws(() => checkPublicSite({ siteRoot }), /network access, executable code generation or visitor storage/i);
 });
 
 test('unlisted output file types are rejected', t => {

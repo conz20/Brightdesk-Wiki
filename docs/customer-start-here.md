@@ -86,6 +86,15 @@ Use only file types offered by the current product. Keep a Brightdesk project co
 
 The notification area can show official Brightdesk update notices when they are available. However, the current Suite does not yet have a configured update-publishing provider, so live update delivery is **not active or verified**. Do not expect an update download to be available until an approved Brightdesk release is actually published. Downloading and installing, when available, require a deliberate action.
 
+## Try this example: start a small project
+
+1. Open **Apps** and add **Pages** and **Planner** to your Suite if they are not already included.
+2. Return to **Home** and open **Planner**.
+3. Create a plan for your project and add two or three tasks.
+4. Open **Pages** from the Suite and write a separate project brief.
+5. Save the work in each product using its own **Save project** action where available.
+
+**What you should have:** a project task board in Planner and a separate written brief in Pages. The Suite opens the products together, but the files stay separate; it does not automatically combine or synchronise the documents.
 ## Keep your work local
 
 Brightdesk products are designed to work on your device. They do not require a customer account or cloud storage to open and use local work.

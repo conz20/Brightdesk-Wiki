@@ -50,6 +50,15 @@ The sort acts on the sheet rows using the selected column.
 
 Keep a Brightdesk project copy when you plan to continue editing the workbook.
 
+## Try this example: add up a small budget
+
+1. In cell **A1**, enter **Item**. In **B1**, enter **Cost**.
+2. In row 2, enter **Rent** and **1200**.
+3. In row 3, enter **Power** and **150**.
+4. In row 4, enter **Internet** and **80**.
+5. Select **B5**, enter `=SUM(B2:B4)` and press **Enter**.
+
+**What you should have:** a small expense list and a total of **1430** in cell B5.
 ## Current feature boundaries
 
 Sheets is a basic spreadsheet foundation. VBA and macros, pivot tables, advanced formula coverage, complex workbook features and exact Excel round-trip compatibility are not promised.
