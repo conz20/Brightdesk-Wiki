@@ -1,0 +1,143 @@
+name: Brightdesk Wiki quality
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+
+# Keep the current build running, but replace older pending runs for this PR.
+concurrency:
+  group: brightdesk-wiki-quality-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  quality:
+    name: Check customer documentation and public site output
+    runs-on: [self-hosted, macOS, ARM64]
+    permissions:
+      contents: read
+    steps:
+      - name: Check out Brightdesk Wiki
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # pinned checkout action
+      - name: Set up Node.js 24.22.2
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # pinned setup-node action
+        with:
+          node-version: 24.22.2
+          package-manager-cache: false
+      - name: Build or reuse checksum-verified libyaml and Ruby 3.4.4
+        shell: bash
+        env:
+          RUNNER_TOOL_CACHE: ${{ runner.workspace }}/../../_tool
+          RUBY_BUILD_BUILD_PATH: ${{ runner.temp }}/ruby-build-build
+          RUBY_BUILD_CACHE_PATH: ${{ runner.temp }}/ruby-build-cache
+        run: |
+          set -euo pipefail
+          if [[ "$(uname -m)" != "arm64" ]]; then
+            echo "::error::This build is pinned for the macOS ARM64 runner."
+            exit 1
+          fi
+          for tool in git curl tar make clang perl shasum; do
+            if ! command -v "$tool" >/dev/null 2>&1; then
+              echo "::error::Required local build tool is unavailable: $tool"
+              exit 1
+            fi
+          done
+
+          mkdir -p "$RUNNER_TOOL_CACHE"
+
+          libyaml_version="0.2.5"
+          libyaml_sha256="c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
+          libyaml_archive="$RUNNER_TEMP/yaml-$libyaml_version.tar.gz"
+          libyaml_source="$RUNNER_TEMP/libyaml-source"
+          libyaml_prefix="$RUNNER_TOOL_CACHE/Brightdesk/libyaml/$libyaml_version/$(uname -m)"
+          libyaml_cache_valid=false
+
+          if [[ -f "$libyaml_prefix.complete" \
+            && -f "$libyaml_prefix/include/yaml.h" \
+            && -f "$libyaml_prefix/lib/pkgconfig/yaml-0.1.pc" \
+            && -f "$libyaml_prefix/lib/libyaml.dylib" ]]; then
+            libyaml_cache_valid=true
+          fi
+
+          if [[ "$libyaml_cache_valid" != true ]]; then
+            rm -rf "$libyaml_prefix" "$libyaml_prefix.complete"
+            mkdir -p "$(dirname "$libyaml_prefix")" "$libyaml_source"
+            curl --fail --location --retry 3 --retry-all-errors --connect-timeout 20 \
+              "https://github.com/yaml/libyaml/releases/download/$libyaml_version/yaml-$libyaml_version.tar.gz" \
+              --output "$libyaml_archive"
+            printf '%s  %s\n' "$libyaml_sha256" "$libyaml_archive" | shasum -a 256 --check -
+            tar -xzf "$libyaml_archive" -C "$libyaml_source"
+            cd "$libyaml_source/yaml-$libyaml_version"
+            ./configure --prefix="$libyaml_prefix" --disable-static
+            make -j "$(sysctl -n hw.ncpu)"
+            make check
+            make install
+            test -f "$libyaml_prefix/include/yaml.h"
+            test -f "$libyaml_prefix/lib/pkgconfig/yaml-0.1.pc"
+            test -f "$libyaml_prefix/lib/libyaml.dylib"
+            touch "$libyaml_prefix.complete"
+          else
+            echo "Using verified runner-local libyaml $libyaml_version cache."
+          fi
+
+          ruby_build_dir="$RUNNER_TEMP/ruby-build-source"
+          ruby_build_revision="573f87a93b27195b97c2a72b5c6fbc0a266d73d0"
+          prefix="$RUNNER_TOOL_CACHE/Ruby/3.4.4/$(uname -m)"
+          mkdir -p "$(dirname "$prefix")"
+          ruby_cache_valid=false
+
+          if [[ -f "$prefix.complete" && -x "$prefix/bin/ruby" && -x "$prefix/bin/gem" ]]; then
+            if "$prefix/bin/ruby" -e 'abort unless RUBY_VERSION == "3.4.4"' \
+              && "$prefix/bin/ruby" -rpsych -e 'abort unless Psych::LIBYAML_VERSION == "0.2.5"'; then
+              ruby_cache_valid=true
+            fi
+          fi
+
+          if [[ "$ruby_cache_valid" != true ]]; then
+            rm -rf "$prefix" "$prefix.complete"
+            git init -q "$ruby_build_dir"
+            git -C "$ruby_build_dir" remote add origin https://github.com/rbenv/ruby-build.git
+            git -C "$ruby_build_dir" fetch --no-tags --depth=1 origin "$ruby_build_revision"
+            git -C "$ruby_build_dir" checkout --quiet --detach FETCH_HEAD
+
+            export PKG_CONFIG_PATH="$libyaml_prefix/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+            export RUBY_CONFIGURE_OPTS="--with-libyaml-dir=$libyaml_prefix"
+            if ! "$ruby_build_dir/bin/ruby-build" 3.4.4 "$prefix"; then
+              find "$RUBY_BUILD_BUILD_PATH" -path '*/ext/psych/mkmf.log' -print -exec cat {} \; || true
+              exit 1
+            fi
+            touch "$prefix.complete"
+          else
+            echo "Using verified runner-local Ruby 3.4.4 cache."
+          fi
+
+          "$prefix/bin/ruby" --version
+          "$prefix/bin/gem" --version
+          "$prefix/bin/ruby" -rpsych -e 'abort "Psych/libyaml 0.2.5 is unavailable" unless Psych::LIBYAML_VERSION == "0.2.5"; puts "Psych #{Psych::VERSION}; libyaml #{Psych::LIBYAML_VERSION}"'
+      - name: Activate the runner-local Ruby and install pinned Jekyll dependencies
+        # The action activates the exact Ruby already built or reused in the persistent tool cache.
+        uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # pinned ruby/setup-ruby action
+        env:
+          RUNNER_TOOL_CACHE: ${{ runner.workspace }}/../../_tool
+        with:
+          ruby-version: '3.4.4'
+          self-hosted: true
+          bundler-cache: true
+      - name: Install locked Node dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Verify the required Node.js runtime
+        run: npm run check:node
+      - name: Check validation script syntax
+        run: npm run check
+      - name: Run documentation and public-output regression tests
+        run: npm test
+      - name: Check repository Markdown links
+        run: npm run links
+      - name: Build Jekyll customer site
+        run: bundle exec jekyll build
+      - name: Reject private or unexpected generated content
+        run: npm run check:site
+
