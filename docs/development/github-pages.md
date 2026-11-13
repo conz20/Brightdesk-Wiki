@@ -1,93 +1,83 @@
 # Maintainer setup: GitHub Pages for Brightdesk Help
 
-## Customer price promise and separation
+## Customer promise and site boundary
 
-Brightdesk Suite, the ten approved desktop products and the Brightdesk Wiki/customer help centre are free for every customer. Customers must never be charged to use the products or read the help guides. There is no paywall, subscription, paid customer tier, trial, licence fee or customer account requirement.
+Brightdesk Suite, the ten approved desktop products and Brightdesk Help are free for every customer. There are no subscriptions, paid customer tiers, trials, licence fees, customer accounts, sign-ins, passwords, paywalls or advertising.
 
-Brightdesk Help is a separate, static, read-only website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency.
+Brightdesk Help is a separate, static, read-only public website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency. It does not receive customer documents or product data.
 
-**No paid hosting plan, paid GitHub plan, hosting subscription, trial or upgrade may be purchased to publish or maintain the Wiki.** The source repository `conz20/Brightdesk-Wiki` must remain private. The public website, if it can be published using an approved no-cost GitHub Pages entitlement, is readable without charge and without a customer sign-in.
+The generated website is public on the internet. The source repository `conz20/Brightdesk-Wiki` must remain private. The public output must contain only the customer homepage, Suite start page, exactly ten product guides and the local CSS file.
 
-## Current publication status
+## Confirmed publication decision
 
-Not configured or deployed. The existing account's no-cost eligibility for publishing Pages from a private repository has not been verified. Do not describe the site as public, live or available to customers until a permitted no-cost publishing path, exact output checks and successful deployment have all been verified.
+- The owner has explicitly authorised publication of the public, read-only Help website at `https://conz20.github.io/Brightdesk-Wiki/`.
+- The owner confirmed the existing GitHub account has an eligible plan for Pages from a private source repository.
+- No additional paid plan, purchase, trial, renewal, upgrade or third-party hosting service is authorised or required.
+- The source repository and all Brightdesk repositories remain private.
+- Customers are not charged for the Suite, the ten products or the Help website.
 
-## No-cost GitHub Pages gate
+GitHub Pages supports public websites from private source repositories on eligible GitHub Pro, Team and Enterprise plans. The published site remains public even though its source repository is private. Do not confuse this with private publishing of a Pages website, which has different plan requirements.
 
-GitHub Pages plan rules may prevent a GitHub Free account from publishing a site from a private source repository. A public Pages site generated from a private source repository is still public on the internet.
+## Current production setup
 
-The owner requires the source repository and all Brightdesk repositories to remain private, and does not authorise any paid plan, purchase, trial, renewal or upgrade.
+The Wiki source repository is private and its source/output validation has passed on the current draft revision. The repository has not yet been configured to publish through GitHub Pages, and the production site has not yet been deployed.
 
-- Check the existing account entitlement only; do not buy or activate a plan.
-- If the current no-cost GitHub arrangement permits Pages from this private repository, that no-cost route may be considered after all review gates pass.
-- If the current no-cost arrangement does not permit Pages from a private repository, stop and leave the customer website unpublished.
-- Do not make this repository public, create a public replacement repository, use a paid plan, or switch to another hosting provider.
-- Do not change repository permissions, visibility or settings to work around the restriction.
+The remaining repository setting is **Settings → Pages → Build and deployment → Source → GitHub Actions**. Select GitHub Actions and save. Do not change repository visibility, permissions, billing, hosting or any other setting.
 
-The customer help content remains intended to be free regardless of publication status. A free customer promise does not justify exposing private source material or incurring a paid hosting cost.
-
-## Intended site source and output
+## Source and generated output
 
 - Repository: `conz20/Brightdesk-Wiki` (private).
 - Production branch: `main`.
-- Build tool: pinned Jekyll.
+- Build tool: pinned Jekyll 4.4.1 and Ruby 3.4.4.
 - Source directory: `docs/`.
 - Generated output: `_site/`.
-- The public site must contain only:
-  - `index.html` — customer help homepage.
-  - `customer-start-here.html` — customer product chooser and guide labels.
-  - The ten pages under `products/`.
-  - The local `assets/css/site.css` stylesheet.
+- Public output allowlist:
+  - `index.html` — Brightdesk Help homepage.
+  - `customer-start-here.html` — Suite getting-started guide.
+  - Exactly ten pages under `products/`.
+  - `assets/css/site.css` — local stylesheet.
 - Exclude `architecture/`, `development/`, `security/` and `releases/` from generated output.
-- Do not include the repository README, package files, lockfiles, scripts, tests, GitHub workflow files, private prompts, credentials, internal reports, logs or customer documents.
-- Keep product guide statuses honest. Current product pages are marked **Needs review** until real end-to-end workflows are verified.
+- Do not publish the repository README, package files, lockfiles, scripts, tests, GitHub workflow files, private prompts, credentials, internal reports, logs or customer documents.
+- Product guides retain their truthful evidence labels. A guide marked **Needs review** is not represented as runtime-verified.
 
-The existing `_config.yml` and customer-output checker are draft build inputs. A successful source test does not prove a real Jekyll build or generated-site privacy review.
+## Automated publication controls
 
-## GitHub Pages configuration
+The production workflow is part of `.github/workflows/quality.yml`.
 
-Do not configure or deploy Pages while the no-cost entitlement, exact build/privacy verification and publication review are outstanding. Do not add deployment permissions or a production deploy workflow to this draft branch.
+1. Pull requests run the full documentation checks, tests, Markdown link scan, Jekyll build and public-output audit. Pull requests never deploy.
+2. A push to `main` repeats the full checks and builds the site using the project base path `/Brightdesk-Wiki`.
+3. The Pages artifact is uploaded only after the generated-output audit passes.
+4. Deployment runs only after the quality job succeeds, from `main`, using the `github-pages` environment.
+5. The deployment job runs on the existing private macOS ARM64 runner and uses pinned official GitHub Actions.
+6. A manual workflow run requires an explicit `confirm_publication` input. The default is false.
+7. No preview deployment is enabled for pull requests or other branches.
 
-Only after a qualifying no-cost private-source route is verified, the current-head build and output review pass, and the owner explicitly authorises production publication:
+The deploy job requests only the permissions it needs: `actions: read`, `contents: read`, `pages: write` and `id-token: write`. The quality job retains read-only repository access and only Pages read access.
 
-1. Open the private `conz20/Brightdesk-Wiki` repository.
-2. Open **Settings → Pages**.
-3. Select **GitHub Actions** as the build and deployment source when the approved Pages workflow is ready.
-4. Keep the source repository private. Do not change repository visibility.
-5. Keep production publication restricted to the reviewed `main` branch.
-6. Do not enable branch/PR preview deployments from the draft Wiki PR.
-7. Do not add a custom domain unless a separate owner instruction authorises it.
+## Privacy and read-only requirements
 
-GitHub recommends custom Actions workflows for automated builds. A Pages deployment job needs at least `pages: write` and `id-token: write` permissions. Do not add those deployment permissions or a production deploy workflow to this draft branch.
+- The Wiki website is public, static and read-only.
+- No customer login, account, document upload, support form, comments, editing or administration controls.
+- No analytics, advertising, tracking, external JavaScript, third-party fonts, remote images or external stylesheet dependencies.
+- Keep Brightdesk-AI and engineering/maintainer material private and outside the generated website.
+- GitHub processes visitor IP addresses and other connection information for service operation and security; do not claim otherwise.
+- The site is optional customer help and is not required to install or use Brightdesk offline.
+- Opening Help from a desktop product sends no documents or application data.
 
-## Privacy, security and visitor data
+## Verification and release
 
-- GitHub Pages makes the generated website public. Never put anything in the generated output that should remain private.
-- Publish only the ten approved customer products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
-- Keep Brightdesk-AI and every engineering/supporting repository private and out of customer documentation.
-- The site is static and read-only. No customer login, account, document upload, support form, database, analytics, advertising, tracking script, external JavaScript, third-party font or remote image is approved.
-- Use only local CSS, local links and static content.
-- GitHub processes visitor IP addresses and other connection information for service operation and security. Do not claim that no visitor metadata is processed.
-- The website is optional customer help. A simple **Help** link is being added to the Suite and each of the ten product interfaces. The Suite link opens the help homepage; each product link opens its matching guide.
-- Help opens in the customer's normal browser and is restricted by the desktop app to the approved public Brightdesk Help host and path. It does not open the private source repository.
-- Brightdesk remains local-first. The Wiki is not required to install, launch or use the Suite or any product; no documents or app data are sent when a customer opens Help.
-- The product links must not be released as usable customer links until the approved public site is deployed and its exact URL is verified.
+Before reporting that customers can access the website:
 
-## Verification required before production
-
-1. Confirm the existing GitHub account has a **no-cost** entitlement that supports Pages from a private repository. Do not infer this from repository permissions.
-2. Confirm `Brightdesk-Wiki` is still private.
-3. Build the site with the pinned Jekyll/Ruby toolchain on the approved no-cost runner.
-4. Run all Node checks and tests, the Markdown link checker, Jekyll build and generated-output audit on the same exact commit.
-5. Inspect the actual `_site/` directory to prove it contains only the 12 intended HTML pages and the local stylesheet, with no internal documentation, unexpected files, external resources or private GitHub links.
-6. Check the generated site's navigation, accessibility, keyboard/focus behaviour, responsive layout and reduced-motion behaviour.
-7. Keep the Wiki PR draft and unmerged until exact-head CI and review are complete.
-8. Production publication can occur only from the approved `main` branch after review and explicit owner authorisation for that action.
-9. Verify the published URL and deployed commit before reporting that customers can access the help website.
+1. Keep the source repository private and confirm the Pages source is GitHub Actions.
+2. Merge the reviewed Wiki PR to `main` only after its exact-head quality workflow succeeds.
+3. Confirm the main-branch production workflow completes the Jekyll build, output audit, artifact upload and deployment.
+4. Verify the published URL is exactly `https://conz20.github.io/Brightdesk-Wiki/`.
+5. Verify the deployed commit matches the approved `main` revision.
+6. Open the homepage, Suite start page and each of the ten guides; check local CSS, navigation, mobile layout, focus visibility and reduced motion.
+7. Only after the deployment URL is confirmed may the eleven desktop Help-link PRs be considered ready for release. The Help links must not be released against an unpublished site.
 
 ## Official GitHub documentation
 
-- [Creating a GitHub Pages site with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
+- [Configuring a publishing source for GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [Using custom workflows with GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 - [GitHub Pages limits and plan availability](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
-- [GitHub Pages publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
