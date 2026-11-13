@@ -29,7 +29,7 @@ test('quality workflow uses the persistent self-hosted runner tool cache', () =>
 test('quality workflow verifies cached Ruby and libyaml versions before reuse', () => {
   assert.match(workflow, /ruby_cache_valid=false/);
   assert.match(workflow, /RUBY_VERSION == "3\.4\.4"/);
-  assert.match(workflow, /Psych\.libyaml_version == "0\.2\.5"/);
+  assert.ok(workflow.includes('Psych::LIBYAML_VERSION == "0.2.5"'));
   assert.match(workflow, /libyaml_cache_valid=false/);
   assert.match(workflow, /touch "\$prefix\.complete"/);
   assert.match(workflow, /touch "\$libyaml_prefix\.complete"/);

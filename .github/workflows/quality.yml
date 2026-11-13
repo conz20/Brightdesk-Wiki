@@ -90,7 +90,7 @@ jobs:
 
           if [[ -f "$prefix.complete" && -x "$prefix/bin/ruby" && -x "$prefix/bin/gem" ]]; then
             if "$prefix/bin/ruby" -e 'abort unless RUBY_VERSION == "3.4.4"' \
-              && "$prefix/bin/ruby" -rpsych -e 'abort unless Psych.libyaml_version == "0.2.5"'; then
+              && "$prefix/bin/ruby" -rpsych -e 'abort unless Psych::LIBYAML_VERSION == "0.2.5"'; then
               ruby_cache_valid=true
             fi
           fi
@@ -115,7 +115,7 @@ jobs:
 
           "$prefix/bin/ruby" --version
           "$prefix/bin/gem" --version
-          "$prefix/bin/ruby" -rpsych -e 'abort "Psych/libyaml 0.2.5 is unavailable" unless Psych.libyaml_version == "0.2.5"; puts "Psych #{Psych::VERSION}; libyaml #{Psych.libyaml_version}"'
+          "$prefix/bin/ruby" -rpsych -e 'abort "Psych/libyaml 0.2.5 is unavailable" unless Psych::LIBYAML_VERSION == "0.2.5"; puts "Psych #{Psych::VERSION}; libyaml #{Psych::LIBYAML_VERSION}"'
       - name: Activate the runner-local Ruby and install pinned Jekyll dependencies
         # The action activates the exact Ruby already built or reused in the persistent tool cache.
         uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # pinned ruby/setup-ruby action
