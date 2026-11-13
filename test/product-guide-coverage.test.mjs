@@ -51,3 +51,13 @@ test('customer guides explain destructive actions and protected minimums', () =>
   assert.match(workspace, /removes the page and all its content/i);
   assert.match(workspace, /removes that workspace and all its pages/i);
 });
+
+test('Pages guide names the supported PDF export control', () => {
+  const source = fs.readFileSync(path.join(productDirectory, 'pages.md'), 'utf8');
+  assert.match(source, /open \\*\\*Home\\*\\* and choose \\*\\*PDF\\*\\* in the \\*\\*Export\\*\\* group/i);
+});
+
+test('Sheets guide distinguishes the selected cell reference from its formula input', () => {
+  const source = fs.readFileSync(path.join(productDirectory, 'sheets.md'), 'utf8');
+  assert.match(source, /selected cell reference.*beside the formula input/i);
+});
