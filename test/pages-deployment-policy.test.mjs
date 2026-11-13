@@ -71,10 +71,14 @@ test('Cloudflare Git integration is restricted to the private Wiki repository an
 test('customer Help address is the approved .com domain and DNS changes remain gated', () => {
   assert.match(cloudflareGuide, /https:\/\/help\.brightdesk\.com/);
   assert.match(cloudflareGuide, /owner has confirmed.*own.*brightdesk\.com/i);
-  assert.match(cloudflareGuide, /Sedo.*parking.*does \*\*not\*\* mean.*for sale/i);
-  assert.match(cloudflareGuide, /registrar.*DNS.*not yet established/i);
-  assert.match(cloudflareGuide, /No domain purchase, transfer.*is authorised/i);
-  assert.match(cloudflareGuide, /Do not replace nameservers or alter DNS until.*owner has approved/i);
+  assert.match(cloudflareGuide, /ns1\.sedoparking\.com.*ns2\.sedoparking\.com/i);
+  assert.match(cloudflareGuide, /root A record.*64\.190\.63\.111/i);
+  assert.match(cloudflareGuide, /www.*64\.190\.63\.222.*help.*64\.190\.63\.111/i);
+  assert.match(cloudflareGuide, /not a complete zone export/i);
+  assert.match(cloudflareGuide, /cannot supply the required user-controlled Pages CNAME/i);
+  assert.match(cloudflareGuide, /Cloudflare GitHub App was not present/i);
+  assert.match(cloudflareGuide, /complete DNS-zone export/i);
+  assert.match(cloudflareGuide, /change the authoritative nameservers only after.*owner has approved/i);
   assert.match(cloudflareGuide, /CNAME.*help.*pages\.dev|CNAME.*help.*exact project/i);
   assert.match(cloudflareGuide, /pages\.dev.*technical.*origin|technical.*Pages origin only/i);
 });
