@@ -114,3 +114,14 @@ test('generated and vendored Markdown is excluded from the authored documentatio
   assert.equal(result.markdownFiles, 1);
   assert.equal(result.localLinks, 0);
 });
+
+test('links that pass through a symbolic-link directory are rejected even in excluded folders', { skip: process.platform === 'win32' }, t => {
+  const rootDir = fixture(t);
+  const realDir = path.join(rootDir, 'vendor', 'real');
+  const aliasDir = path.join(rootDir, 'vendor', 'alias');
+  fs.mkdirSync(realDir, { recursive: true });
+  fs.writeFileSync(path.join(realDir, 'guide.md'), '# Guide\\n');
+  fs.symlinkSync(realDir, aliasDir, 'dir');
+  fs.writeFileSync(path.join(rootDir, 'README.md'), '[Guide](vendor/alias/guide.md)\\n');
+  assert.throws(() => checkMarkdownLinks({ rootDir }), /symbolic link/i);
+});
