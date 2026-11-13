@@ -12,11 +12,12 @@ The source repository conz20/Brightdesk-Wiki remains private. The published outp
 
 - The owner explicitly approved Cloudflare Pages Free for publishing the Help website.
 - The owner's preferred public customer address is **https://help.brightdesk.com**. Treat this as the intended canonical URL, not as a live or registered domain.
-- A DNS check on 13 November 2026 found `brightdesk.com` pointed at a Sedo parking address and used `ns1.sedoparking.com` / `ns2.sedoparking.com`. This indicates that the domain is registered/parked; it does not establish the owner's ownership, purchase price or availability. Registrar and DNS control are not verified.
-- No domain purchase, transfer, paid Cloudflare plan, trial, subscription, add-on, GitHub plan or upgrade is authorised. Do not purchase a domain or change registrar, nameserver or DNS settings.
+- The owner has confirmed in this conversation that they own `brightdesk.com`. Record this as **owner-confirmed**, not as independent registry verification.
+- A DNS check on 13 November 2026 found `brightdesk.com` delegated to `ns1.sedoparking.com` and `ns2.sedoparking.com`, with a Sedo parking address. Sedo documents these nameservers as its domain-parking setup. This indicates that the domain is currently parked through Sedo; it does **not** mean the domain is for sale.
+- The domain registrar and the owner's ability to edit the authoritative DNS are not yet established. The nameservers currently in use are Sedo's, so a `help` CNAME must be created at the DNS provider that is authoritative for the domain. Do not assume Sedo's parking DNS panel supports custom records.
+- No domain purchase, transfer, paid Cloudflare plan, trial, subscription, add-on, GitHub plan or upgrade is authorised.
 - Do not publish or advertise a `pages.dev` address as the customer website. Cloudflare's generated `pages.dev` host is a technical Pages origin only. The customer-facing URL must end in `.com`.
-- If the owner obtains and confirms control of `brightdesk.com`, configure `help.brightdesk.com` as a Cloudflare Pages custom subdomain. If that domain cannot be obtained, stop and wait for an owner-approved alternative `.com` domain before publication.
-- Do not configure a custom domain or make DNS changes until domain ownership/control is verified and the owner has approved the exact changes.
+- Keep `https://help.brightdesk.com` as the target. Before configuring DNS, identify the registrar/DNS control panel and inventory the existing DNS records. Preserve any existing website, mail, verification and security records. Do not replace nameservers or alter DNS until the record set is understood and the owner has approved the exact change.
 - Use Cloudflare's GitHub integration. Do not create or store a Cloudflare API token or account ID in the repository.
 - The GitHub App installation must be scoped to **Only select repositories**, with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to any other Brightdesk source repository.
 - The source repository stays private. Do not change GitHub repository visibility or collaborator permissions.
@@ -87,18 +88,19 @@ Cloudflare operates the hosting network and processes technical request metadata
 
 The repository build configuration is ready for Cloudflare Pages Free and the current pull-request head passed its full GitHub quality workflow. The Cloudflare account connection, GitHub App installation and Pages project still require verified account-side setup. No deployed customer URL is confirmed.
 
-The required customer URL is **https://help.brightdesk.com**. The domain's current DNS points to Sedo parking, so domain ownership and DNS control must be established before any CNAME or nameserver changes. No purchase or DNS change is authorised yet.
+The required customer URL is **https://help.brightdesk.com**. The owner has confirmed ownership of `brightdesk.com`; current DNS is delegated to Sedo parking nameservers. The registrar and authoritative-DNS editing access are not yet confirmed. No purchase or DNS change is authorised.
 
 Before reporting the site as live:
 
 1. Confirm the Cloudflare GitHub App is installed for **only** conz20/Brightdesk-Wiki.
 2. Confirm project build settings, production branch main, output _site and preview branch **None**.
-3. Confirm the owner controls the selected `.com` domain and approves the precise DNS change.
-4. In Cloudflare Pages, add `help.brightdesk.com` under **Custom domains**. For this subdomain, Cloudflare documents a CNAME record pointing `help.brightdesk.com` to the exact project `*.pages.dev` hostname; do not create the record before the Pages custom domain is registered in the dashboard.
-5. Confirm a production build completes, the Cloudflare Pages output audit passes and the custom domain obtains a valid HTTPS certificate.
-6. Open the homepage, Suite guide and all ten product guides. Check links, local CSS, narrow-screen layout, visible keyboard focus and reduced-motion styling.
-7. Record the exact `.com` URL and deployed commit SHA. The generated `pages.dev` address is not the customer-facing URL.
-8. Only after the `.com` URL is live, update the eleven in-app Help links to that exact address. Keep the existing Help-link pull requests unmerged until then.
+3. Record that the owner has confirmed domain ownership, then identify the registrar and the authoritative DNS control panel.
+4. Inventory and preserve all existing DNS records before changing DNS. The current Sedo nameservers indicate domain parking; do not change nameservers until the full existing record set is known.
+5. In Cloudflare Pages, add `help.brightdesk.com` under **Custom domains**. For this subdomain, Cloudflare documents a CNAME record pointing `help.brightdesk.com` to the exact project `*.pages.dev` hostname. Add that CNAME at the authoritative DNS provider only after the custom domain is registered in the Cloudflare Pages dashboard and the owner has approved the exact DNS change.
+6. Confirm a production build completes, the Cloudflare Pages output audit passes and the custom domain obtains a valid HTTPS certificate.
+7. Open the homepage, Suite guide and all ten product guides. Check links, local CSS, narrow-screen layout, visible keyboard focus and reduced-motion styling.
+8. Record the exact `.com` URL and deployed commit SHA. The generated `pages.dev` address is not the customer-facing URL.
+9. Only after the `.com` URL is live, update the eleven in-app Help links to that exact address. Keep the existing Help-link pull requests unmerged until then.
 
 Cloudflare's custom-domain instructions for subdomains are documented at [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/).
 
