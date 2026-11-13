@@ -23,16 +23,18 @@ Brightdesk is free forever. There are no customer subscriptions, trials, paid ti
 
 ## Current status — 13 November 2026
 
-The customer Help website is **not ready for publication**. Its current implementation is being developed in [draft pull request #3](https://github.com/conz20/Brightdesk-Wiki/pull/3). The source repository remains private.
+The initial Help website framework, build and privacy checks, maintainer setup documentation, and ten product-guide drafts have been merged into `main` from [PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3).
 
-The draft contains a Jekyll site structure, the Suite getting-started guide and ten product guide drafts. Their evidence status is deliberately conservative:
+**The customer website is not ready for publication.** The merged material is a working source foundation, not a completed customer help centre.
 
-- Suite getting-started guide: **Source-confirmed**, not yet verified in a complete live desktop walkthrough.
-- All ten product guides: **Needs review** until their steps are tested in current installed builds.
-- Genuine screenshots from the running Suite and products: **not yet captured**.
+- Suite getting-started guide: **Source-confirmed**. Its complete workflow still needs a live walkthrough.
+- All ten product guides: **Needs review** until each workflow is tested in a current installed desktop build.
+- Genuine screenshots from the running Suite and all ten products: **not yet captured**.
 - Working homepage search and clickable suggested-help links at the bottom of pages: **not yet implemented or verified**.
+- Exact current `main` revision: must pass the complete quality workflow, including the real Jekyll build and generated-output privacy audit, before it is considered build-ready.
+- Live Cloudflare Pages deployment and the `.com` custom domain: **not configured or verified**.
 
-The current draft must not be merged as a finished customer site until its exact latest revision passes the full quality workflow, including the real Jekyll build and generated-output privacy audit. A previous pass on an earlier revision is not evidence for a newer revision.
+Do not label a guide **Verified** until its instructions have been run in the named product version and operating system. Do not use concept artwork as a product screenshot.
 
 ## Hosting decision
 
@@ -46,8 +48,8 @@ Do not change nameservers or DNS records without a complete current zone export,
 
 - A professional, usable Help homepage with working search and suggested-help links.
 - A clear Suite guide and ten product-specific guides with simple, accurate instructions and practical examples.
-- Genuine screenshots captured from current running Brightdesk desktop builds. Do not use concept artwork as a product screenshot.
-- A complete walkthrough of every documented customer workflow, with version, operating system and evidence recorded. Do not label an untested guide **Verified**.
+- Genuine screenshots captured from current running Brightdesk desktop builds.
+- A complete walkthrough of every documented customer workflow, with version, operating system and evidence recorded.
 - Successful exact-head tests, Markdown-link checks, Jekyll generation and the generated-output privacy audit.
 - A browser review of all customer pages, navigation, keyboard use, narrow desktop windows, visible focus and reduced-motion behavior.
 - A verified Cloudflare Pages Free production connection, the approved custom domain with valid HTTPS, and a recorded deployed commit.
@@ -56,5 +58,6 @@ The generated customer site must remain static and read-only. It must not contai
 
 ## Related work
 
-- [Draft customer Help implementation — PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3)
+- [Merged Help website implementation — PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3)
 - [Intended customer Help address](https://help.brightdesk.com) — not yet live
+- [Wiki GitHub Actions](https://github.com/conz20/Brightdesk-Wiki/actions)
