@@ -1,61 +1,60 @@
 # Brightdesk Wiki
 
-Brightdesk Wiki is the private source repository for a separate, read-only Brightdesk customer help centre. It is not an engineering wiki and is not part of Brightdesk Suite or any desktop product.
+The private source repository for the separate Brightdesk customer Help website. The Help website is not a customer product, desktop application, installer component or offline dependency.
 
-## Customer-facing scope
+## Approved customer scope
 
-The intended help website contains only:
+Brightdesk Help supports the integrated Suite and exactly ten customer products:
 
-- A Brightdesk Help homepage.
-- A Brightdesk Suite getting-started guide.
-- One practical guide for each of the ten approved products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
-- Local CSS and the navigation needed to use those pages.
+1. Pages
+2. Sheets
+3. Decks
+4. Notes
+5. Database
+6. Forms
+7. Lists
+8. Planner
+9. To Do
+10. Workspace
 
-It must not become a general technical knowledge base. Architecture, development, release and security material is maintainer-only source content and must never appear in generated customer output.
+Brightdesk-AI and the shared engineering repositories are not additional customer products.
 
-The Wiki is not installed, bundled, included in the Suite App Centre or required to use Brightdesk offline.
+Brightdesk is free forever. There are no customer subscriptions, trials, paid tiers, licence fees, activation codes, accounts, sign-ins, passwords, paywalls or advertising.
 
-## Current status
+## Current status — 13 November 2026
 
-The `main` branch currently contains this repository scope document only. The separate draft customer-help implementation is in [PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3).
+The customer Help website is **not ready for publication**. Its current implementation is being developed in [draft pull request #3](https://github.com/conz20/Brightdesk-Wiki/pull/3). The source repository remains private.
 
-The ten product guides are still labelled **Needs review** until each workflow is walked through in a current installed desktop build. The Suite getting-started guide is **Source-confirmed**, not **Verified**. Genuine runtime screenshots have not yet been captured.
+The draft contains a Jekyll site structure, the Suite getting-started guide and ten product guide drafts. Their evidence status is deliberately conservative:
 
-The current-head Wiki quality workflow has been queued but has not completed. A source test pass alone is not proof that the real Jekyll site builds or that generated output is safe.
+- Suite getting-started guide: **Source-confirmed**, not yet verified in a complete live desktop walkthrough.
+- All ten product guides: **Needs review** until their steps are tested in current installed builds.
+- Genuine screenshots from the running Suite and products: **not yet captured**.
+- Working homepage search and clickable suggested-help links at the bottom of pages: **not yet implemented or verified**.
 
-## Privacy and read-only requirements
+The current draft must not be merged as a finished customer site until its exact latest revision passes the full quality workflow, including the real Jekyll build and generated-output privacy audit. A previous pass on an earlier revision is not evidence for a newer revision.
 
-- Keep this source repository private. Do not create a public replacement repository or change repository visibility, permissions or settings.
-- The future customer site must be static and read-only. No customer accounts, sign-ins, passwords, comments, uploads, forms, editing or administration controls.
-- Do not include Brightdesk-AI prompts, credentials, customer files, internal reports, analytics, advertising, tracking, external scripts or third-party assets.
-- Only the homepage, Suite start page, exactly ten product guides and local CSS are permitted in generated output.
-- Keep private GitHub links and maintainer-only material out of the generated website.
+## Hosting decision
 
-## Publishing gate
+Cloudflare Pages Free is the approved hosting route. The intended customer address is **https://help.brightdesk.com**. This is a target address, not a live website.
 
-No GitHub Pages website is confirmed configured or deployed. The account plan has not been verified.
+The source repository must remain private. The Cloudflare GitHub App has not yet been installed for this repository, the Pages project has not been connected or verified, and the custom domain is not configured. Public DNS checks on 13 November 2026 showed the domain using Sedo parking nameservers; this is not a complete DNS-zone export.
 
-A published Pages website is public on the internet even when its source repository is private. Do not change repository visibility, buy or trial a paid plan, configure Pages or deploy the site until the existing account plan and all required privacy checks have been verified and the owner has authorised publication.
+Do not change nameservers or DNS records without a complete current zone export, a preservation plan and the owner's approval of the exact change. Do not advertise a generated `pages.dev` hostname as the customer Help address. Do not claim the website is live until the exact `.com` address, HTTPS, deployed commit and all customer pages have been verified.
 
-If the current account plan does not support Pages from this private source repository, leave the site unpublished. Do not move it to another host.
+## What must be complete before publication
 
-## Build and verification
+- A professional, usable Help homepage with working search and suggested-help links.
+- A clear Suite guide and ten product-specific guides with simple, accurate instructions and practical examples.
+- Genuine screenshots captured from current running Brightdesk desktop builds. Do not use concept artwork as a product screenshot.
+- A complete walkthrough of every documented customer workflow, with version, operating system and evidence recorded. Do not label an untested guide **Verified**.
+- Successful exact-head tests, Markdown-link checks, Jekyll generation and the generated-output privacy audit.
+- A browser review of all customer pages, navigation, keyboard use, narrow desktop windows, visible focus and reduced-motion behavior.
+- A verified Cloudflare Pages Free production connection, the approved custom domain with valid HTTPS, and a recorded deployed commit.
 
-The draft site uses Jekyll 4.4.1 and Ruby 3.4.4 as build-time tooling. Node.js 24.22.2 is used for documentation checks.
+The generated customer site must remain static and read-only. It must not contain accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images or customer-data collection. Keep architecture, development, security, release and maintainer material out of the generated customer output.
 
-The implementation branch documents these commands:
+## Related work
 
-~~~sh
-npm ci --no-audit --no-fund
-npm run check:node
-npm run check
-npm test
-npm run links
-bundle install
-bundle exec jekyll build
-npm run check:site
-~~~
-
-The public-output audit is intended to reject symlinks, unapproved files, internal content, scripts, forms, editable controls, executable URLs, private GitHub links and external resources. The exact current-head quality workflow must complete successfully, including a real Jekyll build and generated-output audit, before any claim of build readiness.
-
-Do not mark product instructions Verified until they have been tested in the named product version and operating system.
+- [Draft customer Help implementation — PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3)
+- [Intended customer Help address](https://help.brightdesk.com) — not yet live
