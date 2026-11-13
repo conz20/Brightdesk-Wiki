@@ -65,8 +65,17 @@ function getNormalizedUrlAttributes(html) {
 
 export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
   const rootDir = path.resolve(siteRoot);
-  if (!fs.existsSync(rootDir) || !fs.statSync(rootDir).isDirectory()) {
+  let rootMetadata;
+  try {
+    rootMetadata = fs.lstatSync(rootDir);
+  } catch {
     fail('site output directory does not exist: ' + rootDir);
+  }
+  if (rootMetadata.isSymbolicLink()) {
+    fail('site output root must not be a symbolic link: ' + rootDir);
+  }
+  if (!rootMetadata.isDirectory()) {
+    fail('site output path must be a real directory: ' + rootDir);
   }
   const files = walkFiles(rootDir, rootDir);
   const fileSet = new Set(files);
