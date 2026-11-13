@@ -73,7 +73,7 @@ test('customer Help address is the approved .com domain and DNS changes remain g
   assert.match(cloudflareGuide, /owner has confirmed.*own.*brightdesk\.com/i);
   assert.match(cloudflareGuide, /ns1\.sedoparking\.com.*ns2\.sedoparking\.com/i);
   assert.match(cloudflareGuide, /root A record.*64\.190\.63\.111/i);
-  assert.match(cloudflareGuide, /www.*64\.190\.63\.222.*help.*64\.190\.63\.111/i);
+  assert.match(cloudflareGuide, /www.*64\.190\.63\.111.*help.*64\.190\.63\.111/i);
   assert.match(cloudflareGuide, /not a complete zone export/i);
   assert.match(cloudflareGuide, /Public DNS does not show whether the owner's Sedo account supports custom records/i);
   assert.match(cloudflareGuide, /check whether the Sedo account provides editable DNS records/i);
