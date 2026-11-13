@@ -24,7 +24,7 @@ The current portfolio contains **27 private repositories**: one Suite, exactly t
 - **Brightdesk-Common-Actions** — reusable, pinned non-AI GitHub Actions and CI components.
 - **Brightdesk-Developer-Tools** — local developer diagnostics, utilities, SDKs and documented setup aids.
 - **Brightdesk-Extensions** — declarative extension manifests and permission contracts; a validated manifest is not a runtime or permission-enforcement system.
-- **Brightdesk-Wiki** — private Markdown knowledge resource; no public hosted help site or customer-facing distribution is currently approved, and it is not installed or required by customer software.
+- **Brightdesk-Wiki** — private Markdown source for a separate customer-help website; Cloudflare Pages Free is owner-approved but not yet connected or deployed. The help site is not installed or required by customer software.
 - **Brightdesk-Release-Tools** — read-only release manifests, artifact inventories, checksum validation and release evidence.
 - **Brightdesk-Assets** — approved local visual assets, provenance, rights evidence, attribution and integrity validation; it is not a CDN or runtime asset service.
 - **Brightdesk-Type-Preview** — local font-preview and installed-font metadata contracts; it is not a hosted font service and does not own font binaries.
