@@ -1,29 +1,61 @@
 # Brightdesk Wiki
 
-## Repository purpose
+Brightdesk Wiki is the private source repository for a separate, read-only Brightdesk customer help centre. It is not an engineering wiki and is not part of Brightdesk Suite or any desktop product.
 
-The maintained technical knowledge base for Brightdesk products, shared foundations, engineering workflows, and release operations.
+## Customer-facing scope
+
+The intended help website contains only:
+
+- A Brightdesk Help homepage.
+- A Brightdesk Suite getting-started guide.
+- One practical guide for each of the ten approved products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
+- Local CSS and the navigation needed to use those pages.
+
+It must not become a general technical knowledge base. Architecture, development, release and security material is maintainer-only source content and must never appear in generated customer output.
+
+The Wiki is not installed, bundled, included in the Suite App Centre or required to use Brightdesk offline.
 
 ## Current status
 
-Bootstrap scope recorded; initial information architecture is under development on the existing draft pull request.
+The `main` branch currently contains this repository scope document only. The separate draft customer-help implementation is in [PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3).
 
-## Immediate engineering goals
+The ten product guides are still labelled **Needs review** until each workflow is walked through in a current installed desktop build. The Suite getting-started guide is **Source-confirmed**, not **Verified**. Genuine runtime screenshots have not yet been captured.
 
-Create a versioned documentation structure, architecture index, product guides, contribution rules, and link/freshness checks.
+The current-head Wiki quality workflow has been queued but has not completed. A source test pass alone is not proof that the real Jekyll site builds or that generated output is safe.
 
-## Scope and safety boundaries
+## Privacy and read-only requirements
 
-Documentation must reflect the ten approved customer products and separate private engineering infrastructure from customer-facing software.
+- Keep this source repository private. Do not create a public replacement repository or change repository visibility, permissions or settings.
+- The future customer site must be static and read-only. No customer accounts, sign-ins, passwords, comments, uploads, forms, editing or administration controls.
+- Do not include Brightdesk-AI prompts, credentials, customer files, internal reports, analytics, advertising, tracking, external scripts or third-party assets.
+- Only the homepage, Suite start page, exactly ten product guides and local CSS are permitted in generated output.
+- Keep private GitHub links and maintainer-only material out of the generated website.
 
-## Supported development platforms
+## Publishing gate
 
-Brightdesk customer software is desktop-only: Windows, macOS, and Linux. This repository does not create Android, iPhone, iPad, or other mobile editions.
+No GitHub Pages website is confirmed configured or deployed. The account plan has not been verified.
 
-## Contribution and completion standard
+A published Pages website is public on the internet even when its source repository is private. Do not change repository visibility, buy or trial a paid plan, configure Pages or deploy the site until the existing account plan and all required privacy checks have been verified and the owner has authorised publication.
 
-Work is developed on a feature branch and reviewed through a pull request. Do not merge unverified changes or bypass required checks. Keep tests, documentation, and implementation aligned. Mark work complete only when the relevant current commit has passed its required verification.
+If the current account plan does not support Pages from this private source repository, leave the site unpublished. Do not move it to another host.
 
-## Brightdesk portfolio
+## Build and verification
 
-This repository is part of the Brightdesk engineering portfolio. The customer suite contains exactly ten products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do, and Workspace. Brightdesk-AI and shared engineering repositories are not additional customer products.
+The draft site uses Jekyll 4.4.1 and Ruby 3.4.4 as build-time tooling. Node.js 24.22.2 is used for documentation checks.
+
+The implementation branch documents these commands:
+
+~~~sh
+npm ci --no-audit --no-fund
+npm run check:node
+npm run check
+npm test
+npm run links
+bundle install
+bundle exec jekyll build
+npm run check:site
+~~~
+
+The public-output audit is intended to reject symlinks, unapproved files, internal content, scripts, forms, editable controls, executable URLs, private GitHub links and external resources. The exact current-head quality workflow must complete successfully, including a real Jekyll build and generated-output audit, before any claim of build readiness.
+
+Do not mark product instructions Verified until they have been tested in the named product version and operating system.
