@@ -39,7 +39,7 @@ The Wiki is a separate, free-to-read customer help centre. It is not a product, 
 
 ## Public site and private source
 
-The owner has authorised publishing the customer Help website through **Cloudflare Pages Free**. The source repository conz20/Brightdesk-Wiki remains private.
+The owner has authorised publishing the customer Help website through **Cloudflare Pages Free** and selected **https://help.brightdesk.com** as the intended customer-facing address. The source repository conz20/Brightdesk-Wiki remains private.
 
 - Use Cloudflare's GitHub integration for this repository only.
 - Configure the GitHub App for **Only select repositories**, with conz20/Brightdesk-Wiki as the sole selected repository.
@@ -49,9 +49,12 @@ The owner has authorised publishing the customer Help website through **Cloudfla
 - Build output directory: _site.
 - Node.js 24.22.2 and Ruby 3.4.4 are pinned in the repository's .node-version and .ruby-version files.
 - The build runs tests, Markdown-link checks, Jekyll generation and the exact customer-output allowlist audit before Cloudflare publishes the build.
-- No Cloudflare API token, GitHub Pages configuration, custom domain, DNS change, paid service, purchase or upgrade is required for this plan.
+- No Cloudflare API token, paid plan, trial, domain purchase or upgrade is authorised.
+- The generated `*.pages.dev` hostname is a technical Pages origin only. It must not be advertised or used as the customer-facing Help address.
 
-The public pages.dev address will be confirmed after the Cloudflare project is created and its first deployment succeeds. The site is **not yet published**. Do not publish or release the in-app Help links until the exact public URL and deployed commit have been verified.
+A DNS check on 13 November 2026 found `brightdesk.com` pointed to a Sedo parking address and used Sedo nameservers. Domain ownership and registrar/DNS control have not been verified. The owner has not authorised a domain purchase or any nameserver/DNS change. Do not attempt either action.
+
+Once the owner has obtained and confirmed control of `brightdesk.com`, add `help.brightdesk.com` as the Pages custom subdomain and configure its CNAME only after the custom domain is registered in Cloudflare Pages. If `brightdesk.com` cannot be obtained, wait for the owner to approve an alternative `.com` address. The site is **not yet published**. Do not publish the in-app Help links until the exact `.com` URL and deployed commit have been verified.
 
 Cloudflare's GitHub App must not be granted access to any other Brightdesk repository. Customers can read only the published static help pages; they do not receive GitHub or source-repository access. The private source continues to contain owner-only maintainer material.
 
