@@ -32,9 +32,12 @@
         <ul class="search-results" aria-label="Matching help guides" hidden></ul>
       </section>
     </header>
+    {% assign public_help_paths = "/index.html|/customer-start-here.html|/products/pages.html|/products/sheets.html|/products/decks.html|/products/notes.html|/products/database.html|/products/forms.html|/products/lists.html|/products/planner.html|/products/to-do.html|/products/workspace.html" | split: "|" %}
     <nav class="search-index" aria-label="Searchable help guide content" hidden>
       {% for help_page in site.pages %}
-        <a href="{{ help_page.url | relative_url }}" data-search-text="{{ help_page.content | strip_html | strip_newlines | escape }}">{{ help_page.title | default: "Brightdesk Help" }}</a>
+        {% if public_help_paths contains help_page.url %}
+          <a href="{{ help_page.url | relative_url }}" data-search-text="{{ help_page.content | strip_html | strip_newlines | escape }}">{{ help_page.title | default: "Brightdesk Help" }}</a>
+        {% endif %}
       {% endfor %}
     </nav>
     <main id="main" class="main-content">
