@@ -36,6 +36,33 @@ function walkFiles(rootDir, currentDir) {
   return output;
 }
 
+function decodeHtmlCharacterReferences(value) {
+  return value
+    .replace(/&#(x[0-9a-f]+|[0-9]+);?/gi, (match, numeric) => {
+      const codePoint = numeric[0].toLowerCase() === 'x'
+        ? Number.parseInt(numeric.slice(1), 16)
+        : Number.parseInt(numeric, 10);
+      if (!Number.isInteger(codePoint) || codePoint <= 0 || codePoint > 0x10ffff ||
+          (codePoint >= 0xd800 && codePoint <= 0xdfff)) return '\uFFFD';
+      return String.fromCodePoint(codePoint);
+    })
+    .replace(/&colon;/gi, ':')
+    .replace(/&sol;/gi, '/')
+    .replace(/&Tab;/gi, '\t')
+    .replace(/&NewLine;/gi, '\n');
+}
+
+function getNormalizedUrlAttributes(html) {
+  const values = [];
+  const pattern = /\b(?:href|src)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
+  for (const match of html.matchAll(pattern)) {
+    values.push((match[1] ?? match[2] ?? match[3] ?? '')
+      .replace(/[\u0000-\u0020\u007f]+/g, '')
+      .trim());
+  }
+  return values;
+}
+
 export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
   const rootDir = path.resolve(siteRoot);
   if (!fs.existsSync(rootDir) || !fs.statSync(rootDir).isDirectory()) {
@@ -62,23 +89,26 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
 
   const htmlFiles = files.filter(file => file.endsWith('.html'));
   for (const file of htmlFiles) {
-    const html = fs.readFileSync(path.join(rootDir, file), 'utf8');
+    const html = decodeHtmlCharacterReferences(fs.readFileSync(path.join(rootDir, file), 'utf8'));
     if (!/<!doctype html>/i.test(html)) fail(file + ' is missing an HTML doctype');
     if (/<(?:form|input|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
       fail(file + ' contains interactive or editable controls; customer help must remain read-only');
     }
     if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) || /\b(?:href|src)\s*=\s*["']?\s*(?:javascript|data|vbscript):/i.test(html)) {
-      fail(file + ' contains an active HTML event handler or executable URL');
+    const urlAttributes = getNormalizedUrlAttributes(html);
+    if (/\son[a-z][a-z0-9_-]*\s*=\s*/i.test(html) ||
+        urlAttributes.some(value => /^(?:javascript|data|vbscript):/i.test(value))) {
     }
     if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
-    if (/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(html)) {
+    if (/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(html) ||
+        urlAttributes.some(value => /^(?:https?:)?\/\//i.test(value))) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
-  if (/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
+  if (/@import\b/i.test(css) || /(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
   return { files: files.length, htmlPages: htmlFiles.length };
 }
 
