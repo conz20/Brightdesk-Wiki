@@ -141,3 +141,20 @@ test('HTML character references cannot hide executable URL schemes', t => {
   fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><a href="java&#x73;cript:alert(1)">Open</a>');
   assert.throws(() => checkPublicSite({ siteRoot }), /active HTML event handler or executable URL/i);
 });
+
+test('a symbolic-link site output root is rejected rather than followed', {
+  skip: process.platform === 'win32'
+}, t => {
+  const realSiteRoot = siteFixture(t);
+  const linkedSiteRoot = path.join(
+    path.dirname(realSiteRoot),
+    path.basename(realSiteRoot) + '-root-link'
+  );
+  fs.symlinkSync(realSiteRoot, linkedSiteRoot, 'dir');
+  t.after(() => fs.rmSync(linkedSiteRoot, { force: true }));
+
+  assert.throws(
+    () => checkPublicSite({ siteRoot: linkedSiteRoot }),
+    /site output root must not be a symbolic link/i
+  );
+});
