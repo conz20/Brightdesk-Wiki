@@ -54,7 +54,7 @@ test('customer guides explain destructive actions and protected minimums', () =>
 
 test('Pages guide names the supported PDF export control', () => {
   const source = fs.readFileSync(path.join(productDirectory, 'pages.md'), 'utf8');
-  assert.match(source, /open \\*\\*Home\\*\\* and choose \\*\\*PDF\\*\\* in the \\*\\*Export\\*\\* group/i);
+  assert.ok(source.includes('open **Home** and choose **PDF** in the **Export** group'));
 });
 
 test('Sheets guide distinguishes the selected cell reference from its formula input', () => {
