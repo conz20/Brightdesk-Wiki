@@ -55,7 +55,7 @@ The public pages.dev address will be confirmed after the Cloudflare project is c
 
 Cloudflare's GitHub App must not be granted access to any other Brightdesk repository. Customers can read only the published static help pages; they do not receive GitHub or source-repository access. The private source continues to contain owner-only maintainer material.
 
-The old GitHub Pages plan and workflow are retained as historical documentation in [the superseded GitHub Pages notes](docs/development/github-pages.md). The active setup is [Cloudflare Pages Free](docs/development/cloudflare-pages.md).
+The earlier GitHub Pages setup investigation is retained as historical documentation in [the superseded GitHub Pages notes](docs/development/github-pages.md). The active setup is [Cloudflare Pages Free](docs/development/cloudflare-pages.md).
 
 ## Website build and privacy gate
 
@@ -83,7 +83,7 @@ bundle exec jekyll build
 npm run check:site
 ~~~
 
-A source test pass is not the same as a real production deployment. The production workflow repeats these checks on `main`, uploads the generated site only after the public-output audit, and deploys through the `github-pages` environment.
+A source test pass is not the same as a real production deployment. GitHub Actions runs the private-repository quality checks on pull requests and main. Cloudflare Pages runs the complete build:cloudflare command for production, including the generated-output audit, before publishing main.
 
 ## Documentation rules
 
