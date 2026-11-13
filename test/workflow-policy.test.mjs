@@ -39,3 +39,19 @@ test('quality workflow always runs Jekyll build and the generated-output privacy
   assert.match(workflow, /run:\s*npm run check:site/);
   assert.doesNotMatch(workflow, /if:\s*steps\.ruby\.outputs\.available/);
 });
+
+
+test('developer runtime pins match the exact CI runtimes without fallback versions', () => {
+  const nodeVersion = fs.readFileSync(new URL('../.node-version', import.meta.url), 'utf8').trim();
+  const rubyVersion = fs.readFileSync(new URL('../.ruby-version', import.meta.url), 'utf8').trim();
+  const packageJson = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+
+  assert.equal(nodeVersion, '24.22.2');
+  assert.equal(packageJson.engines.node, '24.22.2');
+  assert.match(workflow, /node-version:\s*24\.22\.2/);
+  assert.equal(rubyVersion, '3.4.4');
+  assert.match(workflow, /ruby-version:\s*['"]3\.4\.4['"]/);
+  assert.match(workflow, /runs-on:\s*\[self-hosted,\s*macOS,\s*ARM64\]/);
+  assert.doesNotMatch(workflow, /node-version:\s*22(?:\.|['"])/);
+  assert.doesNotMatch(workflow, /ruby-version:\s*['"]3\.[0-3]\./);
+});
