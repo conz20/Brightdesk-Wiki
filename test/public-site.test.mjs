@@ -201,3 +201,22 @@ test('CSS escapes are rejected because the site needs no escaped CSS values', t 
   fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@\\\\69mport \"//example.com/site.css\";');
   assert.throws(() => checkPublicSite({ siteRoot }), /CSS escape/i);
 });
+
+
+test('style elements cannot add inline styles or external imports', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><style>@import \"//example.com/site.css\";</style>'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /inline CSS/i);
+});
+
+test('non-web URL schemes are rejected in resource attributes', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><img src=\"ftp://images.example.com/photo.png\" alt=\"Example\">'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
+});
