@@ -13,12 +13,13 @@ The source repository conz20/Brightdesk-Wiki remains private. The published outp
 - The owner explicitly approved Cloudflare Pages Free for publishing the Help website.
 - The owner's preferred public customer address is **https://help.brightdesk.com**. Treat this as the intended canonical URL, not as a live or registered domain.
 - The owner has confirmed in this conversation that they own `brightdesk.com`. Record this as **owner-confirmed**, not as independent registry verification.
-- A DNS check on 13 November 2026 found `brightdesk.com` delegated to `ns1.sedoparking.com` and `ns2.sedoparking.com`, with a Sedo parking address. Sedo documents these nameservers as its domain-parking setup. This indicates that the domain is currently parked through Sedo; it does **not** mean the domain is for sale.
-- The domain registrar and the owner's ability to edit the authoritative DNS are not yet established. The nameservers currently in use are Sedo's, so a `help` CNAME must be created at the DNS provider that is authoritative for the domain. Do not assume Sedo's parking DNS panel supports custom records.
+- Public DNS on 13 November 2026 confirms that the whole domain is delegated to Sedo parking nameservers: `ns1.sedoparking.com` and `ns2.sedoparking.com`. The root A record is `64.190.63.111`; `www` resolves to `64.190.63.222`; `help` currently resolves to the parking IP `64.190.63.111`. The visible MX record is priority 0 `localhost`, and TXT includes `v=spf1 -all`. The SOA identifies `hostmaster.sedo.de`. This is a public DNS snapshot, not a complete zone export; other record types or records not returned by the lookup may exist.
+- The registrar and the owner's ability to edit authoritative DNS are not yet established. `help.brightdesk.com` is not a Pages CNAME yet; it resolves to the Sedo parking IP. Sedo parking nameservers serve the parked zone, and independent technical documentation confirms that user-defined records cannot be added while the domain is delegated to Sedo's parking nameservers. Do not try to create a Pages CNAME inside the Sedo parking zone.
 - No domain purchase, transfer, paid Cloudflare plan, trial, subscription, add-on, GitHub plan or upgrade is authorised.
 - Do not publish or advertise a `pages.dev` address as the customer website. Cloudflare's generated `pages.dev` host is a technical Pages origin only. The customer-facing URL must end in `.com`.
 - Keep `https://help.brightdesk.com` as the target. Before configuring DNS, identify the registrar/DNS control panel and inventory the existing DNS records. Preserve any existing website, mail, verification and security records. Do not replace nameservers or alter DNS until the record set is understood and the owner has approved the exact change.
 - Use Cloudflare's GitHub integration. Do not create or store a Cloudflare API token or account ID in the repository.
+- The linked GitHub account's installed-app listing was checked on 13 November 2026. The Cloudflare GitHub App was not present, so Cloudflare has not yet been granted repository access and no Pages Git integration project is connected.
 - The GitHub App installation must be scoped to **Only select repositories**, with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to any other Brightdesk source repository.
 - The source repository stays private. Do not change GitHub repository visibility or collaborator permissions.
 
@@ -94,13 +95,16 @@ Before reporting the site as live:
 
 1. Confirm the Cloudflare GitHub App is installed for **only** conz20/Brightdesk-Wiki.
 2. Confirm project build settings, production branch main, output _site and preview branch **None**.
-3. Record that the owner has confirmed domain ownership, then identify the registrar and the authoritative DNS control panel.
-4. Inventory and preserve all existing DNS records before changing DNS. The current Sedo nameservers indicate domain parking; do not change nameservers until the full existing record set is known.
-5. In Cloudflare Pages, add `help.brightdesk.com` under **Custom domains**. For this subdomain, Cloudflare documents a CNAME record pointing `help.brightdesk.com` to the exact project `*.pages.dev` hostname. Add that CNAME at the authoritative DNS provider only after the custom domain is registered in the Cloudflare Pages dashboard and the owner has approved the exact DNS change.
-6. Confirm a production build completes, the Cloudflare Pages output audit passes and the custom domain obtains a valid HTTPS certificate.
-7. Open the homepage, Suite guide and all ten product guides. Check links, local CSS, narrow-screen layout, visible keyboard focus and reduced-motion styling.
-8. Record the exact `.com` URL and deployed commit SHA. The generated `pages.dev` address is not the customer-facing URL.
-9. Only after the `.com` URL is live, update the eleven in-app Help links to that exact address. Keep the existing Help-link pull requests unmerged until then.
+3. Record the owner's confirmation that they control `brightdesk.com` and identify the registrar and DNS provider.
+4. Obtain a complete DNS-zone export from the current authoritative provider. The public lookup on 13 November 2026 returned root A `64.190.63.111`, `www` A `64.190.63.222`, `help` A `64.190.63.111`, MX `localhost` and TXT `v=spf1 -all`, but this is not a complete zone export.
+5. Create a DNS zone at the chosen provider and reproduce every existing record from the complete export. Preserve root and `www` parking records if the owner wants the existing parked landing page to remain. Validate all website, mail, verification, DNSSEC and security records before changing nameservers.
+6. The present Sedo parking nameservers cannot supply the required user-controlled Pages CNAME. At the registrar, change the authoritative nameservers only after the new DNS zone is complete and the owner has approved the exact nameserver change. Never change nameservers blindly or leave records behind.
+7. In Cloudflare Pages, add `help.brightdesk.com` under **Custom domains**. Cloudflare requires the subdomain to be added to the Pages project before the CNAME is created. The CNAME target must be the exact project `*.pages.dev` hostname.
+8. Add the `help` CNAME at the new authoritative DNS provider, then verify the custom domain obtains a valid HTTPS certificate and points to the correct Pages project.
+9. Confirm a production build completes, the Cloudflare Pages output audit passes, and the production deployment is from `main`.
+10. Open the homepage, Suite guide and all ten product guides. Check links, local CSS, narrow-screen layout, visible keyboard focus and reduced-motion styling.
+11. Record the exact `.com` URL and deployed commit SHA. The generated `pages.dev` address is not the customer-facing URL.
+12. Only after the `.com` URL is live, update the eleven in-app Help links to that exact address. Keep the existing Help-link pull requests unmerged until then.
 
 Cloudflare's custom-domain instructions for subdomains are documented at [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/).
 
