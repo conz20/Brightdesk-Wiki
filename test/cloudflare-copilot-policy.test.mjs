@@ -55,7 +55,7 @@ test('maintainer guide explains repository MCP settings and the dedicated Agents
   assert.match(guide, /COPILOT_MCP_CLOUDFLARE_API_TOKEN/);
   assert.match(guide, /Cloudflare Pages Edit/);
   assert.match(guide, /Account Settings Read/);
-  assert.match(guide, /does not install or authorise the GitHub App/i);
+  assert.match(guide, /does not install or authorise the Cloudflare GitHub App/i);
   assert.match(guide, /Cloudflare Pages Edit.*delete/i);
   assert.match(guide, /DNS Write.*not granted|Do not grant DNS Write/i);
 });
