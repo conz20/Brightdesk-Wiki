@@ -46,21 +46,33 @@ function decodeHtmlCharacterReferences(value) {
           (codePoint >= 0xd800 && codePoint <= 0xdfff)) return '\uFFFD';
       return String.fromCodePoint(codePoint);
     })
-    .replace(/&colon;/gi, ':')
-    .replace(/&sol;/gi, '/')
+    .replace(/&colon;?/gi, ':')
+    .replace(/&sol;?/gi, '/')
     .replace(/&Tab;/gi, '\t')
     .replace(/&NewLine;/gi, '\n');
 }
 
 function getNormalizedUrlAttributes(html) {
   const values = [];
-  const pattern = /\b(?:href|src)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
+  const pattern = /\b(href|src|srcset|poster|data|action|formaction|background|xlink:href)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
   for (const match of html.matchAll(pattern)) {
-    values.push((match[1] ?? match[2] ?? match[3] ?? '')
-      .replace(/[\u0000-\u0020\u007f]+/g, '')
-      .trim());
+    values.push({
+      name: match[1].toLowerCase(),
+      value: match[2] ?? match[3] ?? match[4] ?? ''
+    });
   }
   return values;
+}
+
+function containsUnsafeUrl(attribute) {
+  const candidates = attribute.name === 'srcset'
+    ? attribute.value.split(',').map(candidate => candidate.trim().split(/\s+/, 1)[0] ?? '')
+    : [attribute.value];
+
+  return candidates.some(candidate => {
+    const normalized = candidate.replace(/[\u0000-\u0020\u007f]+/g, '').trim();
+    return /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(normalized);
+  });
 }
 
 export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
@@ -109,15 +121,21 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       fail(file + ' contains an active HTML event handler or executable URL');
     }
     if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
-    if (/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(html) ||
-        urlAttributes.some(value => /^(?:https?:)?\/\//i.test(value))) {
+    if (/<style\b/i.test(html) || /\sstyle\s*=/i.test(html)) {
+      fail(file + ' contains inline CSS; customer styling must use the approved local stylesheet');
+    }
+    if (/<meta\b[^>]*\bhttp-equiv\s*=\s*["']?refresh\b/i.test(html)) {
+      fail(file + ' contains automatic navigation through a meta refresh');
+    }
+    if (/(?:https?:)?\/\//i.test(html) || urlAttributes.some(containsUnsafeUrl)) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
-  if (/@import\b/i.test(css) || /(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/:?#"'\s]|$)/i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
+  if (/\\/.test(css)) fail('site CSS contains a CSS escape that could hide an external resource');
+  if (/@import\b/i.test(css) || /(?:https?:)?\/\//i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
   return { files: files.length, htmlPages: htmlFiles.length };
 }
 
