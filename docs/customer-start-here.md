@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Brightdesk Suite: getting started
+title: "Brightdesk Suite: getting started"
 description: Install Brightdesk Suite, choose products, open workspaces and manage local files.
 status: Source-confirmed
 permalink: /customer-start-here.html
