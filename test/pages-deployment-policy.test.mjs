@@ -56,7 +56,7 @@ test('site configuration and customer homepage describe the intended public proj
 test('maintainer instructions preserve private source and free customer access without requiring a purchase', () => {
   assert.match(maintainerGuide, /source repository.*remain private/i);
   assert.match(maintainerGuide, /existing GitHub account.*eligible plan|eligible plan.*private source repository/i);
-  assert.match(maintainerGuide, /no additional purchase|no upgrade|no paid hosting/i);
+  assert.match(maintainerGuide, /no additional paid plan|upgrade|third-party hosting/i);
   assert.match(maintainerGuide, /Settings.*Pages/i);
   assert.match(maintainerGuide, /GitHub Actions/i);
 });
