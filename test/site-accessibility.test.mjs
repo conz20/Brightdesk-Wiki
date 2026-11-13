@@ -33,3 +33,34 @@ test('keyboard focus indicator is visible against both page and content surfaces
     );
   }
 });
+
+
+const layout = fs.readFileSync(new URL('../docs/_layouts/default.html', import.meta.url), 'utf8');
+
+test('help layout exposes a named main navigation and skip link', () => {
+  assert.match(layout, /<html lang="en-AU">/);
+  assert.match(layout, /<a class="skip-link" href="#main">Skip to content<\/a>/);
+  assert.match(layout, /<nav class="site-nav" aria-label="Main navigation">/);
+  assert.match(layout, /<main id="main" class="main-content">/);
+});
+
+test('help typography keeps comfortable reading size and spacing', () => {
+  const body = css.match(/body\s*\{([^}]*)\}/i);
+  assert.ok(body, 'The stylesheet must define body typography');
+  assert.match(body[1], /font-size:\s*1\.0625rem/i);
+  assert.match(body[1], /line-height:\s*1\.7/i);
+});
+
+test('reduced-motion and narrow-screen reading layouts remain supported', () => {
+  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/i);
+  assert.match(css, /scroll-behavior:\s*auto/);
+  assert.match(css, /@media\s*\(max-width:\s*600px\)/i);
+  assert.match(css, /\.content-card\s*\{[^}]*border-radius:/is);
+  assert.match(css, /\.content-card table\s*\{[^}]*overflow-x:\s*auto/is);
+});
+
+test('skip link becomes visible when keyboard-focused', () => {
+  const rule = css.match(/\.skip-link:focus\s*\{([^}]*)\}/i);
+  assert.ok(rule, 'The skip link must have a visible keyboard-focus state');
+  assert.match(rule[1], /top:\s*1rem/i);
+});
