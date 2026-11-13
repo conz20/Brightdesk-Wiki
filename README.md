@@ -27,7 +27,7 @@ Brightdesk-AI and the shared engineering repositories are not additional custome
 
 Brightdesk is free forever. There are no customer subscriptions, trials, paid tiers, licence fees, activation codes, accounts, sign-ins, passwords, paywalls or advertising.
 
-## Current status — 13 November 2026
+## Current status — 14 November 2026
 
 The initial Help website framework, build and privacy checks, maintainer setup documentation, and ten product-guide drafts have been merged into `main` from [PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3).
 
@@ -36,7 +36,8 @@ The initial Help website framework, build and privacy checks, maintainer setup d
 - Suite getting-started guide: **Source-confirmed**. Its complete workflow still needs a live walkthrough.
 - All ten product guides: **Needs review** until each workflow is tested in a current installed desktop build.
 - Genuine screenshots from the running Suite and all ten products: **not yet captured**.
-- Site-wide search and clickable task suggestions: **being implemented and tested in [PR #5](https://github.com/conz20/Brightdesk-Wiki/pull/5)**; not yet on main or in a live site.
+- Site-wide Help search and clickable task suggestions: **implemented in draft [PR #5](https://github.com/conz20/Brightdesk-Wiki/pull/5)**. The search index is explicitly restricted to the 12 approved customer pages; it does not index maintainer documentation. This work is not yet on `main` or in a live site.
+- Last successful exact code-and-search-policy run: commit `48d943f1b229f9439a08aa0512fdbe1bd172eef8`, run [43527098008](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43527098008): **80 tests passed, 0 failed**, Markdown links passed, Jekyll built, and the public-output audit passed with 12 pages and 14 static files. A later maintainer-documentation-only commit updates DNS and Pages readiness evidence; it still needs its own exact-head workflow result.
 - Exact current `main` revision: must pass the complete quality workflow, including the real Jekyll build and generated-output privacy audit, before it is considered build-ready.
 - Live Cloudflare Pages deployment and the `.com` custom domain: **not configured or verified**.
 
@@ -46,7 +47,7 @@ Do not label a guide **Verified** until its instructions have been run in the na
 
 Cloudflare Pages Free is the approved hosting route. The intended customer address is **https://help.brightdesk.com**. This is a target address, not a live website.
 
-The source repository must remain private. The Cloudflare GitHub App has not yet been installed for this repository, the Pages project has not been connected or verified, and the custom domain is not configured. Public DNS checks on 13 November 2026 showed the domain using Sedo parking nameservers; this is not a complete DNS-zone export.
+The source repository must remain private. The linked Cloudflare Workers & Pages dashboard showed **No projects found** on 14 November 2026. The GitHub App installation identity is not confirmed, so Cloudflare's GitHub App access cannot be claimed. A public DNS lookup on 14 November 2026 showed `help.brightdesk.com` resolving to Sedo parking A record `64.190.63.222`, with no CNAME; the authoritative nameservers remain Sedo. This is not a complete DNS-zone export.
 
 Do not change nameservers or DNS records without a complete current zone export, a preservation plan and the owner's approval of the exact change. Do not advertise a generated `pages.dev` hostname as the customer Help address. Do not claim the website is live until the exact `.com` address, HTTPS, deployed commit and all customer pages have been verified.
 
