@@ -44,3 +44,41 @@ The Workspace repository's current README, committed `src/index.html`, `src/work
 ## Release boundary
 
 This register is maintainer-only. The public website may contain only the help homepage, Suite getting-started page, the ten approved product guides and local CSS. Do not publish repository source links, build notes, this register or other maintainer documents.
+
+
+## Source review update — 13 November 2026
+
+This was a read-only source review against each product repository's current `main` branch. It checks whether the guide's documented controls and data rules are represented in code. It is **not** a desktop walkthrough and does not promote any guide to `Verified`.
+
+| Guide | Source behaviours confirmed |
+| --- | --- |
+| Pages | Page layout supports A4, US Letter and US Legal, portrait/landscape, and Normal/Narrow/Moderate/Wide margins. The editor source includes the PDF export action described by the guide. |
+| Sheets | The formula engine parses cell references and ranges, arithmetic, and the six named functions listed in the guide: SUM, AVERAGE, MIN, MAX, COUNT and COUNTA. |
+| Decks | The editor source contains the New slide, Duplicate, Delete, Title slide and Text slide controls; Lavender, Midnight and Paper themes; and the Slide Show action for the current slide. |
+| Notes | The editor source confirms Date, Divider and Checklist item insertion, Export note and a confirmation prompt before Clear note. |
+| Database | The workspace uses device-local storage and provides record search/sort and CSV export. The service protects the final table and the system ID field. |
+| Forms | The workspace supports Questions, Preview and Responses. Deleting a question removes that question's answer from each saved response; the guide's warning is accurate. |
+| Lists | The service confirms the five starting columns (Title, Status, Priority, Due date and Notes) and custom Text, Date and Choice columns. |
+| Planner | The service prevents deleting the final bucket. Deleting another bucket moves its tasks to a remaining bucket. The task card editor exposes title editing separately from the progress selector, as the guide states. |
+| To Do | The task service confirms due dates, Low/Normal/High priority, completion state and the Planned view's due-date filter. |
+| Workspace | The service protects the final page and final workspace. Page search checks titles and block content, and checklist items have their own completion state. |
+
+### Source snapshot identifiers
+
+The following blob SHAs identify the key modules inspected for this review. They are source references, not release/build identifiers.
+
+| Product | File on `main` | Blob SHA |
+| --- | --- | --- |
+| Pages | `src/page-layout.js` | `9777090bbbd01fee1b2789c703619dc8faa87859` |
+| Pages | `src/app.js` | `f499a20e8bf1283e67f50f73c6aeda5fb52a0c3b` |
+| Sheets | `src/formula.js` | `4b75569239c9834308f77815392b98d7371ea459` |
+| Decks | `src/app.js` | `7c24d368e62761aad95dd672bfe3529018fa9ae4` |
+| Notes | `src/app.js` | `08e3c08967e7fe24ee268cd8c0e4f237c40d6c68` |
+| Database | `src/database-service.js` | `1eefab8c225cf6e4eae426305ee0378838681e41` |
+| Forms | `src/forms-service.js` | `d925764977a79ec6b7d79af5e1a0d6e08ab9d8e4` |
+| Lists | `src/lists-service.js` | `ae3aebadd3194af4846c80fe58a2f1c98c88c57f` |
+| Planner | `src/planner-service.js` | `6b05218a71f0f0d63beebdf20decae5ea112f7fc` |
+| To Do | `src/todo-service.js` | `34e048b651dfdd50cb8b3292c660e1dbd57fe7f8` |
+| Workspace | `src/workspace-service.js` | `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` |
+
+**Outcome:** the inspected source supports the behaviours above. All ten guides remain `Needs review` until the documented workflows are run in current installed desktop builds. No screenshots, publication, Pages configuration, PR approval or merge were performed.
