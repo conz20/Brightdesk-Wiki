@@ -64,3 +64,23 @@ test('skip link becomes visible when keyboard-focused', () => {
   assert.ok(rule, 'The skip link must have a visible keyboard-focus state');
   assert.match(rule[1], /top:\s*1rem/i);
 });
+
+test('body, secondary and link text maintain readable contrast', () => {
+  const root = css.match(/:root\s*\{([^}]*)\}/i);
+  assert.ok(root, 'The stylesheet must define its colour tokens');
+  const token = name => {
+    const match = root[1].match(new RegExp('(?:^|\\s)--' + name + ':\\s*(#[0-9a-f]{6})', 'i'));
+    assert.ok(match, 'Missing explicit colour token --' + name);
+    return match[1];
+  };
+  const surfaces = [token('surface'), token('page')];
+  const textColours = [token('ink'), token('muted'), token('brand-dark')];
+  for (const textColour of textColours) {
+    for (const surface of surfaces) {
+      assert.ok(
+        contrastRatio(textColour, surface) >= 4.5,
+        'Text colour ' + textColour + ' must meet 4.5:1 contrast against ' + surface
+      );
+    }
+  }
+});
