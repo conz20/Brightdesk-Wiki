@@ -11,6 +11,8 @@ permalink: /index.html
 
 Welcome to the separate online help resource for Brightdesk. Use it to find the right product guide and understand which instructions have been verified.
 
+Brightdesk Suite, all ten approved Brightdesk products and this customer help centre are free for every customer. There are no subscriptions, paid tiers, trials, licence fees or charges to read these guides. You do not need a customer account, sign-in or password.
+
 [**Start here: find the help you need**](customer-start-here.html)
 
 ## Browse the ten Brightdesk products
