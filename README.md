@@ -16,7 +16,7 @@ The customer website is separate from Brightdesk Suite and all ten desktop produ
 
 The approved direction is GitHub Pages only. The source repository must remain private. GitHub Pages can publish from a private repository on GitHub Pro or an eligible higher plan; the generated website is public on the internet. GitHub Free requires a public repository for Pages.
 
-The current account plan has not been confirmed through an account billing/plan view. Do not change repository visibility, create a public replacement, buy or activate a paid plan, or configure/deploy Pages until the existing plan has been checked. The maintainer instructions are in [GitHub Pages setup](docs/development/github-pages.md).
+The current account plan has not been confirmed through an account billing/plan view. Do not change repository visibility, create a public replacement, buy or activate a paid plan, or configure/deploy Pages until the existing plan has been checked. The maintainer instructions are in [GitHub Pages setup](docs/development/github-pages.md). The approved macOS runner recovery procedure is in [private runner setup](docs/development/runner-recovery.md).
 
 ## Draft website build
 
