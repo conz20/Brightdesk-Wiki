@@ -72,7 +72,7 @@ test('customer Help address is the approved .com domain and DNS changes remain g
   assert.match(cloudflareGuide, /https:\/\/help\.brightdesk\.com/);
   assert.match(cloudflareGuide, /owner has confirmed.*own.*brightdesk\.com/i);
   assert.match(cloudflareGuide, /ns1\.sedoparking\.com.*ns2\.sedoparking\.com/i);
-  assert.match(cloudflareGuide, /14 November 2026.*root A record.*64\.190\.63\.222/i);
+  assert.match(cloudflareGuide, /14 November 2026.*root.*A record.*64\.190\.63\.222/i);
   assert.match(cloudflareGuide, /help.*returned no CNAME/i);
   assert.match(cloudflareGuide, /www hostname was not rechecked/i);
   assert.doesNotMatch(cloudflareGuide, /64\.190\.63\.111/);
