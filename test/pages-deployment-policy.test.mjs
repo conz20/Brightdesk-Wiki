@@ -73,7 +73,8 @@ test('customer Help address is the approved .com domain and DNS changes remain g
   assert.match(cloudflareGuide, /owner has confirmed.*own.*brightdesk\.com/i);
   assert.match(cloudflareGuide, /Sedo.*parking.*does \*\*not\*\* mean.*for sale/i);
   assert.match(cloudflareGuide, /registrar.*DNS.*not yet established/i);
-  assert.match(cloudflareGuide, /No domain purchase.*DNS settings/i);
+  assert.match(cloudflareGuide, /No domain purchase, transfer.*is authorised/i);
+  assert.match(cloudflareGuide, /Do not replace nameservers or alter DNS until.*owner has approved/i);
   assert.match(cloudflareGuide, /CNAME.*help.*pages\.dev|CNAME.*help.*exact project/i);
   assert.match(cloudflareGuide, /pages\.dev.*technical.*origin|technical.*Pages origin only/i);
 });
