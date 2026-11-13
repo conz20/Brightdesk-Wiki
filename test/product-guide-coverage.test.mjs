@@ -61,3 +61,11 @@ test('Sheets guide distinguishes the selected cell reference from its formula in
   const source = fs.readFileSync(path.join(productDirectory, 'sheets.md'), 'utf8');
   assert.match(source, /selected cell reference.*beside the formula input/i);
 });
+
+test('Database and Lists guides warn when a table or list is deleted', () => {
+  const database = fs.readFileSync(path.join(productDirectory, 'database.md'), 'utf8');
+  const lists = fs.readFileSync(path.join(productDirectory, 'lists.md'), 'utf8');
+  assert.match(database, /remove that table and its records/i);
+  assert.match(database, /must keep at least one table/i);
+  assert.match(lists, /remove the list and all its records/i);
+});
