@@ -70,8 +70,9 @@ test('Cloudflare Git integration is restricted to the private Wiki repository an
 
 test('customer Help address is the approved .com domain and DNS changes remain gated', () => {
   assert.match(cloudflareGuide, /https:\/\/help\.brightdesk\.com/);
-  assert.match(cloudflareGuide, /Sedo.*parking|parking.*Sedo/i);
-  assert.match(cloudflareGuide, /ownership.*DNS control.*not verified/i);
+  assert.match(cloudflareGuide, /owner has confirmed.*own.*brightdesk\.com/i);
+  assert.match(cloudflareGuide, /Sedo.*parking.*does \*\*not\*\* mean.*for sale/i);
+  assert.match(cloudflareGuide, /registrar.*DNS.*not yet established/i);
   assert.match(cloudflareGuide, /No domain purchase.*DNS settings/i);
   assert.match(cloudflareGuide, /CNAME.*help.*pages\.dev|CNAME.*help.*exact project/i);
   assert.match(cloudflareGuide, /pages\.dev.*technical.*origin|technical.*Pages origin only/i);
