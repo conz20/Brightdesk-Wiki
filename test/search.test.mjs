@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { searchTopics } from '../docs/assets/js/search.js';
+
+const layout = fs.readFileSync(new URL('../docs/_layouts/default.html', import.meta.url), 'utf8');
 
 const topics = [
   {
@@ -19,6 +22,30 @@ const topics = [
     searchText: 'Create project pages and add checklists.'
   }
 ];
+
+test('Help search indexes only the twelve approved customer pages', () => {
+  const declaration = layout.match(/\{%\s*assign public_help_paths = "([^"]+)"\s*\|\s*split:\s*"\|"\s*%\}/);
+  assert.ok(declaration, 'The layout must declare an explicit customer-page search allowlist');
+
+  const actualPaths = declaration[1].split('|');
+  const expectedPaths = [
+    '/index.html',
+    '/customer-start-here.html',
+    '/products/pages.html',
+    '/products/sheets.html',
+    '/products/decks.html',
+    '/products/notes.html',
+    '/products/database.html',
+    '/products/forms.html',
+    '/products/lists.html',
+    '/products/planner.html',
+    '/products/to-do.html',
+    '/products/workspace.html'
+  ];
+  assert.deepEqual(actualPaths, expectedPaths);
+  assert.equal(new Set(actualPaths).size, 12, 'The search allowlist must not contain duplicate pages');
+  assert.match(layout, /\{%\s*if public_help_paths contains help_page\.url\s*%\}/);
+});
 
 test('Help search finds a guide from words in its instructions', () => {
   assert.deepEqual(
