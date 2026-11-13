@@ -13,13 +13,13 @@ The source repository conz20/Brightdesk-Wiki remains private. The published outp
 - The owner explicitly approved Cloudflare Pages Free for publishing the Help website.
 - The owner's preferred public customer address is **https://help.brightdesk.com**. Treat this as the intended canonical URL, not as a live or registered domain.
 - The owner has confirmed in this conversation that they own `brightdesk.com`. Record this as **owner-confirmed**, not as independent registry verification.
-- Public DNS on 13 November 2026 confirms that the whole domain is delegated to Sedo parking nameservers: `ns1.sedoparking.com` and `ns2.sedoparking.com`. The root A record is `64.190.63.111`; a fresh lookup on 13 November 2026 shows both `www` and `help` resolving to `64.190.63.111`. The visible MX record is priority 0 `localhost`, and TXT includes `v=spf1 -all`. The SOA identifies `hostmaster.sedo.de`. This is a public DNS snapshot, not a complete zone export; other record types or records not returned by the lookup may exist.
+- A fresh public DNS lookup on 14 November 2026 reported the root `brightdesk.com` A record and `help.brightdesk.com` A record as `64.190.63.222`. The `help` hostname returned no CNAME and no AAAA record. The domain remains delegated to Sedo parking nameservers `ns1.sedoparking.com` and `ns2.sedoparking.com`. The visible MX record is priority 0 `localhost`, TXT includes `v=spf1 -all`, and the SOA identifies `hostmaster.sedo.de`. The `www` hostname was not rechecked in this lookup. This is a public DNS snapshot, not a complete zone export; other record types or records not returned by the lookup may exist.
 - The registrar and the owner's ability to edit authoritative DNS are not yet established. `help.brightdesk.com` is not a Pages CNAME yet; it resolves to the Sedo parking IP. Public DNS does not show whether the owner's Sedo account supports custom records. Check the account's DNS controls first. If it supports a custom CNAME, keep the current nameservers and add the record there. Migrate nameservers only if Sedo does not support the required record.
 - No domain purchase, transfer, paid Cloudflare plan, trial, subscription, add-on, GitHub plan or upgrade is authorised.
 - Do not publish or advertise a `pages.dev` address as the customer website. Cloudflare's generated `pages.dev` host is a technical Pages origin only. The customer-facing URL must end in `.com`.
 - Keep `https://help.brightdesk.com` as the target. Before configuring DNS, identify the registrar/DNS control panel and inventory the existing DNS records. Preserve any existing website, mail, verification and security records. Do not replace nameservers or alter DNS until the record set is understood and the owner has approved the exact change.
 - Use Cloudflare's GitHub integration. Do not create or store a Cloudflare API token or account ID in the repository.
-- The linked GitHub account's installed-app listing was checked on 13 November 2026. The Cloudflare GitHub App was not present, so Cloudflare has not yet been granted repository access and no Pages Git integration project is connected.
+- The current GitHub installed-app listing exposes one account installation but does not identify it as Cloudflare, so Cloudflare GitHub App access cannot be confirmed from that list. A read-only inspection of the linked Cloudflare account's **Workers & Pages** dashboard on 14 November 2026 displayed **No projects found**. There is currently no Brightdesk Help Pages project visible in that account.
 - The GitHub App installation must be scoped to **Only select repositories**, with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to any other Brightdesk source repository.
 - The source repository stays private. Do not change GitHub repository visibility or collaborator permissions.
 
@@ -74,6 +74,7 @@ The output audit requires exactly these files:
 - customer-start-here.html — Suite getting-started guide.
 - products/pages.html, products/sheets.html, products/decks.html, products/notes.html, products/database.html, products/forms.html, products/lists.html, products/planner.html, products/to-do.html, and products/workspace.html.
 - assets/css/site.css — local styling.
+- assets/js/search.js — the single audited local in-browser Help search module.
 
 No other output file or folder is permitted. Architecture, development, security, release and maintainer material stays in the private repository and outside the customer site. Do not publish repository READMEs, scripts, tests, workflows, lockfiles, credentials, prompts, internal reports, logs or customer documents.
 
@@ -96,7 +97,7 @@ Before reporting the site as live:
 1. Confirm the Cloudflare GitHub App is installed for **only** conz20/Brightdesk-Wiki.
 2. Confirm project build settings, production branch main, output _site and preview branch **None**.
 3. Record the owner's confirmation that they control `brightdesk.com` and identify the registrar and DNS provider.
-4. Obtain a complete DNS-zone export from the current authoritative provider. The public lookup on 13 November 2026 returned root A `64.190.63.111`, `www` A `64.190.63.111`, `help` A `64.190.63.111`, MX `localhost` and TXT `v=spf1 -all`, but this is not a complete zone export.
+4. Obtain a complete DNS-zone export from the current authoritative provider. The public lookup on 14 November 2026 returned root A `64.190.63.222` and `help` A `64.190.63.222`, with no `help` CNAME; the nameservers remain Sedo parking. MX `localhost`, TXT `v=spf1 -all` and the Sedo SOA were also visible. `www` was not rechecked. This is not a complete zone export.
 5. First check whether the Sedo account provides editable DNS records. If it does, keep the current nameservers and add the Pages CNAME there. If it does not, obtain a complete DNS-zone export, create a zone at the chosen provider, and reproduce every existing record. Preserve root and `www` parking records if the owner wants the existing parked landing page to remain. Validate all website, mail, verification, DNSSEC and security records before changing nameservers.
 6. Only if Sedo does not support the required custom CNAME, change the authoritative nameservers at the registrar after the replacement zone is complete and the owner has approved the exact change. Never change nameservers blindly or leave records behind.
 7. In Cloudflare Pages, add `help.brightdesk.com` under **Custom domains**. Cloudflare requires the subdomain to be added to the Pages project before the CNAME is created. The CNAME target must be the exact project `*.pages.dev` hostname.
@@ -133,7 +134,7 @@ Create a custom Cloudflare API token for the single account that owns the Bright
 
 The Cloudflare API MCP server is configured with the `search` and `execute` tools only. The Cloudflare Docs MCP server exposes only `search_cloudflare_documentation`. An API token does not install or authorise the GitHub App for Cloudflare Pages. The GitHub App must still be installed separately with **Only select repositories**, choosing Brightdesk-Wiki only.
 
-No Cloudflare token or GitHub secret has been created by this repository change. The Pages project, GitHub App connection, DNS configuration, deployment and live custom domain are not yet verified. Do not describe the site as live.
+No Cloudflare token or GitHub secret has been created by this repository change. As of the 14 November read-only dashboard check, the Cloudflare Workers & Pages page showed no projects. The Cloudflare GitHub App installation is not confirmed, DNS has not been changed, and no deployment or live custom domain is verified. Do not describe the site as live.
 
 ## Official Cloudflare documentation
 
