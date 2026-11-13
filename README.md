@@ -39,17 +39,23 @@ The Wiki is a separate, free-to-read customer help centre. It is not a product, 
 
 ## Public site and private source
 
-The owner has authorised the public, read-only Help website at:
+The owner has authorised publishing the customer Help website through **Cloudflare Pages Free**. The source repository conz20/Brightdesk-Wiki remains private.
 
-`https://conz20.github.io/Brightdesk-Wiki/`
+- Use Cloudflare's GitHub integration for this repository only.
+- Configure the GitHub App for **Only select repositories**, with conz20/Brightdesk-Wiki as the sole selected repository.
+- Production branch: main.
+- Preview branch deployments: **None**. Pull-request and working-branch previews must not be published.
+- Cloudflare build command: npm run build:cloudflare.
+- Build output directory: _site.
+- Node.js 24.22.2 and Ruby 3.4.4 are pinned in the repository's .node-version and .ruby-version files.
+- The build runs tests, Markdown-link checks, Jekyll generation and the exact customer-output allowlist audit before Cloudflare publishes the build.
+- No Cloudflare API token, GitHub Pages configuration, custom domain, DNS change, paid service, purchase or upgrade is required for this plan.
 
-The `conz20/Brightdesk-Wiki` source repository remains private. GitHub Pages publishes only the audited customer output; it does not make the source repository or maintainer documents public.
+The public pages.dev address will be confirmed after the Cloudflare project is created and its first deployment succeeds. The site is **not yet published**. Do not publish or release the in-app Help links until the exact public URL and deployed commit have been verified.
 
-The owner confirmed the existing GitHub account has an eligible plan for publishing a public Pages site from a private source repository. No additional paid plan, purchase, trial, upgrade or hosting service is authorised or required. Customers never pay to use Brightdesk or read the Help website.
+Cloudflare's GitHub App must not be granted access to any other Brightdesk repository. Customers can read only the published static help pages; they do not receive GitHub or source-repository access. The private source continues to contain owner-only maintainer material.
 
-The production workflow publishes only from the reviewed `main` branch after the full quality checks and generated-output audit pass. Pull requests do not deploy previews. The workflow uses the existing private macOS ARM64 runner and immutable action revisions.
-
-The maintainer instructions are in [GitHub Pages setup](docs/development/github-pages.md). The approved macOS runner recovery procedure is in [private runner setup](docs/development/runner-recovery.md).
+The old GitHub Pages plan and workflow are retained as historical documentation in [the superseded GitHub Pages notes](docs/development/github-pages.md). The active setup is [Cloudflare Pages Free](docs/development/cloudflare-pages.md).
 
 ## Website build and privacy gate
 
