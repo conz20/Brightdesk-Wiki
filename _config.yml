@@ -1,7 +1,7 @@
 title: Brightdesk Help
-description: Draft customer help content for Brightdesk desktop products; not yet published.
-url: ""
-baseurl: ""
+description: Public, read-only customer help for Brightdesk desktop products.
+url: "https://conz20.github.io"
+baseurl: "/Brightdesk-Wiki"
 source: docs
 destination: _site
 markdown: kramdown
