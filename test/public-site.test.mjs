@@ -119,6 +119,25 @@ test('protocol-relative external links are rejected from customer pages', t => {
 
 test('protocol-relative stylesheet imports are rejected', t => {
   const siteRoot = siteFixture(t);
-  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@import "//example.com/site.css";\\n');
+  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@import "//example.com/site.css";\n');
   assert.throws(() => checkPublicSite({ siteRoot }), /external resources/i);
+});
+
+
+test('HTML entity-encoded protocol-relative links are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><a href="&#x2f;&#x2f;example.com/help">External help</a>');
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
+});
+
+test('named HTML slash references cannot hide external links', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><a href="&sol;&sol;example.com/help">External help</a>');
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
+});
+
+test('HTML character references cannot hide executable URL schemes', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><a href="java&#x73;cript:alert(1)">Open</a>');
+  assert.throws(() => checkPublicSite({ siteRoot }), /active HTML event handler or executable URL/i);
 });
