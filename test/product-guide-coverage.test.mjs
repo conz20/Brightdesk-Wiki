@@ -40,3 +40,14 @@ test('the Suite getting-started page remains explicitly source-confirmed', () =>
   const source = fs.readFileSync(path.join(root, 'docs', 'customer-start-here.md'), 'utf8');
   assert.ok(source.split(/\r?\n/).includes('status: Source-confirmed'));
 });
+
+test('customer guides explain destructive actions and protected minimums', () => {
+  const forms = fs.readFileSync(path.join(productDirectory, 'forms.md'), 'utf8');
+  const planner = fs.readFileSync(path.join(productDirectory, 'planner.md'), 'utf8');
+  const workspace = fs.readFileSync(path.join(productDirectory, 'workspace.md'), 'utf8');
+  assert.match(forms, /removes that question's answer from every saved response/i);
+  assert.match(planner, /moved to another remaining bucket/i);
+  assert.match(planner, /cannot delete its final bucket/i);
+  assert.match(workspace, /removes the page and all its content/i);
+  assert.match(workspace, /removes that workspace and all its pages/i);
+});
