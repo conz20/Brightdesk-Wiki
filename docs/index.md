@@ -7,9 +7,7 @@ permalink: /index.html
 
 # Brightdesk Help
 
-> **Availability:** This is draft help content in a private repository. No public website or customer URL is currently available.
-
-Welcome to the separate online help resource for Brightdesk. Use it to find the right product guide and understand which instructions have been verified.
+Welcome to the Brightdesk Help centre. This separate, public, read-only website contains practical guides for Brightdesk Suite and its ten approved desktop products.
 
 Brightdesk Suite, all ten approved Brightdesk products and this customer help centre are free for every customer. There are no subscriptions, paid tiers, trials, licence fees or charges to read these guides. You do not need a customer account, sign-in or password.
 
