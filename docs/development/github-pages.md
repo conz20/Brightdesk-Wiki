@@ -68,7 +68,10 @@ GitHub recommends custom Actions workflows for automated builds. A Pages deploym
 - The site is static and read-only. No customer login, account, document upload, support form, database, analytics, advertising, tracking script, external JavaScript, third-party font or remote image is approved.
 - Use only local CSS, local links and static content.
 - GitHub processes visitor IP addresses and other connection information for service operation and security. Do not claim that no visitor metadata is processed.
-- The website must not be required to install, launch or use Brightdesk, and must never be linked into the Suite or product UI.
+- The website is optional customer help. A simple **Help** link is being added to the Suite and each of the ten product interfaces. The Suite link opens the help homepage; each product link opens its matching guide.
+- Help opens in the customer's normal browser and is restricted by the desktop app to the approved public Brightdesk Help host and path. It does not open the private source repository.
+- Brightdesk remains local-first. The Wiki is not required to install, launch or use the Suite or any product; no documents or app data are sent when a customer opens Help.
+- The product links must not be released as usable customer links until the approved public site is deployed and its exact URL is verified.
 
 ## Verification required before production
 
