@@ -47,7 +47,8 @@ Use **Find a page** to search page titles and page content.
 - Use the **↑** and **↓** controls on a block to move it.
 - Choose **Rename page** to change the current page title.
 - Choose **Rename workspace** to change the workspace name.
-- Use **Delete page** or **Delete workspace** only when you intend to remove that content.
+- **Delete page** removes the page and all its content. A workspace must keep at least one page.
+- **Delete workspace** removes that workspace and all its pages. At least one workspace must remain.
 
 ## Save your work
 
