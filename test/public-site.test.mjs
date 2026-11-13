@@ -110,3 +110,15 @@ test('embedded frames and plugin content are rejected from customer pages', t =>
   );
   assert.throws(() => checkPublicSite({ siteRoot }), /interactive or editable controls/i);
 });
+
+test('protocol-relative external links are rejected from customer pages', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><a href="//example.com/help">External help</a>');
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
+});
+
+test('protocol-relative stylesheet imports are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@import "//example.com/site.css";\\n');
+  assert.throws(() => checkPublicSite({ siteRoot }), /external resources/i);
+});
