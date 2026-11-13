@@ -87,7 +87,7 @@ Cloudflare operates the hosting network and processes technical request metadata
 
 ## Current publication status and release
 
-The repository build configuration is ready for Cloudflare Pages Free and the current pull-request head passed its full GitHub quality workflow. The Cloudflare account connection, GitHub App installation and Pages project still require verified account-side setup. No deployed customer URL is confirmed.
+The repository contains the Cloudflare Pages Free build configuration. CI results must be checked against the exact current pull-request head; a pass on an earlier revision does not prove that a later revision passes. The Cloudflare account connection, GitHub App installation and Pages project still require verified account-side setup. No deployed customer URL is confirmed.
 
 The required customer URL is **https://help.brightdesk.com**. The owner has confirmed ownership of `brightdesk.com`; current DNS is delegated to Sedo parking nameservers. The registrar and authoritative-DNS editing access are not yet confirmed. No purchase or DNS change is authorised.
 
