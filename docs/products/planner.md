@@ -24,7 +24,7 @@ A new plan starts with a **To do** bucket. Choose **Rename plan** to change the 
 2. Choose **Add bucket**.
 3. Repeat for any other task groups you need.
 
-Use the delete control on a bucket only when you intend to remove it. Tasks in a deleted bucket are moved to a remaining bucket.
+Use the delete control on a bucket only when you intend to remove it. Any tasks in that bucket are moved to another remaining bucket. A plan must keep at least one bucket, so you cannot delete its final bucket.
 
 ## Add a task
 
