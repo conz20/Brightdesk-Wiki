@@ -4,59 +4,83 @@ import fs from 'node:fs';
 
 const workflow = fs.readFileSync(new URL('../.github/workflows/quality.yml', import.meta.url), 'utf8');
 const config = fs.readFileSync(new URL('../_config.yml', import.meta.url), 'utf8');
-const home = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
-const maintainerGuide = fs.readFileSync(new URL('../docs/development/github-pages.md', import.meta.url), 'utf8');
-const deployJob = workflow.split('\n  deploy:\n')[1] ?? '';
+const packageJson = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+const cloudflareGuide = fs.readFileSync(new URL('../docs/development/cloudflare-pages.md', import.meta.url), 'utf8');
+const historicGithubGuide = fs.readFileSync(new URL('../docs/development/github-pages.md', import.meta.url), 'utf8');
 
-const mainPublicationCondition = /github\.ref == 'refs\/heads\/main' && \(github\.event_name == 'push' \|\| \(github\.event_name == 'workflow_dispatch' && inputs\.confirm_publication == true\)\)/;
+const buildCommand = packageJson.scripts['build:cloudflare'];
 
-test('production deployment is restricted to main pushes or explicit manual confirmation', () => {
+test('Cloudflare production build runs the complete validation pipeline before publishing', () => {
+  assert.ok(buildCommand, 'Cloudflare build command is defined');
+  const required = [
+    'npm ci --no-audit --no-fund',
+    'npm run check:node',
+    'npm run check',
+    'npm test',
+    'npm run links',
+    'bundle install',
+    'bundle exec jekyll build',
+    'npm run check:site'
+  ];
+  let lastPosition = -1;
+  for (const command of required) {
+    const position = buildCommand.indexOf(command);
+    assert.ok(position > lastPosition, command + ' runs in the required order');
+    lastPosition = position;
+  }
+});
+
+test('the Cloudflare build uses the exact repository-pinned Node and Ruby runtimes', () => {
+  assert.equal(fs.readFileSync(new URL('../.node-version', import.meta.url), 'utf8').trim(), '24.22.2');
+  assert.equal(fs.readFileSync(new URL('../.ruby-version', import.meta.url), 'utf8').trim(), '3.4.4');
+  assert.match(cloudflareGuide, /NODE_VERSION.*24\.22\.2|\.node-version.*24\.22\.2/i);
+  assert.match(cloudflareGuide, /RUBY_VERSION.*3\.4\.4|\.ruby-version.*3\.4\.4/i);
+});
+
+test('Jekyll builds from the customer docs folder at the Pages project root', () => {
+  assert.match(config, /^source: docs$/m);
+  assert.match(config, /^destination: _site$/m);
+  assert.match(config, /^baseurl:\s*""$/m);
+  assert.doesNotMatch(config, /github\.io|Brightdesk-Wiki/);
+  assert.match(cloudflareGuide, /Build output directory.*_site|_site.*Build output directory/i);
+  assert.match(cloudflareGuide, /Build command.*build:cloudflare|build:cloudflare.*Build command/i);
+});
+
+test('GitHub Actions validates changes but never publishes or grants deployment permissions', () => {
+  assert.match(workflow, /pull_request:\s*\n\s+branches:\s*\[main\]/);
   assert.match(workflow, /push:\s*\n\s+branches:\s*\[main\]/);
-  assert.match(workflow, /workflow_dispatch:[\s\S]*?confirm_publication:[\s\S]*?default:\s*false/);
-  assert.match(workflow, mainPublicationCondition);
-  assert.match(deployJob, /needs:\s*quality/);
-  assert.doesNotMatch(deployJob, /pull_request/i);
-});
-
-test('production deployment uses only the approved private macOS runner', () => {
-  assert.match(deployJob, /runs-on:\s*\[self-hosted,\s*macOS,\s*ARM64\]/);
-  assert.doesNotMatch(deployJob, /runs-on:\s*(?:ubuntu-latest|macos-latest|windows-latest)/);
-});
-
-test('Pages artifact is uploaded only after the generated-output privacy audit', () => {
-  const audit = workflow.indexOf('run: npm run check:site');
-  const upload = workflow.indexOf('uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9');
-  assert.ok(audit >= 0 && upload > audit, 'Pages artifact upload follows the privacy audit');
-  assert.match(workflow.slice(audit), new RegExp(mainPublicationCondition.source.replace(/^/, 'if:\\s*')));
-  assert.match(workflow, /path:\s*_site\//);
-});
-
-test('production deployment uses immutable official GitHub Pages actions', () => {
-  assert.match(workflow, /uses: actions\/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d/);
-  assert.match(workflow, /uses: actions\/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9/);
-  assert.match(deployJob, /uses: actions\/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346/);
+  assert.match(workflow, /runs-on:\s*\[self-hosted,\s*macOS,\s*ARM64\]/);
+  assert.match(workflow, /run: npm run check:site/);
+  assert.doesNotMatch(workflow, /pages:\s*write|id-token:\s*write|actions\/deploy-pages|actions\/upload-pages-artifact|actions\/configure-pages|github-pages/);
+  assert.doesNotMatch(workflow, /CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID|wrangler-action/i);
+  assert.doesNotMatch(workflow, /^\s{2}deploy:/m);
   for (const match of workflow.matchAll(/uses:\s*[^\s@]+@([^\s#]+)/g)) {
     assert.match(match[1], /^[0-9a-f]{40}$/, 'every external action is pinned to a full commit SHA');
   }
 });
 
-test('deployment permissions are least-privilege and use the GitHub Pages environment', () => {
-  assert.match(deployJob, /permissions:\s*\n\s+actions:\s*read\s+contents:\s*read\s+pages:\s*write\s+id-token:\s*write/);
-  assert.match(deployJob, /environment:\s*\n\s+name:\s*github-pages/);
-  assert.match(deployJob, /url:\s*\$\{\{\s*steps\.deployment\.outputs\.page_url\s*\}\}/);
+test('Cloudflare Git integration is restricted to the private Wiki repository and main production branch', () => {
+  assert.match(cloudflareGuide, /conz20\/Brightdesk-Wiki/);
+  assert.match(cloudflareGuide, /Only select repositories|only.*Brightdesk-Wiki.*repository/i);
+  assert.match(cloudflareGuide, /production branch.*main|main.*production branch/i);
+  assert.match(cloudflareGuide, /Preview branch.*None|disable.*preview deployments/i);
+  assert.match(cloudflareGuide, /free plan|Cloudflare Pages Free/i);
+  assert.match(cloudflareGuide, /no paid|no purchase|no upgrade/i);
 });
 
-test('site configuration and customer homepage describe the intended public project URL truthfully', () => {
-  assert.match(config, /url:\s*"https:\/\/conz20\.github\.io"/);
-  assert.match(config, /baseurl:\s*"\/Brightdesk-Wiki"/);
-  assert.doesNotMatch(home, /No public website or customer URL is currently available/i);
-  assert.match(home, /read-only/i);
+test('only the audited read-only customer output is configured for publishing', () => {
+  assert.match(cloudflareGuide, /12 customer pages and 13 static files/);
+  assert.match(cloudflareGuide, /customer homepage.*Suite.*ten product guides.*local CSS/i);
+  assert.match(cloudflareGuide, /internal.*must remain private|maintainer.*private/i);
+  assert.match(cloudflareGuide, /No customer login.*comments.*uploads|no customer login.*upload/i);
 });
 
-test('maintainer instructions preserve private source and free customer access without requiring a purchase', () => {
-  assert.match(maintainerGuide, /source repository.*remain private/i);
-  assert.match(maintainerGuide, /existing GitHub account.*eligible plan|eligible plan.*private source repository/i);
-  assert.match(maintainerGuide, /no additional paid plan|upgrade|third-party hosting/i);
-  assert.match(maintainerGuide, /Settings.*Pages/i);
-  assert.match(maintainerGuide, /GitHub Actions/i);
+test('hosting privacy notes disclose Cloudflare visitor metadata processing', () => {
+  assert.match(cloudflareGuide, /visitor IP|IP addresses/i);
+  assert.match(cloudflareGuide, /Cloudflare.*process.*technical metadata|technical metadata.*Cloudflare/i);
+});
+
+test('historical GitHub Pages instructions are preserved but clearly superseded', () => {
+  assert.match(historicGithubGuide, /Superseded by.*Cloudflare Pages/i);
+  assert.match(historicGithubGuide, /historical|kept for reference/i);
 });
