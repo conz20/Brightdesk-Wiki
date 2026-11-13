@@ -13,24 +13,35 @@ test('quality workflow keeps repository permissions read-only', () => {
   assert.match(workflow, /permissions:\s*\n\s+contents:\s*read/);
 });
 
-test('quality workflow builds pinned libyaml and Ruby in a runner-local cache', () => {
+test('quality workflow keeps one pending run per PR without cancelling active validation', () => {
+  assert.ok(workflow.includes('group: brightdesk-wiki-quality-${{ github.event.pull_request.number || github.ref }}'));
+  assert.match(workflow, /cancel-in-progress:\s*false/);
+});
+
+test('quality workflow builds and reuses pinned libyaml and Ruby in the persistent runner tool cache', () => {
   assert.match(workflow, /libyaml_version="0\.2\.5"/);
   assert.match(workflow, /https:\/\/github\.com\/yaml\/libyaml\/releases\/download\/\$libyaml_version\/yaml-\$libyaml_version\.tar\.gz/);
   assert.match(workflow, /c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4/);
   assert.match(workflow, /shasum -a 256 --check -/);
-  assert.match(workflow, /libyaml_prefix=.*RUNNER_TEMP/);
+  assert.ok(workflow.includes('RUNNER_TOOL_CACHE: ${{ runner.tool_cache }}'));
+  assert.match(workflow, /libyaml_prefix="\$RUNNER_TOOL_CACHE\/Brightdesk\/libyaml\/\$libyaml_version/);
+  assert.match(workflow, /libyaml_cache_valid=false/);
+  assert.match(workflow, /touch "\$libyaml_prefix\.complete"/);
   assert.match(workflow, /RUBY_CONFIGURE_OPTS=.*--with-libyaml-dir=/);
   assert.match(workflow, /ruby_build_revision=.*573f87a93b27195b97c2a72b5c6fbc0a266d73d0/);
   assert.match(workflow, /ruby-build[\s\S]*3\.4\.4/);
-  assert.match(workflow, /RUNNER_TOOL_CACHE:\s*\$\{\{\s*runner\.temp\s*\}\}\/ruby-toolcache/);
+  assert.match(workflow, /prefix="\$RUNNER_TOOL_CACHE\/Ruby\/3\.4\.4/);
+  assert.match(workflow, /ruby_cache_valid=false/);
+  assert.match(workflow, /RUBY_VERSION == "3\.4\.4"/);
+  assert.match(workflow, /Psych\.libyaml_version == "0\.2\.5"/);
   assert.match(workflow, /touch "\$prefix\.complete"/);
   assert.match(workflow, /uses:\s*ruby\/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199/);
   assert.match(workflow, /self-hosted:\s*true/);
   assert.match(workflow, /ruby-version:\s*['"]3\.4\.4['"]/);
   assert.match(workflow, /bundler-cache:\s*true/);
-  assert.doesNotMatch(workflow, /Check whether Ruby 3\.4\.4 is preinstalled/);
-  assert.doesNotMatch(workflow, /Jekyll build and generated-output audit are deferred/);
-  assert.doesNotMatch(workflow, /if:\s*steps\.ruby\.outputs\.available/);
+  assert.doesNotMatch(workflow, /RUNNER_TOOL_CACHE:\s*\$\{\{\s*runner\.temp/);
+  assert.doesNotMatch(workflow, /node-version:\s*22(?:\.|['"])/);
+  assert.doesNotMatch(workflow, /ruby-version:\s*['"]3\.[0-3]\./);
   assert.doesNotMatch(workflow, /\b(sudo|apt-get|brew install)\b/);
 });
 
@@ -39,7 +50,6 @@ test('quality workflow always runs Jekyll build and the generated-output privacy
   assert.match(workflow, /run:\s*npm run check:site/);
   assert.doesNotMatch(workflow, /if:\s*steps\.ruby\.outputs\.available/);
 });
-
 
 test('developer runtime pins match the exact CI runtimes without fallback versions', () => {
   const nodeVersion = fs.readFileSync(new URL('../.node-version', import.meta.url), 'utf8').trim();

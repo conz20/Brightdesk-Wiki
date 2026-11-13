@@ -9,6 +9,11 @@ on:
 permissions:
   contents: read
 
+# Keep the current build running, but replace older pending runs for this PR.
+concurrency:
+  group: brightdesk-wiki-quality-\${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
 jobs:
   quality:
     name: Check customer documentation and public site output
@@ -21,12 +26,12 @@ jobs:
         with:
           node-version: 24.22.2
           package-manager-cache: false
-      - name: Build checksum-verified libyaml and Ruby 3.4.4 in runner-local cache
+      - name: Build or reuse checksum-verified libyaml and Ruby 3.4.4
         shell: bash
         env:
-          RUNNER_TOOL_CACHE: ${{ runner.temp }}/ruby-toolcache
-          RUBY_BUILD_BUILD_PATH: ${{ runner.temp }}/ruby-build-build
-          RUBY_BUILD_CACHE_PATH: ${{ runner.temp }}/ruby-build-cache
+          RUNNER_TOOL_CACHE: \${{ runner.tool_cache }}
+          RUBY_BUILD_BUILD_PATH: \${{ runner.temp }}/ruby-build-build
+          RUBY_BUILD_CACHE_PATH: \${{ runner.temp }}/ruby-build-cache
         run: |
           set -euo pipefail
           if [[ "$(uname -m)" != "arm64" ]]; then
@@ -40,50 +45,82 @@ jobs:
             fi
           done
 
+          mkdir -p "$RUNNER_TOOL_CACHE"
+
           libyaml_version="0.2.5"
           libyaml_sha256="c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
           libyaml_archive="$RUNNER_TEMP/yaml-$libyaml_version.tar.gz"
           libyaml_source="$RUNNER_TEMP/libyaml-source"
-          libyaml_prefix="$RUNNER_TEMP/libyaml-$libyaml_version"
+          libyaml_prefix="$RUNNER_TOOL_CACHE/Brightdesk/libyaml/$libyaml_version/$(uname -m)"
+          libyaml_cache_valid=false
 
-          curl --fail --location --retry 3 --retry-all-errors --connect-timeout 20 \
-            "https://github.com/yaml/libyaml/releases/download/$libyaml_version/yaml-$libyaml_version.tar.gz" \
-            --output "$libyaml_archive"
-          printf '%s  %s\n' "$libyaml_sha256" "$libyaml_archive" | shasum -a 256 --check -
-          mkdir -p "$libyaml_source"
-          tar -xzf "$libyaml_archive" -C "$libyaml_source"
-          cd "$libyaml_source/yaml-$libyaml_version"
-          ./configure --prefix="$libyaml_prefix" --disable-static
-          make -j "$(sysctl -n hw.ncpu)"
-          make check
-          make install
-          test -f "$libyaml_prefix/include/yaml.h"
-          test -f "$libyaml_prefix/lib/pkgconfig/yaml-0.1.pc"
+          if [[ -f "$libyaml_prefix.complete" \
+            && -f "$libyaml_prefix/include/yaml.h" \
+            && -f "$libyaml_prefix/lib/pkgconfig/yaml-0.1.pc" \
+            && -f "$libyaml_prefix/lib/libyaml.dylib" ]]; then
+            libyaml_cache_valid=true
+          fi
+
+          if [[ "$libyaml_cache_valid" != true ]]; then
+            rm -rf "$libyaml_prefix" "$libyaml_prefix.complete"
+            mkdir -p "$(dirname "$libyaml_prefix")" "$libyaml_source"
+            curl --fail --location --retry 3 --retry-all-errors --connect-timeout 20 \
+              "https://github.com/yaml/libyaml/releases/download/$libyaml_version/yaml-$libyaml_version.tar.gz" \
+              --output "$libyaml_archive"
+            printf '%s  %s\n' "$libyaml_sha256" "$libyaml_archive" | shasum -a 256 --check -
+            tar -xzf "$libyaml_archive" -C "$libyaml_source"
+            cd "$libyaml_source/yaml-$libyaml_version"
+            ./configure --prefix="$libyaml_prefix" --disable-static
+            make -j "$(sysctl -n hw.ncpu)"
+            make check
+            make install
+            test -f "$libyaml_prefix/include/yaml.h"
+            test -f "$libyaml_prefix/lib/pkgconfig/yaml-0.1.pc"
+            test -f "$libyaml_prefix/lib/libyaml.dylib"
+            touch "$libyaml_prefix.complete"
+          else
+            echo "Using verified runner-local libyaml $libyaml_version cache."
+          fi
 
           ruby_build_dir="$RUNNER_TEMP/ruby-build-source"
           ruby_build_revision="573f87a93b27195b97c2a72b5c6fbc0a266d73d0"
-          git init -q "$ruby_build_dir"
-          git -C "$ruby_build_dir" remote add origin https://github.com/rbenv/ruby-build.git
-          git -C "$ruby_build_dir" fetch --no-tags --depth=1 origin "$ruby_build_revision"
-          git -C "$ruby_build_dir" checkout --quiet --detach FETCH_HEAD
-
           prefix="$RUNNER_TOOL_CACHE/Ruby/3.4.4/$(uname -m)"
           mkdir -p "$(dirname "$prefix")"
-          export PKG_CONFIG_PATH="$libyaml_prefix/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
-          export RUBY_CONFIGURE_OPTS="--with-libyaml-dir=$libyaml_prefix"
-          if ! "$ruby_build_dir/bin/ruby-build" 3.4.4 "$prefix"; then
-            find "$RUBY_BUILD_BUILD_PATH" -path '*/ext/psych/mkmf.log' -print -exec cat {} \; || true
-            exit 1
+          ruby_cache_valid=false
+
+          if [[ -f "$prefix.complete" && -x "$prefix/bin/ruby" && -x "$prefix/bin/gem" ]]; then
+            if "$prefix/bin/ruby" -e 'abort unless RUBY_VERSION == "3.4.4"' \
+              && "$prefix/bin/ruby" -rpsych -e 'abort unless Psych.libyaml_version == "0.2.5"'; then
+              ruby_cache_valid=true
+            fi
           fi
-          touch "$prefix.complete"
+
+          if [[ "$ruby_cache_valid" != true ]]; then
+            rm -rf "$prefix" "$prefix.complete"
+            git init -q "$ruby_build_dir"
+            git -C "$ruby_build_dir" remote add origin https://github.com/rbenv/ruby-build.git
+            git -C "$ruby_build_dir" fetch --no-tags --depth=1 origin "$ruby_build_revision"
+            git -C "$ruby_build_dir" checkout --quiet --detach FETCH_HEAD
+
+            export PKG_CONFIG_PATH="$libyaml_prefix/lib/pkgconfig\${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+            export RUBY_CONFIGURE_OPTS="--with-libyaml-dir=$libyaml_prefix"
+            if ! "$ruby_build_dir/bin/ruby-build" 3.4.4 "$prefix"; then
+              find "$RUBY_BUILD_BUILD_PATH" -path '*/ext/psych/mkmf.log' -print -exec cat {} \; || true
+              exit 1
+            fi
+            touch "$prefix.complete"
+          else
+            echo "Using verified runner-local Ruby 3.4.4 cache."
+          fi
+
           "$prefix/bin/ruby" --version
           "$prefix/bin/gem" --version
-          "$prefix/bin/ruby" -rpsych -e 'abort "Psych/libyaml is unavailable" unless Psych.libyaml_version; puts "Psych #{Psych::VERSION}; libyaml #{Psych.libyaml_version}"'
+          "$prefix/bin/ruby" -rpsych -e 'abort "Psych/libyaml 0.2.5 is unavailable" unless Psych.libyaml_version == "0.2.5"; puts "Psych #{Psych::VERSION}; libyaml #{Psych.libyaml_version}"'
       - name: Activate the runner-local Ruby and install pinned Jekyll dependencies
-        # The action only activates the Ruby already built in the temporary tool cache.
+        # The action activates the exact Ruby already built or reused in the persistent tool cache.
         uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # pinned ruby/setup-ruby action
         env:
-          RUNNER_TOOL_CACHE: ${{ runner.temp }}/ruby-toolcache
+          RUNNER_TOOL_CACHE: \${{ runner.tool_cache }}
         with:
           ruby-version: '3.4.4'
           self-hosted: true
