@@ -64,15 +64,26 @@ function getNormalizedUrlAttributes(html) {
   return values;
 }
 
-function containsUnsafeUrl(attribute) {
-  const candidates = attribute.name === 'srcset'
+function urlCandidates(attribute) {
+  return attribute.name === 'srcset'
     ? attribute.value.split(',').map(candidate => candidate.trim().split(/\s+/, 1)[0] ?? '')
     : [attribute.value];
+}
 
-  return candidates.some(candidate => {
-    const normalized = candidate.replace(/[\u0000-\u0020\u007f]+/g, '').trim();
-    return /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(normalized);
-  });
+function normalizeUrl(value) {
+  return value.replace(/[\u0000-\u0020\u007f]+/g, '').trim();
+}
+
+function containsExecutableUrl(attribute) {
+  return urlCandidates(attribute).some(candidate =>
+    /^(?:javascript|data|vbscript):/i.test(normalizeUrl(candidate))
+  );
+}
+
+function containsUnsafeUrl(attribute) {
+  return urlCandidates(attribute).some(candidate =>
+    /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(normalizeUrl(candidate))
+  );
 }
 
 export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
@@ -117,7 +128,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     }
     const urlAttributes = getNormalizedUrlAttributes(html);
     if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) ||
-        urlAttributes.some(value => /^(?:javascript|data|vbscript):/i.test(value))) {
+        urlAttributes.some(containsExecutableUrl)) {
       fail(file + ' contains an active HTML event handler or executable URL');
     }
     if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
