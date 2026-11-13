@@ -99,12 +99,24 @@ function statLocalTarget(candidate) {
   }
 }
 
+function rejectSymbolicLinkComponents({ rootDir, candidate, sourceFile, rawTarget }) {
+  let current = rootDir;
+  const segments = path.relative(rootDir, candidate).split(path.sep).filter(Boolean);
+  for (const segment of segments) {
+    current = path.join(current, segment);
+    if (fs.lstatSync(current).isSymbolicLink()) {
+      fail(`${path.relative(rootDir, sourceFile)} links through a symbolic link: ${rawTarget}`);
+    }
+  }
+}
+
 function verifyTarget({ rootDir, sourceFile, rawTarget }) {
   let candidate = resolveLocalTarget({ rootDir, sourceFile, rawTarget });
   if (!candidate) return false;
   const resolved = statLocalTarget(candidate);
   if (!resolved) fail(`${path.relative(rootDir, sourceFile)} links to missing target: ${rawTarget}`);
   candidate = resolved.candidate;
+  rejectSymbolicLinkComponents({ rootDir, candidate, sourceFile, rawTarget });
   const { stat } = resolved;
   if (stat.isSymbolicLink()) fail(`${path.relative(rootDir, sourceFile)} links to a symbolic link: ${rawTarget}`);
   if (!stat.isFile() && !stat.isDirectory()) fail(`${path.relative(rootDir, sourceFile)} links to an unsupported target: ${rawTarget}`);
