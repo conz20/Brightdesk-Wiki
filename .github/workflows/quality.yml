@@ -5,14 +5,6 @@ on:
     branches: [main]
   push:
     branches: [main]
-  workflow_dispatch:
-    inputs:
-      confirm_publication:
-        description: Confirm publication of the currently reviewed main branch to the public read-only Brightdesk Help site.
-        required: true
-        type: boolean
-        default: false
-
 permissions:
   contents: read
 
@@ -27,7 +19,6 @@ jobs:
     runs-on: [self-hosted, macOS, ARM64]
     permissions:
       contents: read
-      pages: read
     steps:
       - name: Check out Brightdesk Wiki
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # pinned checkout action
@@ -145,34 +136,8 @@ jobs:
         run: npm test
       - name: Check repository Markdown links
         run: npm run links
-      - name: Configure the existing GitHub Pages project
-        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.confirm_publication == true))
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0, pinned
       - name: Build Jekyll customer site
         run: bundle exec jekyll build
       - name: Reject private or unexpected generated content
         run: npm run check:site
-      - name: Upload the verified public site
-        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.confirm_publication == true))
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0, pinned
-        with:
-          path: _site/
-          retention-days: 1
 
-  deploy:
-    name: Publish the read-only Brightdesk Help website
-    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.confirm_publication == true))
-    needs: quality
-    runs-on: [self-hosted, macOS, ARM64]
-    permissions:
-      actions: read
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy the audited customer site
-        id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1, pinned
