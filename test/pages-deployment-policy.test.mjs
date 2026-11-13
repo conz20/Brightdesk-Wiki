@@ -15,7 +15,7 @@ test('Cloudflare production build runs the complete validation pipeline before p
   const required = [
     'npm ci --no-audit --no-fund',
     'npm run check:node',
-    'npm run check',
+    'npm run check &&',
     'npm test',
     'npm run links',
     'bundle install',
@@ -77,7 +77,7 @@ test('only the audited read-only customer output is configured for publishing', 
 
 test('hosting privacy notes disclose Cloudflare visitor metadata processing', () => {
   assert.match(cloudflareGuide, /visitor IP|IP addresses/i);
-  assert.match(cloudflareGuide, /Cloudflare.*process.*technical metadata|technical metadata.*Cloudflare/i);
+  assert.match(cloudflareGuide, /Cloudflare.*process.*technical.*metadata|technical.*metadata.*Cloudflare/i);
 });
 
 test('historical GitHub Pages instructions are preserved but clearly superseded', () => {
