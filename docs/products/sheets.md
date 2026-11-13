@@ -21,7 +21,7 @@ Use Sheets to organise information in a grid and calculate values with supported
 ## Enter a formula
 
 1. Select the cell where you want the answer to appear.
-2. On the **Home** tab, find the formula input showing the selected cell reference.
+2. On the **Home** tab, find the selected cell reference (for example, **A1**) beside the formula input.
 3. Enter a formula beginning with an equals sign. For example, `=A1+B1` adds two cells.
 4. Press **Enter** or move focus away from the formula input to apply the change.
 5. Check the calculated value in the grid.
