@@ -126,17 +126,6 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (/<(?:form|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
       fail(file + ' contains interactive or editable controls; customer help must remain read-only');
     }
-    const searchInputs = [...html.matchAll(/<input\b[^>]*>/gi)].map(match => match[0]);
-    if (searchInputs.length !== 1 ||
-        !/^<input\b(?=[^>]*\bid=["']help-search["'])(?=[^>]*\btype=["']search["'])[^>]*>$/i.test(searchInputs[0])) {
-      fail(file + ' must contain only the accessible Brightdesk Help search field');
-    }
-    const scriptTags = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map(match => match[0]);
-    if (scriptTags.length !== 1 ||
-        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
-        /<script\b/i.test(html.replace(scriptTags[0], ''))) {
-      fail(file + ' must load only the approved local search script');
-    }
     const urlAttributes = getNormalizedUrlAttributes(html);
     if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) ||
         urlAttributes.some(containsExecutableUrl)) {
@@ -153,6 +142,17 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
+    const searchInputs = [...html.matchAll(/<input\b[^>]*>/gi)].map(match => match[0]);
+    if (searchInputs.length !== 1 ||
+        !/^<input\b(?=[^>]*\bid=["']help-search["'])(?=[^>]*\btype=["']search["'])[^>]*>$/i.test(searchInputs[0])) {
+      fail(file + ' must contain only the accessible Brightdesk Help search field');
+    }
+    const scriptTags = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map(match => match[0]);
+    if (scriptTags.length !== 1 ||
+        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
+        /<script\b/i.test(html.replace(scriptTags[0], ''))) {
+      fail(file + ' must load only the approved local search script');
+    }
   }
 
   const searchScript = fs.readFileSync(path.join(rootDir, 'assets/js/search.js'), 'utf8');

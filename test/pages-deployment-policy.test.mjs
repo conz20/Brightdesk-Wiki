@@ -86,7 +86,7 @@ test('customer Help address is the approved .com domain and DNS changes remain g
 });
 
 test('only the audited read-only customer output is configured for publishing', () => {
-  assert.match(cloudflareGuide, /12 customer pages and 13 static files/);
+  assert.match(cloudflareGuide, /12 customer pages and 14 static files/);
   assert.match(cloudflareGuide, /customer homepage.*Suite.*ten product guides.*local CSS/i);
   assert.match(cloudflareGuide, /internal.*must remain private|maintainer.*private/i);
   assert.match(cloudflareGuide, /No customer login.*comments.*uploads|no customer login.*upload/i);

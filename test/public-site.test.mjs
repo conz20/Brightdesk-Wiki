@@ -47,7 +47,7 @@ test('private Brightdesk repository links must never be published', t => {
 test('external JavaScript is rejected', t => {
   const siteRoot = siteFixture(t);
   fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><script type="module" src="https://example.com/tracker.js"></script><input id="help-search" type="search">');
-  assert.throws(() => checkPublicSite({ siteRoot }), /approved local search script/i);
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
 });
 
 test('only the dedicated Help search field is allowed', t => {
