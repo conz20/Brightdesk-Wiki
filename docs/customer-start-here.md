@@ -10,7 +10,7 @@ permalink: /customer-start-here.html
 
 Brightdesk Suite is the starting point for the ten approved Brightdesk desktop products. Use it to choose the products you want in your Suite and open each product in its own window.
 
-Brightdesk is free forever. There are no subscriptions, paid tiers, customer accounts, sign-ins or passwords. The products are designed for local use, and your work is kept on your device.
+Brightdesk is free forever. Brightdesk Suite, all ten approved products and this customer help centre are free for every customer. There are no subscriptions, paid tiers, trials, licence fees or charges to read the Wiki. Customers do not need an account, sign-in or password. Your work is kept on your device.
 
 ## Before you start
 
