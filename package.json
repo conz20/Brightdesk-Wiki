@@ -13,6 +13,7 @@
     "links": "node scripts/check-doc-links.mjs",
     "test": "node --test",
     "build:site": "bundle exec jekyll build",
-    "check:site": "node scripts/check-public-site.mjs"
+    "check:site": "node scripts/check-public-site.mjs",
+    "build:cloudflare": "npm ci --no-audit --no-fund && npm run check:node && npm run check && npm test && npm run links && bundle install --jobs 4 --retry 3 && bundle exec jekyll build && npm run check:site"
   }
 }
