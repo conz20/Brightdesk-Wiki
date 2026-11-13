@@ -1,4 +1,4 @@
-> **Superseded 13 November 2026:** The active, owner-approved publishing path is [Cloudflare Pages Free](cloudflare-pages.md). This file is retained as historical record of the earlier GitHub Pages investigation. Do not follow its old Pages setup steps or change GitHub Pages settings.
+> **Superseded by Cloudflare Pages Free on 13 November 2026.** The active, owner-approved publishing path is [Cloudflare Pages Free](cloudflare-pages.md). This file is retained as historical record of the earlier GitHub Pages investigation. Do not follow its old Pages setup steps or change GitHub Pages settings.
 >
 > GitHub Settings later showed that private-source Pages publication was unavailable under the account's current setup. This supersedes the earlier eligibility assumption recorded in the historical text below. The owner chose Cloudflare Pages Free instead. The Wiki repository remains private and the customer Help site remains unpublished until the Cloudflare GitHub App is installed for this repository only, the production project is configured and a successful deployment is verified.
 
