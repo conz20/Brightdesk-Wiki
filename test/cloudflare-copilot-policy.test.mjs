@@ -36,7 +36,7 @@ test('Brightdesk Pages skill fixes the private project, build, runtime, and publ
     '13 static files',
     'help.brightdesk.com',
     'Only select repositories',
-    'No paid plans',
+    'Do not add paid plans',
     'COPILOT_MCP_CLOUDFLARE_API_TOKEN'
   ]) assert.ok(skill.includes(text), 'skill includes ' + text);
 
