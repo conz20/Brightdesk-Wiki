@@ -2,6 +2,12 @@
 
 The private source repository for the separate Brightdesk customer Help website. The Help website is not a customer product, desktop application, installer component or offline dependency.
 
+## Customer Help website
+
+**Customer Help link:** [https://help.brightdesk.com](https://help.brightdesk.com)
+
+This is the intended public Help address. It is included here so the customer link is easy to find, but the website is **not yet published or verified as live**. Do not treat it as a working support destination until hosting, the custom domain and HTTPS have been configured and checked.
+
 ## Approved customer scope
 
 Brightdesk Help supports the integrated Suite and exactly ten customer products:
