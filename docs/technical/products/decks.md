@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Decks technical reference
 description: Slide operations, presentation themes and file handling in Brightdesk Decks.
-permalink: /technical../../products/decks.html
+permalink: /technical/products/decks.html
 ---
 
 # Decks technical reference
