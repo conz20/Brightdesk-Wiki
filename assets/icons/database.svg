@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
 <title id="title">Brightdesk Database icon</title>
-<desc id="desc">A database cylinder with three visible record levels.</desc>
+<desc id="desc">A blue database cylinder with three stacked record layers and small record markers.</desc>
 <rect x="8" y="8" width="112" height="112" rx="26" fill="#eaf2fb"/>
-<path d="M30 39c0-9 15-16 34-16s34 7 34 16v50c0 9-15 16-34 16s-34-7-34-16z" fill="#fff" stroke="#38658f" stroke-width="4"/>
-<ellipse cx="64" cy="39" rx="34" ry="16" fill="#d8e8f8" stroke="#38658f" stroke-width="4"/>
-<path d="M30 57c0 9 15 16 34 16s34-7 34-16M30 76c0 9 15 16 34 16s34-7 34-16" fill="none" stroke="#38658f" stroke-width="3"/>
+<path d="M28 36c0-10 16-18 36-18s36 8 36 18v55c0 10-16 18-36 18s-36-8-36-18z" fill="#ffffff" stroke="#38658f" stroke-width="4"/>
+<ellipse cx="64" cy="36" rx="36" ry="18" fill="#cfe3f5" stroke="#38658f" stroke-width="4"/>
+<path d="M28 55c0 10 16 18 36 18s36-8 36-18M28 74c0 10 16 18 36 18s36-8 36-18" fill="none" stroke="#38658f" stroke-width="3"/>
+<circle cx="45" cy="56" r="3" fill="#5f91bd"/>
+<circle cx="45" cy="75" r="3" fill="#5f91bd"/>
+<circle cx="45" cy="94" r="3" fill="#5f91bd"/>
 </svg>

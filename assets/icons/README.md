@@ -1,6 +1,6 @@
 # Brightdesk product icon set
 
-This folder contains the original Brightdesk product icon pack. Each icon is a separate, self-contained SVG with a consistent 128 × 128 view box and an accessible title and description.
+This folder contains the original Brightdesk product icon pack. Each icon is a separate, self-contained SVG with a consistent 128 × 128 view box, distinctive product imagery and an accessible title and description.
 
 ## Visual index
 
@@ -15,16 +15,16 @@ The visible product names provide each icon's label, so the preview images use e
 
 | File | Product | Visual concept |
 | --- | --- | --- |
-| `pages.svg` | Pages | Document sheet and text lines |
-| `sheets.svg` | Sheets | Spreadsheet grid and highlighted cell |
-| `decks.svg` | Decks | Presentation slide and chart |
-| `notes.svg` | Notes | Note sheet and pencil |
-| `database.svg` | Database | Structured record cylinder |
-| `forms.svg` | Forms | Questions and response choices |
-| `lists.svg` | Lists | Ordered checklist rows |
-| `planner.svg` | Planner | Three-column planning board |
-| `to-do.svg` | To Do | Completed and unfinished task rows |
-| `workspace.svg` | Workspace | Page, note and checklist blocks |
+| `pages.svg` | Pages | Formal document page, heading and paragraphs |
+| `sheets.svg` | Sheets | Spreadsheet grid, highlighted cell and chart |
+| `decks.svg` | Decks | Presentation slide, chart and play marker |
+| `notes.svg` | Notes | Sticky note and pencil |
+| `database.svg` | Database | Structured record cylinder with stacked layers |
+| `forms.svg` | Forms | Clipboard, question heading and response choices |
+| `lists.svg` | Lists | Checklist with completed and open items |
+| `planner.svg` | Planner | Calendar board with grouped task cards |
+| `to-do.svg` | To Do | Daily task list with completed and remaining work |
+| `workspace.svg` | Workspace | Desktop workspace with navigation and content blocks |
 
 ## Use and accessibility
 
@@ -37,6 +37,6 @@ The visible product names provide each icon's label, so the preview images use e
 
 ## Publication status
 
-These are approved original source-library illustrations, not screenshots of the Brightdesk interface. Each icon also has a byte-for-byte copy in `docs/assets/images/product-icons/` for use by its matching customer guide. The public-output checker allows only these ten named SVGs and validates their structure, accessible title and description, static element and attribute allowlist, local use and alternative text. Keep the private source copies canonical; the regression tests detect any mismatch with the published copies.
+These are original source-library illustrations, not screenshots of the Brightdesk interface. Each icon also has a byte-for-byte copy in `docs/assets/images/product-icons/` for use by its matching customer guide. The public-output checker allows only these ten named SVGs and validates their structure, accessible title and description, static element and attribute allowlist, local use and alternative text. Keep the source copies canonical; regression tests detect any mismatch with the public copies.
 
 No external images, font files, scripts, CSS imports or remote references are used.

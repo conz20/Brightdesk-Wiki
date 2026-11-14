@@ -1,8 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
 <title id="title">Brightdesk Sheets icon</title>
-<desc id="desc">A spreadsheet grid with rows, columns and one highlighted cell.</desc>
+<desc id="desc">A spreadsheet with a green header row, a highlighted cell and a compact column chart.</desc>
 <rect x="8" y="8" width="112" height="112" rx="26" fill="#eaf6f1"/>
-<rect x="25" y="28" width="78" height="72" rx="8" fill="#fff" stroke="#247b60" stroke-width="4"/>
-<path d="M25 49h78M25 70h78M25 91h78M51 28v72M77 28v72" fill="none" stroke="#8aa99d" stroke-width="3"/>
-<rect x="52.5" y="50.5" width="23" height="18" rx="2" fill="#bcebd6" stroke="#247b60" stroke-width="2"/>
+<rect x="21" y="23" width="86" height="75" rx="8" fill="#ffffff" stroke="#247b60" stroke-width="4"/>
+<path d="M21 44h86M21 62h86M21 80h86M49 44v54M77 44v54" fill="none" stroke="#a2c4b6" stroke-width="2.5"/>
+<path d="M22 31a8 8 0 0 1 7-8h70a8 8 0 0 1 8 8v13H21z" fill="#247b60"/>
+<rect x="50" y="63" width="26" height="16" rx="2" fill="#bcebd6" stroke="#247b60" stroke-width="2"/>
+<rect x="36" y="103" width="9" height="10" rx="2" fill="#8fcbb0"/>
+<rect x="50" y="98" width="9" height="15" rx="2" fill="#5eae8a"/>
+<rect x="64" y="91" width="9" height="22" rx="2" fill="#247b60"/>
+<path d="M31 113h48" stroke="#247b60" stroke-width="3" stroke-linecap="round"/>
 </svg>

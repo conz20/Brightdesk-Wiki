@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
 <title id="title">Brightdesk Notes icon</title>
-<desc id="desc">A note card with a folded corner and short writing lines.</desc>
+<desc id="desc">A warm yellow sticky note with a turned corner, handwritten lines and a pencil.</desc>
 <rect x="8" y="8" width="112" height="112" rx="26" fill="#fff5e7"/>
-<path d="M34 25h42l18 18v59H34z" fill="#fff" stroke="#b8752a" stroke-width="4" stroke-linejoin="round"/>
-<path d="M76 25v19h18" fill="none" stroke="#b8752a" stroke-width="4" stroke-linejoin="round"/>
-<path d="M47 59h34M47 72h34M47 85h23" fill="none" stroke="#9a7a57" stroke-width="4" stroke-linecap="round"/>
-<path d="M80 90l9-9 7 7-9 9-9 2z" fill="#f2c06f" stroke="#9a5a1e" stroke-width="2" stroke-linejoin="round"/>
+<path d="M27 28h58l17 17v53H27z" fill="#ffe7a8" stroke="#b8752a" stroke-width="4" stroke-linejoin="round"/>
+<path d="M85 28v18h17" fill="#ffd782" stroke="#b8752a" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M41 55h43M41 68h43M41 81h30" fill="none" stroke="#b58b4e" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M76 99l28-28 9 9-28 28-12 3z" fill="#f1ad59" stroke="#9a5a1e" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M76 99l9 9" fill="none" stroke="#fff2d0" stroke-width="2.5"/>
+<path d="M105 71l4-4 9 9-4 4" fill="#fff0cf" stroke="#9a5a1e" stroke-width="2"/>
 </svg>

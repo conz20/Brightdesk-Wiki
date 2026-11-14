@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
 <title id="title">Brightdesk Pages icon</title>
-<desc id="desc">A document sheet with a folded corner and three lines of text.</desc>
+<desc id="desc">A formal document page with a folded corner, heading, paragraphs and a blue page marker.</desc>
 <rect x="8" y="8" width="112" height="112" rx="26" fill="#edf3ff"/>
-<path d="M38 25h34l18 18v60H38z" fill="#fff" stroke="#275db4" stroke-width="4" stroke-linejoin="round"/>
-<path d="M72 25v19h18" fill="none" stroke="#275db4" stroke-width="4" stroke-linejoin="round"/>
-<path d="M49 58h30M49 70h30M49 82h22" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
-<path d="M49 94h16" fill="none" stroke="#275db4" stroke-width="4" stroke-linecap="round"/>
+<path d="M36 23h39l19 19v65H36z" fill="#ffffff" stroke="#275db4" stroke-width="4" stroke-linejoin="round"/>
+<path d="M75 23v20h19" fill="#dce8ff" stroke="#275db4" stroke-width="4" stroke-linejoin="round"/>
+<rect x="47" y="54" width="40" height="8" rx="3" fill="#275db4"/>
+<path d="M47 73h38M47 84h38M47 95h27" fill="none" stroke="#8092ad" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M28 73v27" fill="none" stroke="#6f91d0" stroke-width="5" stroke-linecap="round"/>
 </svg>

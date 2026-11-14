@@ -1,10 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
 <title id="title">Brightdesk To Do icon</title>
-<desc id="desc">A checked task inside a circle with two unfinished task rows beneath it.</desc>
-<rect x="8" y="8" width="112" height="112" rx="26" fill="#eaf6f2"/>
-<circle cx="45" cy="42" r="17" fill="#d4f0e5" stroke="#287b62" stroke-width="4"/>
-<path d="M36 42l7 7 13-16" fill="none" stroke="#287b62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M72 42h24M72 52h17" fill="none" stroke="#59766c" stroke-width="4" stroke-linecap="round"/>
-<circle cx="45" cy="79" r="7" fill="#fff" stroke="#7b968c" stroke-width="3"/>
-<path d="M63 79h33M63 91h25" fill="none" stroke="#7b968c" stroke-width="4" stroke-linecap="round"/>
+<desc id="desc">A focused daily task list with a prominent completed check and two remaining tasks.</desc>
+<rect x="8" y="8" width="112" height="112" rx="26" fill="#fff0e9"/>
+<rect x="22" y="22" width="84" height="84" rx="12" fill="#ffffff" stroke="#c66b46" stroke-width="4"/>
+<path d="M22 43h84" stroke="#e5b5a3" stroke-width="3"/>
+<circle cx="41" cy="33" r="4" fill="#c66b46"/>
+<path d="M58 33h31" stroke="#b57a66" stroke-width="3" stroke-linecap="round"/>
+<circle cx="42" cy="61" r="10" fill="#d8f0e2" stroke="#39855f" stroke-width="2.5"/>
+<path d="M37 61l4 4 7-9" fill="none" stroke="#39855f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M61 61h30" stroke="#9a847c" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="42" cy="85" r="9" fill="#ffffff" stroke="#c98b72" stroke-width="2.5"/>
+<path d="M61 85h30" stroke="#9a847c" stroke-width="3.5" stroke-linecap="round"/>
 </svg>
