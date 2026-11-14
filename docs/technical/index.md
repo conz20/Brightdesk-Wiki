@@ -24,6 +24,17 @@ permalink: /technical/index.html
   </div>
 </section>
 
+<section class="reference-section" aria-labelledby="shared-guides-title">
+  <div class="section-heading">
+    <div><p class="portal-kicker">SHARED HELP TOPICS</p><h2 id="shared-guides-title">The same guides, with technical detail</h2><p>Everyday Help keeps the steps approachable. These companion references explain the confirmed behaviour, resource boundaries and current verification status.</p></div>
+  </div>
+  <div class="reference-card-grid">
+    <a class="reference-card" href="guides/install-update.html"><span class="reference-symbol" aria-hidden="true">↓</span><strong>Install and update</strong><span>Installer scope, workspace lifecycle, update delivery and repair status</span><span class="reference-arrow">Read technical guide →</span></a>
+    <a class="reference-card" href="guides/languages-and-spelling.html"><span class="reference-symbol" aria-hidden="true">文</span><strong>Languages and spelling</strong><span>Display-language packs, proofing languages and dictionary resources</span><span class="reference-arrow">Read technical guide →</span></a>
+    <a class="reference-card" href="guides/troubleshooting.html"><span class="reference-symbol" aria-hidden="true">⌕</span><strong>Troubleshooting</strong><span>Safe triage, product references and known support boundaries</span><span class="reference-arrow">Read technical guide →</span></a>
+  </div>
+</section>
+
 <section class="reference-section" aria-labelledby="product-reference-title">
   <div class="section-heading">
     <div><p class="portal-kicker">TEN APPROVED PRODUCTS</p><h2 id="product-reference-title">Browse product references</h2><p>Choose the product you want to understand. Each page covers its documented capabilities and current boundaries.</p></div>
