@@ -15,9 +15,9 @@ const SEARCH_STOP_WORDS = new Set([
 
 export function searchTopics(topics, query, limit = 6) {
   const normalisedQuery = normaliseSearchText(query);
-  const rawTerms = normalisedQuery.split(/\\s+/).filter(Boolean);
+  const rawTerms = normalisedQuery.split(/\s+/).filter(Boolean);
   // Keep "to do" together because it is the exact name of an approved product.
-  const asksForToDo = /\\bto\\s+do\\b/.test(normalisedQuery);
+  const asksForToDo = /\bto\s+do\b/.test(normalisedQuery);
   const usefulTerms = rawTerms.filter(term =>
     !SEARCH_STOP_WORDS.has(term) || (asksForToDo && (term === 'to' || term === 'do'))
   );
