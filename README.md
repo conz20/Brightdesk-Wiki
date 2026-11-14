@@ -36,9 +36,9 @@ The initial Help website framework, build and privacy checks, maintainer setup d
 - Suite getting-started guide: **Source-confirmed**. Its complete workflow still needs a live walkthrough.
 - All ten product guides: **Needs review** until each workflow is tested in a current installed desktop build.
 - Genuine screenshots from the running Suite and all ten products: **not yet captured**.
-- Working homepage search and clickable suggested-help links at the bottom of pages: **not yet implemented or verified**.
+- Homepage search and task-based suggested-help links: **implemented on PR #6 and covered by regression checks; not yet part of `main`**.
 - Exact current `main` revision: must pass the complete quality workflow, including the real Jekyll build and generated-output privacy audit, before it is considered build-ready.
-- Live Cloudflare Pages deployment and the `.com` custom domain: **not configured or verified**.
+- Production Cloudflare Pages deployment and the `.com` custom domain: **not configured or verified**. Pull-request preview deployments are active, but are review links only.
 
 Do not label a guide **Verified** until its instructions have been run in the named product version and operating system. Do not use concept artwork as a product screenshot.
 
@@ -83,9 +83,9 @@ The following improvements are implemented on the PR #6 branch, but are **not ye
 - Ten matching technical product references and system, file-format and data/privacy references.
 - Regression checks for route structure, guide coverage, reciprocal links and local search.
 
-The implementation, including the new translation privacy guidance and its regression test, passed [Brightdesk Wiki quality run #444](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43578996619) on 14 November 2026. The successful run completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, documentation and public-output regression tests, Markdown link checks, Jekyll build and generated-site privacy audit. The run's exact commit is `88d44b087536841c0ccfbccfc9f083eba15cbca6`.
+The preceding PR #6 head `8eac3e316b64e40a0fa813323a09dedc3c7165bd` passed [Brightdesk Wiki quality run #452](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43579835862) on 14 November 2026. All 94 tests passed, including the Technical Documentation accessibility-structure test. The Markdown checker verified 75 local links across 44 Markdown files; the Jekyll build and generated-output privacy audit also passed. Check the live PR #6 checks for exact-head results covering this README and runbook update.
 
-This README status correction is a later documentation-only change on the same draft branch. Check the live [PR #6 checks](https://github.com/conz20/Brightdesk-Wiki/pull/6) for the exact-head result covering the latest README revision.
+This README status block records the last fully completed quality run. The live [PR #6 checks](https://github.com/conz20/Brightdesk-Wiki/pull/6) are the authority for subsequent commits and preview deployments.
 The work is tracked in [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6), based directly on the current `main` revision. It remains open, draft and unmerged. Keep it that way until the following release gates are complete:
 
 - Visual exploration and manual review at desktop and narrow widths. No visual candidates have been generated or approved.
