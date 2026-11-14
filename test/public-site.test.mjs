@@ -20,6 +20,7 @@ function siteFixture(t) {
   fs.mkdirSync(path.join(rootDir, 'technical/products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/images'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
   fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\\n');
   const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\\n';
@@ -27,6 +28,10 @@ function siteFixture(t) {
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
   for (const product of PRODUCTS) {
     fs.writeFileSync(path.join(rootDir, 'products', product + '.html'), html);
+    fs.writeFileSync(
+      path.join(rootDir, 'assets/images', 'guide-' + product + '.svg'),
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10"/></svg>'
+    );
   }
   for (const page of TECHNICAL_PAGES) {
     const target = path.join(rootDir, page);
@@ -64,8 +69,37 @@ test('all technical documentation pages use stable public URLs', () => {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 28);
+  assert.equal(result.files, 38);
   assert.equal(result.htmlPages, 26);
+});
+
+test('approved static local SVG workflow illustrations pass the output check', t => {
+  const siteRoot = siteFixture(t);
+  const svg = fs.readFileSync(path.join(siteRoot, 'assets/images/guide-pages.svg'), 'utf8');
+  assert.match(svg, /^<svg\\b/i);
+  assert.doesNotMatch(svg, /<script\\b|foreignObject|https?:\\/\\//i);
+  assert.equal(checkPublicSite({ siteRoot }).files, 38);
+});
+
+test('active or externally linked SVG content is rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'assets/images/guide-pages.svg'),
+    '<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"><script>alert(1)</script></svg>'
+  );
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /contains active content, styling or an external reference/i
+  );
+});
+
+test('images in customer pages require alternative text', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><html><head><script type="module" src="/assets/js/search.js"></script></head><body><img src="/assets/images/guide-pages.svg"><input id="help-search" type="search"></body></html>'
+  );
+  assert.throws(() => checkPublicSite({ siteRoot }), /without useful alternative text/i);
 });
 
 test('internal maintainer documentation must never enter the public output', t => {
