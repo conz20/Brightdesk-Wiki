@@ -71,9 +71,23 @@ The generated customer site must remain static and read-only. It must not contai
 
 ## Help experience in progress
 
-The next Help release is being reconciled on a review branch from the current `main` revision. It adds two clearly separated reading routes: **Everyday Help** for plain-English, task-first instructions and **Technical Documentation** for deeper product and system references. Both remain static and read-only. Search runs locally in the visitor's browser and does not send search terms anywhere.
+The next Help release is being reviewed on a draft branch created directly from the current `main` revision. It separates **Everyday Help** (plain-English, task-first instructions) from **Technical Documentation** (detailed product and system references). Both remain static and read-only. Search runs locally in the visitor's browser and does not send search terms anywhere.
 
-The homepage, navigation, local search, product guide improvements and technical references are being reviewed together. The current source is not approved for publication until visual review, genuine product screenshots, end-to-end guide verification, exact-head quality checks and the approved hosting/domain checks are complete.
+The following improvements are implemented on the PR #6 branch, but are **not yet part of `main`**:
 
+- Separate Everyday Help and Technical Documentation routes, with navigation between them.
+- A separate local search index for each reading area.
+- Expanded, plain-English guides for exactly the ten approved products.
+- Ten matching technical product references and system, file-format and data/privacy references.
+- Regression checks for route structure, guide coverage, reciprocal links and local search.
 
-The reconciled implementation is tracked in [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6), based directly on the current `main` revision. PR #6 exact head `a5457a8f6b7231ab206efd56e2ea3bb7bb605ec6` passed the full quality workflow on 14 November 2026: regression tests, Markdown links, Jekyll build and generated-output privacy audit. It remains a draft and unmerged. The customer Help site is not live.
+The last completed exact-head quality run before this README correction was [run #440](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43576254243). It passed on PR branch commit `7d8364882e820316ccf5922c8735f659b5c7a6e6` on 14 November 2026. All job steps succeeded, including the pinned Node.js and Ruby setup, regression tests, Markdown-link checks, Jekyll build and generated-output privacy audit. This README correction creates a new commit, so its own exact-head workflow must pass before that newer revision is considered verified.
+
+The work is tracked in [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6), based directly on the current `main` revision. It remains open, draft and unmerged. Keep it that way until the following release gates are complete:
+
+- Visual exploration and manual review at desktop and narrow widths. No visual candidates have been generated or approved.
+- Genuine screenshots from current running Brightdesk builds and end-to-end walkthroughs for all ten guides.
+- Manual keyboard, screen-reader and browser visual review.
+- Cloudflare Pages Free, `help.brightdesk.com`, HTTPS and deployed-commit verification.
+
+The customer Help site is not live. Do not change DNS or nameservers. Keep the source repository private.
