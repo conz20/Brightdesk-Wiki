@@ -84,7 +84,7 @@ The generated customer site remains static and read-only. Its only interactive e
 
 This section is the current status for the latest PR revision and supersedes older statements above that describe run #261 as the most recent successful check.
 
-- **Current PR head:** `274b63bc7a8300f0c7385e22fb0145e60ebd5726` on `improve/customer-search-examples-2026-11-14`.
+- **Last completed PR head:** `274b63bc7a8300f0c7385e22fb0145e60ebd5726` on `improve/customer-search-examples-2026-11-14`. This head passed run #269. The current README follow-up is commit `548652d15edb5d6071f41068810a990dd3427987`; its exact-head workflow [run #270](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43552223513) is in progress.
 - **Latest exact-head workflow:** [run #269](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43551631417) completed successfully on that head. The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 - **Regression tests:** 104 passed, 0 failed, 0 skipped.
 - **Markdown links:** 39 Markdown files and 99 local file/directory links checked successfully.
