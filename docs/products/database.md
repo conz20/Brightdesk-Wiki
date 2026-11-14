@@ -57,6 +57,37 @@ Your new field appears as a column in the table. The system ID field is managed 
 6. Enter the name in **Search records** to find the record.
 
 **What you should have:** a local Contacts table with three useful fields and a searchable sample record. Use fictional details while practising.
+## More examples to try
+
+### Track household equipment
+
+1. Create a table called **Household equipment**.
+2. Add a **Name** field with type **Text**.
+3. Add a **Category** field with type **Choice list**, then enter choices separated by commas.
+4. Add a **Purchase date** field with type **Date**.
+5. Add a **Needs repair** field with type **Checkbox**.
+6. Add a few sample records and use **Search records** to find one.
+
+**What you should have:** a table with named fields that describe each item.
+
+### Keep an event contact list
+
+1. Create a table called **Event contacts**.
+2. Add **Name** as a **Text** field and **Email address** as an **Email** field.
+3. Add a **Contacted** field as a **Checkbox**.
+4. Add sample records using fictional contact details.
+5. Search for a name, then choose **Export CSV** when you need a copy of the current table.
+
+**What you should have:** a searchable local contact table and a CSV export. Use fictional details while practising.
+
+## Common questions and fixes
+
+**Why can't I add another table after deleting one?** Database must keep at least one table.
+
+**What happens if I delete a table?** The table and its records are removed. Export a CSV copy first when you need to keep the records elsewhere.
+
+**How do I create a drop-down choice field?** Add a field with type **Choice list** and enter the options separated by commas.
+
 ## Current feature boundaries
 
 Database is a local table-and-record tool. SQL query execution, table relationships, a query designer, form and report designers, database import, online hosting and collaboration are not included in the current stated scope.
