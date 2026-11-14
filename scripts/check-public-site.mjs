@@ -6,9 +6,22 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+const PRODUCT_LABELS = new Map([
+  ['pages', 'Pages'], ['sheets', 'Sheets'], ['decks', 'Decks'], ['notes', 'Notes'],
+  ['database', 'Database'], ['forms', 'Forms'], ['lists', 'Lists'], ['planner', 'Planner'],
+  ['to-do', 'To Do'], ['workspace', 'Workspace']
+]);
+const PRODUCT_ICON_FILES = PRODUCTS.map(product => 'assets/images/product-icons/' + product + '.svg');
 const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css']
-  .concat(PRODUCTS.map(product => 'products/' + product + '.html'));
+  .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
+  .concat(PRODUCT_ICON_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
+const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle']);
+const SVG_ATTRIBUTES = new Set([
+  'xmlns', 'width', 'height', 'viewBox', 'role', 'aria-labelledby', 'id',
+  'x', 'y', 'rx', 'ry', 'cx', 'cy', 'r', 'd', 'fill', 'stroke',
+  'stroke-width', 'stroke-linecap', 'stroke-linejoin'
+]);
 const FORBIDDEN_PATHS = [
   /^(architecture|development|security|releases)\//i,
   /(^|\/)README\.html$/i,
@@ -21,6 +34,56 @@ const FORBIDDEN_PATHS = [
 
 function fail(message) {
   throw new Error('Public Wiki check: ' + message);
+}
+
+function validateProductIcon(file, svg) {
+  const relative = file.split(path.sep).join('/');
+  if (!PRODUCT_ICON_FILES.includes(relative)) {
+    fail('SVG is outside the approved product icon library: ' + relative);
+  }
+  if (!/^<svg\\b[^>]*>/.test(svg) || !/<\\/svg>\\s*$/.test(svg)) {
+    fail(relative + ' is not a complete SVG document');
+  }
+  if (!/\\bxmlns="http:\\/\\/www\\.w3\\.org\\/2000\\/svg"/.test(svg) ||
+      !/\\brole="img"/.test(svg) || !/\\baria-labelledby="title desc"/.test(svg) ||
+      !/<title id="title">[\\s\\S]+?<\\/title>/.test(svg) ||
+      !/<desc id="desc">[\\s\\S]+?<\\/desc>/.test(svg)) {
+    fail(relative + ' must include an SVG namespace, image role, accessible title and description');
+  }
+
+  const withoutNamespace = svg.replace('xmlns="http://www.w3.org/2000/svg"', '');
+  if (/(?:https?:)?\\/\\//i.test(withoutNamespace) ||
+      /(?:javascript|data|vbscript):|url\\s*\\(|\\son[a-z][a-z0-9_-]*\\s*=|\\b(?:href|xlink:href|src)\\s*=|<style\\b/i.test(svg)) {
+    fail(relative + ' contains an active feature or external SVG reference');
+  }
+
+  const stack = [];
+  const tags = [...svg.matchAll(/<\\/?([a-z][a-z0-9:-]*)\\b[^>]*>/gi)];
+  if (tags.length === 0) fail(relative + ' contains no SVG elements');
+  for (const match of tags) {
+    const token = match[0];
+    const name = match[1];
+    if (!SVG_ELEMENTS.has(name)) fail(relative + ' contains a disallowed SVG element: ' + name);
+    const attributeText = token.replace(/^<\\/?[a-z][a-z0-9:-]*/i, '').replace(/\\/?>$/, '');
+    const attributeMatches = [...attributeText.matchAll(/\\s+([a-zA-Z_:][a-zA-Z0-9:_.-]*)\\s*=\\s*(?:"[^"]*"|'[^']*')/g)];
+    const parsedAttributeText = attributeMatches.map(item => item[0]).join('');
+    if (parsedAttributeText.trim() !== attributeText.trim()) {
+      fail(relative + ' contains malformed or unsupported SVG attributes');
+    }
+    for (const attribute of attributeMatches) {
+      if (!SVG_ATTRIBUTES.has(attribute[1])) {
+        fail(relative + ' contains a disallowed SVG attribute: ' + attribute[1]);
+      }
+    }
+    if (token.startsWith('</')) {
+      if (stack.pop() !== name) fail(relative + ' contains incorrectly nested SVG elements');
+    } else if (!token.endsWith('/>')) {
+      stack.push(name);
+    }
+  }
+  if (stack.length !== 0 || tags[0][1] !== 'svg') {
+    fail(relative + ' contains unclosed or incorrectly nested SVG elements');
+  }
 }
 
 function walkFiles(rootDir, currentDir) {
@@ -111,7 +174,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (FORBIDDEN_PATHS.some(pattern => pattern.test(file))) {
       fail('internal or repository-only content was included: ' + file);
     }
-    if (!/\.(html|css)$/i.test(file)) {
+    if (!/\.(html|css|svg)$/i.test(file)) {
       fail('unexpected public output file type: ' + file);
     }
     if (!ALLOWED_FILES.has(file)) {
@@ -142,6 +205,33 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
+
+    const imageTags = [...html.matchAll(/<img\\b[^>]*>/gi)].map(match => match[0]);
+    const productPage = file.match(/^products\\/([a-z-]+)\\.html$/);
+    if (!productPage && imageTags.length !== 0) {
+      fail(file + ' contains an image outside the approved product-guide icon placement');
+    }
+    if (productPage) {
+      const product = productPage[1];
+      if (!PRODUCTS.includes(product) || imageTags.length !== 1) {
+        fail(file + ' must contain exactly one approved product icon');
+      }
+      const imageTag = imageTags[0];
+      const source = imageTag.match(/\\bsrc\\s*=\\s*(["'])(.*?)\\1/i)?.[2];
+      const alternative = imageTag.match(/\\balt\\s*=\\s*(["'])(.*?)\\1/i)?.[2];
+      const expectedSource = '../assets/images/product-icons/' + product + '.svg';
+      const expectedAlternative = 'Brightdesk ' + PRODUCT_LABELS.get(product) + ' product icon';
+      if (source !== expectedSource) {
+        fail(file + ' must use its own approved local product icon: ' + expectedSource);
+      }
+      if (alternative !== expectedAlternative) {
+        fail(file + ' must provide meaningful alternative text for its product icon');
+      }
+    }
+  }
+
+  for (const file of files.filter(item => item.endsWith('.svg'))) {
+    validateProductIcon(path.join(rootDir, file), fs.readFileSync(path.join(rootDir, file), 'utf8'));
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
