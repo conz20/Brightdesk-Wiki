@@ -8,6 +8,8 @@ permalink: /products/forms.html
 
 # Brightdesk Forms
 
+![Brightdesk Forms product icon](../assets/images/product-icons/forms.svg){: .product-guide-icon }
+
 Use Forms to create local forms, surveys and quizzes, then review the responses saved on your device.
 
 ## Create a form
