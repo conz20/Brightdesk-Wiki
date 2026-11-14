@@ -67,6 +67,47 @@ Each product has its own window. Choosing **Open** again brings that product's e
 
 When you are working inside a product window, use **Switch product** to move to another product that is included and visible in your Suite.
 
+## Switch between products
+
+The Suite keeps its Home window open while each product opens in its own window.
+
+### Open another product from the Suite
+
+1. Return to the Suite window.
+2. Choose **Home** or **Apps** in the left navigation.
+3. Find a product card marked **In your Suite**.
+4. Choose **Open** on that card.
+5. The product opens in its own window. The Suite window stays open.
+
+Choosing **Open** again brings that product's existing window to the front. It does not create another copy of the same product window.
+
+### Switch products from a product window
+
+1. Look in the left navigation of the product window for **Switch product**.
+2. Choose another product shown in that list.
+3. Brightdesk opens that product window, or brings its existing window to the front.
+
+The list shows products that are included in the Suite and have not been hidden from the list. A product that is not listed may not be included in the Suite, or it may have been hidden.
+
+### Show or hide a product in the Switch product list
+
+1. Return to the Suite window.
+2. Choose **Apps** in the left navigation.
+3. Find the product card marked **In your Suite**.
+4. Open the card's three-dot **Product settings** menu.
+5. Choose **Hide from Switch product** to remove that product from the navigation list.
+
+To show it again, open the same product card menu and choose **Show in Switch product**.
+
+Hiding a product changes its visibility in the **Switch product** list only. It does not remove the product from the Suite, uninstall a separate desktop product, or delete your documents or project data.
+
+### Add or remove a product from the Suite
+
+- To add a product, choose **Apps**, find a card marked **Available to add**, then choose **Add to Suite**.
+- To remove a product from the Suite, find a card marked **In your Suite** and choose **Remove from Suite**. Read the confirmation message before continuing.
+
+Removing a product changes which bundled workspaces are available inside the Suite. It does not uninstall a separately installed desktop product or delete your documents or project data. Add the product to the Suite again when you need that workspace there.
+
 ## Use Files
 
 Choose **Files** in the left navigation to access the Suite's local file actions.
