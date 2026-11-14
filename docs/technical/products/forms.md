@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Forms technical reference
 description: Form question types, required questions, preview and local response behaviour.
-permalink: /technical/products/forms.html
+permalink: /technical../../products/forms.html
 ---
 
 # Forms technical reference
@@ -41,5 +41,5 @@ Responses are saved on the device. The current Forms workflow does not publish f
 
 ## Related information
 
-- [Data and privacy](/technical/data-and-privacy.html)
-- [Everyday Help: Forms](/products/forms.html)
+- [Data and privacy](../data-and-privacy.html)
+- [Everyday Help: Forms](../../products/forms.html)
