@@ -287,8 +287,10 @@ test('everyday Help links to a separate Technical Documentation area', () => {
   assert.match(technicalLayout, /aria-label="Technical documentation sections"/);
   assert.match(technicalLayout, /Search Technical Documentation/);
 
-  const declaration = technicalLayout.match(/\\{%\\s*assign public_technical_paths = "([^"]+)"\\s*\\|\\s*split:\\s*"\\|"\\s*%\\}/);
-  assert.ok(declaration, 'Technical search must declare its own explicit page allowlist');
+  const declarationLine = technicalLayout.split('\\n').find(line => line.includes('{% assign public_technical_paths = '));
+  assert.ok(declarationLine, 'Technical search must declare its own explicit page allowlist');
+  const declaration = declarationLine.match(/"([^"]+)"/);
+  assert.ok(declaration, 'Technical search allowlist must contain its page paths');
   const actualPaths = declaration[1].split('|');
   const expectedPaths = [
     '/technical/index.html',
@@ -308,7 +310,7 @@ test('everyday Help links to a separate Technical Documentation area', () => {
   ];
   assert.deepEqual(actualPaths, expectedPaths);
   assert.equal(new Set(actualPaths).size, 14);
-  assert.match(technicalLayout, /public_technical_paths contains help_page\\.url/);
+  assert.ok(technicalLayout.includes('{% if public_technical_paths contains help_page.url %}'));
 });
 
 test('technical reference pages cover exactly the ten approved Brightdesk products', () => {
