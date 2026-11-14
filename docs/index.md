@@ -63,9 +63,9 @@ permalink: /index.html
       <h3 id="group-create-title">Create and communicate</h3>
       <p>Write, present and capture ideas.</p>
       <ul>
-        <li><a href="products/pages.html"><img src="assets/images/product-icons/pages.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Pages</strong><small>Documents and writing</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
-        <li><a href="products/decks.html"><img src="assets/images/product-icons/decks.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Decks</strong><small>Slide presentations</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
-        <li><a href="products/notes.html"><img src="assets/images/product-icons/notes.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Notes</strong><small>Notes and ideas</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/pages.html"><img src="assets/images/product-icons/pages.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Pages</strong><small>Documents and writing</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/decks.html"><img src="assets/images/product-icons/decks.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Decks</strong><small>Slide presentations</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/notes.html"><img src="assets/images/product-icons/notes.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Notes</strong><small>Notes and ideas</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
       </ul>
     </section>
 
@@ -74,10 +74,10 @@ permalink: /index.html
       <h3 id="group-information-title">Work with information</h3>
       <p>Calculate, collect and organise records.</p>
       <ul>
-        <li><a href="products/sheets.html"><img src="assets/images/product-icons/sheets.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Sheets</strong><small>Spreadsheets and calculations</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
-        <li><a href="products/database.html"><img src="assets/images/product-icons/database.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Database</strong><small>Structured records and tables</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
-        <li><a href="products/forms.html"><img src="assets/images/product-icons/forms.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Forms</strong><small>Forms and responses</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
-        <li><a href="products/lists.html"><img src="assets/images/product-icons/lists.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Lists</strong><small>Custom lists and records</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/sheets.html"><img src="assets/images/product-icons/sheets.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Sheets</strong><small>Spreadsheets and calculations</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/database.html"><img src="assets/images/product-icons/database.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Database</strong><small>Structured records and tables</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/forms.html"><img src="assets/images/product-icons/forms.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Forms</strong><small>Forms and responses</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/lists.html"><img src="assets/images/product-icons/lists.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Lists</strong><small>Custom lists and records</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
       </ul>
     </section>
 
@@ -86,9 +86,9 @@ permalink: /index.html
       <h3 id="group-plan-title">Plan and organise</h3>
       <p>Keep projects and tasks in order.</p>
       <ul>
-        <li><a href="products/planner.html"><img src="assets/images/product-icons/planner.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Planner</strong><small>Projects and planning boards</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
-        <li><a href="products/to-do.html"><img src="assets/images/product-icons/to-do.svg" alt="" width="48" height="48" loading="lazy"><span><strong>To Do</strong><small>Personal tasks and due dates</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
-        <li><a href="products/workspace.html"><img src="assets/images/product-icons/workspace.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Workspace</strong><small>Project information together</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/planner.html"><img src="assets/images/product-icons/planner.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Planner</strong><small>Projects and planning boards</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/to-do.html"><img src="assets/images/product-icons/to-do.svg" alt="" width="48" height="48" loading="lazy"><span><strong>To Do</strong><small>Personal tasks and due dates</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="home-product-link" href="products/workspace.html"><img src="assets/images/product-icons/workspace.svg" alt="" width="48" height="48" loading="lazy"><span><strong>Workspace</strong><small>Project information together</small></span><span class="home-arrow" aria-hidden="true">→</span></a></li>
       </ul>
     </section>
   </div>
