@@ -66,6 +66,34 @@ test('help layout exposes a named main navigation and skip link', () => {
   assert.match(layout, /<main id="main" class="main-content">/);
 });
 
+test('Everyday Help marks the current homepage, Suite and product navigation links', () => {
+  const routes = [
+    '/index.html',
+    '/customer-start-here.html',
+    '/products/pages.html',
+    '/products/sheets.html',
+    '/products/decks.html',
+    '/products/notes.html',
+    '/products/database.html',
+    '/products/forms.html',
+    '/products/lists.html',
+    '/products/planner.html',
+    '/products/to-do.html',
+    '/products/workspace.html'
+  ];
+
+  for (const route of routes) {
+    const anchor = layout.split(/\\r?\\n/).find(line =>
+      line.includes(`href="{{ '${route}' | relative_url }}"`)
+    );
+    assert.ok(anchor, 'Navigation link must exist for ' + route);
+    assert.ok(
+      anchor.includes(`{% if page.url == '${route}' %} aria-current="page"{% endif %}`),
+      'Navigation link must announce the current page for ' + route
+    );
+  }
+});
+
 test('help typography keeps comfortable reading size and spacing', () => {
   const body = css.match(/body\s*\{([^}]*)\}/i);
   assert.ok(body, 'The stylesheet must define body typography');
