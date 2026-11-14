@@ -287,7 +287,7 @@ test('everyday Help links to a separate Technical Documentation area', () => {
   assert.match(technicalLayout, /aria-label="Technical documentation sections"/);
   assert.match(technicalLayout, /Search Technical Documentation/);
 
-  const declarationLine = technicalLayout.split('\\n').find(line => line.includes('{% assign public_technical_paths = '));
+  const declarationLine = technicalLayout.split('\n').find(line => line.includes('{% assign public_technical_paths = '));
   assert.ok(declarationLine, 'Technical search must declare its own explicit page allowlist');
   const declaration = declarationLine.match(/"([^"]+)"/);
   assert.ok(declaration, 'Technical search allowlist must contain its page paths');
