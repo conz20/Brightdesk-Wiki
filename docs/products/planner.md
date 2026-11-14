@@ -20,7 +20,7 @@ A new plan starts with a **To do** bucket. Choose **Rename plan** to change the 
 
 ## Add a bucket
 
-1. Enter a name in **New bucket name**.
+1. Under **New bucket**, enter a name in **Bucket name**.
 2. Choose **Add bucket**.
 3. Repeat for any other task groups you need.
 
@@ -28,7 +28,7 @@ Use the delete control on a bucket only when you intend to remove it. Any tasks 
 
 ## Add a task
 
-1. Under **Add a task**, enter a **Task title**.
+1. Under **New task**, enter a **Task name**.
 2. Add a **Description** when you need to explain the task.
 3. Choose the **Bucket** for the task.
 4. Choose a **Priority**: Low, Normal or High.
@@ -41,7 +41,7 @@ Use the delete control on a bucket only when you intend to remove it. Any tasks 
 - Use the progress selector on a task card to change its progress.
 - Choose **Edit** on a task card to change its title.
 - Choose **Delete** only when you intend to remove a task.
-- Use **Search tasks**, **Filter progress** and **Filter priority** to narrow the board.
+- Use **Search tasks** to find a task. Choose a value under **Progress** or **Priority** to narrow the board.
 
 ## Save your work
 
