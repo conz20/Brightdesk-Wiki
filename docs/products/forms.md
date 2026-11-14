@@ -8,15 +8,14 @@ permalink: /products/forms.html
 
 # Brightdesk Forms
 
-<figure class="product-preview">
-  <img src="../assets/previews/forms.svg" alt="Illustrative design preview of the Brightdesk Forms workspace." width="1440" height="900" loading="lazy">
-  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
-</figure>
-
 ## Overview
 
 Use Forms to create local forms, surveys and quizzes, then review the responses saved on your device.
 
+<figure class="product-preview">
+  <img src="../assets/previews/forms.svg" alt="Illustrative design preview of the Brightdesk Forms workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
 
 <figure class="guide-illustration">
   <img src="../assets/images/guide-forms.svg" alt="Three-step illustration for Brightdesk Forms: create a form, add questions, then preview it before use." width="1200" height="360" loading="lazy">

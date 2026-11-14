@@ -8,15 +8,14 @@ permalink: /products/workspace.html
 
 # Brightdesk Workspace
 
-<figure class="product-preview">
-  <img src="../assets/previews/workspace.svg" alt="Illustrative design preview of the Brightdesk Workspace workspace." width="1440" height="900" loading="lazy">
-  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
-</figure>
-
 ## Overview
 
 Use Workspace to bring related project information together in workspaces and pages.
 
+<figure class="product-preview">
+  <img src="../assets/previews/workspace.svg" alt="Illustrative design preview of the Brightdesk Workspace workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
 
 <figure class="guide-illustration">
   <img src="../assets/images/guide-workspace.svg" alt="Three-step illustration for Brightdesk Workspace: create a workspace, add pages and blocks, then use a checklist." width="1200" height="360" loading="lazy">

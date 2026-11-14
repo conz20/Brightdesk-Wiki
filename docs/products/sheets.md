@@ -8,15 +8,14 @@ permalink: /products/sheets.html
 
 # Brightdesk Sheets
 
-<figure class="product-preview">
-  <img src="../assets/previews/sheets.svg" alt="Illustrative design preview of the Brightdesk Sheets workspace." width="1440" height="900" loading="lazy">
-  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
-</figure>
-
 ## Overview
 
 Use Sheets to organise information in a grid and calculate values with supported formulas.
 
+<figure class="product-preview">
+  <img src="../assets/previews/sheets.svg" alt="Illustrative design preview of the Brightdesk Sheets workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
 
 <figure class="guide-illustration">
   <img src="../assets/images/guide-sheets.svg" alt="Three-step illustration for Brightdesk Sheets: enter your data, add a formula, then check the calculated result." width="1200" height="360">

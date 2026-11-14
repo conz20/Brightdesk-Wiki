@@ -8,15 +8,14 @@ permalink: /products/pages.html
 
 # Brightdesk Pages
 
-<figure class="product-preview">
-  <img src="../assets/previews/pages.svg" alt="Illustrative design preview of the Brightdesk Pages workspace." width="1440" height="900" loading="lazy">
-  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
-</figure>
-
 ## Overview
 
 Use Pages to write letters, reports and other text documents.
 
+<figure class="product-preview">
+  <img src="../assets/previews/pages.svg" alt="Illustrative design preview of the Brightdesk Pages workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
 
 <figure class="guide-illustration">
   <img src="../assets/images/guide-pages.svg" alt="Three-step illustration for Brightdesk Pages: create a document, write and format it, then save or export an editable copy." width="1200" height="360">

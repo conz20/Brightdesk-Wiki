@@ -8,15 +8,14 @@ permalink: /products/planner.html
 
 # Brightdesk Planner
 
-<figure class="product-preview">
-  <img src="../assets/previews/planner.svg" alt="Illustrative design preview of the Brightdesk Planner workspace." width="1440" height="900" loading="lazy">
-  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
-</figure>
-
 ## Overview
 
 Use Planner to organise a project into a plan, buckets and tasks.
 
+<figure class="product-preview">
+  <img src="../assets/previews/planner.svg" alt="Illustrative design preview of the Brightdesk Planner workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
 
 <figure class="guide-illustration">
   <img src="../assets/images/guide-planner.svg" alt="Three-step illustration for Brightdesk Planner: create a plan, add buckets and tasks, then track progress." width="1200" height="360" loading="lazy">
