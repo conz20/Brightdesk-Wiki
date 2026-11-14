@@ -10,6 +10,10 @@ permalink: /products/workspace.html
 
 ![Brightdesk Workspace product icon](../assets/images/product-icons/workspace.svg){: .product-guide-icon }
 
+![Three-step workflow: create a workspace, add pages and blocks, then use a checklist.](../assets/images/workflows/guide-workspace.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Workspace to bring related project information together in workspaces and pages.
 
 ## Create a workspace
