@@ -5,7 +5,7 @@ description: Choose simple Everyday Help or detailed Technical Documentation, th
 permalink: /index.html
 ---
 
-<section class="portal-hero" aria-labelledby="portal-title">
+<header class="portal-hero" aria-labelledby="portal-title">
   <p class="portal-kicker">BRIGHTDESK SUPPORT</p>
   <h1 id="portal-title">What would you like help with?</h1>
   <p class="portal-intro">Choose the kind of information you want. Both areas are part of one Brightdesk Help website, and you can switch between them at any time.</p>
@@ -29,7 +29,7 @@ permalink: /index.html
       </span>
     </a>
   </div>
-</section>
+</header>
 
 <section class="product-directory" aria-labelledby="product-directory-title">
   <div class="section-heading">
@@ -69,7 +69,8 @@ permalink: /index.html
   </div>
 </section>
 
-<section class="portal-note" aria-label="About Brightdesk Help">
+<section class="portal-note" aria-labelledby="portal-note-title">
+  <h2 id="portal-note-title">About Brightdesk Help</h2>
   <strong>One website. Two ways to explore.</strong>
   <p>Everyday Help and Technical Documentation have separate navigation and separate search results. Search stays in your browser. This site is read-only and does not require an account.</p>
   <p><strong>Desktop software only:</strong> Brightdesk Suite and all ten products are available for Windows, macOS and Linux. There are no mobile applications or mobile product versions.</p>
