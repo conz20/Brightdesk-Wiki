@@ -56,7 +56,7 @@ Cloudflare's GitHub App connection is separate from the Cloudflare API MCP token
 
 The optional `.github/mcp.json` configuration exposes only Cloudflare's public documentation search server. It is read-only and requires no account token or GitHub secret.
 
-Do not add a Cloudflare API execution server, API token, or GitHub Agents secret to this repository. The website's deployment does not require Cloudflare API credentials. Cloudflare project changes must be made by the owner in the Cloudflare dashboard and must follow the approval boundaries above.
+Do not add a Cloudflare API execution server, API token, or GitHub Agents secret to this repository. The website's deployment does not require Cloudflare API credentials. Do not grant DNS Write or broader Cloudflare permissions, and do not delete Pages projects or deployments as part of setup or repair. Cloudflare project changes must be made by the owner in the Cloudflare dashboard and must follow the approval boundaries above.
 
 ## Deployment verification
 
