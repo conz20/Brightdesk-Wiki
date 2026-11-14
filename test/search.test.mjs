@@ -182,3 +182,22 @@ test('every page provides a direct navigation menu for all ten product guides', 
   ]);
   assert.ok(productMenu.includes('<summary>Product guides</summary>'));
 });
+
+test('homepage explains that links open help instructions, not desktop software', () => {
+  const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
+  assert.match(homepage, /These links open help pages only/);
+  assert.match(homepage, /They do not launch Brightdesk Suite or any of its applications/);
+});
+
+test('all ten product guides include more worked examples and common fixes', () => {
+  const productGuides = [
+    'pages', 'sheets', 'decks', 'notes', 'database',
+    'forms', 'lists', 'planner', 'to-do', 'workspace'
+  ];
+  for (const product of productGuides) {
+    const guide = fs.readFileSync(new URL('../docs/products/' + product + '.md', import.meta.url), 'utf8');
+    assert.match(guide, /## More examples to try/, product + ' must include additional worked examples');
+    assert.match(guide, /## Common questions and fixes/, product + ' must include product-specific help for common problems');
+    assert.match(guide, /status: Needs review/, product + ' must not be marked verified before a full product walkthrough');
+  }
+});
