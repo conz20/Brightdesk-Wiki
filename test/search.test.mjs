@@ -196,8 +196,8 @@ test('all ten product guides include more worked examples and common fixes', () 
   ];
   for (const product of productGuides) {
     const guide = fs.readFileSync(new URL('../docs/products/' + product + '.md', import.meta.url), 'utf8');
-    assert.match(guide, /## More examples to try/, product + ' must include additional worked examples');
-    assert.match(guide, /## Common questions and fixes/, product + ' must include product-specific help for common problems');
+    assert.match(guide, /### More examples to try/, product + ' must include additional worked examples');
+    assert.match(guide, /## Troubleshooting and common questions/, product + ' must include product-specific help for common problems');
     assert.match(guide, /status: Needs review/, product + ' must not be marked verified before a full product walkthrough');
   }
 });
@@ -209,7 +209,7 @@ test('Suite guide explains supported files, Brightdesk projects, exports and spe
   }
   assert.match(suiteGuide, /## Save a Brightdesk project/);
   assert.match(suiteGuide, /## Export a copy from a product/);
-  assert.match(suiteGuide, /## Common questions and fixes/);
+  assert.match(suiteGuide, /## Troubleshooting and common questions/);
   assert.match(suiteGuide, /## Notifications, Settings and languages/);
   assert.match(suiteGuide, /Check spelling/);
   assert.match(suiteGuide, /does not change your document/);
