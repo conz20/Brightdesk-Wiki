@@ -132,7 +132,7 @@ test('every Help page explains how to use built-in browser translation', () => {
 
 test('the homepage gives task-first links to exactly the ten approved products', () => {
   const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
-  const taskGrid = homepage.match(/<ul class="task-grid">([\\s\\S]*?)<\\/ul>/);
+  const taskGrid = homepage.match(/<ul class="task-grid">([\s\S]*?)<\/ul>/);
   assert.ok(taskGrid, 'The homepage must show task-first suggestions');
   const paths = Array.from(taskGrid[1].matchAll(/href="([^"]+)"/g), match => match[1]);
   assert.deepEqual(paths, [
