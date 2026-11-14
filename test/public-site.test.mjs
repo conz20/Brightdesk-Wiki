@@ -141,7 +141,7 @@ test('unlisted output file types are rejected', t => {
   assert.throws(() => checkPublicSite({ siteRoot }), /unexpected public output file type/i);
 });
 
-test('only the approved customer homepage, start page, ten product guides and local CSS are allowed', t => {
+test('only the approved customer pages, local CSS and ten product icons are allowed', t => {
   const siteRoot = siteFixture(t);
   fs.mkdirSync(path.join(siteRoot, 'owner-only'), { recursive: true });
   fs.writeFileSync(path.join(siteRoot, 'owner-only/admin.html'), '<!doctype html>owner only');
