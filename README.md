@@ -45,16 +45,17 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-**Current PR head:** `7584e06d3c7a4946d385654de9f22a9b3150abf4`  
-**Current exact-head workflow:** [run #281](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43553818394) is **queued**, not passed.
+[Run #281](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43553818394) passed on commit `7584e06d3c7a4946d385654de9f22a9b3150abf4`, which contains the Overview navigation and matching regression assertion across all ten product guides.
 
-The immediately preceding successful full workflow was [run #278](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43552992315), on the older commit `e034dbb25eb126c641d96cec7adfb0ab158b0983`. It reported 105 passing tests, 39 Markdown files and 100 local links checked, a successful Jekyll build, and a passing generated-output audit covering 26 documentation pages and 38 static files. That result does **not** verify the current head.
+That successful workflow reported:
 
-[Run #280](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43553766114) failed on an earlier, superseded commit before the Overview links were added to all ten guides. The current head includes those links and the regression assertion; run #281 is the check for that revision. Do not describe the current head as passing until run #281 completes successfully.
+- 105 tests passed, 0 failed, 0 skipped.
+- 39 Markdown files and 100 local file/directory links checked successfully.
+- Jekyll customer-site build passed.
+- Generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
+- The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-The quality workflow uses the repository's self-hosted macOS ARM64 runner and pins Node.js 24.22.2 and Ruby 3.4.4. If that runner does not pick up the queued job, the exact-head result remains unverified. Do not switch to paid runners or weaken the pinned runtime to work around it.
-
-Automated tests do not establish visual quality, genuine product screenshots, live desktop workflows, manual keyboard or screen-reader usability, production hosting or domain configuration.
+The README and visual-redesign brief have since received status-documentation updates. Those later commits must also pass the exact-head workflow before the branch is considered fully verified. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. A passing check only verifies the automated gates listed above; it does not establish visual quality, genuine screenshots, live product workflows, manual accessibility, hosting or deployment.
 
 ## Publication blockers
 
