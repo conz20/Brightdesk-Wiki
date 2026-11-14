@@ -21,7 +21,7 @@ Individual product references describe important data behaviours, including loca
 
 ## Help website boundary
 
-Brightdesk Help and Technical Documentation are separate static, read-only websites.
+Brightdesk Help is one static, read-only website with two connected areas: Everyday Help and Technical Documentation. They have separate navigation and separate local search indexes, but share the same website and public address.
 
 - Visitors do not create accounts or sign in.
 - The sites do not contain contact forms, comments, uploads or public editing.
