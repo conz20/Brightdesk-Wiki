@@ -250,6 +250,13 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       fail(file + ' contains interactive or editable controls; customer help must remain read-only');
     }
     const urlAttributes = getNormalizedUrlAttributes(safetyHtml);
+    // JSON-LD is inert page metadata, not a resource request. Its approved
+    // schema.org context and first-party site URL are validated below, so omit
+    // only that metadata block from the broad external-resource text scan.
+    const resourceSafetyHtml = safetyHtml.replace(
+      /<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi,
+      ''
+    );
     if (/\son[a-z][a-z0-9_-]*\s*=/i.test(safetyHtml) ||
         urlAttributes.some(containsExecutableUrl)) {
       fail(file + ' contains an active HTML event handler or executable URL');
@@ -260,7 +267,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (/<meta\b[^>]*\bhttp-equiv\s*=\s*["']?refresh\b/i.test(html)) {
       fail(file + ' contains automatic navigation through a meta refresh');
     }
-    if (/(?:https?:)?\/\//i.test(safetyHtml) || urlAttributes.some(containsUnsafeUrl)) {
+    if (/(?:https?:)?\/\//i.test(resourceSafetyHtml) || urlAttributes.some(containsUnsafeUrl)) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
