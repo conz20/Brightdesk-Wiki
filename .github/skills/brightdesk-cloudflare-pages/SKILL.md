@@ -20,7 +20,7 @@ Use these settings unless the repository owner explicitly changes them:
 - Cloudflare product: Pages Free.
 - GitHub repository: conz20/Brightdesk-Wiki, and no other Brightdesk repository.
 - Production branch: main.
-- Preview branch deployments: None.
+- Preview branch deployments: target **None** before production. PR preview deployments were observed active on 14 November 2026; verify the current account-side setting and do not change it without owner approval.
 - Root directory: repository root (/).
 - Build command: npm run build:cloudflare.
 - Build output directory: _site.
@@ -33,7 +33,7 @@ Do not add paid plans, paid add-ons, metered services, subscriptions, or trials.
 
 ## Required privacy and output boundary
 
-The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 12 HTML pages (Help homepage, Suite getting-started page, and ten approved product guides) plus one local CSS file, for 13 static files total.
+The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 27 HTML pages (Help homepage, Everyday Help homepage, Suite getting-started page, ten Everyday Help product guides, Technical Documentation homepage, three system references, and ten technical product references) plus 22 local assets (one CSS, one search JavaScript, ten product icon SVGs, and ten workflow illustration SVGs), for 49 files total.
 
 The generated site must remain static and read-only. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images, external stylesheets, or customer-data collection. Do not publish internal architecture, development, security, release, maintainer, runner, or repository material.
 
@@ -81,8 +81,8 @@ Before creating or changing the production project, inspect the current reposito
 
 A live-site claim requires:
 - The correct private Wiki repository connected.
-- Production branch main and preview deployments set to None.
-- A successful current build and the exact 13-file privacy audit.
+- Production branch main; verify the preview-branch setting against the owner's approved policy (target None).
+- A successful current build and the exact 49-file privacy audit.
 - The custom domain help.brightdesk.com active with valid HTTPS.
 - The deployed commit SHA recorded.
 - The homepage, Suite guide, and all ten product guides checked on the live .com URL.
