@@ -12,15 +12,30 @@ const PRODUCT_LABELS = new Map([
   ['to-do', 'To Do'], ['workspace', 'Workspace']
 ]);
 const PRODUCT_ICON_FILES = PRODUCTS.map(product => 'assets/images/product-icons/' + product + '.svg');
+const PRODUCT_WORKFLOW_FILES = PRODUCTS.map(product => 'assets/images/workflows/guide-' + product + '.svg');
+const APPROVED_SVG_FILES = [...PRODUCT_ICON_FILES, ...PRODUCT_WORKFLOW_FILES];
 const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css']
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
-  .concat(PRODUCT_ICON_FILES);
+  .concat(APPROVED_SVG_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
-const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle']);
+const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle', 'text']);
 const SVG_ATTRIBUTES = new Set([
   'xmlns', 'width', 'height', 'viewBox', 'role', 'aria-labelledby', 'id',
   'x', 'y', 'rx', 'ry', 'cx', 'cy', 'r', 'd', 'fill', 'stroke',
-  'stroke-width', 'stroke-linecap', 'stroke-linejoin'
+  'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'text-anchor',
+  'font-family', 'font-size', 'font-weight'
+]);
+const WORKFLOW_ALT_TEXT = new Map([
+  ['pages', 'Three-step workflow: create a document, write and format it, then save or export.'],
+  ['sheets', 'Three-step workflow: enter spreadsheet data, add a formula, then check the result.'],
+  ['decks', 'Three-step workflow: add slides, arrange the content, then present your work.'],
+  ['notes', 'Three-step workflow: create a note, capture an idea, then keep a copy.'],
+  ['database', 'Three-step workflow: create a table, choose fields, then add records.'],
+  ['forms', 'Three-step workflow: create a form, add questions, then preview the form.'],
+  ['lists', 'Three-step workflow: create a list, add items and columns, then search, filter or sort.'],
+  ['planner', 'Three-step workflow: create a plan, add buckets and tasks, then track progress.'],
+  ['to-do', 'Three-step workflow: open My Day, add tasks, then mark finished work complete.'],
+  ['workspace', 'Three-step workflow: create a workspace, add pages and blocks, then use a checklist.']
 ]);
 const FORBIDDEN_PATHS = [
   /^(architecture|development|security|releases)\//i,
@@ -36,10 +51,10 @@ function fail(message) {
   throw new Error('Public Wiki check: ' + message);
 }
 
-function validateProductIcon(file, svg) {
+function validateApprovedSvg(file, svg) {
   const relative = file.split(path.sep).join('/');
-  if (!PRODUCT_ICON_FILES.includes(relative)) {
-    fail('SVG is outside the approved product icon library: ' + relative);
+  if (!APPROVED_SVG_FILES.includes(relative)) {
+    fail('SVG is outside the approved image library: ' + relative);
   }
   if (!/^<svg\b[^>]*>/.test(svg) || !/<\/svg>\s*$/.test(svg)) {
     fail(relative + ' is not a complete SVG document');
@@ -58,6 +73,8 @@ function validateProductIcon(file, svg) {
   }
 
   const stack = [];
+  let rootSeen = false;
+  let rootClosed = false;
   const tags = [...svg.matchAll(/<\/?([a-z][a-z0-9:-]*)\b[^>]*>/gi)];
   if (tags.length === 0) fail(relative + ' contains no SVG elements');
   for (const match of tags) {
@@ -65,23 +82,40 @@ function validateProductIcon(file, svg) {
     const name = match[1];
     if (!SVG_ELEMENTS.has(name)) fail(relative + ' contains a disallowed SVG element: ' + name);
     const attributeText = token.replace(/^<\/?[a-z][a-z0-9:-]*/i, '').replace(/\/?>$/, '');
-    const attributeMatches = [...attributeText.matchAll(/\s+([a-zA-Z_:][a-zA-Z0-9:_.-]*)\s*=\s*(?:"[^"]*"|'[^']*')/g)];
+    const attributeMatches = [...attributeText.matchAll(/\s+([a-zA-Z_:][a-zA-Z0-9:_.-]*)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)];
     const parsedAttributeText = attributeMatches.map(item => item[0]).join('');
     if (parsedAttributeText.trim() !== attributeText.trim()) {
       fail(relative + ' contains malformed or unsupported SVG attributes');
     }
     for (const attribute of attributeMatches) {
-      if (!SVG_ATTRIBUTES.has(attribute[1])) {
-        fail(relative + ' contains a disallowed SVG attribute: ' + attribute[1]);
+      const attributeName = attribute[1];
+      const attributeValue = attribute[2] ?? attribute[3] ?? '';
+      if (!SVG_ATTRIBUTES.has(attributeName)) {
+        fail(relative + ' contains a disallowed SVG attribute: ' + attributeName);
+      }
+      if (attributeName === 'font-family' && attributeValue !== 'Arial,sans-serif') {
+        fail(relative + ' uses an unapproved font family');
       }
     }
+
     if (token.startsWith('</')) {
-      if (stack.pop() !== name) fail(relative + ' contains incorrectly nested SVG elements');
-    } else if (!token.endsWith('/>')) {
-      stack.push(name);
+      if (rootClosed || stack.pop() !== name) {
+        fail(relative + ' contains incorrectly nested SVG elements');
+      }
+      if (stack.length === 0) {
+        if (name !== 'svg') fail(relative + ' has an invalid SVG root');
+        rootClosed = true;
+      }
+    } else {
+      if (rootClosed) fail(relative + ' contains elements after its SVG root');
+      if (stack.length === 0) {
+        if (rootSeen || name !== 'svg') fail(relative + ' must have exactly one SVG root');
+        rootSeen = true;
+      }
+      if (!token.endsWith('/>')) stack.push(name);
     }
   }
-  if (stack.length !== 0 || tags[0][1] !== 'svg' || !tags[tags.length - 1][0].startsWith('</svg>')) {
+  if (stack.length !== 0 || !rootSeen || !rootClosed || tags[0][1] !== 'svg') {
     fail(relative + ' contains unclosed or incorrectly nested SVG elements');
   }
 }
@@ -209,29 +243,47 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     const imageTags = [...html.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
     const productPage = file.match(/^products\/([a-z-]+)\.html$/);
     if (!productPage && imageTags.length !== 0) {
-      fail(file + ' contains an image outside the approved product-guide icon placement');
+      fail(file + ' contains an image outside the approved product-guide image placement');
     }
     if (productPage) {
       const product = productPage[1];
-      if (!PRODUCTS.includes(product) || imageTags.length !== 1) {
-        fail(file + ' must contain exactly one approved product icon');
+      if (!PRODUCTS.includes(product) || imageTags.length !== 2) {
+        fail(file + ' must contain exactly one product icon and one workflow diagram');
       }
-      const imageTag = imageTags[0];
-      const source = imageTag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2];
-      const alternative = imageTag.match(/\balt\s*=\s*(["'])(.*?)\1/i)?.[2];
-      const expectedSource = '../assets/images/product-icons/' + product + '.svg';
-      const expectedAlternative = 'Brightdesk ' + PRODUCT_LABELS.get(product) + ' product icon';
-      if (source !== expectedSource) {
-        fail(file + ' must use its own approved local product icon: ' + expectedSource);
-      }
-      if (alternative !== expectedAlternative) {
-        fail(file + ' must provide meaningful alternative text for its product icon');
-      }
+
+      const expectedImages = [
+        {
+          source: '../assets/images/product-icons/' + product + '.svg',
+          alternative: 'Brightdesk ' + PRODUCT_LABELS.get(product) + ' product icon',
+          className: 'product-guide-icon'
+        },
+        {
+          source: '../assets/images/workflows/guide-' + product + '.svg',
+          alternative: WORKFLOW_ALT_TEXT.get(product),
+          className: 'product-workflow-diagram'
+        }
+      ];
+
+      imageTags.forEach((imageTag, index) => {
+        const expected = expectedImages[index];
+        const source = imageTag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2];
+        const alternative = imageTag.match(/\balt\s*=\s*(["'])(.*?)\1/i)?.[2];
+        const className = imageTag.match(/\bclass\s*=\s*(["'])(.*?)\1/i)?.[2];
+        if (source !== expected.source) {
+          fail(file + ' must use its approved local image: ' + expected.source);
+        }
+        if (alternative !== expected.alternative) {
+          fail(file + ' must provide the required meaningful alternative text');
+        }
+        if (className !== expected.className) {
+          fail(file + ' must use the approved image presentation class: ' + expected.className);
+        }
+      });
     }
   }
 
   for (const file of files.filter(item => item.endsWith('.svg'))) {
-    validateProductIcon(file, fs.readFileSync(path.join(rootDir, file), 'utf8'));
+    validateApprovedSvg(file, fs.readFileSync(path.join(rootDir, file), 'utf8'));
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
