@@ -27,7 +27,7 @@ The redesign is a publication blocker. Do not promote the current presentation a
 
 ## Desktop application support — Windows, macOS and Linux
 
-Brightdesk's customer products are desktop applications for **Windows, macOS and Linux**. The Help site is a website that supports those desktop products; it is not a mobile Brightdesk app.
+Brightdesk's customer products are desktop applications for **Windows, macOS and Linux**. The Help site is a website that supports those desktop products. Brightdesk does not have a mobile application or mobile product version. Narrow browser layouts are only a responsive reading fallback for the website.
 
 - Design and judge the primary experience at wide desktop and standard laptop sizes first. Prioritise comfortable reading beside a desktop application, clear product navigation, search, workflow steps, tables and technical references.
 - Keep tablet and narrow-mobile layouts responsive and readable, but do not let phone-style navigation, stacked mobile cards or touch-first controls dictate the desktop composition. Narrow layouts are a secondary reading fallback.
