@@ -324,3 +324,19 @@ Brightdesk Pages, Sheets and Decks guides already include simple examples and ex
 - Craft Wiki [WordCraft workflows](https://craft.wiki/apps/wordcraft/workflows/), [GridCraft workflows](https://craft.wiki/apps/gridcraft/workflows/) and [DeckCraft workflows](https://craft.wiki/apps/deckcraft/workflows/), reviewed 15 November 2026.
 - Craft Wiki [public repository README](https://github.com/storytold/craft-wiki/blob/main/README.md), which cautions that many app guides remain scaffolds.
 - Brightdesk's current [Pages](https://github.com/conz20/Brightdesk-Wiki/blob/reconcile/customer-help-main-2026-11-14/docs/products/pages.md), [Sheets](https://github.com/conz20/Brightdesk-Wiki/blob/reconcile/customer-help-main-2026-11-14/docs/products/sheets.md) and [Decks](https://github.com/conz20/Brightdesk-Wiki/blob/reconcile/customer-help-main-2026-11-14/docs/products/decks.md) draft guides. These customer guides remain Needs review.
+
+## Proposed Brightdesk product-directory groups — 15 November 2026
+
+The live Craft directory demonstrates that categories help visitors scan a larger product family. Brightdesk has only ten approved customer products, so its grouping should be compact, task-oriented and based on current Brightdesk guide content. The following is the preferred information-architecture proposal for visual exploration; it does not change product names, capabilities or the approved count.
+
+| Directory group | Products | Reader's goal |
+| --- | --- | --- |
+| **Create and communicate** | Pages, Decks, Notes | Write documents, prepare presentations and capture information. |
+| **Work with information** | Sheets, Database, Forms, Lists | Calculate values, structure records, collect responses and organise information. |
+| **Plan and organise** | Planner, To Do, Workspace | Plan projects, manage personal tasks and keep project information together. |
+
+Keep the Brightdesk Suite getting-started guide as a separate, prominent starting point above or beside the product directory. It is a Suite guide, not an eleventh product. Keep the three groups visually distinct but avoid a wall of oversized cards; use compact original product marks, clear names and one-line task descriptions. On a narrow screen the groups may stack, but the desktop composition remains the design priority.
+
+Before implementing the grouping, check that every one-line description remains aligned with the current product guide and product source. Do not create new features or imply that a product supports an unverified task. Brightdesk-AI, developer tools, third-party products and mobile editions do not belong in the directory.
+
+The category names and arrangement are proposed for the next design review, not final visual approval. They should be tested in the required design exploration rather than implemented as an improvised CSS redesign.
