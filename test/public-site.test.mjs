@@ -332,3 +332,49 @@ test('customer and technical layouts both advertise the light and dark themes us
   const styles = fs.readFileSync(path.join(process.cwd(), 'docs', 'assets', 'css', 'site.css'), 'utf8');
   assert.match(styles, /color-scheme:\s*light\s+dark;/);
 });
+
+test('keyboard focus outlines meet 3:1 contrast in light and dark themes', () => {
+  const styles = fs.readFileSync(path.join(process.cwd(), 'docs', 'assets', 'css', 'site.css'), 'utf8');
+  const lightRoot = styles.match(/:root\\s*\\{([^}]*)\\}/);
+  const darkTheme = styles.match(/@media\\s*\\(prefers-color-scheme:\\s*dark\\)\\s*\\{([\\s\\S]*)/);
+  const darkRoot = darkTheme?.[1]?.match(/:root\\s*\\{([^}]*)\\}/);
+  assert.ok(lightRoot, 'Light theme tokens must be declared');
+  assert.ok(darkRoot, 'Dark theme tokens must be declared');
+
+  const readColour = (block, name) => {
+    const match = block.match(new RegExp('--' + name + ':\\\\s*(#[0-9a-f]{6})', 'i'));
+    assert.ok(match, 'Missing CSS colour token --' + name);
+    return match[1].slice(1).match(/.{2}/g).map(channel => Number.parseInt(channel, 16));
+  };
+  const luminance = rgb => {
+    const [r, g, b] = rgb.map(channel => {
+      const value = channel / 255;
+      return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  const contrast = (first, second) => {
+    const values = [luminance(first), luminance(second)].sort((a, b) => b - a);
+    return (values[0] + 0.05) / (values[1] + 0.05);
+  };
+
+  for (const [themeName, tokens] of [
+    ['light', lightRoot[1]],
+    ['dark', darkRoot[1]]
+  ]) {
+    const focus = readColour(tokens, 'focus-ring');
+    for (const backgroundName of ['page', 'surface', 'soft-blue']) {
+      const background = readColour(tokens, backgroundName);
+      assert.ok(
+        contrast(focus, background) >= 3,
+        themeName + ' focus ring must contrast at least 3:1 against --' + backgroundName
+      );
+    }
+  }
+
+  const focusRules = [...styles.matchAll(/[^{}]*:focus-visible[^{}]*\\{([^{}]*)\\}/g)];
+  assert.ok(focusRules.length >= 1, 'Keyboard focus styles must exist');
+  for (const rule of focusRules) {
+    assert.match(rule[1], /outline:\\s*3px\\s+solid\\s+var\\(--focus-ring\\)/);
+  }
+});
