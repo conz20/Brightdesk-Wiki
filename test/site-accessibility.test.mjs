@@ -128,7 +128,7 @@ test('technical reference navigation is named and marks the current document', (
   ];
 
   for (const route of routes) {
-    const anchor = navigation.split(/\\r?\\n/).find(line =>
+    const anchor = navigation.split(/\r?\n/).find(line =>
       line.includes(`href="{{ '${route}' | relative_url }}"`)
     );
     assert.ok(anchor, 'Technical reference link must exist for ' + route);
