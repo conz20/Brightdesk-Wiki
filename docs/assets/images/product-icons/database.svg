@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">Brightdesk Database icon</title>
+<desc id="desc">A database cylinder with three visible record levels.</desc>
+<rect x="8" y="8" width="112" height="112" rx="26" fill="#eaf2fb"/>
+<path d="M30 39c0-9 15-16 34-16s34 7 34 16v50c0 9-15 16-34 16s-34-7-34-16z" fill="#fff" stroke="#38658f" stroke-width="4"/>
+<ellipse cx="64" cy="39" rx="34" ry="16" fill="#d8e8f8" stroke="#38658f" stroke-width="4"/>
+<path d="M30 57c0 9 15 16 34 16s34-7 34-16M30 76c0 9 15 16 34 16s34-7 34-16" fill="none" stroke="#38658f" stroke-width="3"/>
+</svg>
