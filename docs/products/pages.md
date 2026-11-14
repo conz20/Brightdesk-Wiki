@@ -10,6 +10,12 @@ permalink: /products/pages.html
 
 Use Pages to write letters, reports and other text documents.
 
+
+<figure class="guide-illustration">
+  <img src="../assets/images/guide-pages.svg" alt="Three-step illustration for Brightdesk Pages: start the task, add the information you need, then finish or save your work." width="1200" height="360">
+  <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
+</figure>
+
 ## Create a document
 
 1. Open Brightdesk Pages. A new document opens in the writing workspace.
@@ -102,5 +108,9 @@ Pages provides core document writing, formatting and page setup. It is not full 
 ## Guide status
 
 **Needs review.** These steps are based on the current Pages interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
+
+## Need the technical detail?
+
+For product behaviour, file handling and technical boundaries, see the [Brightdesk Pages technical reference](../technical/products/pages.html).
 
 [Back to Brightdesk Help](../index.html)
