@@ -9,7 +9,7 @@ const products = ['pages','sheets','decks','notes','database','forms','lists','p
 
 test('Everyday Help has a separate task-first route and exactly ten product links', () => {
   const everyday = read('docs/everyday/index.md');
-  const directory = everyday.match(/<div class="product-card-grid">([\\s\\S]*?)<\\/div>/);
+  const directory = everyday.match(/<div class="product-card-grid">([\s\S]*?)<\/div>/);
   assert.ok(directory, 'Everyday Help must display its product directory');
   const matches = [...directory[1].matchAll(/href="\.\.\/products\/([a-z-]+)\.html"/g)].map(match => match[1]);
   assert.deepEqual(matches, products);
