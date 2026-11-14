@@ -31,7 +31,7 @@ The six supported named functions are:
 
 For example, `=SUM(B2:B6)` adds the numeric values in cells B2 through B6. `=B2*1.1` multiplies the value in B2 by 1.1.
 
-A circular reference is shown as `#CYCLE!`. An unsupported or invalid formula, or a calculation that needs a non-numeric cell value, is shown as `#VALUE!`.
+A circular reference is rejected and shown as `#VALUE!`, rather than being allowed to calculate forever. Unsupported or invalid formulas and calculations that need a non-numeric cell value also show `#VALUE!`.
 
 These are the six named functions confirmed in the current formula implementation. Do not assume that other spreadsheet functions, external data connections or macro execution are supported.
 

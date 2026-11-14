@@ -39,24 +39,25 @@ PR #5 currently contains:
 - **Consistent product guides:** each of the ten guides has **Overview**, **Getting started**, **Workflows**, and **Troubleshooting and common questions** sections, with in-page navigation, examples, expected results, product-specific questions, feature boundaries and a link to the relevant technical reference.
 - **Technical Documentation:** a separate `/technical/` area with its own layout, navigation and local search. It includes system references and individual technical references for the same ten products. The two areas link to each other but their search indexes remain separate. The technical references also explain source-confirmed formula limits, record search/filter rules, task fields and destructive field/column/question deletion behaviour.
 - **Translation:** visitors use their browser's automatic translation or manual translate command. Brightdesk does not provide a separate translation service.
+- **Source-checked control labels:** the current Lists filter/sort and custom-column controls, plus Workspace's **Find a page** control, now match the labels in the product source.
 - **Visual assets:** the ten current product SVGs are explanatory diagrams, not screenshots of Brightdesk. They are labelled accordingly.
 
 The source changes are not yet merged into `main`. PR #5 remains a **draft** and must stay unmerged until its review and release gates are met.
 
 ## Verification — exact commits matter
 
-[Run #286](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43555325894) passed on commit `86a5d190c98f7e96c57b1739e209142491935859`.
+[Run #288](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43555630651) passed on commit `7284f80b206e9b551d6f4b17658dc7cbde1215e6`.
 
 That exact-head workflow reported:
 
-- **108 tests passed, 0 failed, 0 skipped.**
+- **109 tests passed, 0 failed, 0 skipped.**
 - 39 Markdown files and 99 local file/directory links checked successfully.
 - Jekyll customer-site build passed.
 - Generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
-- Regression checks confirm that all ten technical product references link back to their matching Everyday Help guides, and that dark-theme text and keyboard focus colours meet the tested contrast thresholds.
+- Regression checks cover the source-backed technical references, including data-removal warnings and each technical page's return link to its matching everyday guide.
 - The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-The source-backed technical-reference expansion is newer than this check and must pass its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+The Lists and Workspace guide-label corrections and formula error-code correction are newer than this check and must pass their own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 

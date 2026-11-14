@@ -26,7 +26,7 @@ Checklist items have their own completion state and can be edited independently 
 
 ## Search and organisation
 
-**Search pages** searches page titles, block content and checklist item text. Blocks can be moved up or down one position at a time. Pages and workspaces can be renamed.
+**Find a page** searches page titles, block content and checklist item text. Blocks can be moved up or down one position at a time. Pages and workspaces can be renamed.
 
 ## Deletion safeguards
 

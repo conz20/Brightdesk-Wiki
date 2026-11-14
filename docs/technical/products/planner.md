@@ -34,7 +34,7 @@ The task view can be filtered by bucket, progress and priority. Text search chec
 
 ## Task-card behaviour
 
-The task card exposes title editing and a progress selector. Other task details are set when the task is created or through the task-editing workflow.
+The task card exposes title editing and a progress selector. Other task details are set when the task is created.
 
 ## Data boundary
 

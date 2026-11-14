@@ -46,17 +46,18 @@ A new list starts with the columns **Title**, **Status**, **Priority**, **Due da
 
 ### Add a custom column
 
-1. Under the list, enter a name in **New column name**.
-2. Choose **Text**, **Date** or **Choice** as the column type.
-3. For a Choice column, enter the options in the comma-separated options field.
-4. Choose **Add column**.
+1. Expand **Add a custom column**.
+2. Enter a name in **Column name**.
+3. Choose **Text**, **Date** or **Choice** as the column type.
+4. For a Choice column, enter the options in the comma-separated options field.
+5. Choose **Add column**.
 
 ### Search, filter and sort
 
 - Enter a word in **Search this list** to find matching records.
-- Use **Filter by status** to choose **All records**, **Active** (Not started and In progress) or **Done**. The Active option shows both unfinished statuses; Done shows completed records.
+- Use **Filter by status** to choose **All statuses**, **Not started**, **In progress** or **Done**.
 - Choose a field in **Sort by column**.
-- Choose **Ascending** or **Descending** under **Sort direction**, then choose **Sort**.
+- Choose **A to Z** or **Z to A** under **Sort direction**, then choose **Sort**.
 
 ### Rename or delete a list
 
@@ -103,7 +104,9 @@ Lists are saved on this device as you work. Check the local-save status in the w
 
 **Which custom column types can I add?** The current guide lists **Text**, **Date** and **Choice**.
 
-**How do I show only certain records?** Use **Filter by status**. Use **Search this list** when you need to find a word or title.
+**Which status filters are available?** Choose **All statuses**, **Not started**, **In progress** or **Done**. Use **Search this list** when you need to find a word or title.
+
+**What happens if I delete a custom column?** Its values are removed from every record in the list. Check the records before deleting the column.
 
 **What happens if I delete a list?** The list and all its records are removed. Make sure you intend to remove the records before choosing **Delete list**.
 

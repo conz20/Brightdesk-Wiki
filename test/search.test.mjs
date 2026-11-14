@@ -241,16 +241,17 @@ test('Suite guide explains switching, hiding, restoring and removing products sa
 test('Workspace and Database examples use the exact current Suite control labels', () => {
   const workspaceGuide = fs.readFileSync(new URL('../docs/products/workspace.md', import.meta.url), 'utf8');
   const databaseGuide = fs.readFileSync(new URL('../docs/products/database.md', import.meta.url), 'utf8');
-  assert.match(workspaceGuide, /Search pages/);
-  assert.doesNotMatch(workspaceGuide, /Find a page/);
+  assert.match(workspaceGuide, /Find a page/);
+  assert.doesNotMatch(workspaceGuide, /Search pages/);
   assert.match(databaseGuide, /Text, Number, Date, Email, URL, Checkbox or Choice/);
   assert.doesNotMatch(databaseGuide, /Choice list|Web address/);
 });
 
-test('Lists guide explains the working Active and Done status filters', () => {
+test('Lists guide uses the current status filter and sort-direction labels', () => {
   const listsGuide = fs.readFileSync(new URL('../docs/products/lists.md', import.meta.url), 'utf8');
-  assert.match(listsGuide, /\*\*Active\*\* \(Not started and In progress\)/);
-  assert.match(listsGuide, /Done shows completed records/);
+  assert.match(listsGuide, /\*\*All statuses\*\*.*\*\*Not started\*\*.*\*\*In progress\*\*.*\*\*Done\*\*/s);
+  assert.match(listsGuide, /\*\*A to Z\*\*.*\*\*Z to A\*\*/s);
+  assert.doesNotMatch(listsGuide, /\*\*Active\*\*|\*\*All records\*\*|\*\*Ascending\*\*|\*\*Descending\*\*/);
 });
 
 test('product guides use the actual Database, Lists, Forms, Planner and Workspace labels', () => {

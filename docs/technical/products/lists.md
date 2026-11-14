@@ -33,15 +33,16 @@ Deleting a custom column also removes the values stored for that column from eve
 
 Search checks values across all columns in the current list. It is case-insensitive and matches part of a value.
 
-The visible status filter contains **All records**, **Active** and **Done**.
+The visible **Filter by status** choices are **All statuses**, **Not started**, **In progress** and **Done**.
 
 | Filter option | Records included |
 | --- | --- |
-| All records | Every record |
-| Active | Not started and In progress |
+| All statuses | Every record |
+| Not started | Records with that status |
+| In progress | Records with that status |
 | Done | Completed records |
 
-The underlying status values are **Not started**, **In progress** and **Done**. Records can also be sorted by a chosen column. Priority sorting uses Low, Normal and High order.
+Search is case-insensitive and checks values across the list's columns. Status filtering uses the selected status value. Records can be sorted by a chosen column; the **Sort direction** choices are **A to Z** and **Z to A**. Priority sorting follows Low, Normal and High order.
 
 ## Data boundary
 

@@ -113,8 +113,8 @@ test('technical references explain source-confirmed formula, search and data-rem
   const workspace = read('workspace.md');
 
   assert.match(sheets, /remainder.*%/i);
-  assert.match(sheets, /#CYCLE!/);
-  assert.match(sheets, /#VALUE!/);
+  assert.match(sheets, /circular reference.*#VALUE!/i);
+  assert.doesNotMatch(sheets, /#CYCLE!/);
   assert.match(database, /search checks the values in all fields/i);
   assert.match(database, /deleting a custom field also removes that field's value from every record/i);
   assert.match(forms, /between 2 and 30 distinct options/i);

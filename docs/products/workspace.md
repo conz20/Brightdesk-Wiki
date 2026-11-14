@@ -41,7 +41,7 @@ A new workspace includes a **Getting started** page.
 2. Enter a page title in the prompt.
 3. The new page appears in the page list. Select it to work on it.
 
-Use **Search pages** to search page titles and page content.
+Use **Find a page** to search page titles and page content.
 
 ### Add content to a page
 
@@ -99,7 +99,7 @@ Workspaces and pages are saved on this device as you work. Check the local-save 
 2. Rename the first page **Overview**.
 3. Add another page for a separate topic, such as **Materials**.
 4. Add Text, Bullet list or Callout blocks to record information.
-5. Use **Search pages** to search for a page by its title or content.
+5. Use **Find a page** to search for a page by its title or content.
 
 **What you should have:** a workspace with separate pages for related information.
 
