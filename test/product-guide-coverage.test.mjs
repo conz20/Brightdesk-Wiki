@@ -79,3 +79,21 @@ test('published product icons remain byte-for-byte copies of the canonical asset
   }
 });
 
+test('published workflow diagrams match the canonical visual library', () => {
+  for (const product of expected.keys()) {
+    const name = product.replace(/\.md$/, '');
+    const sourceDiagram = fs.readFileSync(path.join(root, 'assets', 'illustrations', 'workflows', 'guide-' + name + '.svg'), 'utf8');
+    const publicDiagram = fs.readFileSync(path.join(root, 'docs', 'assets', 'images', 'workflows', 'guide-' + name + '.svg'), 'utf8');
+    assert.equal(publicDiagram, sourceDiagram, name + ' public workflow must match the canonical illustration');
+  }
+});
+
+test('every product guide labels its workflow image as an illustration, not a screenshot', () => {
+  for (const product of expected.keys()) {
+    const name = product.replace(/\.md$/, '');
+    const source = fs.readFileSync(path.join(productDirectory, product), 'utf8');
+    assert.match(source, new RegExp('guide-' + name + '\\\\.svg'));
+    assert.match(source, /Illustrative workflow, not a screenshot of the Brightdesk interface/i);
+  }
+});
+
