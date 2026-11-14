@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Sheets technical reference
 description: Spreadsheet input, calculation expressions and export capabilities in Brightdesk Sheets.
-permalink: /technical/products/sheets.html
+permalink: /technical../../products/sheets.html
 ---
 
 # Sheets technical reference
@@ -36,5 +36,5 @@ The open-file route does not mean that every feature of a source workbook, inclu
 
 ## Related information
 
-- [File formats](/technical/file-formats.html)
-- [Everyday Help: Sheets](/products/sheets.html)
+- [File formats](../file-formats.html)
+- [Everyday Help: Sheets](../../products/sheets.html)
