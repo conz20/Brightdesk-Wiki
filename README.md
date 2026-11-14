@@ -42,10 +42,15 @@ PR #5 currently contains:
 - **Source-checked control labels:** the current Lists filter/sort and custom-column controls, plus Workspace's **Find a page** control, now match the labels in the product source.
 - **Visual assets:** the ten current product SVGs are explanatory diagrams, not screenshots of Brightdesk. They are labelled accordingly.
 - **Diagram accessibility:** all ten explanatory diagrams now have distinct alternative text describing their actual product-specific steps. A regression test checks every description.
+- **Navigation accessibility:** the Everyday Help homepage, Suite guide and all ten product guides now expose the current page in navigation with `aria-current="page"`; the selected link has a visible state in the header and product menu. A regression test checks all twelve destinations.
 
 The source changes are not yet merged into `main`. PR #5 remains a **draft** and must stay unmerged until its review and release gates are met.
 
 ## Verification — exact commits matter
+
+**Current PR #5 head:** `ae86a8f29f14ff89fd870669d9f4342464b26577`.
+
+[Run #304](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43562706444) passed on that exact head. It completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, dependency installation, validation-script syntax, documentation and public-output regression tests, Markdown-link checks, Jekyll generation and generated-output privacy audit. This run includes the current-page navigation regression test and selected-link styling.
 
 [Run #299](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43558574203) passed on the exact PR head `cd90b8b89b8ff5e05924226fb2725a77ae802ba6`. The workflow completed the pinned runtimes, dependency installation, regression tests, Markdown-link checks, Jekyll generation and public-output privacy audit successfully.
 
