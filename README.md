@@ -46,6 +46,8 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
+[Run #297](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557404486) passed on the exact PR head `b804e992ed71d67fee0b28a60232c7b937d1555d`. The workflow completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
+
 [Run #296](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557314209) passed on commit `98500f11db2aabd2bd5c57cb6922161bd3bc8728`. The workflow completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
 
 [Run #295](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557189238) passed on the immediately preceding commit `e57bd3f572bf41ed73c1d8e62c253cfe298b4cd2`. It completed the same validation pipeline successfully.
