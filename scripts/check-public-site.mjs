@@ -14,10 +14,14 @@ const TECHNICAL_PAGES = [
   ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
 ];
 const IMAGE_FILES = PRODUCTS.map(product => 'assets/images/guide-' + product + '.svg');
+const ICON_FILES = ['assets/brand/brightdesk-suite-mark.svg']
+  .concat(PRODUCTS.map(product => 'assets/icons/' + product + '.svg'));
+const PREVIEW_FILES = ['assets/previews/suite.svg']
+  .concat(PRODUCTS.map(product => 'assets/previews/' + product + '.svg'));
 const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js']
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
   .concat(TECHNICAL_PAGES)
-  .concat(IMAGE_FILES);
+  .concat(IMAGE_FILES, ICON_FILES, PREVIEW_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const FORBIDDEN_PATHS = [
   /^(architecture|development|security|releases)\//i,
@@ -176,12 +180,17 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (!/^\s*<svg\b/i.test(svg) || !/<\/svg>\s*$/i.test(svg)) {
       fail(file + ' is not a complete SVG document');
     }
+    const localReferences = [...svg.matchAll(/\b(?:fill|stroke|clip-path|mask)\s*=\s*["']url\(#([^)'"]+)\)["']/gi)].map(match => match[1]);
+    const definedIds = new Set([...svg.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi)].map(match => match[1]));
+    const unresolvedReferences = localReferences.filter(reference => !definedIds.has(reference));
+    const withoutLocalReferences = withoutNamespace.replace(/\b(?:fill|stroke|clip-path|mask)\s*=\s*["']url\(#[^)]+\)["']/gi, '');
     if (/<(?:script|foreignObject|iframe|object|embed|image|use|audio|video|filter|a)\b/i.test(svg) ||
         /\son[a-z][a-z0-9_-]*\s*=/i.test(svg) ||
         /(?:https?:)?\/\//i.test(withoutNamespace) ||
-        /(?:javascript|data|vbscript):|url\s*\(/i.test(svg) ||
-        /<style\b|\sstyle\s*=/i.test(svg)) {
-      fail(file + ' contains active content, styling or an external reference; public SVGs must be static local artwork');
+        /(?:javascript|data|vbscript):|url\s*\(/i.test(withoutLocalReferences) ||
+        /<style\b|\sstyle\s*=/i.test(svg) ||
+        unresolvedReferences.length > 0) {
+      fail(file + ' contains active content, styling, an external reference or an unresolved local reference; public SVGs must be static local artwork');
     }
   }
 

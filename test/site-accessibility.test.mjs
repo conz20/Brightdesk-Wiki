@@ -240,3 +240,21 @@ test('the portal directory uses a wide responsive layout for product discovery',
   assert.match(css, /\.product-card-grid\s*\{[^}]*grid-template-columns/is);
   assert.match(css, /@media\s*\(max-width:\s*680px\)/i);
 });
+
+
+test('both reading areas use the original local Brightdesk logo mark', () => {
+  for (const layoutPath of [
+    '../docs/_layouts/default.html',
+    '../docs/_layouts/technical.html'
+  ]) {
+    const source = fs.readFileSync(new URL(layoutPath, import.meta.url), 'utf8');
+    assert.match(source, /brand-mark-image/);
+    assert.match(source, /assets\/brand\/brightdesk-suite-mark\.svg/);
+  }
+});
+
+test('product preview images are styled responsively and respect reduced motion', () => {
+  assert.match(css, /\.product-preview\s*\{/);
+  assert.match(css, /\.product-preview img\s*\{[^}]*width:\s*100%/s);
+  assert.match(css, /\.product-card img\s*\{[^}]*object-fit:\s*contain/s);
+});

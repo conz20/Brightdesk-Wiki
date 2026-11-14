@@ -529,7 +529,7 @@ a:focus-visible {
 .product-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.85rem}
 .product-card{display:flex;min-width:0;min-height:180px;flex-direction:column;align-items:flex-start;gap:.35rem;padding:1rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:.9rem;text-decoration:none;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
 .product-card:hover{transform:translateY(-2px);border-color:var(--brand);box-shadow:0 10px 25px rgb(23 35 52 / 8%)}
-.product-card img{display:block;width:100%;height:82px;object-fit:contain;object-position:left center;margin-bottom:.2rem}
+.product-card img{display:block;width:4.25rem;height:4.25rem;object-fit:contain;object-position:left center;margin-bottom:.25rem}
 .product-card-name{font-size:1.05rem;font-weight:800}
 .product-card-description{color:var(--muted);font-size:.88rem;line-height:1.4}
 .product-card-suite{justify-content:flex-start}
@@ -547,7 +547,7 @@ a:focus-visible {
 .reference-card>span:not(.reference-symbol){color:var(--muted);font-size:.88rem}
 .reference-card .reference-arrow,.reference-arrow{margin-top:auto;color:var(--brand-dark)!important;font-weight:750}
 .technical-product-grid .product-card{min-height:205px}
-.technical-product-grid .product-card img{height:76px}
+.technical-product-grid .product-card img{height:4.25rem}
 .technical-site .technical-hero,.technical-site .reference-section,.technical-site .portal-note{width:min(calc(100% - 2rem),1180px)}
 @media(max-width:900px){.product-card-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:680px){.portal-choices{grid-template-columns:1fr}.portal-choice{min-height:0}.product-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.reference-card-grid{grid-template-columns:1fr}.section-heading{align-items:flex-start;flex-direction:column}.suite-guide-link{margin-top:.25rem}}
@@ -558,3 +558,12 @@ a:focus-visible {
 /* Give the choice and Everyday Help directories enough width for a real product catalogue. */
 .main-content:has(.portal-hero){width:min(calc(100% - 2rem),1240px);margin:1.25rem auto 2.5rem}
 .main-content:has(.portal-hero) .content-card{padding:clamp(1rem,3vw,2rem)}
+
+/* Original Brightdesk identity and product artwork */
+.brand-mark-image{display:block;flex:0 0 auto;width:2.15rem;height:2.15rem;object-fit:contain;border-radius:.55rem}
+.product-card-mark-img{display:block;width:4.1rem;height:4.1rem;object-fit:contain;margin-bottom:.25rem}
+.product-preview{margin:1.35rem 0 1.75rem;padding:clamp(.65rem,2vw,1rem);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:1rem}
+.product-preview img{display:block;width:100%;height:auto;max-height:min(66vw,760px);object-fit:contain;background:#f3f6fa;border-radius:.65rem}
+.product-preview figcaption{margin:.75rem .15rem .1rem;color:var(--muted);font-size:.9rem;line-height:1.55}
+.suite-product-preview img{max-height:820px}
+@media(prefers-color-scheme:dark){.product-preview img{background:#f3f6fa}}

@@ -22,6 +22,9 @@ function siteFixture(t) {
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/images'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/brand'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/icons'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/previews'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
   fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\\n');
   const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\\n';
@@ -35,6 +38,12 @@ function siteFixture(t) {
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10"/></svg>'
     );
   }
+  fs.writeFileSync(path.join(rootDir, 'assets/brand/brightdesk-suite-mark.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><defs><linearGradient id="surface"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient></defs><rect width="10" height="10" fill="url(#surface)"/></svg>');
+  for (const product of PRODUCTS) {
+    fs.writeFileSync(path.join(rootDir, 'assets/icons', product + '.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><defs><linearGradient id="surface"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient></defs><rect width="10" height="10" fill="url(#surface)"/></svg>');
+    fs.writeFileSync(path.join(rootDir, 'assets/previews', product + '.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><defs><linearGradient id="surface"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient></defs><rect width="10" height="10" fill="url(#surface)"/></svg>');
+  }
+  fs.writeFileSync(path.join(rootDir, 'assets/previews/suite.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><defs><linearGradient id="surface"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient></defs><rect width="10" height="10" fill="url(#surface)"/></svg>');
   for (const page of TECHNICAL_PAGES) {
     const target = path.join(rootDir, page);
     fs.mkdirSync(path.dirname(target), { recursive: true });
@@ -71,7 +80,7 @@ test('all technical documentation pages use stable public URLs', () => {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 39);
+  assert.equal(result.files, 61);
   assert.equal(result.htmlPages, 27);
 });
 
@@ -84,7 +93,7 @@ test('approved static local SVG workflow illustrations pass the output check', t
   assert.equal(svg.includes('foreignObject'), false);
   assert.equal(svgWithoutNamespace.includes('http://'), false);
   assert.equal(svgWithoutNamespace.includes('//'), false);
-  assert.equal(checkPublicSite({ siteRoot }).files, 39);
+  assert.equal(checkPublicSite({ siteRoot }).files, 61);
 });
 
 test('active or externally linked SVG content is rejected', t => {
@@ -411,4 +420,39 @@ test('the public homepage offers separate Everyday and Technical destinations', 
     assert.ok(everyday.includes('../products/' + product + '.html'), product + ' Everyday guide link');
     assert.ok(technical.includes('products/' + product + '.html'), product + ' Technical reference link');
   }
+});
+
+
+test('official Suite and all ten product icons and workspace previews are included in the public site', t => {
+  const siteRoot = siteFixture(t);
+  for (const product of PRODUCTS) {
+    for (const folder of ['icons','previews']) {
+      const file = path.join(siteRoot, 'assets', folder, product + '.svg');
+      assert.ok(fs.existsSync(file), 'Missing ' + product + ' ' + folder + ' artwork');
+    }
+  }
+  assert.ok(fs.existsSync(path.join(siteRoot, 'assets/brand/brightdesk-suite-mark.svg')));
+  assert.ok(fs.existsSync(path.join(siteRoot, 'assets/previews/suite.svg')));
+  assert.equal(checkPublicSite({ siteRoot }).files, 61);
+});
+
+test('safe local SVG gradient references are allowed when the referenced id exists', t => {
+  const siteRoot = siteFixture(t);
+  const gradient = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><defs><linearGradient id="local"><stop stop-color="#fff"/></linearGradient></defs><rect width="10" height="10" fill="url(#local)"/></svg>';
+  fs.writeFileSync(path.join(siteRoot, 'assets/icons/pages.svg'), gradient);
+  assert.equal(checkPublicSite({ siteRoot }).files, 61);
+});
+
+test('unresolved local SVG references are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'assets/icons/pages.svg'),
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10" fill="url(#missing)"/></svg>');
+  assert.throws(() => checkPublicSite({ siteRoot }), /unresolved local reference/i);
+});
+
+test('external SVG gradient resources are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(path.join(siteRoot, 'assets/icons/pages.svg'),
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10" fill="url(https://example.com/gradient.svg#id)"/></svg>');
+  assert.throws(() => checkPublicSite({ siteRoot }), /external reference/i);
 });
