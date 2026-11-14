@@ -10,7 +10,9 @@ permalink: /products/planner.html
 
 ![Brightdesk Planner product icon](../assets/images/product-icons/planner.svg){: .product-guide-icon }
 
-![Three-step workflow: create a plan, add buckets and tasks, then track progress.](../assets/images/workflows/guide-planner.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-planner.svg" alt="Three-step workflow: create a plan, add buckets and tasks, then track progress." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
