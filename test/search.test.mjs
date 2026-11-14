@@ -201,3 +201,16 @@ test('all ten product guides include more worked examples and common fixes', () 
     assert.match(guide, /status: Needs review/, product + ' must not be marked verified before a full product walkthrough');
   }
 });
+
+test('Suite guide explains supported files, Brightdesk projects, exports and spelling checks', () => {
+  const suiteGuide = fs.readFileSync(new URL('../docs/customer-start-here.md', import.meta.url), 'utf8');
+  for (const extension of ['.bdesk', '.docx', '.xlsx', '.xlsm', '.csv', '.tsv', '.pptx', '.txt', '.md', '.html']) {
+    assert.ok(suiteGuide.includes(extension), 'Suite guide must explain ' + extension + ' files');
+  }
+  assert.match(suiteGuide, /## Save a Brightdesk project/);
+  assert.match(suiteGuide, /## Export a copy from a product/);
+  assert.match(suiteGuide, /## Common questions and fixes/);
+  assert.match(suiteGuide, /## Languages and spelling/);
+  assert.match(suiteGuide, /Check spelling/);
+  assert.match(suiteGuide, /does not change your document/);
+});
