@@ -17,9 +17,9 @@ concurrency:
 jobs:
   quality:
     name: Check customer documentation and public site output
-    # Smallest standard GitHub-hosted Linux runner. The short timeout limits included compute use.
-    runs-on: ubuntu-slim
-    timeout-minutes: 12
+    # Standard GitHub-hosted Linux runner. The hard timeout limits included compute use.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
