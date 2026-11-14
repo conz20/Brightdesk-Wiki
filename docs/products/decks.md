@@ -8,6 +8,8 @@ permalink: /products/decks.html
 
 # Brightdesk Decks
 
+![Brightdesk Decks product icon](../assets/images/product-icons/decks.svg){: .product-guide-icon }
+
 Use Decks to build and present a slide presentation.
 
 ## Edit the first slide
