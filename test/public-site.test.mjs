@@ -44,6 +44,13 @@ test('technical documentation landing page has its stable public URL', () => {
   assert.doesNotMatch(source, /^permalink: \/technical\.\.\//m);
 });
 
+test('technical documentation landing page has its stable public URL', () => {
+  const sourcePath = path.join(process.cwd(), 'docs', 'technical', 'index.md');
+  const source = fs.readFileSync(sourcePath, 'utf8');
+  assert.match(source, /^permalink: \/technical\/index\.html$/m);
+  assert.doesNotMatch(source, /^permalink: \/technical\.\.\//m);
+});
+
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
