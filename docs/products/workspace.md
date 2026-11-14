@@ -10,6 +10,12 @@ permalink: /products/workspace.html
 
 Use Workspace to bring related project information together in workspaces and pages.
 
+
+<figure class="guide-illustration">
+  <img src="../assets/images/guide-workspace.svg" alt="Three-step illustration for Brightdesk Workspace: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
+</figure>
+
 ## Create a workspace
 
 1. In the left panel, find **Your workspaces**.
@@ -102,5 +108,9 @@ Workspace supports local workspaces and pages with text, heading, bullet, callou
 ## Guide status
 
 **Needs review.** These steps are based on the current Workspace interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
+
+## Need the technical detail?
+
+For product behaviour, file handling and technical boundaries, see the [Brightdesk Workspace technical reference](../technical/products/workspace.html).
 
 [Back to Brightdesk Help](../index.html)
