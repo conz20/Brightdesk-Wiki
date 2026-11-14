@@ -41,7 +41,8 @@ test('help layout exposes navigation, skip link and social metadata', () => {
   assert.match(layout, /<html lang="en-AU">/);
   assert.match(layout, /<a class="skip-link" href="#main">Skip to content<\/a>/);
   assert.match(layout, /<nav class="site-nav" aria-label="Main navigation">/);
-  assert.match(layout, /<main id="main" class="main-content(?: main-content-home)?">/);
+  assert.match(layout, /<main id="main" class="main-content/);
+  assert.ok(layout.includes("main-content-home"), 'Homepage layout must apply its dedicated width and content styling');
   assert.ok(layout.includes('rel="canonical" href="{{ page.url | absolute_url }}"'));
   assert.ok(layout.includes('property="og:title"'));
   assert.ok(layout.includes('property="og:description"'));
