@@ -39,7 +39,7 @@ Your new field appears as a column in the table. The system ID field is managed 
 ## Find and sort records
 
 - Enter words in **Search records** to find matching values.
-- Choose a field in **Sort records** to sort the table.
+- Choose a field in **Sort by** to choose the column. Choose **Ascending** or **Descending** under **Order** to set the direction.
 
 ## Rename, delete or export a table
 
