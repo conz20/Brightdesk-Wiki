@@ -227,3 +227,13 @@ test('Help search keeps the exact To Do product name searchable', () => {
   assert.deepEqual(searchTopics(todo, 'To Do').map(topic => topic.href), ['/products/to-do.html']);
   assert.deepEqual(searchTopics(todo, 'How do I use To Do?').map(topic => topic.href), ['/products/to-do.html']);
 });
+
+test('Suite guide explains switching, hiding, restoring and removing products safely', () => {
+  const suiteGuide = fs.readFileSync(new URL('../docs/customer-start-here.md', import.meta.url), 'utf8');
+  assert.match(suiteGuide, /## Switch between products/);
+  assert.match(suiteGuide, /Switch product/);
+  assert.match(suiteGuide, /Product settings/);
+  assert.match(suiteGuide, /Hide from Switch product/);
+  assert.match(suiteGuide, /Show in Switch product/);
+  assert.match(suiteGuide, /does not delete your documents or project data/i);
+});
