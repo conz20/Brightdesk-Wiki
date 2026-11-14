@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk To Do technical reference
 description: Task properties, views, completion state and due-date filtering in Brightdesk To Do.
-permalink: /technical../../products/to-do.html
+permalink: /technical/products/to-do.html
 ---
 
 # To Do technical reference
