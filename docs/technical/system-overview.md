@@ -1,13 +1,19 @@
 ---
 layout: technical
 title: Brightdesk system overview
-description: Product boundaries and the relationship between Brightdesk Suite and its ten local workspaces.
+description: Product boundaries and the relationship between Brightdesk Suite and its ten local desktop workspaces.
 permalink: /technical/system-overview.html
 ---
 
 # System overview
 
 Brightdesk is a desktop productivity suite with one Suite entry point and ten customer products. The Suite helps people choose which products are included and open them. Each product works in its own window.
+
+## Supported operating systems
+
+Brightdesk Suite and all ten customer products are desktop software for **Windows, macOS and Linux only**.
+
+There is no mobile application, mobile app edition, Android release or iOS release for Brightdesk Suite or any of its ten products. Phones and tablets are not supported product platforms. A responsive Brightdesk Help webpage is only a website layout; it is not a mobile software release.
 
 ## Product model
 
