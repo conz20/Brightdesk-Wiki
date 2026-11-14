@@ -102,7 +102,21 @@ test('product guide images must use the matching product icon', t => {
   fs.writeFileSync(page, html);
   assert.throws(
     () => checkPublicSite({ siteRoot }),
-    /must use its own approved local product icon/i
+    /must use its approved local image/i
+  );
+});
+
+test('product guide workflow diagrams must match the product being documented', t => {
+  const siteRoot = siteFixture(t);
+  const page = path.join(siteRoot, 'products', 'pages.html');
+  const html = fs.readFileSync(page, 'utf8').replace(
+    'workflows/guide-pages.svg',
+    'workflows/guide-sheets.svg'
+  );
+  fs.writeFileSync(page, html);
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /must use its approved local image/i
   );
 });
 
