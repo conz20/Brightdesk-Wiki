@@ -84,7 +84,7 @@
         <ul id="help-search-results" class="search-results" aria-label="Matching technical references" hidden></ul>
       </div>
     </header>
-    {% assign public_technical_paths = "/technical/index.html|/technical/system-overview.html|/technical/file-formats.html|/technical/data-and-privacy.html|/technical/products/pages.html|/technical/products/sheets.html|/technical/products/decks.html|/technical/products/notes.html|/technical/products/database.html|/technical/products/forms.html|/technical/products/lists.html|/technical/products/planner.html|/technical/products/to-do.html|/technical/products/workspace.html" | split: "|" %}
+    {% assign public_technical_paths = "/technical/index.html|/technical/system-overview.html|/technical/file-formats.html|/technical/data-and-privacy.html|/technical/guides/install-update.html|/technical/guides/languages-and-spelling.html|/technical/guides/troubleshooting.html|/technical/products/pages.html|/technical/products/sheets.html|/technical/products/decks.html|/technical/products/notes.html|/technical/products/database.html|/technical/products/forms.html|/technical/products/lists.html|/technical/products/planner.html|/technical/products/to-do.html|/technical/products/workspace.html" | split: "|" %}
     <nav class="search-index" aria-label="Searchable technical documentation content" hidden>
       {% for help_page in site.pages %}
         {% if public_technical_paths contains help_page.url %}
@@ -95,28 +95,46 @@
     <main id="main" class="technical-layout">
       <aside class="technical-sidebar" aria-label="Technical documentation sections">
         <nav aria-label="Technical reference navigation">
-          <h2>Reference library</h2>
-          <ul>
-            <li><a href="{{ '/technical/index.html' | relative_url }}"{% if page.url == '/technical/index.html' %} aria-current="page"{% endif %}>Overview</a></li>
+          <h2>Technical library</h2>
+          <ul class="technical-nav-list">
+            <li><a class="technical-nav-link" href="{{ '/technical/index.html' | relative_url }}"{% if page.url == '/technical/index.html' %} aria-current="page"{% endif %}>Library overview</a></li>
           </ul>
-          <h3>System references</h3>
-          <ul>
-            <li><a href="{{ '/technical/system-overview.html' | relative_url }}"{% if page.url == '/technical/system-overview.html' %} aria-current="page"{% endif %}>System overview</a></li>
-            <li><a href="{{ '/technical/file-formats.html' | relative_url }}"{% if page.url == '/technical/file-formats.html' %} aria-current="page"{% endif %}>File formats</a></li>
-            <li><a href="{{ '/technical/data-and-privacy.html' | relative_url }}"{% if page.url == '/technical/data-and-privacy.html' %} aria-current="page"{% endif %}>Data and privacy</a></li>
+
+          <h3>Platform and system</h3>
+          <ul class="technical-nav-list">
+            <li><a class="technical-nav-link" href="{{ '/technical/system-overview.html' | relative_url }}"{% if page.url == '/technical/system-overview.html' %} aria-current="page"{% endif %}>System overview</a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/file-formats.html' | relative_url }}"{% if page.url == '/technical/file-formats.html' %} aria-current="page"{% endif %}>File formats</a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/data-and-privacy.html' | relative_url }}"{% if page.url == '/technical/data-and-privacy.html' %} aria-current="page"{% endif %}>Data and privacy</a></li>
           </ul>
-          <h3>Product references</h3>
-          <ul>
-            <li><a href="{{ '/technical/products/pages.html' | relative_url }}"{% if page.url == '/technical/products/pages.html' %} aria-current="page"{% endif %}>Pages</a></li>
-            <li><a href="{{ '/technical/products/sheets.html' | relative_url }}"{% if page.url == '/technical/products/sheets.html' %} aria-current="page"{% endif %}>Sheets</a></li>
-            <li><a href="{{ '/technical/products/decks.html' | relative_url }}"{% if page.url == '/technical/products/decks.html' %} aria-current="page"{% endif %}>Decks</a></li>
-            <li><a href="{{ '/technical/products/notes.html' | relative_url }}"{% if page.url == '/technical/products/notes.html' %} aria-current="page"{% endif %}>Notes</a></li>
-            <li><a href="{{ '/technical/products/database.html' | relative_url }}"{% if page.url == '/technical/products/database.html' %} aria-current="page"{% endif %}>Database</a></li>
-            <li><a href="{{ '/technical/products/forms.html' | relative_url }}"{% if page.url == '/technical/products/forms.html' %} aria-current="page"{% endif %}>Forms</a></li>
-            <li><a href="{{ '/technical/products/lists.html' | relative_url }}"{% if page.url == '/technical/products/lists.html' %} aria-current="page"{% endif %}>Lists</a></li>
-            <li><a href="{{ '/technical/products/planner.html' | relative_url }}"{% if page.url == '/technical/products/planner.html' %} aria-current="page"{% endif %}>Planner</a></li>
-            <li><a href="{{ '/technical/products/to-do.html' | relative_url }}"{% if page.url == '/technical/products/to-do.html' %} aria-current="page"{% endif %}>To Do</a></li>
-            <li><a href="{{ '/technical/products/workspace.html' | relative_url }}"{% if page.url == '/technical/products/workspace.html' %} aria-current="page"{% endif %}>Workspace</a></li>
+
+          <h3>Shared guides</h3>
+          <ul class="technical-nav-list">
+            <li><a class="technical-nav-link" href="{{ '/technical/guides/install-update.html' | relative_url }}"{% if page.url == '/technical/guides/install-update.html' %} aria-current="page"{% endif %}>Install and update</a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/guides/languages-and-spelling.html' | relative_url }}"{% if page.url == '/technical/guides/languages-and-spelling.html' %} aria-current="page"{% endif %}>Languages and spelling</a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/guides/troubleshooting.html' | relative_url }}"{% if page.url == '/technical/guides/troubleshooting.html' %} aria-current="page"{% endif %}>Troubleshooting</a></li>
+          </ul>
+
+          <h3>Applications</h3>
+          <h4>Create and communicate</h4>
+          <ul class="technical-nav-list technical-product-list">
+            <li><a class="technical-nav-link" href="{{ '/technical/products/pages.html' | relative_url }}"{% if page.url == '/technical/products/pages.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/pages.svg' | relative_url }}" alt=""><span>Pages</span></a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/products/decks.html' | relative_url }}"{% if page.url == '/technical/products/decks.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/decks.svg' | relative_url }}" alt=""><span>Decks</span></a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/products/notes.html' | relative_url }}"{% if page.url == '/technical/products/notes.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/notes.svg' | relative_url }}" alt=""><span>Notes</span></a></li>
+          </ul>
+
+          <h4>Work with information</h4>
+          <ul class="technical-nav-list technical-product-list">
+            <li><a class="technical-nav-link" href="{{ '/technical/products/sheets.html' | relative_url }}"{% if page.url == '/technical/products/sheets.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/sheets.svg' | relative_url }}" alt=""><span>Sheets</span></a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/products/database.html' | relative_url }}"{% if page.url == '/technical/products/database.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/database.svg' | relative_url }}" alt=""><span>Database</span></a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/products/forms.html' | relative_url }}"{% if page.url == '/technical/products/forms.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/forms.svg' | relative_url }}" alt=""><span>Forms</span></a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/products/lists.html' | relative_url }}"{% if page.url == '/technical/products/lists.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/lists.svg' | relative_url }}" alt=""><span>Lists</span></a></li>
+          </ul>
+
+          <h4>Plan and organise</h4>
+          <ul class="technical-nav-list technical-product-list">
+            <li><a class="technical-nav-link" href="{{ '/technical/products/planner.html' | relative_url }}"{% if page.url == '/technical/products/planner.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/planner.svg' | relative_url }}" alt=""><span>Planner</span></a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/products/to-do.html' | relative_url }}"{% if page.url == '/technical/products/to-do.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/to-do.svg' | relative_url }}" alt=""><span>To Do</span></a></li>
+            <li><a class="technical-nav-link" href="{{ '/technical/products/workspace.html' | relative_url }}"{% if page.url == '/technical/products/workspace.html' %} aria-current="page"{% endif %}><img src="{{ '/assets/images/product-icons/workspace.svg' | relative_url }}" alt=""><span>Workspace</span></a></li>
           </ul>
         </nav>
         <p class="sidebar-return"><a href="{{ '/everyday/index.html' | relative_url }}">← Back to Everyday Help</a></p>
