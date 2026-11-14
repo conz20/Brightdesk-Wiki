@@ -19,7 +19,7 @@
         </a>
         <nav class="site-nav" aria-label="Main navigation">
           <a href="{{ '/index.html' | relative_url }}">Everyday Help</a>
-          <a href="{{ '/technical/index.html' | relative_url }}" aria-current="page">Technical Documentation</a>
+          <a href="{{ '/technical/index.html' | relative_url }}"{% if page.url == '/technical/index.html' %} aria-current="page"{% endif %}>Technical Documentation</a>
         </nav>
       </div>
       <aside class="translation-help" aria-label="Language help">
