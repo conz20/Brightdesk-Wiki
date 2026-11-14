@@ -41,10 +41,13 @@ PR #5 currently contains:
 - **Translation:** visitors use their browser's automatic translation or manual translate command. Brightdesk does not provide a separate translation service.
 - **Source-checked control labels:** the current Lists filter/sort and custom-column controls, plus Workspace's **Find a page** control, now match the labels in the product source.
 - **Visual assets:** the ten current product SVGs are explanatory diagrams, not screenshots of Brightdesk. They are labelled accordingly.
+- **Diagram accessibility:** all ten explanatory diagrams now have distinct alternative text describing their actual product-specific steps. A regression test checks every description.
 
 The source changes are not yet merged into `main`. PR #5 remains a **draft** and must stay unmerged until its review and release gates are met.
 
 ## Verification — exact commits matter
+
+[Run #299](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43558574203) passed on the exact PR head `cd90b8b89b8ff5e05924226fb2725a77ae802ba6`. The workflow completed the pinned runtimes, dependency installation, regression tests, Markdown-link checks, Jekyll generation and public-output privacy audit successfully.
 
 [Run #297](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557404486) passed on the exact PR head `b804e992ed71d67fee0b28a60232c7b937d1555d`. The workflow completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
 
