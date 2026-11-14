@@ -67,7 +67,7 @@ The generated customer site must remain static and read-only. It must not contai
 ## Related work
 
 - [Merged Help website implementation — PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3)
-- [Intended customer Help address](https://help.brightdesk.com) — not yet live
+- [Free public customer Help address](https://brightdesk-help.pages.dev/) — Cloudflare Pages project hostname
 - [Wiki GitHub Actions](https://github.com/conz20/Brightdesk-Wiki/actions)
 
 
