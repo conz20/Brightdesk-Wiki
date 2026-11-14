@@ -18,7 +18,7 @@ jobs:
   quality:
     name: Check customer documentation and public site output
     # Standard GitHub-hosted Linux runner. The hard timeout limits included compute use.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: read

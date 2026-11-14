@@ -4,7 +4,7 @@
 
 ## Primary validation route
 
-The current Wiki quality workflow uses a standard GitHub-hosted `ubuntu-latest` runner. It keeps the exact Node.js `24.22.2` and Ruby `3.4.4` pins and runs the full source, link, Jekyll and generated-output checks.
+The current Wiki quality workflow uses a standard GitHub-hosted `ubuntu-24.04` runner. It keeps the exact Node.js `24.22.2` and Ruby `3.4.4` pins and runs the full source, link, Jekyll and generated-output checks.
 
 A job that completes with no steps and `runner_id: 0` has not started. Do not describe it as a test failure or a successful validation. The exact-head run #494 had this state: GitHub recorded a failed job before the first step, with no runner or job logs.
 
@@ -47,7 +47,7 @@ This is not a one-click action for a user who does not already have the prerequi
 
 ## Version and publication safeguards
 
-- Keep Node.js pinned to `24.22.2` and Ruby pinned to `3.4.4` across package metadata, workflow, tests and documentation.
+- Keep Node.js pinned to `24.22.2` and Ruby pinned to `3.4.4` across package metadata, workflow, tests and documentation. Pin this workflow to `ubuntu-24.04`; `ubuntu-latest` migrated to Ubuntu 26.04 in November 2026, where the pinned Ruby 3.4.4 prebuilt package is not provided.
 - Do not downgrade runtimes or skip the quality commands to accommodate a runner.
 - Do not purchase hosted runners or other services, increase a billing budget, change repository visibility, enable GitHub Pages or change DNS/nameservers.
 - Keep PR #6 draft and unmerged until the exact-head build evidence, privacy review, genuine product screenshots, platform verification, accessibility review and owner approval are complete.
@@ -57,4 +57,4 @@ This is not a one-click action for a user who does not already have the prerequi
 
 GitHub Actions run [#528](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43603624569) checked commit `22a2a8df79ff1bd371979366acaa982163300c79`. GitHub recorded the only job with label `ubuntu-latest`, `runner_id: 0`, an empty `steps` array, no runner name and no job logs. The job started and failed within approximately one second. This confirms that the job did not reach the workflow's first checkout step; it does **not** identify why GitHub failed to provision or assign the runner, and it does not indicate a source-code test failure.
 
-The workflow still contains the normal GitHub-hosted `ubuntu-latest` configuration and keeps all required validation commands. Do not change the workflow, relax the checks, or move to paid runners based on this evidence alone. Check the exact-head Cloudflare Pages build separately; as of this note, its comment for commit `22a2a8d` reports **Build in progress**, not success.
+The workflow now explicitly uses GitHub-hosted `ubuntu-24.04` so the exact Ruby 3.4.4 prebuilt release remains available while every required validation command stays enabled. Do not change the workflow, relax the checks, or move to paid runners based on this evidence alone. Check the exact-head Cloudflare Pages build separately; as of this note, its comment for commit `22a2a8d` reports **Build in progress**, not success.
