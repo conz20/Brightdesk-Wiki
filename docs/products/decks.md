@@ -8,6 +8,8 @@ permalink: /products/decks.html
 
 # Brightdesk Decks
 
+## Overview
+
 Use Decks to build and present a slide presentation.
 
 
@@ -15,15 +17,23 @@ Use Decks to build and present a slide presentation.
   <img src="../assets/images/guide-decks.svg" alt="Three-step illustration for Brightdesk Decks: start the task, add the information you need, then finish or save your work." width="1200" height="360">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
+<nav class="guide-contents" aria-label="Sections in this guide">
+  <a href="#getting-started">Getting started</a> · <a href="#workflows">Workflows</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
+</nav>
 
-## Edit the first slide
+
+## Getting started
+
+### Edit the first slide
 
 1. Open Brightdesk Decks. A new presentation starts with a slide.
 2. Select the slide title area and enter your title.
 3. Select the slide text area and enter your main points.
 4. Your edits are saved on this device as you work.
 
-## Add and organise slides
+## Workflows
+
+### Add and organise slides
 
 1. Open **Home**.
 2. Choose **New slide** to add a slide.
@@ -33,13 +43,13 @@ Use Decks to build and present a slide presentation.
 
 You can also open **Insert** and choose **Title slide** or **Text slide** to add a slide with starter content.
 
-## Choose a theme
+### Choose a theme
 
 1. Open **Design**.
 2. Choose **Lavender**, **Midnight** or **Paper**.
 3. Continue editing the slide content in the presentation workspace.
 
-## Present your slides
+### Present your slides
 
 1. Select the slide where you want to begin.
 2. Open **Slide Show**.
@@ -47,7 +57,7 @@ You can also open **Insert** and choose **Title slide** or **Text slide** to add
 4. During the presentation, click or use the arrow keys to move between slides.
 5. Press **Esc** to leave presentation mode.
 
-## Open, save and export
+### Open, save and export
 
 - Choose **Save project** to save Brightdesk project data.
 - Choose **Open** to open supported presentation data.
@@ -55,7 +65,7 @@ You can also open **Insert** and choose **Title slide** or **Text slide** to add
 
 The product documentation describes PowerPoint import and export. Check the presentation after transferring it, because some advanced PowerPoint objects and formatting may not be preserved.
 
-## Try this example: make a three-slide presentation
+### Try this example: make a three-slide presentation
 
 1. On the first slide, enter **My project** as the title.
 2. Choose **Home → New slide** to add a second slide. Add two short project points.
@@ -64,9 +74,9 @@ The product documentation describes PowerPoint import and export. Check the pres
 5. Open **Slide Show → From current slide** on the first slide.
 
 **What you should have:** a simple three-slide presentation that you can move through with the arrow keys.
-## More examples to try
+### More examples to try
 
-### Give a project update
+#### Give a project update
 
 1. Open a new presentation and enter **Project update** as the title on the first slide.
 2. Choose **Home → New slide** and list what has been completed.
@@ -76,7 +86,7 @@ The product documentation describes PowerPoint import and export. Check the pres
 
 **What you should have:** a short update that moves from the project title to completed work and next steps.
 
-### Reuse a slide layout
+#### Reuse a slide layout
 
 1. Create a slide with a title and a few points.
 2. Choose **Home → Duplicate**.
@@ -86,7 +96,7 @@ The product documentation describes PowerPoint import and export. Check the pres
 
 **What you should have:** several slides with a consistent starting layout. Check each copy so it contains the right information.
 
-## Common questions and fixes
+## Troubleshooting and common questions
 
 **How do I start presenting from a particular slide?** Select that slide first, then choose **Slide Show → From current slide**.
 

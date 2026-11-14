@@ -8,6 +8,8 @@ permalink: /products/sheets.html
 
 # Brightdesk Sheets
 
+## Overview
+
 Use Sheets to organise information in a grid and calculate values with supported formulas.
 
 
@@ -15,8 +17,14 @@ Use Sheets to organise information in a grid and calculate values with supported
   <img src="../assets/images/guide-sheets.svg" alt="Three-step illustration for Brightdesk Sheets: start the task, add the information you need, then finish or save your work." width="1200" height="360">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
+<nav class="guide-contents" aria-label="Sections in this guide">
+  <a href="#getting-started">Getting started</a> · <a href="#workflows">Workflows</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
+</nav>
 
-## Enter information
+
+## Getting started
+
+### Enter information
 
 1. Open Brightdesk Sheets. A new spreadsheet opens with the title **Untitled spreadsheet**.
 2. Click a cell in the grid, such as **A1**.
@@ -24,7 +32,9 @@ Use Sheets to organise information in a grid and calculate values with supported
 4. Press **Enter** to save the value and move down one row.
 5. Select the title field to give the spreadsheet a useful name.
 
-## Enter a formula
+## Workflows
+
+### Enter a formula
 
 1. Select the cell where you want the answer to appear.
 2. On the **Home** tab, find the selected cell reference (for example, **A1**) beside the formula input.
@@ -34,12 +44,12 @@ Use Sheets to organise information in a grid and calculate values with supported
 
 The current calculation engine supports basic arithmetic and these functions: **SUM**, **AVERAGE**, **MIN**, **MAX**, **COUNT** and **COUNTA**. A range formula can look like `=SUM(A1:A5)`.
 
-## Add rows and columns
+### Add rows and columns
 
 - On **Home**, choose **+ Row** or **+ Column**.
 - You can also open **Insert** and choose **New row** or **New column**.
 
-## Sort information
+### Sort information
 
 1. Select a cell in the column you want to sort.
 2. Open **Data**.
@@ -48,7 +58,7 @@ The current calculation engine supports basic arithmetic and these functions: **
 
 The sort acts on the sheet rows using the selected column.
 
-## Open, save and export
+### Open, save and export
 
 - Choose **Open** to open a supported workbook or CSV file.
 - Choose **Save project** to keep Brightdesk project data on this device.
@@ -56,7 +66,7 @@ The sort acts on the sheet rows using the selected column.
 
 Keep a Brightdesk project copy when you plan to continue editing the workbook.
 
-## Try this example: add up a small budget
+### Try this example: add up a small budget
 
 1. In cell **A1**, enter **Item**. In **B1**, enter **Cost**.
 2. In row 2, enter **Rent** and **1200**.
@@ -65,9 +75,9 @@ Keep a Brightdesk project copy when you plan to continue editing the workbook.
 5. Select **B5**, enter `=SUM(B2:B4)` and press **Enter**.
 
 **What you should have:** a small expense list and a total of **1430** in cell B5.
-## More examples to try
+### More examples to try
 
-### Work out an average
+#### Work out an average
 
 1. Enter a heading in **A1**, such as **Daily sales**.
 2. Enter a few numbers in **A2**, **A3** and **A4**.
@@ -77,7 +87,7 @@ Keep a Brightdesk project copy when you plan to continue editing the workbook.
 
 **What you should have:** the average of the three numbers. Change one of the values to see the result update.
 
-### Count entries
+#### Count entries
 
 1. Enter a list of numbers in **B2:B6**.
 2. Select **B7** and enter `=COUNT(B2:B6)`.
@@ -86,7 +96,7 @@ Keep a Brightdesk project copy when you plan to continue editing the workbook.
 
 **What you should have:** two counts that show the difference between numeric entries and all non-empty entries.
 
-## Common questions and fixes
+## Troubleshooting and common questions
 
 **Why is my formula showing the wrong result?** Check that it begins with `=`, that the cell references are correct and that the range includes the cells you intended.
 

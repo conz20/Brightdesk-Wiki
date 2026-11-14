@@ -8,6 +8,8 @@ permalink: /products/notes.html
 
 # Brightdesk Notes
 
+## Overview
+
 Use Notes to capture quick thoughts, reminders and short pieces of information.
 
 
@@ -15,15 +17,23 @@ Use Notes to capture quick thoughts, reminders and short pieces of information.
   <img src="../assets/images/guide-notes.svg" alt="Three-step illustration for Brightdesk Notes: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
+<nav class="guide-contents" aria-label="Sections in this guide">
+  <a href="#getting-started">Getting started</a> · <a href="#workflows">Workflows</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
+</nav>
 
-## Write a note
+
+## Getting started
+
+### Write a note
 
 1. Open Brightdesk Notes. A new note starts with the title **Untitled note**.
 2. Select the title field and enter a name for the note.
 3. Click in the notes writing area and type.
 4. Your note text is saved on this device as you work.
 
-## Add a date or simple checklist marker
+## Workflows
+
+### Add a date or simple checklist marker
 
 1. Place the cursor in the note where you want the item.
 2. Open **Insert**.
@@ -33,18 +43,18 @@ Use Notes to capture quick thoughts, reminders and short pieces of information.
 
 These insertions add text to the note; they are not a separate task-management list.
 
-## Export or clear a note
+### Export or clear a note
 
 1. Open **Home**.
 2. Choose **Export note** to export the current note.
 3. Choose the format offered by the export control. The product documentation lists Markdown and plain text.
 4. Choose **Clear note** only when you intend to remove the current note text, then confirm the prompt.
 
-## Language and spelling
+### Language and spelling
 
 Use the shared Brightdesk language and spelling tools where they are available in your installed version. The languages and dictionaries offered depend on what is installed and verified on your device.
 
-## Try this example: capture a quick idea
+### Try this example: capture a quick idea
 
 1. Give the note the title **Weekend ideas**.
 2. Type a few lines about what you want to do.
@@ -53,9 +63,9 @@ Use the shared Brightdesk language and spelling tools where they are available i
 5. Choose **Insert → Checklist item** to add an unchecked marker.
 
 **What you should have:** one short note with a date, a divider and a checklist marker. The marker is text in the note, not a separate task list.
-## More examples to try
+### More examples to try
 
-### Keep a daily note
+#### Keep a daily note
 
 1. Create a note called **Daily notes**.
 2. Enter the date with **Insert → Date**.
@@ -65,7 +75,7 @@ Use the shared Brightdesk language and spelling tools where they are available i
 
 **What you should have:** one note with a date and clearly separated sections.
 
-### Make a simple packing reminder
+#### Make a simple packing reminder
 
 1. Create a note called **Packing reminder**.
 2. Add one item per line, such as **Charger**, **Keys** and **Water bottle**.
@@ -75,7 +85,7 @@ Use the shared Brightdesk language and spelling tools where they are available i
 
 **What you should have:** a note containing a simple list and checklist markers. The markers are text in the note; they are not interactive tasks that can be completed in a task manager.
 
-## Common questions and fixes
+## Troubleshooting and common questions
 
 **Can I use a Notes checklist as a task list?** The inserted checklist marker is text inside the note. Use Brightdesk To Do for personal tasks or Brightdesk Planner for project task boards.
 

@@ -8,6 +8,8 @@ permalink: /products/planner.html
 
 # Brightdesk Planner
 
+## Overview
+
 Use Planner to organise a project into a plan, buckets and tasks.
 
 
@@ -15,8 +17,14 @@ Use Planner to organise a project into a plan, buckets and tasks.
   <img src="../assets/images/guide-planner.svg" alt="Three-step illustration for Brightdesk Planner: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
+<nav class="guide-contents" aria-label="Sections in this guide">
+  <a href="#getting-started">Getting started</a> · <a href="#workflows">Workflows</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
+</nav>
 
-## Create a plan
+
+## Getting started
+
+### Create a plan
 
 1. Under **Your plans**, enter a name in **New plan name**.
 2. Choose **Create plan**.
@@ -24,7 +32,9 @@ Use Planner to organise a project into a plan, buckets and tasks.
 
 A new plan starts with a **To do** bucket. Choose **Rename plan** to change the plan name.
 
-## Add a bucket
+## Workflows
+
+### Add a bucket
 
 1. Under **New bucket**, enter a name in **Bucket name**.
 2. Choose **Add bucket**.
@@ -32,7 +42,7 @@ A new plan starts with a **To do** bucket. Choose **Rename plan** to change the 
 
 Use the delete control on a bucket only when you intend to remove it. Any tasks in that bucket are moved to another remaining bucket. A plan must keep at least one bucket, so you cannot delete its final bucket.
 
-## Add a task
+### Add a task
 
 1. Under **New task**, enter a **Task name**.
 2. Add a **Description** when you need to explain the task.
@@ -42,18 +52,18 @@ Use the delete control on a bucket only when you intend to remove it. Any tasks 
 6. Add a **Due date** or **Assigned to** value when useful.
 7. Choose **Add task**.
 
-## Update and find tasks
+### Update and find tasks
 
 - Use the progress selector on a task card to change its progress.
 - Choose **Edit** on a task card to change its title.
 - Choose **Delete** only when you intend to remove a task.
 - Use **Search tasks** to find a task. Choose a value under **Progress** or **Priority** to narrow the board.
 
-## Save your work
+### Save your work
 
 Plans, buckets and tasks are saved on this device as you work. Check the local-save status in the workspace.
 
-## Try this example: plan a small project
+### Try this example: plan a small project
 
 1. Create a plan called **Garden tidy-up**.
 2. Add buckets called **Doing** and **Done** alongside the starting **To do** bucket.
@@ -63,9 +73,9 @@ Plans, buckets and tasks are saved on this device as you work. Check the local-s
 6. Use **Search tasks** or **Filter progress** to find it again.
 
 **What you should have:** a simple project board with a task grouped in a bucket. The plan is saved on this device.
-## More examples to try
+### More examples to try
 
-### Plan a small event
+#### Plan a small event
 
 1. Create a plan called **Community event**.
 2. Keep the starting **To do** bucket, then add **In progress** and **Completed** buckets.
@@ -76,7 +86,7 @@ Plans, buckets and tasks are saved on this device as you work. Check the local-s
 
 **What you should have:** an event plan grouped into buckets, with task priorities and progress.
 
-### Break a large job into stages
+#### Break a large job into stages
 
 1. Create a plan called **Office move**.
 2. Add buckets for stages such as **Before the move**, **Moving day** and **After the move**.
@@ -86,7 +96,7 @@ Plans, buckets and tasks are saved on this device as you work. Check the local-s
 
 **What you should have:** a project board that groups tasks by stage. Tasks remain local to this device.
 
-## Common questions and fixes
+## Troubleshooting and common questions
 
 **Can I delete the final bucket?** No. A plan must keep at least one bucket.
 

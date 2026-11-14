@@ -12,6 +12,10 @@ Brightdesk Suite is the starting point for the ten approved Brightdesk desktop p
 
 Brightdesk is free forever. Brightdesk Suite, all ten approved products and this customer help centre are free for every customer. There are no subscriptions, paid tiers, trials, licence fees or charges to read the Wiki. Customers do not need an account, sign-in or password. Your work is kept on your device.
 
+<nav class="guide-contents" aria-label="Sections in this guide">
+  <a href="#before-you-start">Install and open</a> · <a href="#use-home">Choose a product</a> · <a href="#use-files">Files and exports</a> · <a href="#notifications-settings-and-languages">Languages and updates</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
+</nav>
+
 ## Before you start
 
 1. Use the official Brightdesk installer for your computer when a verified release is available.
@@ -22,6 +26,10 @@ Brightdesk is free forever. Brightdesk Suite, all ten approved products and this
 Choose **Accept** or **Agree** to continue. Choosing **Decline** or **Disagree**, or closing the required agreement without accepting, prevents the product workspace from opening.
 
 Only use release installers that have passed the checks for your operating system. A configured installer format does not by itself mean that a verified download is available.
+
+### Repair and recovery
+
+A repair procedure has not yet been verified for the current Brightdesk Suite release, so this guide does not invent repair buttons or steps. Do not choose **Remove** or delete local project files as a repair attempt. Use only repair instructions supplied with an official Brightdesk release after that procedure has been checked for your operating system.
 
 ## Use Home
 
@@ -175,7 +183,7 @@ The spelling status can vary by operating system and installed resources. Read t
 
 The notification area can show official Brightdesk update notices when they are available. However, the current Suite does not yet have a configured update-publishing provider, so live update delivery is **not active or verified**. Do not expect an update download to be available until an approved Brightdesk release is actually published. Downloading and installing, when available, require a deliberate action.
 
-## Common questions and fixes
+## Troubleshooting and common questions
 
 **Why can't I open a file?** Check that it is one of the supported file types listed above. A file extension change does not convert the file. If the file type is not supported, use the original programme to save or export a supported format.
 

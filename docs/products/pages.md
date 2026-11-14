@@ -8,6 +8,8 @@ permalink: /products/pages.html
 
 # Brightdesk Pages
 
+## Overview
+
 Use Pages to write letters, reports and other text documents.
 
 
@@ -15,15 +17,23 @@ Use Pages to write letters, reports and other text documents.
   <img src="../assets/images/guide-pages.svg" alt="Three-step illustration for Brightdesk Pages: start the task, add the information you need, then finish or save your work." width="1200" height="360">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
+<nav class="guide-contents" aria-label="Sections in this guide">
+  <a href="#getting-started">Getting started</a> · <a href="#workflows">Workflows</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
+</nav>
 
-## Create a document
+
+## Getting started
+
+### Create a document
 
 1. Open Brightdesk Pages. A new document opens in the writing workspace.
 2. Select the title field, which starts as **Untitled document**, and enter a name.
 3. Click in the document writing area and start typing.
 4. Your edits are saved locally as you work. Check the status at the top of the workspace.
 
-## Format your writing
+## Workflows
+
+### Format your writing
 
 1. Select the text you want to format.
 2. Open the **Home** tab.
@@ -32,7 +42,7 @@ Use Pages to write letters, reports and other text documents.
 5. Use **Bullets**, **Numbering** or **Quote** to format paragraphs.
 6. Use **Undo** or **Redo** when you need to step backwards or forwards through an edit.
 
-## Insert content
+### Insert content
 
 Open **Insert** and choose one of the available options:
 
@@ -40,27 +50,27 @@ Open **Insert** and choose one of the available options:
 - **Horizontal line** to separate sections.
 - **Date** to insert the current date at the cursor.
 
-## Set up the page
+### Set up the page
 
 1. Open **Layout**.
 2. Under **Page setup**, choose a **Paper** size: A4, US Letter or US Legal.
 3. Choose **Orientation**: Portrait or Landscape.
 4. Choose a **Margins** preset: Normal, Narrow, Moderate or Wide.
 
-## Review and view your document
+### Review and view your document
 
 - Open **Review** and choose **Word count** to see the number of words.
 - Use **Spell check** to switch the editor's spell-check setting on or off.
 - Open **View** to change the zoom or switch **Focus mode** on or off.
 
-## Save and export your document
+### Save and export your document
 
 - Choose **Save project** to save Brightdesk project data.
 - Choose **Open** to open supported existing project or document data.
 - Choose **Export** in the top bar to see the document formats available in your installed version.
 - To create a PDF copy, open **Home** and choose **PDF** in the **Export** group.
 
-## Try this example: write a meeting note
+### Try this example: write a meeting note
 
 1. Give the document the name **Team meeting notes**.
 2. Add a **Heading 1** called **Topics**.
@@ -69,9 +79,9 @@ Open **Insert** and choose one of the available options:
 5. Choose **Save project** to keep the editable Brightdesk project.
 
 **What you should have:** a short meeting document with a clear heading, bullet points and one highlighted action.
-## More examples to try
+### More examples to try
 
-### Write a formal letter
+#### Write a formal letter
 
 1. Create a document and give it a clear name, such as **Letter to the landlord**.
 2. Type the date, greeting, main message and sign-off in the writing area.
@@ -82,7 +92,7 @@ Open **Insert** and choose one of the available options:
 
 **What you should have:** a named letter with a page size and a saved editable copy. The PDF is a separate copy.
 
-### Prepare a short report
+#### Prepare a short report
 
 1. Create a document called **Monthly progress report**.
 2. Add a **Heading 1** for the report title.
@@ -93,7 +103,7 @@ Open **Insert** and choose one of the available options:
 
 **What you should have:** a report with clear sections, a word count and an editable project copy.
 
-## Common questions and fixes
+## Troubleshooting and common questions
 
 **How do I make a PDF?** Choose **Home**, then **PDF** in the **Export** group. The general **Export** menu may offer other formats.
 

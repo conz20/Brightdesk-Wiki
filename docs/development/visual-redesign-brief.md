@@ -21,7 +21,8 @@ The redesign is a publication blocker. Do not promote the current presentation a
 - Keep the website static, read-only and independent of installed Brightdesk software.
 - No sign-in, accounts, uploads, comments, public editing, cookies, visitor storage, analytics, tracking, advertising, remote AI, third-party scripts, external fonts or external images.
 - Search remains local in the visitor's browser and each documentation area searches only its own approved pages.
-- Browser-native translation remains the translation approach.
+- Browser-native translation remains the translation approach. A browser may offer automatic page translation or a manual translate command; the Help site must not try to replace, disable or imitate those browser controls. Write and structure content so browser translation can work reliably, and explain where users can find their browser's translation option without assuming every browser uses the same menu label.
+- The two Help experiences are separate routes within one Brightdesk Help identity. Everyday Help must link to Technical Documentation for deeper detail, and every technical page must offer a clear route back to the plain-English guide. Readers may move between them freely; the technical area is not restricted to experts.
 - Do not publish internal repository or maintainer material.
 
 ## Design direction
@@ -46,12 +47,16 @@ The exact palette, type scale, icon style and decorative language are to be chos
 
 ### Product guide system
 
+Assume the reader may not know technical terms, product names or where a control is located. Start from the task they want to complete, explain unfamiliar words, identify the visible button or menu name, give one clear action at a time, and say what they should see next. Use pictures where they genuinely help identify a control or understand a step. Do not assume that a reader knows how to open developer tools, use a terminal or change application settings outside the described task.
+
 Create a consistent, predictable structure for each product:
 
 1. **Overview:** what the product is for, common jobs, important boundaries and the route into the guide.
 2. **Getting started:** first-use steps with expected results.
 3. **Workflows:** task-led instructions split into useful topics, each with numbered steps, a clear outcome and relevant genuine screenshots.
 4. **Troubleshooting:** symptom, likely cause, safe next step and a clear route back to the relevant workflow.
+
+Make these sections easy to find through simple in-page navigation. Keep the words and labels familiar; technical terms should be explained rather than used as unexplained shorthand. The technical reference link should be visible but secondary to the everyday task, so it does not overwhelm a reader who only needs simple help.
 
 Suite-level installation, repair, upgrade and update information belongs in the Suite guide because the ten products are integrated workspaces, not separate installable customer products. Do not invent product-specific installers or claim update delivery is active when it is not.
 
