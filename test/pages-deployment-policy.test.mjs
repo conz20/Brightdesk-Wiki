@@ -33,36 +33,36 @@ test('Cloudflare production build runs the complete validation pipeline before p
 test('the Cloudflare build uses the exact repository-pinned Node and Ruby runtimes', () => {
   assert.equal(fs.readFileSync(new URL('../.node-version', import.meta.url), 'utf8').trim(), '24.22.2');
   assert.equal(fs.readFileSync(new URL('../.ruby-version', import.meta.url), 'utf8').trim(), '3.4.4');
-  assert.match(cloudflareGuide, /NODE_VERSION.*24\\.22\\.2|\\.node-version.*24\\.22\\.2/i);
-  assert.match(cloudflareGuide, /RUBY_VERSION.*3\\.4\\.4|\\.ruby-version.*3\\.4\\.4/i);
+  assert.match(cloudflareGuide, /NODE_VERSION.*24\.22\.2|\.node-version.*24\.22\.2/i);
+  assert.match(cloudflareGuide, /RUBY_VERSION.*3\.4\.4|\.ruby-version.*3\.4\.4/i);
 });
 
 test('Jekyll builds from the customer docs folder at the Pages project root', () => {
   assert.match(config, /^source: docs$/m);
   assert.match(config, /^destination: _site$/m);
-  assert.match(config, /^baseurl:\\s*""$/m);
-  assert.doesNotMatch(config, /github\\.io|Brightdesk-Wiki/);
+  assert.match(config, /^baseurl:\s*""$/m);
+  assert.doesNotMatch(config, /github\.io|Brightdesk-Wiki/);
   assert.match(cloudflareGuide, /Build output directory.*_site|_site.*Build output directory/i);
   assert.match(cloudflareGuide, /Build command.*build:cloudflare|build:cloudflare.*Build command/i);
 });
 
 test('GitHub Actions validates changes but never publishes or grants deployment permissions', () => {
-  assert.match(workflow, /pull_request:\\s*\\n\\s+branches:\\s*\\[main\\]/);
-  assert.match(workflow, /push:\\s*\\n\\s+branches:\\s*\\[main\\]/);
-  assert.match(workflow, /runs-on:\\s*ubuntu-latest/);
-  assert.match(workflow, /timeout-minutes:\\s*10/);
+  assert.match(workflow, /pull_request:\s*\n\s+branches:\s*\[main\]/);
+  assert.match(workflow, /push:\s*\n\s+branches:\s*\[main\]/);
+  assert.match(workflow, /runs-on:\s*ubuntu-latest/);
+  assert.match(workflow, /timeout-minutes:\s*10/);
   assert.doesNotMatch(workflow, /self-hosted|macOS|ARM64/);
   assert.match(workflow, /run: npm run check:site/);
-  assert.doesNotMatch(workflow, /pages:\\s*write|id-token:\\s*write|actions\\/deploy-pages|actions\\/upload-pages-artifact|actions\\/configure-pages|github-pages/);
+  assert.doesNotMatch(workflow, /pages:\s*write|id-token:\s*write|actions\/deploy-pages|actions\/upload-pages-artifact|actions\/configure-pages|github-pages/);
   assert.doesNotMatch(workflow, /CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID|wrangler-action/i);
-  assert.doesNotMatch(workflow, /^\\s{2}deploy:/m);
-  for (const match of workflow.matchAll(/uses:\\s*[^\\s@]+@([^\\s#]+)/g)) {
+  assert.doesNotMatch(workflow, /^\s{2}deploy:/m);
+  for (const match of workflow.matchAll(/uses:\s*[^\s@]+@([^\s#]+)/g)) {
     assert.match(match[1], /^[0-9a-f]{40}$/, 'every external action is pinned to a full commit SHA');
   }
 });
 
 test('Cloudflare Git integration is restricted to the private Wiki repository and main production branch', () => {
-  assert.match(cloudflareGuide, /conz20\\/Brightdesk-Wiki/);
+  assert.match(cloudflareGuide, /conz20\/Brightdesk-Wiki/);
   assert.match(cloudflareGuide, /Only select repositories|only.*Brightdesk-Wiki.*repository/i);
   assert.match(cloudflareGuide, /production branch.*main|main.*production branch/i);
   assert.match(cloudflareGuide, /Preview branch.*None|disable.*preview deployments/i);
@@ -71,14 +71,14 @@ test('Cloudflare Git integration is restricted to the private Wiki repository an
 });
 
 test('customer Help address is the approved free Pages hostname and custom DNS is not required', () => {
-  assert.match(cloudflareGuide, /https:\\/\\/brightdesk-help\\.pages\\.dev\\//);
+  assert.match(cloudflareGuide, /https:\/\/brightdesk-help\.pages\.dev\//);
   assert.match(cloudflareGuide, /canonical free project hostname|canonical public Help address/i);
   assert.match(cloudflareGuide, /No paid custom domain.*DNS change or nameserver change is required/i);
   assert.match(cloudflareGuide, /do not change DNS or nameservers/i);
   assert.match(cloudflareGuide, /Cloudflare successfully built and deployed pull-request previews/i);
   assert.match(cloudflareGuide, /production branch.*main/i);
   assert.match(cloudflareGuide, /deployed commit SHA/i);
-  assert.doesNotMatch(cloudflareGuide, /help\\.brightdesk\\.com|64\\.190\\.63\\.222|64\\.190\\.63\\.111/);
+  assert.doesNotMatch(cloudflareGuide, /help\.brightdesk\.com|64\.190\.63\.222|64\.190\.63\.111/);
 });
 
 test('only the audited read-only customer output is configured for publishing', () => {
@@ -97,7 +97,7 @@ test('Cloudflare response policy applies same-origin-only resources and browser 
   assert.match(headers, /X-Content-Type-Options: nosniff/);
   assert.match(headers, /Referrer-Policy: strict-origin-when-cross-origin/);
   assert.match(headers, /X-Frame-Options: DENY/);
-  assert.match(headers, /Permissions-Policy: camera=\\(\\), microphone=\\(\\), geolocation=\\(\\)/);
+  assert.match(headers, /Permissions-Policy: camera=\(\), microphone=\(\), geolocation=\(\)/);
   assert.match(headers, /Strict-Transport-Security: max-age=31536000/);
   assert.match(headers, /Content-Security-Policy: default-src 'self'.*object-src 'none'.*frame-ancestors 'none'.*script-src 'self'.*style-src 'self'/);
 });
