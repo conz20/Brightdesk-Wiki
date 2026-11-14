@@ -152,3 +152,22 @@ Use specialist tools when they are connected and available, with each tool limit
 - **GitHub Actions:** remains the authoritative automated build, regression, link and public-output privacy gate for each exact commit.
 
 Do not connect a design provider to the repository or grant broad account access unless its permissions are clear and the user has approved the connection. Never send private repository content to a third-party design service unless the user explicitly approves that data flow. Prefer sanitized screenshots and synthetic content for design exploration.
+
+## Craft Wiki research translated into Brightdesk decisions
+
+The public Craft Wiki was reviewed on 14 November 2026:
+
+- [Craft Wiki homepage](https://craft.wiki/) presents a clear directory of its app family, grouped into broad areas such as graphics, video, audio, office and developer tools. Brightdesk should keep its directory limited to the ten approved products and organise entry points around the jobs people want to do, rather than adopting Craft's product categories or naming.
+- [Craft Wiki Getting started guide](https://craft.wiki/apps/figcraft/getting-started/) uses a numbered first-use journey, explains the visible areas of the interface and gives concrete actions. Brightdesk guides should retain this step-by-step approach, use the exact labels found in the relevant Brightdesk build, and state the expected result after important actions.
+- [Craft Wiki DeckCraft workflows](https://craft.wiki/apps/deckcraft/workflows/) groups instructions by real tasks, then explains controls and keyboard shortcuts in context. Brightdesk can use the same general documentation principle while writing original product-specific instructions and avoiding assumptions that every Brightdesk product has the same controls.
+- The Craft Wiki repository describes a searchable app sidebar with expandable guide links and the current app expanded on its pages ([source repository](https://github.com/storytold/craft-wiki)). This is a useful navigation behaviour to evaluate during Brightdesk's visual exploration. It is not an instruction to reproduce Craft's sidebar, layout, typography or visual styling.
+
+### Brightdesk application
+
+1. Keep the homepage directory compact and scannable, with exactly ten approved product destinations and a separate, clearly labelled route to Technical Documentation.
+2. Make the current product and current guide section easy to identify in navigation. Keep navigation usable by keyboard and at narrow widths.
+3. Structure each guide around a task, not a feature catalogue. Use numbered steps, visible control names, expected outcomes and troubleshooting paths.
+4. Use real screenshots only when they help identify the current Brightdesk interface. Until verified captures exist, retain clearly labelled explanatory diagrams and do not imply that they show the running software.
+5. Keep the Brightdesk visual identity, wording, implementation and assets original. Craft is a research reference, not a source of copied page templates, code, logos, icons, screenshots or text.
+
+These observations inform the design brief; they do not satisfy the required full visual redesign, product walkthroughs or screenshot evidence.
