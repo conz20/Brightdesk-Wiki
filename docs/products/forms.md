@@ -28,7 +28,7 @@ Use Forms to create local forms, surveys and quizzes, then review the responses 
 1. Under **Add a question**, enter the question text.
 2. Choose a question type: **Short answer**, **Long answer**, **Single choice**, **Multiple choice** or **Date**.
 3. For a choice question, enter the available choices separated by commas.
-4. Select **Required** when an answer must be provided.
+4. Select **Required question** when an answer must be provided.
 5. Choose **Add question**.
 
 To change an existing question, edit it in the question list and choose **Save question**. Deleting a question also removes that question's answer from every saved response. It does not delete the whole response, but the removed answers cannot be recovered from that form.
