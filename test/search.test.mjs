@@ -221,3 +221,9 @@ test('Help search understands natural questions without matching filler words li
     ['Brightdesk Pages']
   );
 });
+
+test('Help search keeps the exact To Do product name searchable', () => {
+  const todo = [{ title: 'Brightdesk To Do', href: '/products/to-do.html', searchText: 'Personal task lists and due dates.' }];
+  assert.deepEqual(searchTopics(todo, 'To Do').map(topic => topic.href), ['/products/to-do.html']);
+  assert.deepEqual(searchTopics(todo, 'How do I use To Do?').map(topic => topic.href), ['/products/to-do.html']);
+});
