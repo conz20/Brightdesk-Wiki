@@ -1,7 +1,7 @@
 ---
 layout: technical
 title: Brightdesk To Do technical reference
-description: Task properties, views, completion state and due-date filtering in Brightdesk To Do.
+description: Task properties, views, search, due-date ordering and completion state in Brightdesk To Do.
 permalink: /technical/products/to-do.html
 ---
 
@@ -13,25 +13,26 @@ To Do is Brightdesk's personal task workspace.
 
 A task can include:
 
-- Task title.
-- Task notes.
+- Task title and notes.
 - Due date.
 - Priority: Low, Normal or High.
 - Completion state.
 - Important state.
 - My Day membership.
 
-## Views
+## Views, search and ordering
 
 | View | Records shown |
 | --- | --- |
-| My Day | Tasks added to the current day's list |
-| Important | Tasks marked as important |
-| Planned | Tasks with a due date |
-| Tasks | Unfinished tasks |
+| My Day | Unfinished tasks added to My Day |
+| Important | Unfinished tasks marked as important |
+| Planned | Unfinished tasks with a due date |
+| Tasks | All unfinished tasks |
 | Completed | Finished tasks |
 
-The Planned view uses the due-date field. Completing a task moves it into Completed; selecting its checkbox again there restores it to unfinished tasks.
+Search checks task titles and notes. Results are ordered by due date first, with tasks that have dates appearing before tasks without a due date. Tasks with the same due date, or without one, are ordered by creation time.
+
+Completing a task moves it into Completed. Selecting its checkbox again there restores it to unfinished tasks.
 
 ## Data boundary
 

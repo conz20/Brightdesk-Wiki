@@ -21,14 +21,26 @@ The current field types are:
 - Checkbox
 - Choice
 
+Choice fields use a set of named options. Field values are checked against the selected field type when a record is saved or updated.
+
 ## Record operations
 
-The workspace provides record search and sorting, plus CSV export.
+The workspace provides record search, sorting and CSV export.
+
+- Search checks the values in all fields in the selected table. It is case-insensitive and matches part of a value.
+- Sorting uses the field selected by the user. Number fields sort numerically; other values use natural text ordering.
+- CSV export creates a separate file containing the table's field names and record values.
 
 Two protected structures are important:
 
 - The final table is protected from deletion.
-- The system ID field is protected.
+- The system ID field cannot be changed or deleted.
+
+## Deletion and data handling
+
+Deleting a custom field also removes that field's value from every record in the table. Export a CSV copy before deleting a field when those values may be needed later.
+
+Deleting a table removes that table and its records. Check that you have selected the intended table before confirming its removal.
 
 ## Data boundary
 

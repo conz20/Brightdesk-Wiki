@@ -37,7 +37,7 @@ PR #5 currently contains:
 
 - **Everyday Help:** a task-first homepage, a clear Suite getting-started route, natural-language local search and plain-English guides for all ten products.
 - **Consistent product guides:** each of the ten guides has **Overview**, **Getting started**, **Workflows**, and **Troubleshooting and common questions** sections, with in-page navigation, examples, expected results, product-specific questions, feature boundaries and a link to the relevant technical reference.
-- **Technical Documentation:** a separate `/technical/` area with its own layout, navigation and local search. It includes system references and individual technical references for the same ten products. The two areas link to each other but their search indexes remain separate.
+- **Technical Documentation:** a separate `/technical/` area with its own layout, navigation and local search. It includes system references and individual technical references for the same ten products. The two areas link to each other but their search indexes remain separate. The technical references also explain source-confirmed formula limits, record search/filter rules, task fields and destructive field/column/question deletion behaviour.
 - **Translation:** visitors use their browser's automatic translation or manual translate command. Brightdesk does not provide a separate translation service.
 - **Visual assets:** the ten current product SVGs are explanatory diagrams, not screenshots of Brightdesk. They are labelled accordingly.
 
@@ -56,7 +56,7 @@ That exact-head workflow reported:
 - Regression checks confirm that all ten technical product references link back to their matching Everyday Help guides, and that dark-theme text and keyboard focus colours meet the tested contrast thresholds.
 - The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-The latest README update will itself receive a new exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit; each subsequent README update changes the commit that must be checked. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+The source-backed technical-reference expansion is newer than this check and must pass its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 

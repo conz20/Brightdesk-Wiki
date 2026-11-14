@@ -1,7 +1,7 @@
 ---
 layout: technical
 title: Brightdesk Workspace technical reference
-description: Workspace and page hierarchy, content blocks, search and deletion safeguards.
+description: Workspace and page hierarchy, content blocks, search, block ordering and deletion safeguards.
 permalink: /technical/products/workspace.html
 ---
 
@@ -22,18 +22,20 @@ The current block types are:
 - Checklist
 - Divider
 
-Checklist items have their own completion state.
+Checklist items have their own completion state and can be edited independently of the surrounding block.
 
 ## Search and organisation
 
-**Search pages** searches page titles and block content. Blocks can be moved using the up and down controls. Pages and workspaces can be renamed.
+**Search pages** searches page titles, block content and checklist item text. Blocks can be moved up or down one position at a time. Pages and workspaces can be renamed.
 
 ## Deletion safeguards
 
 - A workspace must retain at least one page.
 - At least one workspace must remain.
-- Deleting a page removes that page and its content.
+- Deleting a page removes that page and all its content.
 - Deleting a workspace removes that workspace and all its pages.
+
+Review the selected page or workspace before deleting it. The protection for the final page and final workspace does not prevent deletion of other pages or workspaces.
 
 ## Data boundary
 

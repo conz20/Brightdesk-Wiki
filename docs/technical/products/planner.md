@@ -1,7 +1,7 @@
 ---
 layout: technical
 title: Brightdesk Planner technical reference
-description: Planner's plan, bucket and task model, status fields and bucket deletion behaviour.
+description: Planner's plan, bucket and task model, task filters and bucket deletion behaviour.
 permalink: /technical/products/planner.html
 ---
 
@@ -11,7 +11,7 @@ Planner organises local work into plans, buckets and tasks.
 
 ## Data model
 
-A plan contains buckets. Each bucket contains tasks.
+A plan contains buckets. Each bucket contains tasks. A new plan starts with a **To do** bucket.
 
 Tasks can include:
 
@@ -21,16 +21,20 @@ Tasks can include:
 - Progress: Not started, In progress or Completed.
 - Due date.
 - Assigned to value.
+- Labels.
+
+## Search and filters
+
+The task view can be filtered by bucket, progress and priority. Text search checks the task name, description, assigned-to value and labels.
 
 ## Bucket safeguards
 
-- A plan starts with a **To do** bucket.
 - The final bucket in a plan cannot be deleted.
-- When another bucket is deleted, its tasks are moved to a remaining bucket.
+- When a bucket is deleted, its tasks move to the first remaining bucket in that plan.
 
 ## Task-card behaviour
 
-The task card exposes title editing and a progress selector. Other task details are set when the task is created.
+The task card exposes title editing and a progress selector. Other task details are set when the task is created or through the task-editing workflow.
 
 ## Data boundary
 

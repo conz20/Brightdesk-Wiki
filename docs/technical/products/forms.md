@@ -1,7 +1,7 @@
 ---
 layout: technical
 title: Brightdesk Forms technical reference
-description: Form question types, required questions, preview and local response behaviour.
+description: Form question types, required questions, choice limits, preview and local response behaviour.
 permalink: /technical/products/forms.html
 ---
 
@@ -21,7 +21,9 @@ The current question types are:
 | Multiple choice | More than one selected option |
 | Date | A date response |
 
-Questions can be marked **Required question**.
+Questions can be marked **Required question**. A required answer is checked when a response is submitted.
+
+Single-choice and multiple-choice questions need between 2 and 30 distinct options. Each submitted choice must match one of the options configured for that question.
 
 ## Form areas
 
@@ -33,7 +35,7 @@ The current interface separates form work into three areas:
 
 ## Deletion behaviour
 
-Deleting a question also removes that question's answer from every saved response for that form. The other answers in each response remain, but the removed answer cannot be recovered from that form.
+Deleting a question also removes that question's answer from every saved response for that form. The other answers in each response remain, but the removed answer cannot be recovered from that form. Review the impact before deleting a question.
 
 ## Data boundary
 

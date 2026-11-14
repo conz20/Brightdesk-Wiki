@@ -100,3 +100,29 @@ test('each technical product reference links back to its matching everyday guide
     );
   }
 });
+
+test('technical references explain source-confirmed formula, search and data-removal behaviour', () => {
+  const technicalDirectory = path.join(root, 'docs', 'technical', 'products');
+  const read = filename => fs.readFileSync(path.join(technicalDirectory, filename), 'utf8');
+  const sheets = read('sheets.md');
+  const database = read('database.md');
+  const forms = read('forms.md');
+  const lists = read('lists.md');
+  const planner = read('planner.md');
+  const todo = read('to-do.md');
+  const workspace = read('workspace.md');
+
+  assert.match(sheets, /remainder.*%/i);
+  assert.match(sheets, /#CYCLE!/);
+  assert.match(sheets, /#VALUE!/);
+  assert.match(database, /search checks the values in all fields/i);
+  assert.match(database, /deleting a custom field also removes that field's value from every record/i);
+  assert.match(forms, /between 2 and 30 distinct options/i);
+  assert.match(forms, /removes that question's answer from every saved response/i);
+  assert.match(lists, /Built-in columns cannot be deleted/i);
+  assert.match(lists, /removes the values stored for that column from every record/i);
+  assert.match(planner, /labels/i);
+  assert.match(planner, /first remaining bucket/i);
+  assert.match(todo, /Search checks task titles and notes/i);
+  assert.match(workspace, /checklist item text/i);
+});
