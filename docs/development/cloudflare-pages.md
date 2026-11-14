@@ -102,6 +102,14 @@ The website itself contains no Brightdesk analytics, advertising, tracking scrip
 
 Cloudflare operates the hosting network and processes technical request metadata for visitors, which can include IP addresses and traffic-routing information. Do not claim that visitor IP addresses or all request metadata are never processed. See [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/) and [Cloudflare's Australia Privacy Act information](https://www.cloudflare.com/en-au/trust-hub/australia-privacy-act/).
 
+## Manual redeploy revision check
+
+A manual **Redeploy** action can rebuild the commit already recorded on the selected deployment; it does not necessarily select the latest commit on the pull-request branch. Always compare the deployment's displayed commit SHA with the current PR head before treating its build result as validation of the latest source.
+
+On 14 November 2026, deployment `a3b372c5-b1ff-4e46-84af-08f3d084b77a` was manually redeployed from commit `c8b651096d15ddb9a24211384bb81cef31a25788`, while PR #6 had already advanced to `002f6eb2374255c3912ad4ff58c6b78792775f5e`. The redeployment therefore could not validate the fixes on the newer PR head.
+
+Before relying on a result, confirm all three match: repository `conz20/Brightdesk-Wiki`, branch `reconcile/customer-help-main-2026-11-14`, and the exact commit SHA displayed as the current PR head. A passing older deployment is historical evidence only; a failed older deployment does not prove the latest source still fails.
+
 ## Current publication status and release
 
 Cloudflare Pages Free is active for the project **brightdesk-help**. The canonical public customer Help address is **https://brightdesk-help.pages.dev/**. PR-specific preview URLs are review links and are not the canonical address.
