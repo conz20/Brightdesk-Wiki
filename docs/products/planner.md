@@ -8,6 +8,8 @@ permalink: /products/planner.html
 
 # Brightdesk Planner
 
+![Brightdesk Planner product icon](../assets/images/product-icons/planner.svg){: .product-guide-icon }
+
 Use Planner to organise a project into a plan, buckets and tasks.
 
 ## Create a plan
