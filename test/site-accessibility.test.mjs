@@ -105,3 +105,18 @@ test('body, secondary and link text maintain readable contrast', () => {
     }
   }
 });
+
+const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html', import.meta.url), 'utf8');
+
+test('technical reference layout provides the same keyboard and screen-reader essentials', () => {
+  assert.match(technicalLayout, /<html lang="en-AU">/);
+  assert.match(technicalLayout, /<a class="skip-link" href="#main">Skip to content<\\/a>/);
+  assert.match(technicalLayout, /<nav class="site-nav" aria-label="Main navigation">/);
+  assert.match(technicalLayout, /<main id="main" class="technical-layout">/);
+  assert.match(technicalLayout, /<aside class="technical-sidebar" aria-label="Technical documentation sections">/);
+  assert.match(technicalLayout, /<nav aria-label="Technical reference navigation">/);
+  assert.match(technicalLayout, /<section class="help-search" role="search" aria-labelledby="help-search-label">/);
+  assert.match(technicalLayout, /aria-controls="help-search-results"/);
+  assert.match(technicalLayout, /role="status" aria-live="polite"/);
+  assert.match(technicalLayout, /aria-label="Matching technical references"/);
+});
