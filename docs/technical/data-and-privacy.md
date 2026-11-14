@@ -34,5 +34,5 @@ Readers can consult the Help and technical reference pages without connecting th
 
 ## Related references
 
-- [System overview](/technical/system-overview.html)
-- [Everyday Help](/index.html)
+- [System overview](system-overview.html)
+- [Everyday Help](../index.html)
