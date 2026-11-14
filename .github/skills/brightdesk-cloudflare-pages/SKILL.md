@@ -48,7 +48,7 @@ Cloudflare's GitHub App connection is separate from the Cloudflare API MCP token
 ## Domain and DNS safeguards
 
 - The approved customer address is **https://brightdesk-help.pages.dev/**, using Cloudflare's free project hostname.
-- No custom domain purchase, paid registration, DNS record change, nameserver change or DNSSEC change is required or authorised.
+- No custom domain purchase, paid registration, DNS record change, nameserver change or DNSSEC change is required or authorised. Never change nameservers, DNS records, DNSSEC or domain registration for this project.
 - Do not configure `help.brightdesk.com`, transfer or change domain registration, or migrate DNS.
 - A custom domain is outside the current project. Any future proposal would require a complete current DNS-zone export, a preservation plan and the owner's explicit approval of the exact change before any action.
 
