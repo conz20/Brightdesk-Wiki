@@ -20,6 +20,8 @@ Brightdesk is free forever. Brightdesk Suite, all ten approved products and this
 
 ## Before you start
 
+For the focused walkthrough, see [Install and update Brightdesk](everyday/install-update.html). The steps below remain the Suite getting-started summary.
+
 1. Use the official Brightdesk installer for your computer when a verified release is available.
 2. Open the installer and follow the instructions shown by your operating system.
 3. You do not need to install Node.js or use Terminal or Command Prompt to run Brightdesk.
@@ -169,6 +171,8 @@ When you are working in Pages, Sheets, Decks or Notes, use that product's **Expo
 The export is a separate copy. Keep a Brightdesk project file as well when you want to reopen your work in Brightdesk. Other products have their own save or export instructions in their product guide.
 
 ## Notifications, Settings and languages
+
+For the full step-by-step language walkthrough, see [Languages and spelling](everyday/languages-and-spelling.html).
 
 - Select the **Notifications** bell to view notification history. Choose **Clear all** only when you intend to clear that history.
 - Select the **Settings** cogwheel in the top-right corner.

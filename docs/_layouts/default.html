@@ -59,6 +59,15 @@
               <li><a href="{{ '/products/workspace.html' | relative_url }}"{% if page.url == '/products/workspace.html' %} aria-current="page"{% endif %}>Workspace</a></li>
             </ul>
           </details>
+          <details class="product-menu" aria-label="More help topics">
+            <summary>More help</summary>
+            <ul>
+              <li><a href="{{ '/everyday/install-update.html' | relative_url }}">Install and update</a></li>
+              <li><a href="{{ '/everyday/languages-and-spelling.html' | relative_url }}">Languages and spelling</a></li>
+              <li><a href="{{ '/everyday/troubleshooting.html' | relative_url }}">Troubleshooting</a></li>
+              <li><a href="{{ '/products/decks-slide-shows.html' | relative_url }}">Decks slide shows</a></li>
+            </ul>
+          </details>
           <a href="{{ '/technical/index.html' | relative_url }}">Technical documentation</a>
         </nav>
       </div>
@@ -75,7 +84,7 @@
         <ul id="help-search-results" class="search-results" aria-label="Matching help guides" hidden></ul>
       </section>
     </header>
-    {% assign public_help_paths = "/index.html|/everyday/index.html|/customer-start-here.html|/products/pages.html|/products/sheets.html|/products/decks.html|/products/notes.html|/products/database.html|/products/forms.html|/products/lists.html|/products/planner.html|/products/to-do.html|/products/workspace.html" | split: "|" %}
+    {% assign public_help_paths = "/index.html|/everyday/index.html|/customer-start-here.html|/everyday/install-update.html|/everyday/languages-and-spelling.html|/everyday/troubleshooting.html|/products/decks-slide-shows.html|/products/pages.html|/products/sheets.html|/products/decks.html|/products/notes.html|/products/database.html|/products/forms.html|/products/lists.html|/products/planner.html|/products/to-do.html|/products/workspace.html" | split: "|" %}
     <nav class="search-index" aria-label="Searchable help guide content" hidden>
       {% for help_page in site.pages %}
         {% if public_help_paths contains help_page.url %}

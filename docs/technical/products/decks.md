@@ -42,3 +42,4 @@ A theme is a presentation style choice, not a guarantee that every external them
 
 - [File formats](../file-formats.html)
 - [Everyday Help: Decks](../../products/decks.html)
+- [Present a slide show in Brightdesk Decks](../../products/decks-slide-shows.html)

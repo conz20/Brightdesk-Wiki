@@ -6,7 +6,7 @@ Brightdesk Suite, the ten approved desktop products and Brightdesk Help remain f
 
 Brightdesk Help is a separate, static, read-only public website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency. It does not receive customer documents or product data.
 
-The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 customer site build contains 27 approved HTML pages: the Help homepage, Everyday Help homepage, Suite getting-started guide, ten Everyday Help product guides, the Technical Documentation homepage, three system references and ten technical product references. It also contains 24 local assets: one CSS file, one browser-search JavaScript file, ten product icons, ten workflow illustrations, the favicon and the social-preview SVG, plus one `_headers` policy file: 52 files total. The exact output allowlist in `scripts/check-public-site.mjs` is authoritative.
+The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 customer site build contains 31 approved HTML pages: the Help homepage, Everyday Help homepage, Suite getting-started guide, ten Everyday Help product guides, the Technical Documentation homepage, three system references and ten technical product references. It also contains 24 local assets: one CSS file, one browser-search JavaScript file, ten product icons, ten workflow illustrations, the favicon and the social-preview SVG, plus one `_headers` policy file: 56 files total. The exact output allowlist in `scripts/check-public-site.mjs` is authoritative.
 
 ## Owner authorisation and cost boundary
 
@@ -64,12 +64,14 @@ Cloudflare's build command is npm run build:cloudflare. It performs the followin
 7. Build the real Jekyll site into _site/.
 8. Run scripts/check-public-site.mjs against the generated output.
 
-The output audit requires exactly 52 files:
+The output audit requires exactly 56 files:
 
-**27 HTML pages**
+**31 HTML pages**
 - `index.html` — Brightdesk Help homepage.
 - `everyday/index.html` — Everyday Help homepage.
 - `customer-start-here.html` — Suite getting-started guide.
+- `everyday/install-update.html`, `everyday/languages-and-spelling.html` and `everyday/troubleshooting.html` — shared customer topic guides.
+- `products/decks-slide-shows.html` — focused Decks slide-show guide.
 - `products/pages.html`, `products/sheets.html`, `products/decks.html`, `products/notes.html`, `products/database.html`, `products/forms.html`, `products/lists.html`, `products/planner.html`, `products/to-do.html` and `products/workspace.html` — the ten Everyday Help product guides.
 - `technical/index.html` — Technical Documentation homepage.
 - `technical/system-overview.html`, `technical/file-formats.html` and `technical/data-and-privacy.html` — three system references.

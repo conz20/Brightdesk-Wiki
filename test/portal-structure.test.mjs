@@ -23,11 +23,24 @@ test('the Help header searches only its approved Everyday pages', () => {
   assert.ok(allowlist);
   assert.deepEqual(allowlist[1].split('|'), [
     '/index.html','/everyday/index.html','/customer-start-here.html',
+    '/everyday/install-update.html','/everyday/languages-and-spelling.html','/everyday/troubleshooting.html','/products/decks-slide-shows.html',
     ...products.map(product => '/products/' + product + '.html')
   ]);
   assert.match(layout, /type="module" src="\{\{ '\/assets\/js\/search\.js'/);
   assert.match(layout, /aria-controls="help-search-results"/);
   assert.match(layout, /aria-live="polite"/);
+});
+
+test('shared guide entry points are discoverable', () => {
+  const everyday = read('docs/everyday/index.md');
+  const home = read('docs/index.md');
+  const suite = read('docs/customer-start-here.md');
+  const decks = read('docs/products/decks.md');
+  for (const route of ['install-update.html','languages-and-spelling.html','troubleshooting.html']) {
+    assert.ok(everyday.includes(route)); assert.ok(home.includes(route));
+  }
+  assert.ok(suite.includes('install-update.html')); assert.ok(suite.includes('languages-and-spelling.html'));
+  assert.ok(decks.includes('decks-slide-shows.html'));
 });
 
 test('Technical Documentation has its own fourteen-page search index', () => {

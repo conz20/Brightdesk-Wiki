@@ -59,6 +59,16 @@ permalink: /index.html
   </div>
 </section>
 
+<section class="reference-section" aria-labelledby="popular-guides-title">
+  <div class="section-heading"><div><p class="portal-kicker">MORE WAYS TO GET HELP</p><h2 id="popular-guides-title">Choose a guide by what you need</h2><p>The homepage search above remains available. You can also open a focused guide directly.</p></div></div>
+  <div class="reference-card-grid">
+    <a class="reference-card" href="everyday/install-update.html"><strong>Install and update</strong><span>Official Suite installation, product workspaces and current update status.</span><span class="reference-arrow">Open guide →</span></a>
+    <a class="reference-card" href="everyday/languages-and-spelling.html"><strong>Languages and spelling</strong><span>Display language, proofing language and official dictionary packs.</span><span class="reference-arrow">Open guide →</span></a>
+    <a class="reference-card" href="everyday/troubleshooting.html"><strong>Troubleshooting</strong><span>Find a product's common questions and safe next steps.</span><span class="reference-arrow">Open guide →</span></a>
+    <a class="reference-card" href="products/decks-slide-shows.html"><strong>Decks slide shows</strong><span>Start from the right slide and move through a presentation.</span><span class="reference-arrow">Open guide →</span></a>
+  </div>
+</section>
+
 <section class="portal-note" aria-label="About Brightdesk Help">
   <strong>One website. Two ways to explore.</strong>
   <p>Everyday Help and Technical Documentation have separate navigation and separate search results. Search stays in your browser. This site is read-only and does not require an account.</p>

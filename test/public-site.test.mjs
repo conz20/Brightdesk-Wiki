@@ -47,6 +47,7 @@ function siteFixture(t) {
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'everyday/index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
+  for (const page of ['everyday/install-update.html','everyday/languages-and-spelling.html','everyday/troubleshooting.html','products/decks-slide-shows.html']) fs.writeFileSync(path.join(rootDir, page), html);
   for (const page of TECHNICAL_PAGES) fs.writeFileSync(path.join(rootDir, page), html);
   for (const product of PRODUCTS) {
     const label = PRODUCT_LABELS[product];
@@ -84,8 +85,8 @@ test('structured data is restricted to the approved first-party Brightdesk Help 
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 52);
-  assert.equal(result.htmlPages, 27);
+  assert.equal(result.files, 56);
+  assert.equal(result.htmlPages, 31);
 });
 
 test('all ten product guides use their matching local icon and workflow diagram with descriptive alternative text', t => {

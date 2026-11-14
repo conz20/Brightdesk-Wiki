@@ -59,6 +59,12 @@ The Cloudflare Pages check for current head `0f9164eb31076d3b0387a2a351918664441
 
 The repository uses only the read-only Cloudflare documentation MCP server. It does not require a Cloudflare API token or GitHub Agents secret. The configured Pages build command runs the complete validation pipeline: locked Node install, pinned runtime checks, regression tests, Markdown links, Jekyll build and public-output privacy audit.
 
+## Help guide structure
+
+The draft adds shared Suite install/update, languages-and-spelling and troubleshooting guides, plus a focused Decks slide-show guide. Product homes remain the entry points for overview, getting started, workflows, troubleshooting and technical references. These additions do not imply that every Craft Wiki feature exists in Brightdesk.
+
+The homepage search remains prominent and local. Everyday Help and Technical Documentation retain separate search indexes. New routes remain draft content and must pass the exact-head build and privacy checks before publication.
+
 ## Design and content
 
 Brightdesk Help must have an original, professional Brightdesk identity and a consistent visual system across the homepage, Everyday Help, Technical Documentation, search, navigation and article templates. Craft Wiki is an information-architecture reference only. Microsoft Fluent principles may inform clarity and accessibility. Do not copy either brand's logos, code, wording, assets or page designs.

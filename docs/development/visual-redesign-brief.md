@@ -71,20 +71,28 @@ The current website's CSS palette is not the canonical Design System token set. 
 
 ### Product guide system
 
-Assume the reader may not know technical terms, product names or where a control is located. Start from the task they want to complete, explain unfamiliar words, identify the visible button or menu name, give one clear action at a time, and say what they should see next. Use pictures where they genuinely help identify a control or understand a step. Do not assume that a reader knows how to open developer tools, use a terminal or change application settings outside the described task.
+Treat each product page as a **product home**: a dependable entry point that explains what the product does and helps a reader choose the next guide. Keep the shared four-part structure, but support focused articles rather than forcing every instruction into one long page.
 
-Create a consistent, predictable structure for each product:
+Every product home must provide an overview, getting-started steps, task-based workflows, troubleshooting and a visible but secondary technical reference. Explain unfamiliar words, use exact visible control names, give one action at a time, state expected results and show the reader how to return to the product home.
 
-1. **Overview:** what the product is for, common jobs, important boundaries and the route into the guide.
-2. **Getting started:** first-use steps with expected results.
-3. **Workflows:** task-led instructions split into useful topics, each with numbered steps, a clear outcome and relevant genuine screenshots.
-4. **Troubleshooting:** symptom, likely cause, safe next step and a clear route back to the relevant workflow.
+### Shared guide families
 
-Make these sections easy to find through simple in-page navigation. Keep the words and labels familiar; technical terms should be explained rather than used as unexplained shorthand. The technical reference link should be visible but secondary to the everyday task, so it does not overwhelm a reader who only needs simple help.
+- **Install and update:** Suite-level installation, official release checks, adding/removing product workspaces, current update status and repair limitations. Do not write ten duplicate product installer guides.
+- **Languages and spelling:** display language, proofing language, official language packs, spelling dictionaries and which products use the shared proofing tools.
+- **Troubleshooting:** a searchable directory routing readers to safe, product-specific help.
+- **Recovery and repair:** publish a separate guide only when the exact procedure is verified for the relevant product and operating system.
 
-Suite-level installation, repair, upgrade and update information belongs in the Suite guide because the ten products are integrated workspaces, not separate installable customer products. Do not invent product-specific installers or claim update delivery is active when it is not.
+### Specialist topic guides
 
-Every article should make it easy to answer: where am I, what will this guide help me do, what should I do next, and how do I get back to the product overview?
+Create a specialist guide when a task deserves a distinct route and Brightdesk has a verified feature to document. The Decks slide-show guide is an example. Do not reproduce Craft's guide list one-for-one. AI-agent command-line integrations, Zotero, advanced presenter controls and recovery behaviour are not automatically Brightdesk features. Brightdesk-AI is engineering tooling, not a customer product or customer-facing AI agent. Do not add these tutorials unless a Brightdesk customer release implements and verifies them.
+
+### Research and deeper reading
+
+Technical Documentation should provide a progressive path: Suite/system overview, file formats, data and privacy, then product references for data models, supported operations, file handling, limits and known incompatibilities. Use definitions, scoped examples, comparison tables and explicit supported / unsupported / not-yet-verified distinctions. Link back to plain-English workflows.
+
+### Homepage and search
+
+Keep the homepage search bar prominent, keyboard accessible and local in the visitor's browser. Everyday Help and Technical Documentation retain separate local search indexes. Add entry points for shared guide families without pushing the search field out of the first view.
 
 ### Workflow visuals
 
@@ -182,6 +190,8 @@ The public Craft Wiki was reviewed on 14 November 2026:
 3. Structure each guide around a task, not a feature catalogue. Use numbered steps, visible control names, expected outcomes and troubleshooting paths.
 4. Use real screenshots only when they help identify the current Brightdesk interface. Until verified captures exist, retain clearly labelled explanatory diagrams and do not imply that they show the running software.
 5. Keep the Brightdesk visual identity, wording, implementation and assets original. Craft is a research reference, not a source of copied page templates, code, logos, icons, screenshots or text.
+
+The owner-supplied DeckCraft, GridCraft and WordCraft pages demonstrate overview, getting-started, install/update, workflow, troubleshooting and specialist-topic guide families. Brightdesk adapts that information architecture without copying layouts, text, images, code or feature claims. No customer-facing AI-agent, Zotero or advanced-presenter feature is implied by those references.
 
 These observations inform the design brief; they do not satisfy the required full visual redesign, product walkthroughs or screenshot evidence.
 

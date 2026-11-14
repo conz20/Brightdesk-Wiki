@@ -6,6 +6,12 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+const SHARED_HELP_PAGES = [
+  'everyday/install-update.html',
+  'everyday/languages-and-spelling.html',
+  'everyday/troubleshooting.html',
+  'products/decks-slide-shows.html'
+];
 const TECHNICAL_PAGES = [
   'technical/index.html',
   'technical/system-overview.html',
@@ -22,7 +28,7 @@ const PRODUCT_ICON_FILES = PRODUCTS.map(product => 'assets/images/product-icons/
 const PRODUCT_WORKFLOW_FILES = PRODUCTS.map(product => 'assets/images/workflows/guide-' + product + '.svg');
 const BRAND_IMAGE_FILES = ['favicon.svg', 'assets/images/brightdesk-help-social.svg'];
 const APPROVED_SVG_FILES = [...PRODUCT_ICON_FILES, ...PRODUCT_WORKFLOW_FILES, ...BRAND_IMAGE_FILES];
-const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js','_headers', ...BRAND_IMAGE_FILES]
+const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js','_headers', ...BRAND_IMAGE_FILES, ...SHARED_HELP_PAGES]
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
   .concat(TECHNICAL_PAGES)
   .concat(APPROVED_SVG_FILES);
@@ -273,7 +279,8 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
 
     const imageTags = [...html.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
-    const productPage = file.match(/^products\/([a-z-]+)\.html$/);
+    const productPageMatch = file.match(/^products\/([a-z-]+)\.html$/);
+    const productPage = productPageMatch && PRODUCTS.includes(productPageMatch[1]) ? productPageMatch : null;
     if (imageTags.some(imageTag => !/\balt=["'][^"']+["']/i.test(imageTag))) {
       fail(file + ' does not provide the required meaningful alternative text for each image');
     }

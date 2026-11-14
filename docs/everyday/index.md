@@ -42,3 +42,13 @@ permalink: /everyday/index.html
     <li><a href="../products/workspace.html">Bring project notes and information together</a><span>Workspace</span></li>
   </ul>
 </section>
+
+<section class="reference-section" aria-labelledby="everyday-guide-types-title">
+  <div class="section-heading"><div><p class="portal-kicker">GUIDES BY TOPIC</p><h2 id="everyday-guide-types-title">More ways to find an answer</h2><p>Use a shared guide when your question is about the Suite rather than one product.</p></div></div>
+  <div class="reference-card-grid">
+    <a class="reference-card" href="install-update.html"><strong>Install and update</strong><span>Install Brightdesk Suite and understand the current update process.</span><span class="reference-arrow">Open guide →</span></a>
+    <a class="reference-card" href="languages-and-spelling.html"><strong>Languages and spelling</strong><span>Set the display language and choose an installed spelling dictionary.</span><span class="reference-arrow">Open guide →</span></a>
+    <a class="reference-card" href="troubleshooting.html"><strong>Troubleshooting</strong><span>Find the right product's common questions and safe first steps.</span><span class="reference-arrow">Open guide →</span></a>
+    <a class="reference-card" href="../products/decks-slide-shows.html"><strong>Decks slide shows</strong><span>A focused guide to presenting from the selected slide.</span><span class="reference-arrow">Open guide →</span></a>
+  </div>
+</section>
