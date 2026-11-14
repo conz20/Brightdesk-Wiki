@@ -19,7 +19,7 @@ This directory is the source-controlled visual library for the Brightdesk Help w
 | `illustrations/brightdesk-suite-map.svg` | Explains the Suite and its ten approved products |
 | `illustrations/offline-first-privacy.svg` | Explains local-first document handling and privacy boundaries |
 | `illustrations/help-workflow.svg` | Shows a simple help-guide workflow |
-| `icons/README.md` and `icons/*.svg` | Ten original, product-specific icons for Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do, and Workspace |
+| `icons/README.md` and `icons/*.svg` | Ten canonical original product icons; byte-for-byte public copies are stored in `docs/assets/images/product-icons/` |
 
 The product icon pack uses one consistent 128 × 128 design system. Each icon is a separate SVG with its own accessible title and description. See [the icon-set guide](icons/README.md) for the full file list and usage rules.
 
@@ -27,7 +27,7 @@ The product icon pack uses one consistent 128 × 128 design system. Each icon is
 
 The illustrations and icons in this directory are source-library assets. They are not genuine screenshots and must not be described as such.
 
-The current `main` branch's generated-site allowlist permits only the approved HTML and CSS output. Do not copy these SVG files into the customer site or link to them from customer pages until the SVG allowlist, SVG content checks, image-alt checks and regression tests have been deliberately updated and passed on the exact branch head. The open visual-redesign PR contains a separate SVG-publication implementation; keep this branch's safety gate intact until that work is reviewed and merged.
+The generated customer site permits the approved HTML and CSS plus exactly ten named product-icon SVGs. Their public copies must match the canonical icons byte for byte. The public-output checker restricts SVG elements and attributes, requires accessible titles and descriptions, rejects active content and external references, and checks that each product guide uses only its matching local icon with meaningful alternative text. Other diagrams and illustrations in this private library are not yet approved for publication.
 
 No genuine screenshots from current running Brightdesk Suite and product builds were available during this asset-library update. Do not substitute these illustrations for screenshots. Capture and document genuine product evidence separately when current builds can be run.
 
