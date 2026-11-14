@@ -63,6 +63,38 @@ Open **Insert** and choose one of the available options:
 5. Choose **Save project** to keep the editable Brightdesk project.
 
 **What you should have:** a short meeting document with a clear heading, bullet points and one highlighted action.
+## More examples to try
+
+### Write a formal letter
+
+1. Create a document and give it a clear name, such as **Letter to the landlord**.
+2. Type the date, greeting, main message and sign-off in the writing area.
+3. Select the letter's heading or important sentence and use **Bold** if it helps the reader.
+4. Open **Layout** and choose **A4**, **Portrait** and a margin preset.
+5. Choose **Save project** to keep an editable Brightdesk copy.
+6. To make a PDF copy, choose **Home → PDF** in the **Export** group.
+
+**What you should have:** a named letter with a page size and a saved editable copy. The PDF is a separate copy.
+
+### Prepare a short report
+
+1. Create a document called **Monthly progress report**.
+2. Add a **Heading 1** for the report title.
+3. Use **Heading 2** for sections such as **Completed**, **In progress** and **Next steps**.
+4. Use bullet points under each section.
+5. Open **Review → Word count** to check the length.
+6. Save the project. Choose **Home → PDF** when you need a shareable PDF copy.
+
+**What you should have:** a report with clear sections, a word count and an editable project copy.
+
+## Common questions and fixes
+
+**How do I make a PDF?** Choose **Home**, then **PDF** in the **Export** group. The general **Export** menu may offer other formats.
+
+**How do I keep editing later?** Choose **Save project** and keep the Brightdesk project file. A PDF is a separate output copy, not the editable project.
+
+**Why did formatting change?** Select the text first, then apply the formatting command. Imported documents may not preserve every advanced layout feature.
+
 ## Current feature boundaries
 
 Pages provides core document writing, formatting and page setup. It is not full word-processor feature parity. Advanced page-layout tools, macros, collaboration and perfect round-trip conversion are not promised.
