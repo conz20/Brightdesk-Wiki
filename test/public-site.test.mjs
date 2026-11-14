@@ -94,9 +94,11 @@ test('all ten product guides use their matching local icon and workflow diagram 
     const html = fs.readFileSync(path.join(siteRoot, 'products', product + '.html'), 'utf8');
     assert.ok(html.includes('src="../assets/images/product-icons/' + product + '.svg" alt="Brightdesk ' + PRODUCT_LABELS[product] + ' product icon" class="product-guide-icon"'));
     assert.ok(html.includes('src="../assets/images/workflows/guide-' + product + '.svg" alt="' + WORKFLOW_ALT_TEXT[product] + '" class="product-workflow-diagram"'));
-    assert.equal(html.includes('https://'), false);
-    assert.equal(html.includes('//'), false);
   }
+
+  // Validate the actual public boundary instead of rejecting approved first-party
+  // canonical and JSON-LD metadata URLs as if they were external page resources.
+  assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
 });
 
 test('product icon SVGs must contain only the approved static vector elements', t => {
