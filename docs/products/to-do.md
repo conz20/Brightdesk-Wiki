@@ -55,6 +55,36 @@ Your task information is saved on this device as you work. Check the local-save 
 6. Select the checkbox when you finish a task.
 
 **What you should have:** a short daily task list with a priority and a completed item after you finish one.
+## More examples to try
+
+### Set up a day of errands
+
+1. Open **My Day**.
+2. Add the tasks you want to complete today.
+3. Add notes or a due date to a task when useful.
+4. Use the star control to mark the most important task.
+5. Select the checkbox when a task is complete.
+
+**What you should have:** a daily list with one highlighted task and a completed item.
+
+### Keep track of tasks with due dates
+
+1. Open **Tasks** and add a task.
+2. Choose **Edit** on its card.
+3. Set a **Due date** and choose a **Priority**.
+4. Save the changes.
+5. Open **Planned** to see tasks that have due dates.
+
+**What you should have:** a task with a due date that appears in the **Planned** view.
+
+## Common questions and fixes
+
+**Where did a task go after I completed it?** Open **Completed** to review finished tasks.
+
+**How do I restore a completed task?** Open **Completed** and select its checkbox again.
+
+**Why isn't a task in My Day?** My Day shows tasks added to that view. Use the plus/minus control on the task to add or remove it from My Day.
+
 ## Current feature boundaries
 
 To Do currently supports personal local task lists. Operating-system notifications, recurring reminders, shared task lists, customer accounts and cloud sync are not included in the current stated scope.
