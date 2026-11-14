@@ -10,7 +10,9 @@ permalink: /products/pages.html
 
 ![Brightdesk Pages product icon](../assets/images/product-icons/pages.svg){: .product-guide-icon }
 
-![Three-step workflow: create a document, write and format it, then save or export.](../assets/images/workflows/guide-pages.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-pages.svg" alt="Three-step workflow: create a document, write and format it, then save or export." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
