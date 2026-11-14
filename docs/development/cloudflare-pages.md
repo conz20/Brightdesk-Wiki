@@ -19,7 +19,7 @@ The source repository conz20/Brightdesk-Wiki remains private. The published outp
 - Do not publish or advertise a `pages.dev` address as the customer website. Cloudflare's generated `pages.dev` host is a technical Pages origin only. The customer-facing URL must end in `.com`.
 - Keep `https://help.brightdesk.com` as the target. Before configuring DNS, identify the registrar/DNS control panel and inventory the existing DNS records. Preserve any existing website, mail, verification and security records. Do not replace nameservers or alter DNS until the record set is understood and the owner has approved the exact change.
 - Use Cloudflare's GitHub integration. Do not create or store a Cloudflare API token or account ID in the repository.
-- The linked GitHub account's installed-app listing was checked on 13 November 2026. The Cloudflare GitHub App was not present, so Cloudflare has not yet been granted repository access and no Pages Git integration project is connected.
+- On 14 November 2026, Cloudflare successfully built and deployed pull-request previews for this private repository, including PR #6. This confirms that a Cloudflare Pages GitHub integration and Pages project are now active. It does not independently prove the GitHub App's exact repository-access scope; verify that scope is **Only select repositories** with conz20/Brightdesk-Wiki as the only selected repository before production. Do not claim that the app is scoped correctly until the installed-app configuration is inspected.
 - The GitHub App installation must be scoped to **Only select repositories**, with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to any other Brightdesk source repository.
 - The source repository stays private. Do not change GitHub repository visibility or collaborator permissions.
 
@@ -27,7 +27,7 @@ Cloudflare's current Free Pages limits include 500 builds per month and one conc
 
 ## Cloudflare project configuration
 
-Create one Pages project using **Import an existing Git repository** and select the private conz20/Brightdesk-Wiki repository after authorising the Cloudflare GitHub App.
+The existing Cloudflare Pages project is named **brightdesk-help**, as shown by successful PR preview deployment checks on 14 November 2026. Do not create a duplicate project. Verify the existing project's Git repository, production branch and build settings against the table below. Confirm its GitHub App access scope before production.
 
 Use these exact settings:
 
@@ -53,7 +53,7 @@ Cloudflare requires both authorisation of the GitHub user and installation of it
 
 ### Disable preview deployments
 
-In the Pages project settings, open **Builds & deployments → Branch control**. Keep the production branch set to main and set preview branch deployments to **None**. This avoids publishing review branches or in-progress documentation as preview sites. Production builds occur only from pushes to the reviewed main branch.
+In the Pages project settings, open **Builds & deployments → Branch control**. The current PR #6 preview deployments are active and have successfully published review branches. The intended production setting in this runbook is preview branch deployments **None**, to avoid exposing unfinished documentation. Verify the current branch-control setting in the Cloudflare dashboard and align it with the owner's approved release policy before production. Do not change this setting without approval of the exact change. Production builds should occur only from pushes to the reviewed main branch.
 
 ## Mandatory build and privacy gate
 
@@ -87,7 +87,7 @@ Cloudflare operates the hosting network and processes technical request metadata
 
 ## Current publication status and release
 
-The repository contains the Cloudflare Pages Free build configuration. CI results must be checked against the exact current pull-request head; a pass on an earlier revision does not prove that a later revision passes. The Cloudflare account connection, GitHub App installation and Pages project still require verified account-side setup. No deployed customer URL is confirmed.
+The repository contains the Cloudflare Pages Free build configuration. On 14 November 2026, Cloudflare successfully built PR #6 previews for commits on the review branch, proving that a Pages project and GitHub preview integration are active. The most recent preview was deployment `16f8f2e5`, built from PR commit `440f85d`; the successful check is linked in PR #6. The repository's GitHub Actions quality run #445 also passed on that exact commit. The current PR preview is not the production website. The production branch/build settings, exact GitHub App repository-access scope, preview-branch policy, custom domain and HTTPS still require account-side verification.
 
 The required customer URL is **https://help.brightdesk.com**. The owner has confirmed ownership of `brightdesk.com`; current DNS is delegated to Sedo parking nameservers. The registrar and authoritative-DNS editing access are not yet confirmed. No purchase or DNS change is authorised.
 
@@ -133,7 +133,7 @@ Create a custom Cloudflare API token for the single account that owns the Bright
 
 The Cloudflare API MCP server is configured with the `search` and `execute` tools only. The Cloudflare Docs MCP server exposes only `search_cloudflare_documentation`. An API token does not install or authorise the GitHub App for Cloudflare Pages. The GitHub App must still be installed separately with **Only select repositories**, choosing Brightdesk-Wiki only.
 
-No Cloudflare token or GitHub secret has been created by this repository change. The Pages project, GitHub App connection, DNS configuration, deployment and live custom domain are not yet verified. Do not describe the site as live.
+No Cloudflare token or GitHub secret has been created by this repository change. The Pages project and GitHub preview integration are active, but the exact GitHub App access scope, production settings, DNS configuration and live custom domain are not yet verified. Do not describe the site as live.
 
 ## Official Cloudflare documentation
 
