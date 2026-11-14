@@ -10,6 +10,10 @@ permalink: /products/notes.html
 
 ![Brightdesk Notes product icon](../assets/images/product-icons/notes.svg){: .product-guide-icon }
 
+![Three-step workflow: create a note, capture an idea, then keep a copy.](../assets/images/workflows/guide-notes.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Notes to capture quick thoughts, reminders and short pieces of information.
 
 ## Write a note
