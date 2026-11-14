@@ -98,19 +98,24 @@ test('Help search exposes an accessible search landmark and connected result/sta
 
 test('Technical Documentation search connects its label, instructions, live status and results', () => {
   const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html', import.meta.url), 'utf8');
-  const searchSection = technicalLayout.match(/<section class="help-search"[^>]*>([\\s\\S]*?)<\\/section>/);
-  assert.ok(searchSection, 'Technical Documentation must expose its own search section');
-  assert.match(searchSection[0], /\\brole="search"/);
-  assert.match(searchSection[0], /<label id="help-search-label" for="help-search">Search Technical Documentation<\\/label>/);
+  const sectionStart = technicalLayout.indexOf('<section class="help-search"');
+  const sectionEnd = technicalLayout.indexOf('</section>', sectionStart);
+  assert.ok(sectionStart >= 0 && sectionEnd > sectionStart, 'Technical Documentation must expose its own search section');
+  const section = technicalLayout.slice(sectionStart, sectionEnd);
 
-  const searchInput = searchSection[1].match(/<input\\b[^>]*id="help-search"[^>]*>/);
-  assert.ok(searchInput, 'Technical Documentation search input must be present');
-  assert.match(searchInput[0], /\\baria-describedby="help-search-hint help-search-status"/);
-  assert.match(searchInput[0], /\\baria-controls="help-search-results"/);
+  assert.ok(section.includes('role="search"'), 'Technical search must have a search landmark');
+  assert.ok(
+    section.includes('<label id="help-search-label" for="help-search">Search Technical Documentation</label>'),
+    'Technical search must have a visible label'
+  );
 
-  assert.match(searchSection[1], /<p id="help-search-hint" class="search-hint">/);
-  assert.match(searchSection[1], /<p id="help-search-status" class="search-status" role="status" aria-live="polite">/);
-  assert.match(searchSection[1], /<ul id="help-search-results" class="search-results" aria-label="Matching technical references" hidden>/);
+  const inputLine = section.split('\n').find(line => line.includes('<input') && line.includes('id="help-search"'));
+  assert.ok(inputLine, 'Technical Documentation search input must be present');
+  assert.ok(inputLine.includes('aria-describedby="help-search-hint help-search-status"'));
+  assert.ok(inputLine.includes('aria-controls="help-search-results"'));
+  assert.ok(section.includes('<p id="help-search-hint" class="search-hint">'));
+  assert.ok(section.includes('<p id="help-search-status" class="search-status" role="status" aria-live="polite">'));
+  assert.ok(section.includes('<ul id="help-search-results" class="search-results" aria-label="Matching technical references" hidden>'));
 });
 
 test('the footer offers exactly one working suggestion for the Suite and each of the ten products', () => {
