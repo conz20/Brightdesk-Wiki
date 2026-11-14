@@ -281,3 +281,46 @@ The live Craft Wiki homepage and navigation were inspected again on 15 November 
 6. Treat Craft's screenshot-heavy tutorials as a reminder to make procedures visually understandable, not as evidence for Brightdesk. Brightdesk screenshots must come from a current running Brightdesk build and have version, operating-system and commit evidence; diagrams and design mock-ups must remain labelled as such.
 
 The Craft page's structure was reviewed from the live page's accessible content and navigation, and its public descriptions of guide families and workflow articles. This is an information-architecture review; it does not claim a pixel-level visual audit or approval of Craft's implementation.
+
+
+## Product-guide page comparison — 15 November 2026
+
+The current Craft Wiki WordCraft, GridCraft and DeckCraft workflow pages were reviewed alongside the corresponding Brightdesk Pages, Sheets and Decks guides. This comparison informs the reading experience only. Craft's command names, feature lists, keyboard shortcuts, file support and workflow claims are not evidence of Brightdesk behaviour. Craft's public repository README also warns that many of its own app guides are still scaffolds and need review before being treated as complete documentation.
+
+### Page patterns worth adapting
+
+- **Task-led section titles:** name each section after the outcome a reader wants, such as creating, formatting, organising, saving or presenting. Avoid vague headings such as "More features".
+- **A short explanation before the steps:** tell the reader what the task does and when it is useful. Keep the introduction in plain English.
+- **Numbered actions:** use one clear action per step, with the exact visible Brightdesk control name. Include a result or check when the reader needs to confirm the action worked.
+- **Useful visuals beside the relevant task:** place a genuine current-build screenshot close to the step it explains. Use a labelled illustration only when it explains a concept or sequence; never imply an illustration is a product capture.
+- **Focused reference material:** use compact tables for real choices, supported file formats, platform differences or keyboard shortcuts only when the facts are verified. Keep caveats beside the relevant choice, not hidden at the bottom.
+- **Common questions and next steps:** finish a task with the likely problem, a safe next step and links to related guides or the product home.
+
+### Brightdesk page structure to carry into the redesign
+
+1. **Product identity and overview:** original product icon, product name, one-sentence purpose and the current capability boundary.
+2. **Getting started:** a short first-use route with expected result.
+3. **Task navigation:** a visible contents list for the current page, with concise task names. Long desktop pages may also use a restrained secondary contents rail where it improves orientation; it must not crowd the article or duplicate the main product navigation.
+4. **Workflow sections:** each task gets a clear heading, short context, ordered steps and a nearby visual or result note when useful.
+5. **Examples:** use small, fictional examples grounded in current Brightdesk capability. State what the reader should see at the end.
+6. **Troubleshooting:** plain-language symptoms and safe, reversible checks. Never recommend deleting local data or resetting a product as generic repair.
+7. **Technical hand-off:** a clear but secondary link to the matching technical reference, plus a route back to Everyday Help.
+
+### Navigation and layout requirements
+
+- Keep the site-wide Brightdesk Help identity and the distinction between Everyday Help and Technical Documentation.
+- On product pages, make the current product unmistakable and keep its relevant guide destinations discoverable. Show current-page state clearly; use breadcrumbs or a simple back link so the reader can return to the product home.
+- On wide desktop, favour a balanced reading layout: a compact product/guide navigation area, comfortable article measure, and optional page contents navigation only where it helps. Do not simply reproduce Craft's sidebar or app index geometry.
+- On narrow layouts, keep the same destinations accessible through a simple, keyboard-usable collapsed navigation. Do not hide essential links behind hover-only controls.
+- Preserve independent local search for Everyday Help and Technical Documentation. Search must not transmit the visitor's query to a remote service.
+- The guide pattern must work for short pages as well as long ones. Do not force a sidebar, contents rail, table or screenshot into a page when it adds no value.
+
+### Accuracy guardrails from the comparison
+
+Brightdesk Pages, Sheets and Decks guides already include simple examples and expected results. Preserve that plain-English approach and improve its visual hierarchy; do not import Craft's richer word-processing, spreadsheet or presentation capabilities. For example, do not add Craft/WordCraft collaboration, Zotero, mail merge, macros, advanced formula functions, animations or slide effects unless a Brightdesk customer build implements them and the relevant platform workflow is verified. Keep all ten Brightdesk product guides at **Needs review** until the required running-desktop walkthroughs and evidence are complete.
+
+### Research sources
+
+- Craft Wiki [WordCraft workflows](https://craft.wiki/apps/wordcraft/workflows/), [GridCraft workflows](https://craft.wiki/apps/gridcraft/workflows/) and [DeckCraft workflows](https://craft.wiki/apps/deckcraft/workflows/), reviewed 15 November 2026.
+- Craft Wiki [public repository README](https://github.com/storytold/craft-wiki/blob/main/README.md), which cautions that many app guides remain scaffolds.
+- Brightdesk's current [Pages](https://github.com/conz20/Brightdesk-Wiki/blob/reconcile/customer-help-main-2026-11-14/docs/products/pages.md), [Sheets](https://github.com/conz20/Brightdesk-Wiki/blob/reconcile/customer-help-main-2026-11-14/docs/products/sheets.md) and [Decks](https://github.com/conz20/Brightdesk-Wiki/blob/reconcile/customer-help-main-2026-11-14/docs/products/decks.md) draft guides. These customer guides remain Needs review.
