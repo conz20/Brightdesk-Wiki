@@ -8,6 +8,7 @@ import { checkPublicSite } from '../scripts/check-public-site.mjs';
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
 const TECHNICAL_PAGES = [
   'technical/index.html','technical/system-overview.html','technical/file-formats.html','technical/data-and-privacy.html',
+  'technical/guides/install-update.html','technical/guides/languages-and-spelling.html','technical/guides/troubleshooting.html',
   ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
 ];
 const PRODUCT_LABELS = {
@@ -32,6 +33,7 @@ function siteFixture(t) {
   fs.mkdirSync(path.join(rootDir, 'products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'everyday'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'technical/products'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'technical/guides'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/images/product-icons'), { recursive: true });
@@ -85,8 +87,8 @@ test('structured data is restricted to the approved first-party Brightdesk Help 
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 56);
-  assert.equal(result.htmlPages, 31);
+  assert.equal(result.files, 59);
+  assert.equal(result.htmlPages, 34);
 });
 
 test('all ten product guides use their matching local icon and workflow diagram with descriptive alternative text', t => {
