@@ -46,7 +46,7 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #291](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556018745) passed on commit `b7b48bc3c15cccea9482dba68f5220094d52e90d`.
+[Run #292](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556224932) passed on commit `acbd5ea86532b6f16eef7eba3181ab5bf27e8ac1`.
 
 That exact-head workflow reported:
 
@@ -54,10 +54,10 @@ That exact-head workflow reported:
 - 39 Markdown files and 99 local file/directory links checked successfully.
 - Jekyll customer-site build passed.
 - Generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
-- Regression checks cover the source-backed technical references, exact Lists and Workspace controls, and the confirmed Sheets circular-reference output.
+- Regression checks cover source-confirmed formula and deletion behaviour, the actual Database and Lists controls, the Workspace **Find a page** control, and the separate technical-reference links.
 - The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-The Database field-removal instructions, actual Database field labels, and Lists custom-column boundary are newer than this check and must pass their own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+A subsequent README update changes the branch head and must receive its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 
