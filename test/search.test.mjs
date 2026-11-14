@@ -121,3 +121,31 @@ test('the footer offers exactly one working suggestion for the Suite and each of
   assert.equal(new Set(suggestedPaths).size, 11, 'Each customer guide must have exactly one suggestion');
 });
 
+
+
+test('every Help page explains how to use built-in browser translation', () => {
+  assert.match(layout, /<aside class="translation-help" aria-label="Language help">/);
+  assert.match(layout, /web browser offers page translation/);
+  assert.match(layout, /does not send page text to a separate translation service/);
+  assert.doesNotMatch(layout, /translate="no"/i);
+});
+
+test('the homepage gives task-first links to exactly the ten approved products', () => {
+  const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
+  const taskGrid = homepage.match(/<ul class="task-grid">([\\s\\S]*?)<\\/ul>/);
+  assert.ok(taskGrid, 'The homepage must show task-first suggestions');
+  const paths = Array.from(taskGrid[1].matchAll(/href="([^"]+)"/g), match => match[1]);
+  assert.deepEqual(paths, [
+    'products/pages.html',
+    'products/sheets.html',
+    'products/decks.html',
+    'products/notes.html',
+    'products/database.html',
+    'products/forms.html',
+    'products/lists.html',
+    'products/planner.html',
+    'products/to-do.html',
+    'products/workspace.html'
+  ]);
+  assert.match(homepage, /start with the simple Suite guide/);
+});
