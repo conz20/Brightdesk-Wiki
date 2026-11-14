@@ -151,8 +151,9 @@ test('homepage exposes one primary heading and named section landmarks', () => {
 });
 
 test('homepage description is long enough to explain the Help site in search results', () => {
-  const match = /^description:\\s*(.+)$/m.exec(homepage);
-  assert.ok(match, 'The homepage must declare a search description');
-  assert.ok(match[1].length >= 120 && match[1].length <= 160,
+  const line = homepage.split(String.fromCharCode(10)).find(value => value.startsWith('description:'));
+  const description = line?.slice('description:'.length).trim();
+  assert.ok(description, 'The homepage must declare a search description');
+  assert.ok(description.length >= 120 && description.length <= 160,
     'The homepage description should be between 120 and 160 characters');
 });
