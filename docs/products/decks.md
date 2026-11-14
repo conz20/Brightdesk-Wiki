@@ -58,6 +58,36 @@ The product documentation describes PowerPoint import and export. Check the pres
 5. Open **Slide Show → From current slide** on the first slide.
 
 **What you should have:** a simple three-slide presentation that you can move through with the arrow keys.
+## More examples to try
+
+### Give a project update
+
+1. Open a new presentation and enter **Project update** as the title on the first slide.
+2. Choose **Home → New slide** and list what has been completed.
+3. Add another slide for the next steps.
+4. Open **Design** and choose **Lavender**, **Midnight** or **Paper**.
+5. Select the first slide, then choose **Slide Show → From current slide**.
+
+**What you should have:** a short update that moves from the project title to completed work and next steps.
+
+### Reuse a slide layout
+
+1. Create a slide with a title and a few points.
+2. Choose **Home → Duplicate**.
+3. Change the title and text on the copy.
+4. Repeat when you need another slide with a similar structure.
+5. Use **Previous** and **Next** below the slide to review the order.
+
+**What you should have:** several slides with a consistent starting layout. Check each copy so it contains the right information.
+
+## Common questions and fixes
+
+**How do I start presenting from a particular slide?** Select that slide first, then choose **Slide Show → From current slide**.
+
+**How do I leave presentation mode?** Press **Esc**.
+
+**Will every PowerPoint effect look the same?** No. Advanced objects and formatting may not be preserved when transferring a presentation. Review the slides after opening or exporting a file.
+
 ## Current feature boundaries
 
 Decks provides a core slide-editing and presenting workflow. Advanced layouts, transitions, embedded media, animation and complete PowerPoint round-trip fidelity are not promised.
