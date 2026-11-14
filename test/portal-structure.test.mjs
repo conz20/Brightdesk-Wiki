@@ -1,0 +1,82 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { searchTopics } from '../docs/assets/js/search.js';
+
+const root = new URL('..', import.meta.url);
+const read = path => fs.readFileSync(new URL(path, root), 'utf8');
+const products = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+
+test('Everyday Help has a separate task-first route and exactly ten product links', () => {
+  const everyday = read('docs/everyday/index.md');
+  const matches = [...everyday.matchAll(/href="\.\.\/products\/([a-z-]+)\.html"/g)].map(match => match[1]);
+  assert.deepEqual(matches, products);
+  assert.match(everyday, /What are you trying to do\?/);
+  assert.match(everyday, /Technical Documentation/);
+});
+
+test('the Help header searches only its approved Everyday pages', () => {
+  const layout = read('docs/_layouts/default.html');
+  const allowlist = layout.match(/assign public_help_paths = "([^"]+)"/);
+  assert.ok(allowlist);
+  assert.deepEqual(allowlist[1].split('|'), [
+    '/index.html','/everyday/index.html','/customer-start-here.html',
+    ...products.map(product => '/products/' + product + '.html')
+  ]);
+  assert.match(layout, /type="module" src="\{\{ '\/assets\/js\/search\.js'/);
+  assert.match(layout, /aria-controls="help-search-results"/);
+  assert.match(layout, /aria-live="polite"/);
+});
+
+test('Technical Documentation has its own fourteen-page search index', () => {
+  const layout = read('docs/_layouts/technical.html');
+  const allowlist = layout.match(/assign public_technical_paths = "([^"]+)"/);
+  assert.ok(allowlist);
+  assert.deepEqual(allowlist[1].split('|'), [
+    '/technical/index.html','/technical/system-overview.html',
+    '/technical/file-formats.html','/technical/data-and-privacy.html',
+    ...products.map(product => '/technical/products/' + product + '.html')
+  ]);
+  assert.match(layout, /Search Technical Documentation/);
+  assert.match(layout, /Matching technical references/);
+  assert.match(layout, /Technical reference navigation/);
+});
+
+test('all ten guides use the same clear structure and link to their technical reference', () => {
+  for (const product of products) {
+    const guide = read('docs/products/' + product + '.md');
+    const title = product === 'to-do' ? 'To Do' : product[0].toUpperCase() + product.slice(1);
+    assert.match(guide, new RegExp('^## Overview$', 'm'));
+    assert.match(guide, new RegExp('^## Getting started$', 'm'));
+    assert.match(guide, new RegExp('^## Workflows$', 'm'));
+    assert.match(guide, new RegExp('^## Troubleshooting and common questions$', 'm'));
+    assert.ok(guide.includes('../technical/products/' + product + '.html'));
+    assert.ok(guide.includes('Illustrative workflow, not a screenshot of the Brightdesk interface.'));
+    assert.ok(guide.includes('../assets/images/workflows/guide-' + product + '.svg'));
+    assert.ok(guide.includes('../assets/images/product-icons/' + product + '.svg'));
+    assert.match(guide, /Needs review/);
+  }
+});
+
+test('each technical product reference links back to the matching everyday guide', () => {
+  for (const product of products) {
+    const reference = read('docs/technical/products/' + product + '.md');
+    assert.match(reference, /^layout: technical$/m);
+    assert.ok(reference.includes('../../products/' + product + '.html'));
+    assert.ok(reference.includes('../../assets/images/product-icons/' + product + '.svg'));
+  }
+});
+
+test('local Help search finds natural-language product tasks without network services', () => {
+  const topics = [
+    { title: 'Brightdesk Pages', href: '/products/pages.html', searchText: 'Write documents and export a PDF copy.' },
+    { title: 'Brightdesk Sheets', href: '/products/sheets.html', searchText: 'Add formulas and calculate totals.' },
+    { title: 'Brightdesk To Do', href: '/products/to-do.html', searchText: 'Keep track of personal tasks and reminders.' }
+  ];
+  assert.deepEqual(searchTopics(topics, 'export PDF').map(topic => topic.title), ['Brightdesk Pages']);
+  assert.deepEqual(searchTopics(topics, 'TO DO').map(topic => topic.title), ['Brightdesk To Do']);
+  assert.deepEqual(searchTopics(topics, 'calculate totals').map(topic => topic.title), ['Brightdesk Sheets']);
+  assert.deepEqual(searchTopics(topics, 'unknown remote service'), []);
+  const script = read('docs/assets/js/search.js');
+  assert.doesNotMatch(script, /\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|localStorage|sessionStorage|document\.cookie)\b/);
+});
