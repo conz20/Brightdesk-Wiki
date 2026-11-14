@@ -37,11 +37,18 @@ test('keyboard focus indicator is visible against both page and content surfaces
 
 const layout = fs.readFileSync(new URL('../docs/_layouts/default.html', import.meta.url), 'utf8');
 
-test('help layout exposes a named main navigation and skip link', () => {
+test('help layout exposes navigation, skip link and social metadata', () => {
   assert.match(layout, /<html lang="en-AU">/);
   assert.match(layout, /<a class="skip-link" href="#main">Skip to content<\/a>/);
   assert.match(layout, /<nav class="site-nav" aria-label="Main navigation">/);
   assert.match(layout, /<main id="main" class="main-content">/);
+  assert.ok(layout.includes('rel="canonical" href="{{ page.url | absolute_url }}"'));
+  assert.ok(layout.includes('property="og:title"'));
+  assert.ok(layout.includes('property="og:description"'));
+  assert.ok(layout.includes('property="og:url"'));
+  assert.ok(layout.includes('property="og:image"'));
+  assert.ok(layout.includes('name="twitter:card" content="summary_large_image"'));
+  assert.ok(layout.includes('rel="icon" type="image/svg+xml"'));
 });
 
 test('help typography keeps comfortable reading size and spacing', () => {
@@ -119,4 +126,10 @@ test('technical reference layout provides the same keyboard and screen-reader es
   assert.match(technicalLayout, /aria-controls="help-search-results"/);
   assert.match(technicalLayout, /role="status" aria-live="polite"/);
   assert.match(technicalLayout, /aria-label="Matching technical references"/);
+  assert.ok(technicalLayout.includes('rel="canonical" href="{{ page.url | absolute_url }}"'));
+  assert.ok(technicalLayout.includes('property="og:title"'));
+  assert.ok(technicalLayout.includes('property="og:description"'));
+  assert.ok(technicalLayout.includes('property="og:url"'));
+  assert.ok(technicalLayout.includes('property="og:image"'));
+  assert.ok(technicalLayout.includes('name="twitter:card" content="summary_large_image"'));
 });

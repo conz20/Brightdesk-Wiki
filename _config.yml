@@ -1,7 +1,9 @@
 title: Brightdesk Help
 description: Public, read-only customer help for Brightdesk desktop products.
-url: ""
+url: "https://brightdesk-help.pages.dev"
 baseurl: ""
+include:
+  - _headers
 source: docs
 destination: _site
 markdown: kramdown

@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
+    <meta property="og:site_name" content="Brightdesk Help">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} · Brightdesk Technical Documentation{% else %}Brightdesk Help{% endif %}">
+    <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ '/assets/images/brightdesk-help-social.svg' | absolute_url }}">
+    <meta property="og:image:alt" content="Brightdesk Help: Everyday Help and Technical Documentation">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title | escape }} · Brightdesk Technical Documentation{% else %}Brightdesk Help{% endif %}">
+    <meta name="twitter:description" content="{{ page.description | default: site.description | escape }}">
+    <meta name="twitter:image" content="{{ '/assets/images/brightdesk-help-social.svg' | absolute_url }}">
     <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Brightdesk Technical Documentation</title>
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
     <script type="module" src="{{ '/assets/js/search.js' | relative_url }}"></script>

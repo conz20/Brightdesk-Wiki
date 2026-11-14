@@ -38,6 +38,9 @@ function siteFixture(t) {
   fs.mkdirSync(path.join(rootDir, 'assets/images/workflows'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
   fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\n');
+  fs.writeFileSync(path.join(rootDir, '_headers'), "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()\n  Strict-Transport-Security: max-age=31536000\n  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; upgrade-insecure-requests\n");
+  fs.writeFileSync(path.join(rootDir, 'favicon.svg'), "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" role=\"img\" aria-labelledby=\"title desc\"><title id=\"title\">Brightdesk</title><desc id=\"desc\">The original Brightdesk B mark on a blue tile.</desc><rect x=\"2\" y=\"2\" width=\"60\" height=\"60\" rx=\"14\" fill=\"#2457b8\"/><text x=\"32\" y=\"47\" fill=\"#ffffff\" font-family=\"Arial,sans-serif\" font-size=\"46\" font-weight=\"700\" text-anchor=\"middle\">B</text></svg>");
+  fs.writeFileSync(path.join(rootDir, 'assets/images/brightdesk-help-social.svg'), "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"630\" viewBox=\"0 0 1200 630\" role=\"img\" aria-labelledby=\"title desc\"><title id=\"title\">Brightdesk Help</title><desc id=\"desc\">A Brightdesk Help title card introducing Everyday Help and Technical Documentation for the ten Brightdesk products.</desc><rect width=\"1200\" height=\"630\" fill=\"#f4f7fb\"/><rect x=\"64\" y=\"64\" width=\"1072\" height=\"502\" rx=\"32\" fill=\"#ffffff\"/><rect x=\"112\" y=\"116\" width=\"112\" height=\"112\" rx=\"24\" fill=\"#2457b8\"/><text x=\"168\" y=\"198\" fill=\"#ffffff\" font-family=\"Arial,sans-serif\" font-size=\"78\" font-weight=\"700\" text-anchor=\"middle\">B</text><text x=\"112\" y=\"318\" fill=\"#17243a\" font-family=\"Arial,sans-serif\" font-size=\"72\" font-weight=\"700\">Brightdesk Help</text><text x=\"114\" y=\"386\" fill=\"#40516a\" font-family=\"Arial,sans-serif\" font-size=\"32\">Clear guidance for your Brightdesk products.</text><rect x=\"112\" y=\"442\" width=\"420\" height=\"64\" rx=\"14\" fill=\"#e8eef9\"/><text x=\"136\" y=\"484\" fill=\"#173f88\" font-family=\"Arial,sans-serif\" font-size=\"24\" font-weight=\"700\">Everyday Help</text><rect x=\"554\" y=\"442\" width=\"520\" height=\"64\" rx=\"14\" fill=\"#edf1f6\"/><text x=\"578\" y=\"484\" fill=\"#26364c\" font-family=\"Arial,sans-serif\" font-size=\"24\" font-weight=\"700\">Technical Documentation</text></svg>");
   const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\n';
   const icon = '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc"><title id="title">Test product icon</title><desc id="desc">A sample product icon.</desc><rect width="128" height="128" rx="12" fill="#ffffff"/></svg>';
   const workflow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc"><title id="title">Test product workflow</title><desc id="desc">A simple three-step product workflow.</desc><rect x="0" y="0" width="1200" height="360" fill="#ffffff"/><text x="20" y="40" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#111111">Step one</text></svg>';
@@ -59,6 +62,15 @@ function siteFixture(t) {
   t.after(() => fs.rmSync(rootDir, { recursive: true, force: true }));
   return rootDir;
 }
+
+test('approved first-party canonical and social metadata URLs are allowed', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'index.html');
+  const html = fs.readFileSync(file, 'utf8').replace('</head>',
+    '<link rel="canonical" href="https://brightdesk-help.pages.dev/"><meta property="og:url" content="https://brightdesk-help.pages.dev/"><meta property="og:image" content="https://brightdesk-help.pages.dev/assets/images/brightdesk-help-social.svg"><meta name="twitter:image" content="https://brightdesk-help.pages.dev/assets/images/brightdesk-help-social.svg"></head>');
+  fs.writeFileSync(file, html);
+  assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
+});
 
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);

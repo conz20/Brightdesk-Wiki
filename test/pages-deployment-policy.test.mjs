@@ -81,13 +81,23 @@ test('customer Help address is the approved free Pages hostname and custom DNS i
 
 test('only the audited read-only customer output is configured for publishing', () => {
   assert.match(cloudflareGuide, /27 approved HTML pages/);
-  assert.match(cloudflareGuide, /49 files total/);
+  assert.match(cloudflareGuide, /52 files total/);
   assert.match(cloudflareGuide, /Everyday Help homepage/);
   assert.match(cloudflareGuide, /Technical Documentation homepage/);
-  assert.match(cloudflareGuide, /22 local assets/);
+  assert.match(cloudflareGuide, /24 local assets/);
   assert.match(cloudflareGuide, /local-only browser search/i);
   assert.match(cloudflareGuide, /internal.*must remain private|maintainer.*private/i);
   assert.match(cloudflareGuide, /No customer login.*comments.*uploads|no customer login.*upload/i);
+});
+
+test('Cloudflare response policy applies same-origin-only resources and browser protections', () => {
+  const headers = fs.readFileSync(new URL('../docs/_headers', import.meta.url), 'utf8');
+  assert.match(headers, /X-Content-Type-Options: nosniff/);
+  assert.match(headers, /Referrer-Policy: strict-origin-when-cross-origin/);
+  assert.match(headers, /X-Frame-Options: DENY/);
+  assert.match(headers, /Permissions-Policy: camera=\(\), microphone=\(\), geolocation=\(\)/);
+  assert.match(headers, /Strict-Transport-Security: max-age=31536000/);
+  assert.match(headers, /Content-Security-Policy: default-src 'self'.*object-src 'none'.*frame-ancestors 'none'.*script-src 'self'.*style-src 'self'/);
 });
 
 test('hosting privacy notes disclose Cloudflare visitor metadata processing', () => {
