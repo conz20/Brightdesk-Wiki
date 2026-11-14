@@ -13,9 +13,11 @@ const TECHNICAL_PAGES = [
   'technical/data-and-privacy.html',
   ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
 ];
+const IMAGE_FILES = PRODUCTS.map(product => 'assets/images/guide-' + product + '.svg');
 const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js']
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
-  .concat(TECHNICAL_PAGES);
+  .concat(TECHNICAL_PAGES)
+  .concat(IMAGE_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const FORBIDDEN_PATHS = [
   /^(architecture|development|security|releases)\//i,
@@ -119,7 +121,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (FORBIDDEN_PATHS.some(pattern => pattern.test(file))) {
       fail('internal or repository-only content was included: ' + file);
     }
-    if (!/\.(html|css|js)$/i.test(file)) {
+    if (!/\.(html|css|js|svg)$/i.test(file)) {
       fail('unexpected public output file type: ' + file);
     }
     if (!ALLOWED_FILES.has(file)) {
@@ -150,6 +152,10 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       fail(file + ' contains an external URL; public help pages must not load third-party resources or expose private repositories');
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
+    const imageTags = [...html.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
+    if (imageTags.some(tag => !/\balt=["'][^"']+["']/i.test(tag))) {
+      fail(file + ' contains an image without useful alternative text');
+    }
     const searchInputs = [...html.matchAll(/<input\b[^>]*>/gi)].map(match => match[0]);
     if (searchInputs.length !== 1 ||
         !/^<input\b(?=[^>]*\bid=["']help-search["'])(?=[^>]*\btype=["']search["'])[^>]*>$/i.test(searchInputs[0])) {
@@ -160,6 +166,22 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
         !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
         /<script\b/i.test(html.replace(scriptTags[0], ''))) {
       fail(file + ' must load only the approved local search script');
+    }
+  }
+
+  const svgFiles = files.filter(file => file.endsWith('.svg'));
+  for (const file of svgFiles) {
+    const svg = fs.readFileSync(path.join(rootDir, file), 'utf8');
+    const withoutNamespace = svg.replace(/\s+xmlns=["']http:\/\/www\.w3\.org\/2000\/svg["']/i, '');
+    if (!/^\s*<svg\b/i.test(svg) || !/<\/svg>\s*$/i.test(svg)) {
+      fail(file + ' is not a complete SVG document');
+    }
+    if (/<(?:script|foreignObject|iframe|object|embed|image|use|audio|video|filter|a)\b/i.test(svg) ||
+        /\son[a-z][a-z0-9_-]*\s*=/i.test(svg) ||
+        /(?:https?:)?\/\//i.test(withoutNamespace) ||
+        /(?:javascript|data|vbscript):|url\s*\(/i.test(svg) ||
+        /<style\b|\sstyle\s*=/i.test(svg)) {
+      fail(file + ' contains active content, styling or an external reference; public SVGs must be static local artwork');
     }
   }
 
