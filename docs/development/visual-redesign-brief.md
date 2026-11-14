@@ -190,6 +190,26 @@ Use specialist tools when they are connected and available, with each tool limit
 
 Do not connect a design provider to the repository or grant broad account access unless its permissions are clear and the user has approved the connection. Never send private repository content to a third-party design service unless the user explicitly approves that data flow. Prefer sanitized screenshots and synthetic content for design exploration.
 
+## Homepage concept exploration — 15 November 2026
+
+Three independent desktop homepage concepts were created in the connected [Brightdesk Help Design workspace](https://www.magicpath.ai/files/472346876629356544). The component code was written from the sanitised visual brief; no private Brightdesk repository source or customer data was uploaded.
+
+| Concept | Direction | Build result | Preview review |
+|---|---|---|---|
+| A — Editorial Navy | Editorial typography, deep navy feature area, restrained colour, two clear help paths and a compact product directory | TypeScript/Vite build completed | Preview image retrieved and visually reviewed |
+| B — Bright Product Directory | Product-led homepage, bright product tiles, strong Suite visual, local search and popular task paths | Initial build completed; follow-up build completed after removing remote font imports | Preview image retrieved and visually reviewed |
+| C — Task First Workspace | Task-led entry point, quick actions, product filters and distinct Everyday Help / Technical Documentation paths | TypeScript/Vite build completed | Preview image not retrieved; the MagicPath external-agent API quota was exhausted before image retrieval |
+
+All three component builds completed. The two reviewed previews show the intended contrast: A is quieter and more editorial; B is more colourful and product-led. C has a task-first information architecture, but it still needs visual inspection before any comparison or selection.
+
+**Preview-only limitations and privacy checks:**
+- The components use invented monogram tiles as placeholders, not the official product icon assets or real product screenshots. Replace them only with approved original Brightdesk assets during the source integration stage.
+- Concept B's component and global stylesheet have no Google Fonts import after refinement; it uses system font fallbacks.
+- Concepts A and C use system font stacks in their component styles, but their generated MagicPath scaffold still contains its default Google Fonts import in `src/index.css`. This must be removed before those previews are treated as privacy-compliant reference builds or before any code is reused.
+- No logins, accounts, paid features, payment flows, telemetry, cloud sync or customer data were added. The search controls filter only the local sample content in the prototype.
+- These are design concepts, not approved screenshots of the Brightdesk desktop software and not a replacement for the required 12ui candidate and design-to-code workflow.
+- Do not copy MagicPath-generated code directly into the private Wiki repository. Select the visual direction first, then implement it in the existing Jekyll source with tests and exact-head build evidence.
+
 ## Craft Wiki research translated into Brightdesk decisions
 
 The public Craft Wiki was reviewed on 14 November 2026:
