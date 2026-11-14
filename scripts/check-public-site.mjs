@@ -236,12 +236,6 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
         urlAttributes.some(containsExecutableUrl)) {
       fail(file + ' contains an active HTML event handler or executable URL');
     }
-    const scriptTags = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map(match => match[0]);
-    if (scriptTags.length !== 1 ||
-        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
-        /<script\b/i.test(html.replace(scriptTags[0] || '', ''))) {
-      fail(file + ' contains JavaScript other than the approved local Help search script');
-    }
     if (/<style\b/i.test(html) || /\sstyle\s*=/i.test(html)) {
       fail(file + ' contains inline CSS; customer styling must use the approved local stylesheet');
     }
@@ -298,6 +292,13 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
           fail(file + ' must use the approved image presentation class: ' + expected.className);
         }
       });
+    }
+
+    const scriptTags = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map(match => match[0]);
+    if (scriptTags.length !== 1 ||
+        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
+        /<script\b/i.test(html.replace(scriptTags[0] || '', ''))) {
+      fail(file + ' contains JavaScript other than the approved local Help search script');
     }
   }
 
