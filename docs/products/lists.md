@@ -10,6 +10,12 @@ permalink: /products/lists.html
 
 Use Lists to organise projects, stock, contacts or other information as structured records.
 
+
+<figure class="guide-illustration">
+  <img src="../assets/images/guide-lists.svg" alt="Three-step illustration for Brightdesk Lists: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
+</figure>
+
 ## Create a list
 
 1. Under **Your lists**, enter a name in **New list name**.
@@ -98,5 +104,9 @@ Lists is a local structured-list tool. Shared editing, user permissions, attachm
 ## Guide status
 
 **Needs review.** These steps are based on the current Lists interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
+
+## Need the technical detail?
+
+For product behaviour, file handling and technical boundaries, see the [Brightdesk Lists technical reference](../technical/products/lists.html).
 
 [Back to Brightdesk Help](../index.html)
