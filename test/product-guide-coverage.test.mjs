@@ -42,6 +42,7 @@ test('all ten everyday product guides share the same simple navigation structure
     const source = fs.readFileSync(path.join(productDirectory, filename), 'utf8');
     const product = filename.slice(0, -'.md'.length);
     assert.match(source, /^## Overview$/m, product + ' must explain what the product is for');
+    assert.match(source, /<a href="#overview">Overview<\\/a>/, product + ' must link to its overview');
     assert.match(source, /^## Getting started$/m, product + ' must have a clear first-use section');
     assert.match(source, /^## Workflows$/m, product + ' must group task instructions together');
     assert.match(source, /^## Troubleshooting and common questions$/m, product + ' must make help with problems easy to find');
