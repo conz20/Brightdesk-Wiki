@@ -53,13 +53,13 @@ The owner approved a richer, more distinctive Brightdesk editorial style for the
 - **Keep both audiences coherent:** Everyday Help stays welcoming and task-first; Technical Documentation stays structured for deeper reading. Both use one recognisable Brightdesk design system.
 - **Preserve the business rules:** Brightdesk is free forever. Never add sign-in, customer accounts, logins, authentication, subscriptions, trials, paid versions, paid tiers, paywalls, payment or licensing steps.
 
-The palette and principles above are approved as the direction to explore. Final compositions, component states and responsive layouts still require design comparison and accessibility review.
+The palette and principles above are the approved Brightdesk direction. The owner has selected **Bright Product Directory (Concept B) as the structural foundation, combined with Editorial Navy (Concept A)'s spacious editorial typography and restrained visual treatment**. Carry this direction into the next design implementation review; it is not final production approval. Component states, all page templates, responsive layouts and accessibility still require review.
 
 Create a polished, distinctive Brightdesk documentation experience with the clarity and confidence expected of a finished desktop-software support site. It should feel deliberately art-directed, not like a default theme with a logo added.
 
-Explore multiple clearly different compositions before selecting one direction. Review hierarchy, rhythm, typography, colour, density, page navigation, search placement, component states and small-screen behaviour together. The chosen direction must be implemented as one coherent system across all public routes.
+Retain the recorded comparison of multiple compositions. The owner-selected direction is Concept B's clear product directory and task discovery, with Concept A's editorial navy atmosphere, spacious typography and quieter content surfaces. Review hierarchy, rhythm, typography, colour, density, page navigation, search placement, component states and small-screen behaviour together. Implement the selected direction as one coherent system across all public routes.
 
-The exact palette, type scale, icon style and decorative language are to be chosen during visual exploration and review; do not treat the current prototype styling as the design baseline. Use original Brightdesk marks and locally available assets. Do not copy Craft branding, page layouts, content, code or screenshots.
+The approved palette is specified above. Refine the type scale, icon treatment and decorative language within that palette during the full visual review. Do not treat the current prototype styling as the finished design baseline. Use original Brightdesk marks and locally available assets. Do not copy Craft branding, page layouts, content, code or screenshots.
 
 ## Shared Brightdesk visual references
 
