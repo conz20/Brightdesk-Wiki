@@ -17,6 +17,9 @@ const TECHNICAL_PAGES = [
   'technical/system-overview.html',
   'technical/file-formats.html',
   'technical/data-and-privacy.html',
+  'technical/guides/install-update.html',
+  'technical/guides/languages-and-spelling.html',
+  'technical/guides/troubleshooting.html',
   ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
 ];
 const PRODUCT_LABELS = new Map([
