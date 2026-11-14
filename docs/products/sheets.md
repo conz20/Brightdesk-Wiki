@@ -59,6 +59,35 @@ Keep a Brightdesk project copy when you plan to continue editing the workbook.
 5. Select **B5**, enter `=SUM(B2:B4)` and press **Enter**.
 
 **What you should have:** a small expense list and a total of **1430** in cell B5.
+## More examples to try
+
+### Work out an average
+
+1. Enter a heading in **A1**, such as **Daily sales**.
+2. Enter a few numbers in **A2**, **A3** and **A4**.
+3. Select **A5**.
+4. Enter `=AVERAGE(A2:A4)` and press **Enter**.
+5. Check the result in **A5**.
+
+**What you should have:** the average of the three numbers. Change one of the values to see the result update.
+
+### Count entries
+
+1. Enter a list of numbers in **B2:B6**.
+2. Select **B7** and enter `=COUNT(B2:B6)`.
+3. In another cell, enter `=COUNTA(B2:B6)`.
+4. Compare the results. **COUNT** counts numeric values; **COUNTA** counts non-empty cells.
+
+**What you should have:** two counts that show the difference between numeric entries and all non-empty entries.
+
+## Common questions and fixes
+
+**Why is my formula showing the wrong result?** Check that it begins with `=`, that the cell references are correct and that the range includes the cells you intended.
+
+**Why is a number not included in a total?** Check that the cell contains a number rather than text, and check the formula range.
+
+**How do I sort a table?** Select a cell in the column you want to use, open **Data**, then choose **Sort A → Z** or **Sort Z → A**. The sort acts on the sheet rows using that column.
+
 ## Current feature boundaries
 
 Sheets is a basic spreadsheet foundation. VBA and macros, pivot tables, advanced formula coverage, complex workbook features and exact Excel round-trip compatibility are not promised.
