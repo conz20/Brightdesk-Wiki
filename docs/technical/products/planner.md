@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Planner technical reference
 description: Planner's plan, bucket and task model, status fields and bucket deletion behaviour.
-permalink: /technical../../products/planner.html
+permalink: /technical/products/planner.html
 ---
 
 # Planner technical reference
