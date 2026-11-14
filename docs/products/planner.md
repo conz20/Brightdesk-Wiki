@@ -10,6 +10,10 @@ permalink: /products/planner.html
 
 ![Brightdesk Planner product icon](../assets/images/product-icons/planner.svg){: .product-guide-icon }
 
+![Three-step workflow: create a plan, add buckets and tasks, then track progress.](../assets/images/workflows/guide-planner.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Planner to organise a project into a plan, buckets and tasks.
 
 ## Create a plan
