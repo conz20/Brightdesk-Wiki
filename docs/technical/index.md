@@ -2,7 +2,7 @@
 layout: technical
 title: Technical Documentation
 description: Technical references for Brightdesk Suite, product behaviour, files and data handling.
-permalink: /technical../index.html
+permalink: /technical/index.html
 ---
 
 # Brightdesk Technical Documentation
