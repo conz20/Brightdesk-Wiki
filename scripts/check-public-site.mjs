@@ -281,15 +281,51 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     const imageTags = [...html.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
     const productPageMatch = file.match(/^products\/([a-z-]+)\.html$/);
     const productPage = productPageMatch && PRODUCTS.includes(productPageMatch[1]) ? productPageMatch : null;
-    if (imageTags.some(imageTag => !/\balt=["'][^"']+["']/i.test(imageTag))) {
-      fail(file + ' does not provide the required meaningful alternative text for each image');
+    const imageAttribute = (imageTag, name) => {
+      const pattern = new RegExp('\\b' + name + '=["\\x27]([^"\\x27]*)["\\x27]', 'i');
+      return imageTag.match(pattern)?.[1] ?? null;
+    };
+    const hasTextBearingAnchor = (imageTag, requiredClass, requiredLabel = null) => {
+      for (const match of html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi)) {
+        const anchor = match[0];
+        const openingTag = anchor.match(/^<a\b[^>]*>/i)?.[0] || '';
+        const className = openingTag.match(/\bclass=["']([^"']*)["']/i)?.[1] || '';
+        const ariaLabel = openingTag.match(/\baria-label=["']([^"']*)["']/i)?.[1] || '';
+        if (!anchor.includes(imageTag) || !className.split(/\s+/).includes(requiredClass)) continue;
+        const visibleText = anchor.replace(imageTag, '').replace(/<[^>]*>/g, '').replace(/[→←]/g, '').trim();
+        if (requiredLabel && ariaLabel !== requiredLabel) continue;
+        if (visibleText || ariaLabel) return true;
+      }
+      return false;
+    };
+    const isDecorativeBrandMark = imageTag =>
+      imageAttribute(imageTag, 'class') === 'brand-mark' &&
+      /^(?:\/)?favicon\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
+      imageAttribute(imageTag, 'alt') === '' &&
+      hasTextBearingAnchor(imageTag, 'brand', 'Brightdesk Help home');
+    const isDecorativeProductIcon = imageTag =>
+      imageAttribute(imageTag, 'class') === 'home-product-icon' &&
+      /^assets\/images\/product-icons\/(?:pages|sheets|decks|notes|database|forms|lists|planner|to-do|workspace)\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
+      imageAttribute(imageTag, 'alt') === '' &&
+      hasTextBearingAnchor(imageTag, 'home-product-link');
+    if (imageTags.some(imageTag => {
+      const alternative = imageAttribute(imageTag, 'alt');
+      return alternative === null || (!alternative.trim() && !isDecorativeBrandMark(imageTag) && !isDecorativeProductIcon(imageTag));
+    })) {
+      fail(file + ' does not provide meaningful alternative text or a justified decorative-image alternative for each image');
     }
     if (!productPage && imageTags.some(imageTag => {
-      const source = imageTag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2] || '';
-      return !/(?:\.\.\/)*assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
+      const source = imageAttribute(imageTag, 'src') || '';
+      const className = imageAttribute(imageTag, 'class') || '';
+      const isProductIcon = /^(?:\.\.\/)?assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
+      const isBrandMark = className === 'brand-mark' && /^(?:\/)?favicon\.svg$/i.test(source);
+      const isSuiteMark = className === 'product-card-mark-img' && source === '../favicon.svg' &&
+        imageAttribute(imageTag, 'alt') === 'Brightdesk Suite brand mark';
+      return !isProductIcon && !isBrandMark && !isSuiteMark;
     })) {
-      fail(file + ' contains an image outside the approved local product-icon library');
+      fail(file + ' contains an image outside the approved local Brightdesk brand and product-icon library');
     }
+
     if (productPage) {
       const product = productPage[1];
       if (!PRODUCTS.includes(product) || imageTags.length !== 2) {

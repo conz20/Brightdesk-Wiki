@@ -401,3 +401,50 @@ test('non-web URL schemes are rejected in resource attributes', t => {
   );
   assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
 });
+
+
+test('decorative Brightdesk site mark may have empty alt only inside a labelled home link', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'customer-start-here.html');
+  const html = fs.readFileSync(file, 'utf8').replace(
+    '<body><input id="help-search" type="search"></body>',
+    '<body><a class="brand" href="/" aria-label="Brightdesk Help home"><img class="brand-mark" src="/favicon.svg" alt=""></a><input id="help-search" type="search"></body>'
+  );
+  fs.writeFileSync(file, html);
+  assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
+});
+
+test('decorative product directory icons may have empty alt only when their link has visible product text', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'index.html');
+  const html = fs.readFileSync(file, 'utf8').replace(
+    '<body><input id="help-search" type="search"></body>',
+    '<body><a class="home-product-link" href="/products/pages.html"><img class="home-product-icon" src="assets/images/product-icons/pages.svg" alt=""><span>Pages</span></a><input id="help-search" type="search"></body>'
+  );
+  fs.writeFileSync(file, html);
+  assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
+});
+
+test('empty alt is rejected for a meaningful image that has no accessible link label', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><img src="assets/images/product-icons/pages.svg" alt=""><input id="help-search" type="search">'
+  );
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /meaningful alternative text|justified decorative-image alternative/i
+  );
+});
+
+test('brand mark is not accepted as decorative outside the labelled Brightdesk home link', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'index.html'),
+    '<!doctype html><img class="brand-mark" src="/favicon.svg" alt=""><input id="help-search" type="search">'
+  );
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /meaningful alternative text|justified decorative-image alternative/i
+  );
+});
