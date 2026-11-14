@@ -69,3 +69,13 @@ test('Database and Lists guides warn when a table or list is deleted', () => {
   assert.match(database, /must keep at least one table/i);
   assert.match(lists, /remove the list and all its records/i);
 });
+
+test('published product icons remain byte-for-byte copies of the canonical asset library', () => {
+  for (const product of expected.keys()) {
+    const name = product.replace(/\.md$/, '');
+    const sourceIcon = fs.readFileSync(path.join(root, 'assets', 'icons', name + '.svg'), 'utf8');
+    const publicIcon = fs.readFileSync(path.join(root, 'docs', 'assets', 'images', 'product-icons', name + '.svg'), 'utf8');
+    assert.equal(publicIcon, sourceIcon, name + ' public icon must match the canonical library');
+  }
+});
+
