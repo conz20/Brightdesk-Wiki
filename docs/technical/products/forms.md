@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Forms technical reference
 description: Form question types, required questions, preview and local response behaviour.
-permalink: /technical../../products/forms.html
+permalink: /technical/products/forms.html
 ---
 
 # Forms technical reference
