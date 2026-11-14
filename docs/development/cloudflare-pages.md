@@ -10,18 +10,14 @@ The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 
 
 ## Owner authorisation and cost boundary
 
-- The owner explicitly approved Cloudflare Pages Free for publishing the Help website.
-- The owner's preferred public customer address is **https://help.brightdesk.com**. Treat this as the intended canonical URL, not as a live or registered domain.
-- The owner has confirmed in this conversation that they own `brightdesk.com`. Record this as **owner-confirmed**, not as independent registry verification.
-- Public DNS on 13 November 2026 confirms that the whole domain is delegated to Sedo parking nameservers: `ns1.sedoparking.com` and `ns2.sedoparking.com`. The root A record is `64.190.63.111`; a fresh lookup on 13 November 2026 shows both `www` and `help` resolving to `64.190.63.111`. The visible MX record is priority 0 `localhost`, and TXT includes `v=spf1 -all`. The SOA identifies `hostmaster.sedo.de`. This is a public DNS snapshot, not a complete zone export; other record types or records not returned by the lookup may exist.
-- The registrar and the owner's ability to edit authoritative DNS are not yet established. `help.brightdesk.com` is not a Pages CNAME yet; it resolves to the Sedo parking IP. Public DNS does not show whether the owner's Sedo account supports custom records. Check the account's DNS controls first. If it supports a custom CNAME, keep the current nameservers and add the record there. Migrate nameservers only if Sedo does not support the required record.
-- No domain purchase, transfer, paid Cloudflare plan, trial, subscription, add-on, GitHub plan or upgrade is authorised.
-- Do not publish or advertise a `pages.dev` address as the customer website. Cloudflare's generated `pages.dev` host is a technical Pages origin only. The customer-facing URL must end in `.com`.
-- Keep `https://help.brightdesk.com` as the target. Before configuring DNS, identify the registrar/DNS control panel and inventory the existing DNS records. Preserve any existing website, mail, verification and security records. Do not replace nameservers or alter DNS until the record set is understood and the owner has approved the exact change.
-- Use Cloudflare's GitHub integration. Do not create or store a Cloudflare API token or account ID in the repository.
-- On 14 November 2026, Cloudflare successfully built and deployed pull-request previews for this private repository, including PR #6. This confirms that a Cloudflare Pages GitHub integration and Pages project are now active. It does not independently prove the GitHub App's exact repository-access scope; verify that scope is **Only select repositories** with conz20/Brightdesk-Wiki as the only selected repository before production. Do not claim that the app is scoped correctly until the installed-app configuration is inspected.
-- The GitHub App installation must be scoped to **Only select repositories**, with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to any other Brightdesk source repository.
-- The source repository stays private. Do not change GitHub repository visibility or collaborator permissions.
+- The owner approved Cloudflare Pages Free and chose the free project hostname as the canonical public Help address: **https://brightdesk-help.pages.dev/**.
+- No paid custom domain, domain purchase, transfer, subscription, Cloudflare upgrade, DNS change or nameserver change is required or authorised.
+- Keep the source repository private. The public website is served from the Cloudflare Pages project hostname; the source repository is not made public.
+- Cloudflare successfully built and deployed pull-request previews for this private repository, including PR #6. This confirms that a Pages project and GitHub integration are active, but does not independently verify production settings or the exact deployed production commit.
+- Verify the GitHub App is scoped to **Only select repositories** with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to other Brightdesk repositories.
+- Keep the existing Pages project named **brightdesk-help**. Do not create a duplicate project.
+- Do not configure a custom domain or change DNS/nameservers. The free `pages.dev` hostname is the approved customer-facing address.
+
 
 Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 49-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
 
@@ -41,9 +37,9 @@ Use these exact settings:
 | Node.js version | .node-version sets 24.22.2 |
 | Ruby version | .ruby-version sets 3.4.4 |
 | Preview branch | **None** |
-| Customer-facing custom domain | `help.brightdesk.com`, only after domain and DNS control are verified and the owner approves setup |
-| Cloudflare Pages project hostname | Cloudflare-generated `*.pages.dev` host (technical origin only; do not advertise as the customer URL) |
-| DNS record for the custom subdomain | CNAME `help` → the exact project `*.pages.dev` host, only after the Pages custom domain is added and DNS changes are approved |
+| Customer-facing public address | `https://brightdesk-help.pages.dev/` (canonical free project hostname) |
+| Cloudflare Pages project hostname | `https://brightdesk-help.pages.dev/` (public customer Help address) |
+| DNS / custom domain | Not required; do not change DNS or nameservers |
 
 Cloudflare's build image supports selecting Node.js and Ruby versions using the repository's .node-version and .ruby-version files. The Jekyll build reads the root Gemfile and the root _config.yml; the configured source is docs/ and the output is _site/.
 
@@ -97,24 +93,20 @@ Cloudflare operates the hosting network and processes technical request metadata
 
 ## Current publication status and release
 
-The repository contains the Cloudflare Pages Free build configuration. On 14 November 2026, Cloudflare successfully built PR #6 previews for commits on the review branch, proving that a Pages project and GitHub preview integration are active. A confirmed preview deployment is `ed19c2a7`, built from PR commit `8eac3e3` (`8eac3e316b64e40a0fa813323a09dedc3c7165bd`); its [Cloudflare deployment check](https://github.com/conz20/Brightdesk-Wiki/runs/132402122193) completed successfully. The repository's GitHub Actions quality run #452 also passed on that exact commit. Check the live PR #6 checks for any later preview deployment. PR previews are review environments only, not the production website. The production branch/build settings, exact GitHub App repository-access scope, preview-branch policy, custom domain and HTTPS still require account-side verification.
+Cloudflare Pages Free is active for the project **brightdesk-help**. The canonical public customer Help address is **https://brightdesk-help.pages.dev/**. PR-specific preview URLs are review links and are not the canonical address.
 
-The required customer URL is **https://help.brightdesk.com**. The owner has confirmed ownership of `brightdesk.com`; current DNS is delegated to Sedo parking nameservers. The registrar and authoritative-DNS editing access are not yet confirmed. No purchase or DNS change is authorised.
+Before reporting the latest source as live:
 
-Before reporting the site as live:
+1. Confirm the Cloudflare GitHub App is scoped to **only** conz20/Brightdesk-Wiki.
+2. Confirm the production branch is `main`, the build command is `npm run build:cloudflare`, and the output directory is `_site`.
+3. Confirm the project hostname `https://brightdesk-help.pages.dev/` serves the production deployment over valid HTTPS.
+4. Record the exact deployed commit SHA and compare it with the intended reviewed source commit.
+5. Open the homepage, Suite guide and all ten product guides. Check navigation, local search, local CSS, keyboard focus and narrow-screen layout.
+6. Keep the source repository private and the customer site static, read-only and free of tracking, analytics, external scripts, external fonts and external images.
 
-1. Confirm the Cloudflare GitHub App is installed for **only** conz20/Brightdesk-Wiki.
-2. Confirm project build settings, production branch main, output _site and preview branch **None**.
-3. Record the owner's confirmation that they control `brightdesk.com` and identify the registrar and DNS provider.
-4. Obtain a complete DNS-zone export from the current authoritative provider before making any DNS change. The live read-only DNS check on 14 November 2026 returned root A `64.190.63.222`, `www` A `64.190.63.222`, `help` A `64.190.63.111`, MX `localhost`, TXT `v=spf1 -all`, and nameservers `ns1.sedoparking.com` / `ns2.sedoparking.com`. No AAAA or CNAME records were returned for these names. This is a public DNS snapshot, not a complete zone export; do not assume it lists every record or service.
-5. In the existing Cloudflare Pages project `brightdesk-help`, open **Custom domains → Set up a domain** and enter `help.brightdesk.com`. Complete the Pages-side association first and note the exact DNS instruction Cloudflare displays. Cloudflare requires the custom hostname to be attached to the Pages project before the CNAME is created.
-6. Check whether the current Sedo DNS service lets the owner edit records and create a CNAME for `help`. If it does, keep the existing nameservers and replace only the parked `help` A record with the exact CNAME target Cloudflare specifies (the project hostname `brightdesk-help.pages.dev`), preserving the root, `www`, MX and TXT records. Recheck the full zone and verify the hostname becomes active with valid HTTPS. Do not change unrelated records.
-7. If Sedo does not support the required CNAME, stop. Do not change nameservers until a complete zone export has been obtained, every existing record has a preservation plan, the replacement DNS zone has been built and checked, and the owner has approved the exact nameserver change. Never change nameservers blindly or leave existing mail, verification, DNSSEC or security records behind.
-8. Confirm the Pages custom domain reports active, `https://help.brightdesk.com` serves the intended build, HTTPS is valid, and requests reach the correct project. Only then treat the `.com` address as the customer website.
-9. Confirm a production build completes, the Cloudflare Pages output audit passes, and the production deployment is from `main`.
-10. Open the homepage, Suite guide and all ten product guides. Check links, local CSS, narrow-screen layout, visible keyboard focus and reduced-motion styling.
-11. Record the exact `.com` URL and deployed commit SHA. The generated `pages.dev` address is not the customer-facing URL.
-12. Only after the `.com` URL is live, update the eleven in-app Help links to that exact address. Keep the existing Help-link pull requests unmerged until then.
+Do not purchase or configure a custom domain. Do not change DNS or nameservers. The free `pages.dev` hostname is the approved public address.
+
+The Wiki remains a separate optional Help resource. It is not bundled, installed or required for offline Brightdesk use.
 
 Cloudflare's custom-domain instructions for subdomains are documented at [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/).
 
