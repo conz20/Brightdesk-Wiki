@@ -43,13 +43,15 @@ PR #5 currently contains:
 - **Visual assets:** the ten current product SVGs are explanatory diagrams, not screenshots of Brightdesk. They are labelled accordingly.
 - **Diagram accessibility:** all ten explanatory diagrams now have distinct alternative text describing their actual product-specific steps. A regression test checks every description.
 - **Navigation accessibility:** the Everyday Help homepage, Suite guide and all ten product guides now expose the current page in navigation with `aria-current="page"`; the selected link has a visible state in the header and product menu. A regression test checks all twelve destinations.
-- **Technical navigation accessibility:** the Technical Documentation sidebar has its own accessible navigation name and marks the active reference. A regression test checks the accessible name and all fourteen technical destinations.
+- **Technical navigation accessibility:** the Technical Documentation sidebar has its own accessible navigation name and marks the active reference. A regression test checks the accessible name and all fourteen technical destinations. The top-level Technical Documentation link now marks only the overview page as current; it no longer incorrectly marks itself current on every technical subpage.
 
 The source changes are not yet merged into `main`. PR #5 remains a **draft** and must stay unmerged until its review and release gates are met.
 
 ## Verification — exact commits matter
 
 **PR #5 state:** open, draft and unmerged. The PR page is the source of truth for the live branch SHA and review status; the workflow entries below identify the exact commits they checked.
+
+[Run #317](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43565227802) passed on the exact layout commit `0085107f322eacd9618bb1ac242010b9455d73ba`. It verifies that the technical top-navigation link is marked current only on the Technical Documentation overview, while individual references are identified in the sidebar. The full documentation and public-output regression tests, Markdown checks, Jekyll build and privacy audit all passed.
 
 [Run #309](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43564350822) passed on the exact README commit `6db853abd82885057739c3a66ed93acc7fb591f5`. It verified the current README record together with all documentation and public-output regression tests, Markdown links, Jekyll generation and the generated-output privacy audit.
 [Run #308](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43564261848) passed on that exact head `be05fa7be7e816f2758a5948fb50a7b9f5ac0020`. It completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, dependency installation, all documentation and public-output regression tests, Markdown-link checks, Jekyll generation and generated-output privacy audit.
