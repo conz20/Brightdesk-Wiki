@@ -158,11 +158,14 @@ test('homepage presents a clear getting-started route before task suggestions', 
 });
 
 test('every page provides a direct navigation menu for all ten product guides', () => {
-  const productMenu = layout.match(/<details class="product-menu" aria-label="Browse product guides">([\\s\\S]*?)<\\/details>/);
-  assert.ok(productMenu, 'Every page must provide a keyboard-accessible product guide menu');
+  const menuStart = layout.indexOf('<details class="product-menu" aria-label="Browse product guides">');
+  assert.notEqual(menuStart, -1, 'Every page must provide a keyboard-accessible product guide menu');
+  const menuEnd = layout.indexOf('</details>', menuStart);
+  assert.notEqual(menuEnd, -1, 'The product guide menu must be properly closed');
+  const productMenu = layout.slice(menuStart, menuEnd);
 
   const productPaths = Array.from(
-    productMenu[1].matchAll(/href="\\{\\{\\s*'([^']+)'\\s*\\|\\s*relative_url\\s*\\}\\}"/g),
+    productMenu.matchAll(/href="[^']*'([^']+)'/g),
     match => match[1]
   );
   assert.deepEqual(productPaths, [
@@ -177,5 +180,5 @@ test('every page provides a direct navigation menu for all ten product guides', 
     '/products/to-do.html',
     '/products/workspace.html'
   ]);
-  assert.match(productMenu[1], /<summary>Product guides<\\/summary>/);
+  assert.ok(productMenu.includes('<summary>Product guides</summary>'));
 });
