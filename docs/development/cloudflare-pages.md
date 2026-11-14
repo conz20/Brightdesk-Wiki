@@ -125,26 +125,11 @@ The Wiki remains a separate optional Help resource. It is not bundled, installed
 
 ## GitHub Copilot repository integration
 
-The Cloudflare agent-setup instructions have been adapted for this repository so the setup lives in GitHub rather than on the owner's Mac. The project-scoped skill is `.github/skills/brightdesk-cloudflare-pages/SKILL.md`; the MCP configuration for Copilot CLI is `.github/mcp.json`. Neither file contains a credential.
+The repository may provide a documentation-only MCP configuration in `.github/mcp.json`. It exposes Cloudflare's public documentation search server and requires no account credentials.
 
-### Copilot cloud agent configuration
+When using a compatible Copilot client, configure the repository MCP settings to use the JSON in [`.github/mcp.json`](../../.github/mcp.json). Do not create a `COPILOT_MCP_CLOUDFLARE_API_TOKEN` secret, add a Cloudflare API execution server, or grant an agent permission to modify Pages projects or DNS.
 
-The repository MCP file is available to project-level Copilot CLI clients. GitHub Copilot cloud agent uses the repository's MCP settings page as a separate configuration step:
-
-1. Open **Brightdesk-Wiki → Settings → Copilot → MCP servers**.
-2. Paste the complete JSON from [`.github/mcp.json`](../../.github/mcp.json) into **MCP configuration** and save it.
-3. Open **Settings → Secrets and variables → Agents → Secrets**.
-4. Create a repository secret named `COPILOT_MCP_CLOUDFLARE_API_TOKEN` and store the Cloudflare API token as its value. Do not paste the token into chat, source files, Actions secrets, issues, or logs. GitHub exposes this prefixed secret to the MCP server, not to ordinary agent shell commands.
-
-Copilot cloud agent can use MCP tools autonomously without asking for approval before each call. The API server's `execute` tool can call Cloudflare API endpoints, so the token scope below is mandatory, not optional. The documentation server is public and read-only; it needs no secret.
-
-### Cloudflare API token scope
-
-Create a custom Cloudflare API token for the single account that owns the Brightdesk Help project. Use only **Cloudflare Pages Edit** and **Account Settings Read** (for account/resource discovery if required). Cloudflare documents that Pages Edit can create, update, and delete Pages projects; keep this token in the GitHub Agents secret and never reuse it for other repositories. Do not grant DNS Write, Zone Edit, Account Settings Edit, Workers, Billing, User, API Tokens, Global API Key, or unrelated permissions. Pages Edit is account-scoped, so it permits changes to Pages projects in that account; the skill prohibits deleting projects or deployments.
-
-The Cloudflare API MCP server is configured with the `search` and `execute` tools only. The Cloudflare Docs MCP server exposes only `search_cloudflare_documentation`. An API token does not install or authorise the GitHub App for Cloudflare Pages. The GitHub App must still be installed separately with **Only select repositories**, choosing Brightdesk-Wiki only.
-
-No Cloudflare token or GitHub secret has been created by this repository change. The Pages project and GitHub preview integration are active, but the exact GitHub App access scope, production settings, DNS configuration and live custom domain are not yet verified. Do not describe the site as live.
+Cloudflare Pages deployments use the existing GitHub App integration, restricted to **Only select repositories** with only `conz20/Brightdesk-Wiki` selected. This GitHub App connection is separate from documentation search. No Cloudflare API token is required for the approved Git-based build and deployment route.
 
 ## Official Cloudflare documentation
 

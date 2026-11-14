@@ -52,21 +52,11 @@ Cloudflare's GitHub App connection is separate from the Cloudflare API MCP token
 - Do not configure `help.brightdesk.com`, transfer or change domain registration, or migrate DNS.
 - A custom domain is outside the current project. Any future proposal would require a complete current DNS-zone export, a preservation plan and the owner's explicit approval of the exact change before any action.
 
-## Safe use of Cloudflare MCP
+## Cloudflare documentation reference
 
-Use the Cloudflare Docs MCP tool search_cloudflare_documentation to retrieve current Cloudflare documentation before relying on API details or changing project settings.
+The optional `.github/mcp.json` configuration exposes only Cloudflare's public documentation search server. It is read-only and requires no account token or GitHub secret.
 
-The Cloudflare API MCP server exposes search and execute. The execute tool can call many Cloudflare API endpoints, and Copilot can use configured MCP tools autonomously without asking for approval before each call. Treat the configured API token as the security boundary.
-
-Use only a token scoped to the intended Cloudflare account with:
-- Cloudflare Pages Edit, required to create or update the Pages project.
-- Account Settings Read, only for account/resource discovery if required by the API MCP server.
-
-Cloudflare Pages Edit includes create, edit, and delete access to Pages projects in that Cloudflare account. Keep the token scoped to the single intended account. Do not grant DNS Write, Zone Edit, Account Settings Edit, Workers, Billing, User, API Tokens, or any unrelated permissions. Never request a Global API Key.
-
-Never read, print, log, copy, expose, or commit the token value. It must be supplied only through the GitHub Agents secret COPILOT_MCP_CLOUDFLARE_API_TOKEN. Do not put credentials in source, workflow files, logs, issues, pull requests, or generated site output.
-
-Do not delete Pages projects, production deployments, domains, DNS records, zones, or account resources. Do not purchase, transfer, renew, or change billing. Stop and request explicit owner approval before any operation outside the fixed Pages project configuration or the DNS safeguards above.
+Do not add a Cloudflare API execution server, API token, or GitHub Agents secret to this repository. The website's deployment does not require Cloudflare API credentials. Cloudflare project changes must be made by the owner in the Cloudflare dashboard and must follow the approval boundaries above.
 
 ## Deployment verification
 
