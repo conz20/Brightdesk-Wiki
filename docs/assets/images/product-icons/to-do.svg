@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">Brightdesk To Do icon</title>
+<desc id="desc">A checked task inside a circle with two unfinished task rows beneath it.</desc>
+<rect x="8" y="8" width="112" height="112" rx="26" fill="#eaf6f2"/>
+<circle cx="45" cy="42" r="17" fill="#d4f0e5" stroke="#287b62" stroke-width="4"/>
+<path d="M36 42l7 7 13-16" fill="none" stroke="#287b62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M72 42h24M72 52h17" fill="none" stroke="#59766c" stroke-width="4" stroke-linecap="round"/>
+<circle cx="45" cy="79" r="7" fill="#fff" stroke="#7b968c" stroke-width="3"/>
+<path d="M63 79h33M63 91h25" fill="none" stroke="#7b968c" stroke-width="4" stroke-linecap="round"/>
+</svg>
