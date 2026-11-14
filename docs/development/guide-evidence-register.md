@@ -82,3 +82,23 @@ The following blob SHAs identify the key modules inspected for this review. They
 | Workspace | `src/workspace-service.js` | `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` |
 
 **Outcome:** the inspected source supports the behaviours above. All ten guides remain `Needs review` until the documented workflows are run in current installed desktop builds. No screenshots, publication, Pages configuration, PR approval or merge were performed.
+
+## Source snapshot recheck — 14 November 2026
+
+The source files listed in the 13 November snapshot table were fetched again from the current `main` branch of each owning product repository on 14 November 2026. All eleven file blob SHAs still match the recorded values exactly:
+
+| Product | File checked | Current blob SHA | Result |
+| --- | --- | --- | --- |
+| Pages | `src/page-layout.js` | `9777090bbbd01fee1b2789c703619dc8faa87859` | Unchanged |
+| Pages | `src/app.js` | `f499a20e8bf1283e67f50f73c6aeda5fb52a0c3b` | Unchanged |
+| Sheets | `src/formula.js` | `4b75569239c9834308f77815392b98d7371ea459` | Unchanged |
+| Decks | `src/app.js` | `7c24d368e62761aad95dd672bfe3529018fa9ae4` | Unchanged |
+| Notes | `src/app.js` | `08e3c08967e7fe24ee268cd8c0e4f237c40d6c68` | Unchanged |
+| Database | `src/database-service.js` | `1eefab8c225cf6e4eae426305ee0378838681e41` | Unchanged |
+| Forms | `src/forms-service.js` | `d925764977a79ec6b7d79af5e1a0d6e08ab9d8e4` | Unchanged |
+| Lists | `src/lists-service.js` | `ae3aebadd3194af4846c80fe58a2f1c98c88c57` | Unchanged |
+| Planner | `src/planner-service.js` | `6b05218a71f0f0d63beebdf20decae5ea112f7fc` | Unchanged |
+| To Do | `src/todo-service.js` | `34e048b651dfdd50cb8b3292c660e1dbd57fe7f8` | Unchanged |
+| Workspace | `src/workspace-service.js` | `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` | Unchanged |
+
+This confirms that the source snapshot identifiers remain current. It does not add new workflow verification, build evidence or screenshots. All ten guides remain **Needs review** until the required running-desktop walkthroughs are complete.
