@@ -47,6 +47,36 @@ Use the shared Brightdesk language and spelling tools where they are available i
 5. Choose **Insert → Checklist item** to add an unchecked marker.
 
 **What you should have:** one short note with a date, a divider and a checklist marker. The marker is text in the note, not a separate task list.
+## More examples to try
+
+### Keep a daily note
+
+1. Create a note called **Daily notes**.
+2. Enter the date with **Insert → Date**.
+3. Write your main thoughts or a short record of the day.
+4. Add **Insert → Divider** between separate topics.
+5. Choose **Export note** when you need a Markdown or plain-text copy.
+
+**What you should have:** one note with a date and clearly separated sections.
+
+### Make a simple packing reminder
+
+1. Create a note called **Packing reminder**.
+2. Add one item per line, such as **Charger**, **Keys** and **Water bottle**.
+3. Place the cursor at the end of a line and use **Insert → Checklist item** where you want a box marker.
+4. Add any extra notes below the list.
+5. Export the note when you need a separate text copy.
+
+**What you should have:** a note containing a simple list and checklist markers. The markers are text in the note; they are not interactive tasks that can be completed in a task manager.
+
+## Common questions and fixes
+
+**Can I use a Notes checklist as a task list?** The inserted checklist marker is text inside the note. Use Brightdesk To Do for personal tasks or Brightdesk Planner for project task boards.
+
+**How do I make a copy outside Notes?** Open **Home → Export note** and choose a format offered by the control, such as Markdown or plain text.
+
+**What happens when I choose Clear note?** It removes the current note text after confirmation. Use it only when you intend to clear that note.
+
 ## Current feature boundaries
 
 The current Notes workflow is a quick-note editor. Notebook hierarchies, sections, linked pages, attachments and collaborative notebooks are not described as finished features.
