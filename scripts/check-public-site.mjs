@@ -6,6 +6,13 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+const TECHNICAL_PAGES = [
+  'technical/index.html',
+  'technical/system-overview.html',
+  'technical/file-formats.html',
+  'technical/data-and-privacy.html',
+  ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
+];
 const PRODUCT_LABELS = new Map([
   ['pages', 'Pages'], ['sheets', 'Sheets'], ['decks', 'Decks'], ['notes', 'Notes'],
   ['database', 'Database'], ['forms', 'Forms'], ['lists', 'Lists'], ['planner', 'Planner'],
@@ -14,8 +21,9 @@ const PRODUCT_LABELS = new Map([
 const PRODUCT_ICON_FILES = PRODUCTS.map(product => 'assets/images/product-icons/' + product + '.svg');
 const PRODUCT_WORKFLOW_FILES = PRODUCTS.map(product => 'assets/images/workflows/guide-' + product + '.svg');
 const APPROVED_SVG_FILES = [...PRODUCT_ICON_FILES, ...PRODUCT_WORKFLOW_FILES];
-const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css']
+const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js']
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
+  .concat(TECHNICAL_PAGES)
   .concat(APPROVED_SVG_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle', 'text']);
@@ -208,7 +216,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (FORBIDDEN_PATHS.some(pattern => pattern.test(file))) {
       fail('internal or repository-only content was included: ' + file);
     }
-    if (!/\.(html|css|svg)$/i.test(file)) {
+    if (!/\.(html|css|js|svg)$/i.test(file)) {
       fail('unexpected public output file type: ' + file);
     }
     if (!ALLOWED_FILES.has(file)) {
@@ -220,15 +228,25 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
   for (const file of htmlFiles) {
     const html = decodeHtmlCharacterReferences(fs.readFileSync(path.join(rootDir, file), 'utf8'));
     if (!/<!doctype html>/i.test(html)) fail(file + ' is missing an HTML doctype');
-    if (/<(?:form|input|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
+    if (/<(?:form|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
       fail(file + ' contains interactive or editable controls; customer help must remain read-only');
+    }
+    const searchInputs = [...html.matchAll(/<input\b[^>]*>/gi)].map(match => match[0]);
+    if (searchInputs.length !== 1 ||
+        !/^<input\b(?=[^>]*\bid=["']help-search["'])(?=[^>]*\btype=["']search["'])[^>]*>$/i.test(searchInputs[0])) {
+      fail(file + ' must contain only the approved read-only Help search field');
     }
     const urlAttributes = getNormalizedUrlAttributes(html);
     if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) ||
         urlAttributes.some(containsExecutableUrl)) {
       fail(file + ' contains an active HTML event handler or executable URL');
     }
-    if (/<script\b/i.test(html)) fail(file + ' contains JavaScript; the customer Wiki must remain static and tracker-free');
+    const scriptTags = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map(match => match[0]);
+    if (scriptTags.length !== 1 ||
+        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
+        /<script\b/i.test(html.replace(scriptTags[0] || '', ''))) {
+      fail(file + ' must load only the approved local Help search script');
+    }
     if (/<style\b/i.test(html) || /\sstyle\s*=/i.test(html)) {
       fail(file + ' contains inline CSS; customer styling must use the approved local stylesheet');
     }
@@ -242,8 +260,14 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
 
     const imageTags = [...html.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
     const productPage = file.match(/^products\/([a-z-]+)\.html$/);
-    if (!productPage && imageTags.length !== 0) {
-      fail(file + ' contains an image outside the approved product-guide image placement');
+    if (imageTags.some(imageTag => !/\balt=["'][^"']+["']/i.test(imageTag))) {
+      fail(file + ' contains an image without meaningful alternative text');
+    }
+    if (!productPage && imageTags.some(imageTag => {
+      const source = imageTag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2] || '';
+      return !/(?:\.\.\/)*assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
+    })) {
+      fail(file + ' contains an image outside the approved local product-icon library');
     }
     if (productPage) {
       const product = productPage[1];
@@ -286,6 +310,11 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     validateApprovedSvg(file, fs.readFileSync(path.join(rootDir, file), 'utf8'));
   }
 
+  const searchScript = fs.readFileSync(path.join(rootDir, 'assets/js/search.js'), 'utf8');
+  if (/(?:https?:)?\/\/|\b(?:fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|localStorage|sessionStorage|eval|importScripts)\b|document\.cookie|new Function|new Worker/i.test(searchScript)) {
+    fail('the local Help search script must not use network access, executable code generation or visitor storage');
+  }
+
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
   if (/\\/.test(css)) fail('site CSS contains a CSS escape that could hide an external resource');
   if (/@import\b/i.test(css) || /(?:https?:)?\/\//i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
@@ -296,8 +325,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try {
     const siteRoot = process.argv[2] ? path.resolve(process.argv[2]) : DEFAULT_SITE_ROOT;
     const result = checkPublicSite({ siteRoot });
-    console.log('Public Wiki check passed: ' + result.htmlPages + ' customer pages and ' + result.files +
-      ' static files; no private repository links, internal docs, scripts or external assets.');
+    console.log('Public Wiki check passed: ' + result.htmlPages + ' Everyday Help and technical pages and ' + result.files +
+      ' static files; no private repository links, internal docs or external resources.');
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;
