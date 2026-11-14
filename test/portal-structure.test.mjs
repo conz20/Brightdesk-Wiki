@@ -15,6 +15,8 @@ test('Everyday Help has a separate task-first route and exactly ten product link
   assert.deepEqual(matches, products);
   assert.match(everyday, /What are you trying to do\?/);
   assert.match(everyday, /Technical Documentation/);
+  assert.match(everyday, /src="\.\.\/favicon\.svg" alt=""/);
+  assert.doesNotMatch(everyday, /product-card-mark-img[^>]*>B</);
 });
 
 test('the Help header searches only its approved Everyday pages', () => {
