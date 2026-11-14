@@ -139,6 +139,22 @@ test('technical reference navigation is named and marks the current document', (
   }
 });
 
+test('technical top navigation marks only its own overview page as current', () => {
+  const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html', import.meta.url), 'utf8');
+  const navStart = technicalLayout.indexOf('<nav class="site-nav"');
+  const navEnd = technicalLayout.indexOf('</nav>', navStart);
+  assert.ok(navStart >= 0 && navEnd > navStart, 'Technical top navigation must be present');
+  const navigation = technicalLayout.slice(navStart, navEnd);
+  const technicalLink = navigation.split(/\\r?\\n/).find(line =>
+    line.includes(`href="{{ '/technical/index.html' | relative_url }}"`)
+  );
+  assert.ok(technicalLink, 'Technical overview link must be present in top navigation');
+  assert.ok(
+    technicalLink.includes(`{% if page.url == '/technical/index.html' %} aria-current="page"{% endif %}`),
+    'Top navigation must mark only the Technical Documentation overview as the current page'
+  );
+});
+
 test('help typography keeps comfortable reading size and spacing', () => {
   const body = css.match(/body\s*\{([^}]*)\}/i);
   assert.ok(body, 'The stylesheet must define body typography');
