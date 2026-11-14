@@ -12,7 +12,7 @@ permalink: /index.html
     <p class="home-lede">Practical answers, clear instructions and useful product guides — all in one place.</p>
   </div>
 
-  <section class="home-search" role="search" aria-labelledby="help-search-label">
+  <div class="home-search" role="search" aria-labelledby="help-search-label">
     <label id="help-search-label" for="help-search">What do you need help with?</label>
     <input id="help-search" type="search" autocomplete="off"
       placeholder="Search a task or product"
@@ -20,7 +20,7 @@ permalink: /index.html
     <p id="help-search-hint" class="search-hint">Search Everyday Help, the Suite guide and all ten product guides. Your search stays in this browser.</p>
     <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a word or task to find a guide.</p>
     <ul id="help-search-results" class="search-results" aria-label="Matching help guides" hidden></ul>
-  </section>
+  </div>
 
   <nav class="home-pathways" aria-label="Choose a help area">
     <a class="home-pathway" href="everyday/index.html">
