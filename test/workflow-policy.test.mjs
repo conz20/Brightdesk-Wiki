@@ -5,24 +5,24 @@ import fs from 'node:fs';
 const workflow = fs.readFileSync(new URL('../.github/workflows/quality.yml', import.meta.url), 'utf8');
 
 test('quality workflow uses the standard GitHub-hosted Linux runner', () => {
-  assert.match(workflow, /runs-on:\\s*ubuntu-latest/);
+  assert.match(workflow, /runs-on:\s*ubuntu-latest/);
   assert.doesNotMatch(workflow, /self-hosted|macOS|ARM64|windows-latest|macos-latest/);
 });
 
 test('quality workflow keeps repository permissions read-only', () => {
-  assert.match(workflow, /permissions:\\s*\\n\\s+contents:\\s*read/);
+  assert.match(workflow, /permissions:\s*\n\s+contents:\s*read/);
 });
 
 test('quality workflow keeps one current run per PR and cancels obsolete revisions', () => {
-  assert.ok(workflow.includes('group: brightdesk-wiki-quality-${{ github.event.pull_request.number || github.ref }}'));
-  assert.match(workflow, /cancel-in-progress:\\s*true/);
+  assert.ok(workflow.includes('group: brightdesk-wiki-quality-\u0024{{ github.event.pull_request.number || github.ref }}'));
+  assert.match(workflow, /cancel-in-progress:\s*true/);
 });
 
 test('quality workflow uses pinned checkout, Node.js and Ruby actions', () => {
-  assert.match(workflow, /uses:\\s*actions\\/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1/);
-  assert.match(workflow, /uses:\\s*actions\\/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1/);
-  assert.match(workflow, /uses:\\s*ruby\\/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199/);
-  assert.match(workflow, /timeout-minutes:\\s*10/);
+  assert.ok(workflow.includes('uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'));
+  assert.ok(workflow.includes('uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1'));
+  assert.ok(workflow.includes('uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199'));
+  assert.match(workflow, /timeout-minutes:\s*10/);
 });
 
 test('quality workflow pins and verifies the exact supported Node.js and Ruby runtimes', () => {
@@ -32,12 +32,12 @@ test('quality workflow pins and verifies the exact supported Node.js and Ruby ru
 
   assert.equal(nodeVersion, '24.22.2');
   assert.equal(packageJson.engines.node, '24.22.2');
-  assert.match(workflow, /node-version:\\s*24\\.22\\.2/);
-  assert.match(workflow, /ruby-version:\\s*['"]3\\.4\\.4['"]/);
+  assert.match(workflow, /node-version:\s*24\.22\.2/);
+  assert.match(workflow, /ruby-version:\s*['"]3\.4\.4['"]/);
   assert.equal(rubyVersion, '3.4.4');
   assert.ok(workflow.includes('npm run check:node'));
-  assert.doesNotMatch(workflow, /node-version:\\s*22(?:\\.|['"])/);
-  assert.doesNotMatch(workflow, /ruby-version:\\s*['"]3\\.[0-3]\\./);
+  assert.doesNotMatch(workflow, /node-version:\s*22(?:\.|['"])/);
+  assert.doesNotMatch(workflow, /ruby-version:\s*['"]3\.[0-3]\./);
 });
 
 test('quality workflow disables dependency caches that could hide stale runtime state', () => {
@@ -55,12 +55,12 @@ test('quality workflow runs every source, content, link and output check', () =>
     'bundle exec jekyll build',
     'npm run check:site'
   ]) {
-    assert.ok(workflow.includes(command), `Missing mandatory quality command: ${command}`);
+    assert.ok(workflow.includes(command), 'Missing mandatory quality command: ' + command);
   }
 });
 
 test('quality workflow does not silently skip the Jekyll build or output privacy audit', () => {
-  assert.match(workflow, /run:\\s*bundle exec jekyll build/);
-  assert.match(workflow, /run:\\s*npm run check:site/);
-  assert.doesNotMatch(workflow, /if:\\s*steps\\./);
+  assert.match(workflow, /run:\s*bundle exec jekyll build/);
+  assert.match(workflow, /run:\s*npm run check:site/);
+  assert.doesNotMatch(workflow, /if:\s*steps\./);
 });
