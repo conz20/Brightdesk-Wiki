@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Workspace technical reference
 description: Workspace and page hierarchy, content blocks, search and deletion safeguards.
-permalink: /technical/products/workspace.html
+permalink: /technical../../products/workspace.html
 ---
 
 # Workspace technical reference
@@ -41,5 +41,5 @@ Workspaces and pages are saved locally. Live collaboration, shared workspaces, p
 
 ## Related information
 
-- [Data and privacy](/technical/data-and-privacy.html)
-- [Everyday Help: Workspace](/products/workspace.html)
+- [Data and privacy](../data-and-privacy.html)
+- [Everyday Help: Workspace](../../products/workspace.html)
