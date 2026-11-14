@@ -298,11 +298,12 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       }
       return false;
     };
-    const isDecorativeBrandMark = imageTag =>
+    const isBrandMark = imageTag =>
       imageAttribute(imageTag, 'class') === 'brand-mark' &&
       /^(?:\/)?favicon\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
-      imageAttribute(imageTag, 'alt') === '' &&
       hasTextBearingAnchor(imageTag, 'brand', 'Brightdesk Help home');
+    const isDecorativeBrandMark = imageTag =>
+      isBrandMark(imageTag) && imageAttribute(imageTag, 'alt') === '';
     const isDecorativeProductIcon = imageTag =>
       imageAttribute(imageTag, 'class') === 'home-product-icon' &&
       /^assets\/images\/product-icons\/(?:pages|sheets|decks|notes|database|forms|lists|planner|to-do|workspace)\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
@@ -318,18 +319,19 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       const source = imageAttribute(imageTag, 'src') || '';
       const className = imageAttribute(imageTag, 'class') || '';
       const isProductIcon = /^(?:\.\.\/)?assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
-      const isBrandMark = className === 'brand-mark' && /^(?:\/)?favicon\.svg$/i.test(source);
+      const isApprovedBrandMark = isBrandMark(imageTag);
       const isSuiteMark = className === 'product-card-mark-img' && source === '../favicon.svg' &&
         imageAttribute(imageTag, 'alt') === 'Brightdesk Suite brand mark';
-      return !isProductIcon && !isBrandMark && !isSuiteMark;
+      return !isProductIcon && !isApprovedBrandMark && !isSuiteMark;
     })) {
       fail(file + ' contains an image outside the approved local Brightdesk brand and product-icon library');
     }
 
     if (productPage) {
       const product = productPage[1];
-      if (!PRODUCTS.includes(product) || imageTags.length !== 2) {
-        fail(file + ' must contain exactly one product icon and one workflow diagram');
+      const productImageTags = imageTags.filter(imageTag => !isBrandMark(imageTag));
+      if (!PRODUCTS.includes(product) || productImageTags.length !== 2) {
+        fail(file + ' must contain exactly one product icon and one workflow diagram, separate from the shared site logo');
       }
 
       const expectedImages = [
@@ -345,7 +347,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
         }
       ];
 
-      imageTags.forEach((imageTag, index) => {
+      productImageTags.forEach((imageTag, index) => {
         const expected = expectedImages[index];
         const source = imageTag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2];
         const alternative = imageTag.match(/\balt\s*=\s*(["'])(.*?)\1/i)?.[2];

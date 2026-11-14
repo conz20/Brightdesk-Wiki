@@ -448,3 +448,15 @@ test('brand mark is not accepted as decorative outside the labelled Brightdesk h
     /meaningful alternative text|justified decorative-image alternative/i
   );
 });
+
+
+test('the shared Brightdesk site logo is separate from the two required product guide images', t => {
+  const siteRoot = siteFixture(t);
+  const page = path.join(siteRoot, 'products', 'pages.html');
+  const html = fs.readFileSync(page, 'utf8').replace(
+    '<body><input id="help-search" type="search">',
+    '<body><a class="brand" href="/" aria-label="Brightdesk Help home"><img class="brand-mark" src="/favicon.svg" alt=""></a><input id="help-search" type="search">'
+  );
+  fs.writeFileSync(page, html);
+  assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
+});
