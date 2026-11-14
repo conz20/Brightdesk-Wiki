@@ -149,3 +149,10 @@ test('homepage exposes one primary heading and named section landmarks', () => {
   assert.match(homepage, /<section class="portal-note" aria-labelledby="portal-note-title">/);
   assert.ok(homepage.includes('<h2 id="portal-note-title">About Brightdesk Help</h2>'));
 });
+
+test('homepage description is long enough to explain the Help site in search results', () => {
+  const match = /^description:\\s*(.+)$/m.exec(homepage);
+  assert.ok(match, 'The homepage must declare a search description');
+  assert.ok(match[1].length >= 120 && match[1].length <= 160,
+    'The homepage description should be between 120 and 160 characters');
+});
