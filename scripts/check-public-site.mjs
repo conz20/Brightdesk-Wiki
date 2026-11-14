@@ -6,8 +6,16 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+const TECHNICAL_PAGES = [
+  'technical/index.html',
+  'technical/system-overview.html',
+  'technical/file-formats.html',
+  'technical/data-and-privacy.html',
+  ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
+];
 const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js']
-  .concat(PRODUCTS.map(product => 'products/' + product + '.html'));
+  .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
+  .concat(TECHNICAL_PAGES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const FORBIDDEN_PATHS = [
   /^(architecture|development|security|releases)\//i,
@@ -169,7 +177,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try {
     const siteRoot = process.argv[2] ? path.resolve(process.argv[2]) : DEFAULT_SITE_ROOT;
     const result = checkPublicSite({ siteRoot });
-    console.log('Public Wiki check passed: ' + result.htmlPages + ' customer pages and ' + result.files +
+    console.log('Public Wiki check passed: ' + result.htmlPages + ' approved Help and technical pages and ' + result.files +
       ' static files; no private repository links, internal docs, external scripts or external assets.');
   } catch (error) {
     console.error(error.message);
