@@ -22,14 +22,14 @@
           <a href="{{ '/customer-start-here.html' | relative_url }}">Suite guide</a>
         </nav>
       </div>
-      <section class="help-search" aria-labelledby="help-search-label">
+      <section class="help-search" role="search" aria-labelledby="help-search-label">
         <label id="help-search-label" for="help-search">Search Brightdesk Help</label>
         <input id="help-search" type="search" autocomplete="off"
           placeholder="Try “PDF”, “formula”, “checklist” or a product name"
-          aria-describedby="help-search-hint help-search-status">
+          aria-describedby="help-search-hint help-search-status" aria-controls="help-search-results">
         <p id="help-search-hint" class="search-hint">Search the instructions and examples in all 12 customer guides.</p>
         <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a word or task to find a guide.</p>
-        <ul class="search-results" aria-label="Matching help guides" hidden></ul>
+        <ul id="help-search-results" class="search-results" aria-label="Matching help guides" hidden></ul>
       </section>
     </header>
     {% assign public_help_paths = "/index.html|/customer-start-here.html|/products/pages.html|/products/sheets.html|/products/decks.html|/products/notes.html|/products/database.html|/products/forms.html|/products/lists.html|/products/planner.html|/products/to-do.html|/products/workspace.html" | split: "|" %}

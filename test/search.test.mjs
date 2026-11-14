@@ -81,3 +81,43 @@ test('Help search returns a bounded number of results', () => {
   }));
   assert.equal(searchTopics(manyTopics, 'common', 4).length, 4);
 });
+
+test('Help search exposes an accessible search landmark and connected result/status descriptions', () => {
+  const searchSection = layout.match(/<section class="help-search"[^>]*>([\s\S]*?)<\/section>/);
+  assert.ok(searchSection, 'The page must expose a dedicated Help search section');
+  assert.match(searchSection[0], /\brole="search"/);
+
+  const searchInput = searchSection[1].match(/<input\b[^>]*id="help-search"[^>]*>/);
+  assert.ok(searchInput, 'The Help search input must be present');
+  assert.match(searchInput[0], /\baria-describedby="help-search-hint help-search-status"/);
+  assert.match(searchInput[0], /\baria-controls="help-search-results"/);
+
+  assert.match(searchSection[1], /<p id="help-search-status" class="search-status" role="status" aria-live="polite">/);
+  assert.match(searchSection[1], /<ul id="help-search-results" class="search-results" aria-label="Matching help guides" hidden>/);
+});
+
+test('the footer offers exactly one working suggestion for the Suite and each of the ten products', () => {
+  const suggestions = layout.match(/<ul class="footer-suggestions">([\s\S]*?)<\/ul>/);
+  assert.ok(suggestions, 'The customer help layout must include task suggestions');
+
+  const suggestedPaths = Array.from(
+    suggestions[1].matchAll(/href="\{\{\s*'([^']+)'\s*\|\s*relative_url\s*\}\}"/g),
+    match => match[1]
+  );
+  const expectedSuggestions = [
+    '/customer-start-here.html',
+    '/products/pages.html',
+    '/products/sheets.html',
+    '/products/decks.html',
+    '/products/notes.html',
+    '/products/database.html',
+    '/products/forms.html',
+    '/products/lists.html',
+    '/products/planner.html',
+    '/products/to-do.html',
+    '/products/workspace.html'
+  ];
+  assert.deepEqual(suggestedPaths, expectedSuggestions);
+  assert.equal(new Set(suggestedPaths).size, 11, 'Each customer guide must have exactly one suggestion');
+});
+
