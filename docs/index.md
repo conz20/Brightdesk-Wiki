@@ -42,7 +42,7 @@ permalink: /index.html
   </div>
   <div class="product-card-grid">
     <a class="product-card product-card-suite" href="customer-start-here.html">
-      <span class="product-card-mark-img" aria-hidden="true">B</span>
+      <img class="product-card-mark-img" src="favicon.svg" alt="" width="66" height="66" loading="eager">
       <span class="product-card-name">Brightdesk Suite</span>
       <span class="product-card-description">How the Suite fits together and where to start</span>
     </a>
