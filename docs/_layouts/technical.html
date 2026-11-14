@@ -18,7 +18,7 @@
           <span>Brightdesk <span class="brand-light">Technical Documentation</span></span>
         </a>
         <nav class="site-nav" aria-label="Main navigation">
-          <a href="{{ '/index.html' | relative_url }}">Everyday Help</a>
+          <a href="{{ '/everyday/index.html' | relative_url }}">Everyday Help</a>
           <a href="{{ '/technical/index.html' | relative_url }}"{% if page.url == '/technical/index.html' %} aria-current="page"{% endif %}>Technical Documentation</a>
         </nav>
       </div>
@@ -70,7 +70,7 @@
             <li><a href="{{ '/technical/products/workspace.html' | relative_url }}"{% if page.url == '/technical/products/workspace.html' %} aria-current="page"{% endif %}>Workspace</a></li>
           </ul>
         </nav>
-        <p class="sidebar-return"><a href="{{ '/index.html' | relative_url }}">← Back to Everyday Help</a></p>
+        <p class="sidebar-return"><a href="{{ '/everyday/index.html' | relative_url }}">← Back to Everyday Help</a></p>
       </aside>
       <article class="content-card technical-card">
         <p class="technical-breadcrumb"><a href="{{ '/technical/index.html' | relative_url }}">Technical Documentation</a> <span aria-hidden="true">/</span> {{ page.title | escape }}</p>
@@ -78,7 +78,7 @@
       </article>
     </main>
     <footer class="site-footer technical-footer">
-      <p>Need plain-English, step-by-step instructions? <a href="{{ '/index.html' | relative_url }}">Return to Brightdesk Help</a>.</p>
+      <p>Need plain-English, step-by-step instructions? <a href="{{ '/everyday/index.html' | relative_url }}">Return to Everyday Help</a>.</p>
       <p>Technical Documentation is a separate, static, read-only reference. Its links open documentation pages only; they do not launch or control Brightdesk software.</p>
     </footer>
   </body>

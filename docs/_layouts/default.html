@@ -19,6 +19,7 @@
         </a>
         <nav class="site-nav" aria-label="Main navigation">
           <a href="{{ '/index.html' | relative_url }}"{% if page.url == '/index.html' %} aria-current="page"{% endif %}>Help home</a>
+          <a href="{{ '/everyday/index.html' | relative_url }}"{% if page.url == '/everyday/index.html' %} aria-current="page"{% endif %}>Everyday Help</a>
           <a href="{{ '/customer-start-here.html' | relative_url }}"{% if page.url == '/customer-start-here.html' %} aria-current="page"{% endif %}>Suite guide</a>
           <details class="product-menu" aria-label="Browse product guides">
             <summary>Product guides</summary>
@@ -46,12 +47,12 @@
         <input id="help-search" type="search" autocomplete="off"
           placeholder="Try “PDF”, “formula”, “checklist” or a product name"
           aria-describedby="help-search-hint help-search-status" aria-controls="help-search-results">
-        <p id="help-search-hint" class="search-hint">Search the homepage, Suite guide and all ten product guides.</p>
+        <p id="help-search-hint" class="search-hint">Search Everyday Help, the Suite guide and all ten product guides.</p>
         <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a word or task to find a guide.</p>
         <ul id="help-search-results" class="search-results" aria-label="Matching help guides" hidden></ul>
       </section>
     </header>
-    {% assign public_help_paths = "/index.html|/customer-start-here.html|/products/pages.html|/products/sheets.html|/products/decks.html|/products/notes.html|/products/database.html|/products/forms.html|/products/lists.html|/products/planner.html|/products/to-do.html|/products/workspace.html" | split: "|" %}
+    {% assign public_help_paths = "/index.html|/everyday/index.html|/customer-start-here.html|/products/pages.html|/products/sheets.html|/products/decks.html|/products/notes.html|/products/database.html|/products/forms.html|/products/lists.html|/products/planner.html|/products/to-do.html|/products/workspace.html" | split: "|" %}
     <nav class="search-index" aria-label="Searchable help guide content" hidden>
       {% for help_page in site.pages %}
         {% if public_help_paths contains help_page.url %}

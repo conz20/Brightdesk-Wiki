@@ -16,6 +16,7 @@ const TECHNICAL_PAGES = [
 
 function siteFixture(t) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'brightdesk-public-site-'));
+  fs.mkdirSync(path.join(rootDir, 'everyday'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'technical/products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
@@ -25,6 +26,7 @@ function siteFixture(t) {
   fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\\n');
   const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\\n';
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
+  fs.writeFileSync(path.join(rootDir, 'everyday/index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
   for (const product of PRODUCTS) {
     fs.writeFileSync(path.join(rootDir, 'products', product + '.html'), html);
@@ -69,8 +71,8 @@ test('all technical documentation pages use stable public URLs', () => {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 38);
-  assert.equal(result.htmlPages, 26);
+  assert.equal(result.files, 39);
+  assert.equal(result.htmlPages, 27);
 });
 
 test('approved static local SVG workflow illustrations pass the output check', t => {
@@ -82,7 +84,7 @@ test('approved static local SVG workflow illustrations pass the output check', t
   assert.equal(svg.includes('foreignObject'), false);
   assert.equal(svgWithoutNamespace.includes('http://'), false);
   assert.equal(svgWithoutNamespace.includes('//'), false);
-  assert.equal(checkPublicSite({ siteRoot }).files, 38);
+  assert.equal(checkPublicSite({ siteRoot }).files, 39);
 });
 
 test('active or externally linked SVG content is rejected', t => {
@@ -394,5 +396,19 @@ test('keyboard focus outlines meet 3:1 contrast in light and dark themes', () =>
       rule.includes('outline:3pxsolidvar(--focus-ring)'),
       selector + ' must use the theme-aware focus colour'
     );
+  }
+});
+
+
+test('the public homepage offers separate Everyday and Technical destinations', () => {
+  const home = fs.readFileSync(path.join(process.cwd(), 'docs', 'index.md'), 'utf8');
+  const everyday = fs.readFileSync(path.join(process.cwd(), 'docs', 'everyday', 'index.md'), 'utf8');
+  const technical = fs.readFileSync(path.join(process.cwd(), 'docs', 'technical', 'index.md'), 'utf8');
+  assert.match(home, /href="everyday\/index\.html"/);
+  assert.match(home, /href="technical\/index\.html"/);
+  assert.match(everyday, /^permalink: \/everyday\/index\.html$/m);
+  for (const product of PRODUCTS) {
+    assert.ok(everyday.includes('../products/' + product + '.html'), product + ' Everyday guide link');
+    assert.ok(technical.includes('products/' + product + '.html'), product + ' Technical reference link');
   }
 });

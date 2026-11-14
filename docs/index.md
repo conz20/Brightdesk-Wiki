@@ -10,7 +10,7 @@ permalink: /index.html
   <h1 id="portal-title">What would you like help with?</h1>
   <p class="portal-intro">Choose the kind of information you want. Both areas are part of one Brightdesk Help website, and you can switch between them at any time.</p>
   <div class="portal-choices">
-    <a class="portal-choice portal-choice-everyday" href="customer-start-here.html">
+    <a class="portal-choice portal-choice-everyday" href="everyday/index.html">
       <span class="portal-choice-icon" aria-hidden="true">B</span>
       <span class="portal-choice-copy">
         <span class="portal-choice-label">A SIMPLE PLACE TO START</span>
@@ -47,43 +47,43 @@ permalink: /index.html
       <span class="product-card-description">How the Suite fits together and where to start</span>
     </a>
     <a class="product-card" href="products/pages.html">
-      <img src="assets/images/guide-pages.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-pages.svg" alt="Pages product illustration" loading="lazy">
       <span class="product-card-name">Pages</span><span class="product-card-description">Documents and writing</span>
     </a>
     <a class="product-card" href="products/sheets.html">
-      <img src="assets/images/guide-sheets.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-sheets.svg" alt="Sheets product illustration" loading="lazy">
       <span class="product-card-name">Sheets</span><span class="product-card-description">Spreadsheets and calculations</span>
     </a>
     <a class="product-card" href="products/decks.html">
-      <img src="assets/images/guide-decks.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-decks.svg" alt="Decks product illustration" loading="lazy">
       <span class="product-card-name">Decks</span><span class="product-card-description">Slide presentations</span>
     </a>
     <a class="product-card" href="products/notes.html">
-      <img src="assets/images/guide-notes.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-notes.svg" alt="Notes product illustration" loading="lazy">
       <span class="product-card-name">Notes</span><span class="product-card-description">Notes and ideas</span>
     </a>
     <a class="product-card" href="products/database.html">
-      <img src="assets/images/guide-database.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-database.svg" alt="Database product illustration" loading="lazy">
       <span class="product-card-name">Database</span><span class="product-card-description">Structured records</span>
     </a>
     <a class="product-card" href="products/forms.html">
-      <img src="assets/images/guide-forms.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-forms.svg" alt="Forms product illustration" loading="lazy">
       <span class="product-card-name">Forms</span><span class="product-card-description">Forms and responses</span>
     </a>
     <a class="product-card" href="products/lists.html">
-      <img src="assets/images/guide-lists.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-lists.svg" alt="Lists product illustration" loading="lazy">
       <span class="product-card-name">Lists</span><span class="product-card-description">Custom lists and records</span>
     </a>
     <a class="product-card" href="products/planner.html">
-      <img src="assets/images/guide-planner.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-planner.svg" alt="Planner product illustration" loading="lazy">
       <span class="product-card-name">Planner</span><span class="product-card-description">Projects and planning</span>
     </a>
     <a class="product-card" href="products/to-do.html">
-      <img src="assets/images/guide-to-do.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-to-do.svg" alt="To Do product illustration" loading="lazy">
       <span class="product-card-name">To Do</span><span class="product-card-description">Personal tasks</span>
     </a>
     <a class="product-card" href="products/workspace.html">
-      <img src="assets/images/guide-workspace.svg" alt="" loading="lazy">
+      <img src="assets/images/guide-workspace.svg" alt="Workspace product illustration" loading="lazy">
       <span class="product-card-name">Workspace</span><span class="product-card-description">Project information together</span>
     </a>
   </div>

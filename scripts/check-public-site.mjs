@@ -14,7 +14,7 @@ const TECHNICAL_PAGES = [
   ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
 ];
 const IMAGE_FILES = PRODUCTS.map(product => 'assets/images/guide-' + product + '.svg');
-const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js']
+const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js']
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
   .concat(TECHNICAL_PAGES)
   .concat(IMAGE_FILES);

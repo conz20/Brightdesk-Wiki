@@ -74,6 +74,7 @@ test('Everyday Help marks the current homepage, Suite and product navigation lin
 
   const routes = [
     '/index.html',
+    '/everyday/index.html',
     '/customer-start-here.html',
     '/products/pages.html',
     '/products/sheets.html',
