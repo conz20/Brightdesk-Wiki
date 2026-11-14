@@ -57,6 +57,37 @@ Plans, buckets and tasks are saved on this device as you work. Check the local-s
 6. Use **Search tasks** or **Filter progress** to find it again.
 
 **What you should have:** a simple project board with a task grouped in a bucket. The plan is saved on this device.
+## More examples to try
+
+### Plan a small event
+
+1. Create a plan called **Community event**.
+2. Keep the starting **To do** bucket, then add **In progress** and **Completed** buckets.
+3. Add tasks such as **Choose a date**, **Prepare the room** and **Create a running order**.
+4. Set a priority and progress for each task.
+5. Add a due date where useful.
+6. Use **Search tasks** or the progress and priority filters to find work.
+
+**What you should have:** an event plan grouped into buckets, with task priorities and progress.
+
+### Break a large job into stages
+
+1. Create a plan called **Office move**.
+2. Add buckets for stages such as **Before the move**, **Moving day** and **After the move**.
+3. Add one task for each action.
+4. Choose a bucket, priority and progress for each task.
+5. Search for a task when you need to find it again.
+
+**What you should have:** a project board that groups tasks by stage. Tasks remain local to this device.
+
+## Common questions and fixes
+
+**Can I delete the final bucket?** No. A plan must keep at least one bucket.
+
+**What happens to tasks when I delete a bucket?** Its tasks are moved to another remaining bucket. Check where they have moved before continuing.
+
+**Why can't I edit every task detail on its card?** The current task card editor exposes title editing and a progress selector. Other task details are set when creating the task.
+
 ## Current feature boundaries
 
 Planner currently provides local plans and task boards. Connected user directories, automatic assignment, operating-system notifications, recurring reminders, cloud sync and shared plans are not included in the current stated scope. The current task card editor only exposes title editing and a progress selector.
