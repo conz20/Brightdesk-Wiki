@@ -99,6 +99,46 @@ test('Everyday Help marks the current homepage, Suite and product navigation lin
   }
 });
 
+const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html', import.meta.url), 'utf8');
+
+test('technical reference navigation is named and marks the current document', () => {
+  const sidebarStart = technicalLayout.indexOf('<aside class="technical-sidebar"');
+  const navStart = technicalLayout.indexOf('<nav', sidebarStart);
+  const navEnd = technicalLayout.indexOf('</nav>', navStart);
+  assert.ok(sidebarStart >= 0 && navStart > sidebarStart && navEnd > navStart, 'Technical sidebar navigation must be present');
+  const navigation = technicalLayout.slice(navStart, navEnd);
+
+  assert.match(navigation, /^<nav aria-label="Technical reference navigation">/);
+
+  const routes = [
+    '/technical/index.html',
+    '/technical/system-overview.html',
+    '/technical/file-formats.html',
+    '/technical/data-and-privacy.html',
+    '/technical/products/pages.html',
+    '/technical/products/sheets.html',
+    '/technical/products/decks.html',
+    '/technical/products/notes.html',
+    '/technical/products/database.html',
+    '/technical/products/forms.html',
+    '/technical/products/lists.html',
+    '/technical/products/planner.html',
+    '/technical/products/to-do.html',
+    '/technical/products/workspace.html'
+  ];
+
+  for (const route of routes) {
+    const anchor = navigation.split(/\\r?\\n/).find(line =>
+      line.includes(`href="{{ '${route}' | relative_url }}"`)
+    );
+    assert.ok(anchor, 'Technical reference link must exist for ' + route);
+    assert.ok(
+      anchor.includes(`{% if page.url == '${route}' %} aria-current="page"{% endif %}`),
+      'Technical reference link must announce the current document for ' + route
+    );
+  }
+});
+
 test('help typography keeps comfortable reading size and spacing', () => {
   const body = css.match(/body\s*\{([^}]*)\}/i);
   assert.ok(body, 'The stylesheet must define body typography');
