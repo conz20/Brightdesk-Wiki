@@ -14,7 +14,7 @@ Use Decks to build and present a slide presentation.
 
 
 <figure class="guide-illustration">
-  <img src="../assets/images/guide-decks.svg" alt="Three-step illustration for Brightdesk Decks: start the task, add the information you need, then finish or save your work." width="1200" height="360">
+  <img src="../assets/images/guide-decks.svg" alt="Three-step illustration for Brightdesk Decks: add your slides, arrange the content, then present your work." width="1200" height="360">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
 <nav class="guide-contents" aria-label="Sections in this guide">

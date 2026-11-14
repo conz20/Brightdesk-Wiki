@@ -14,7 +14,7 @@ Use Planner to organise a project into a plan, buckets and tasks.
 
 
 <figure class="guide-illustration">
-  <img src="../assets/images/guide-planner.svg" alt="Three-step illustration for Brightdesk Planner: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <img src="../assets/images/guide-planner.svg" alt="Three-step illustration for Brightdesk Planner: create a plan, add buckets and tasks, then track progress." width="1200" height="360" loading="lazy">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
 <nav class="guide-contents" aria-label="Sections in this guide">

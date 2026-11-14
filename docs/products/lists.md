@@ -14,7 +14,7 @@ Use Lists to organise projects, stock, contacts or other information as structur
 
 
 <figure class="guide-illustration">
-  <img src="../assets/images/guide-lists.svg" alt="Three-step illustration for Brightdesk Lists: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <img src="../assets/images/guide-lists.svg" alt="Three-step illustration for Brightdesk Lists: create a list, add items and columns, then find what you need using search, filters or sorting." width="1200" height="360" loading="lazy">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
 <nav class="guide-contents" aria-label="Sections in this guide">

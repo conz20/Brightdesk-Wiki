@@ -17,6 +17,17 @@ const expected = new Map([
   ['planner.md', 'Brightdesk Planner'],
   ['to-do.md', 'Brightdesk To Do'],
   ['workspace.md', 'Brightdesk Workspace']
+]);const illustrationAlt = new Map([
+  ['database.md', "Three-step illustration for Brightdesk Database: create a table, choose the fields you need, then add records you can find and sort."],
+  ['decks.md', "Three-step illustration for Brightdesk Decks: add your slides, arrange the content, then present your work."],
+  ['forms.md', "Three-step illustration for Brightdesk Forms: create a form, add questions, then preview it before use."],
+  ['lists.md', "Three-step illustration for Brightdesk Lists: create a list, add items and columns, then find what you need using search, filters or sorting."],
+  ['notes.md', "Three-step illustration for Brightdesk Notes: create a note, capture your idea, then keep a copy."],
+  ['pages.md', "Three-step illustration for Brightdesk Pages: create a document, write and format it, then save or export an editable copy."],
+  ['planner.md', "Three-step illustration for Brightdesk Planner: create a plan, add buckets and tasks, then track progress."],
+  ['sheets.md', "Three-step illustration for Brightdesk Sheets: enter your data, add a formula, then check the calculated result."],
+  ['to-do.md', "Three-step illustration for Brightdesk To Do: open My Day, add your tasks, then mark finished work complete."],
+  ['workspace.md', "Three-step illustration for Brightdesk Workspace: create a workspace, add pages and blocks, then use a checklist."]
 ]);
 
 test('customer help contains exactly the ten approved product guides', () => {
@@ -50,6 +61,15 @@ test('all ten everyday product guides share the same simple navigation structure
     assert.match(source, /<a href="#workflows">Workflows<\/a>/, product + ' must link to its task instructions');
     assert.match(source, /<a href="#troubleshooting-and-common-questions">Troubleshooting<\/a>/, product + ' must link to its troubleshooting section');
     assert.ok(source.includes('](../technical/products/' + product + '.html)'), product + ' must link to its separate technical reference');
+  }
+});
+
+test('each product diagram has alternative text that describes its own three steps', () => {
+  for (const [filename, expectedAlt] of illustrationAlt) {
+    const source = fs.readFileSync(path.join(productDirectory, filename), 'utf8');
+    const image = source.match(/<img\b[^>]*\balt="([^"]+)"/);
+    assert.ok(image, filename + ' must provide alternative text for its diagram');
+    assert.equal(image[1], expectedAlt, filename + ' alternative text must describe the steps shown in its own diagram');
   }
 });
 

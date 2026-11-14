@@ -14,7 +14,7 @@ Use Sheets to organise information in a grid and calculate values with supported
 
 
 <figure class="guide-illustration">
-  <img src="../assets/images/guide-sheets.svg" alt="Three-step illustration for Brightdesk Sheets: start the task, add the information you need, then finish or save your work." width="1200" height="360">
+  <img src="../assets/images/guide-sheets.svg" alt="Three-step illustration for Brightdesk Sheets: enter your data, add a formula, then check the calculated result." width="1200" height="360">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
 <nav class="guide-contents" aria-label="Sections in this guide">

@@ -14,7 +14,7 @@ Use Workspace to bring related project information together in workspaces and pa
 
 
 <figure class="guide-illustration">
-  <img src="../assets/images/guide-workspace.svg" alt="Three-step illustration for Brightdesk Workspace: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <img src="../assets/images/guide-workspace.svg" alt="Three-step illustration for Brightdesk Workspace: create a workspace, add pages and blocks, then use a checklist." width="1200" height="360" loading="lazy">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
 <nav class="guide-contents" aria-label="Sections in this guide">

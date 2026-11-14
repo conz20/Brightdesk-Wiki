@@ -14,7 +14,7 @@ Use Database to keep structured information in tables with named fields.
 
 
 <figure class="guide-illustration">
-  <img src="../assets/images/guide-database.svg" alt="Three-step illustration for Brightdesk Database: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <img src="../assets/images/guide-database.svg" alt="Three-step illustration for Brightdesk Database: create a table, choose the fields you need, then add records you can find and sort." width="1200" height="360" loading="lazy">
   <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
 </figure>
 <nav class="guide-contents" aria-label="Sections in this guide">
