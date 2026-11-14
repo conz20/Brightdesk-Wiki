@@ -213,3 +213,44 @@ a:focus-visible {
 @media (max-width: 600px) {
   .task-grid { grid-template-columns: 1fr; }
 }
+
+/* Clear first step for visitors who are new to Brightdesk */
+.start-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 1.25rem 0 2rem;
+  padding: 1.2rem 1.3rem;
+  background: #edf4ff;
+  border: 1px solid #c9dcf7;
+  border-radius: .8rem;
+}
+.start-panel .eyebrow {
+  margin: 0 0 .25rem;
+  color: var(--brand-dark);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.start-panel h2 { margin: 0 0 .35rem; font-size: 1.25rem; }
+.start-panel p:last-child { margin: 0; }
+.start-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .7rem .95rem;
+  color: #fff;
+  background: var(--brand-dark);
+  border: 1px solid var(--brand-dark);
+  border-radius: .5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.start-link:hover { background: #0d3975; }
+.start-link:focus-visible { outline: 3px solid #8a4b00; outline-offset: 3px; }
+@media (max-width: 600px) {
+  .start-panel { align-items: stretch; flex-direction: column; }
+  .start-link { justify-content: center; }
+}
