@@ -10,7 +10,9 @@ permalink: /products/forms.html
 
 ![Brightdesk Forms product icon](../assets/images/product-icons/forms.svg){: .product-guide-icon }
 
-![Three-step workflow: create a form, add questions, then preview the form.](../assets/images/workflows/guide-forms.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-forms.svg" alt="Three-step workflow: create a form, add questions, then preview the form." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
