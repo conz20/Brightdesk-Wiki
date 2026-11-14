@@ -20,9 +20,9 @@ function siteFixture(t) {
   fs.mkdirSync(path.join(rootDir, 'technical/products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
-  fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
-  fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\n');
-  const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\n';
+  fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\\n');
+  fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\\n');
+  const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\\n';
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
   for (const product of PRODUCTS) {
@@ -36,6 +36,13 @@ function siteFixture(t) {
   t.after(() => fs.rmSync(rootDir, { recursive: true, force: true }));
   return rootDir;
 }
+
+test('technical documentation landing page has its stable public URL', () => {
+  const sourcePath = path.join(process.cwd(), 'docs', 'technical', 'index.md');
+  const source = fs.readFileSync(sourcePath, 'utf8');
+  assert.match(source, /^permalink: \/technical\/index\\.html$/m);
+  assert.doesNotMatch(source, /^permalink: \/technical\.\.\//m);
+});
 
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
@@ -151,7 +158,7 @@ test('protocol-relative external links are rejected from customer pages', t => {
 
 test('protocol-relative stylesheet imports are rejected', t => {
   const siteRoot = siteFixture(t);
-  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@import "//example.com/site.css";\n');
+  fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@import "//example.com/site.css";\\n');
   assert.throws(() => checkPublicSite({ siteRoot }), /external resources/i);
 });
 
@@ -240,7 +247,7 @@ test('style elements cannot add inline styles or external imports', t => {
   const siteRoot = siteFixture(t);
   fs.writeFileSync(
     path.join(siteRoot, 'index.html'),
-    '<!doctype html><style>@import \"//example.com/site.css\";</style>'
+    '<!doctype html><style>@import "//example.com/site.css";</style>'
   );
   assert.throws(() => checkPublicSite({ siteRoot }), /inline CSS/i);
 });
@@ -249,7 +256,7 @@ test('non-web URL schemes are rejected in resource attributes', t => {
   const siteRoot = siteFixture(t);
   fs.writeFileSync(
     path.join(siteRoot, 'index.html'),
-    '<!doctype html><img src=\"ftp://images.example.com/photo.png\" alt=\"Example\">'
+    '<!doctype html><img src="ftp://images.example.com/photo.png" alt="Example">'
   );
   assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
 });
