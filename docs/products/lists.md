@@ -10,6 +10,10 @@ permalink: /products/lists.html
 
 ![Brightdesk Lists product icon](../assets/images/product-icons/lists.svg){: .product-guide-icon }
 
+![Three-step workflow: create a list, add items and columns, then search, filter or sort.](../assets/images/workflows/guide-lists.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Lists to organise projects, stock, contacts or other information as structured records.
 
 ## Create a list
