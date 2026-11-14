@@ -246,3 +246,9 @@ test('Workspace and Database examples use the exact current Suite control labels
   assert.match(databaseGuide, /Text, Number, Date, Email, URL, Checkbox or Choice/);
   assert.doesNotMatch(databaseGuide, /Choice list|Web address/);
 });
+
+test('Lists guide explains the working Active and Done status filters', () => {
+  const listsGuide = fs.readFileSync(new URL('../docs/products/lists.md', import.meta.url), 'utf8');
+  assert.match(listsGuide, /\*\*Active\*\* \(Not started and In progress\)/);
+  assert.match(listsGuide, /Done shows completed records/);
+});
