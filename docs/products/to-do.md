@@ -8,6 +8,8 @@ permalink: /products/to-do.html
 
 # Brightdesk To Do
 
+![Brightdesk To Do product icon](../assets/images/product-icons/to-do.svg){: .product-guide-icon }
+
 Use To Do to keep track of personal tasks, due dates and priorities.
 
 ## Add a task
