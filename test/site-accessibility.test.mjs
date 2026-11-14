@@ -139,3 +139,13 @@ test('technical reference layout provides the same keyboard and screen-reader es
   assert.ok(technicalLayout.includes('"@context": "https://schema.org"'));
   assert.ok(technicalLayout.includes('"@type": "WebSite"'));
 });
+
+
+const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
+
+test('homepage exposes one primary heading and named section landmarks', () => {
+  assert.match(homepage, /<header class="portal-hero" aria-labelledby="portal-title">/);
+  assert.equal((homepage.match(/<h1\\b/g) || []).length, 1, 'The homepage must have one primary heading');
+  assert.match(homepage, /<section class="portal-note" aria-labelledby="portal-note-title">/);
+  assert.match(homepage, /<h2 id="portal-note-title">About Brightdesk Help<\\/h2>/);
+});
