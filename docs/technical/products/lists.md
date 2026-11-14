@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Lists technical reference
 description: Lists record schema, custom column types and status filter mapping.
-permalink: /technical../../products/lists.html
+permalink: /technical/products/lists.html
 ---
 
 # Lists technical reference
