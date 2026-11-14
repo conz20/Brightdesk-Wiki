@@ -13,13 +13,13 @@ Use Database to keep structured information in tables with named fields.
 ## Create a table
 
 1. Open Brightdesk Database. A new database starts with **Table1**.
-2. Under **Tables**, enter a name in **New table name**.
-3. Choose **Create table**.
+2. Under **Tables**, enter a name in the **New table** field.
+3. Choose **Add table**.
 4. Select a table in the left-hand list to work with it.
 
 ## Add fields
 
-1. Expand **Manage fields**.
+1. Open the **Fields** section.
 2. Under **Add a field**, enter a **Field name**.
 3. Choose a **Field type**: Text, Number, Date, Email, URL, Checkbox or Choice.
 4. For a Choice field, enter the available choices separated by commas.
@@ -30,7 +30,7 @@ Your new field appears as a column in the table. The system ID field is managed 
 
 ## Add and update records
 
-1. Expand **Add a record**.
+1. Go to the **New record** section.
 2. Complete the fields shown for the selected table.
 3. Choose **Add record**.
 4. To update a value later, edit it directly in the table. The change is saved on this device.
