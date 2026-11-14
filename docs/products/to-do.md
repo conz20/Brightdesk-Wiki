@@ -10,6 +10,12 @@ permalink: /products/to-do.html
 
 Use To Do to keep track of personal tasks, due dates and priorities.
 
+
+<figure class="guide-illustration">
+  <img src="../assets/images/guide-to-do.svg" alt="Three-step illustration for Brightdesk To Do: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
+</figure>
+
 ## Add a task
 
 1. Open the **My Day** view or another task view.
@@ -92,5 +98,9 @@ To Do currently supports personal local task lists. Operating-system notificatio
 ## Guide status
 
 **Needs review.** These steps are based on the current To Do interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
+
+## Need the technical detail?
+
+For product behaviour, file handling and technical boundaries, see the [Brightdesk To Do technical reference](../technical/products/to-do.html).
 
 [Back to Brightdesk Help](../index.html)
