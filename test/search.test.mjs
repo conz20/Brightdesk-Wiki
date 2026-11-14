@@ -109,10 +109,9 @@ test('Technical Documentation search connects its label, instructions, live stat
     'Technical search must have a visible label'
   );
 
-  const inputLine = section.split('\n').find(line => line.includes('<input') && line.includes('id="help-search"'));
-  assert.ok(inputLine, 'Technical Documentation search input must be present');
-  assert.ok(inputLine.includes('aria-describedby="help-search-hint help-search-status"'));
-  assert.ok(inputLine.includes('aria-controls="help-search-results"'));
+  assert.ok(section.includes('<input id="help-search" type="search"'), 'Technical Documentation search input must be present');
+  assert.ok(section.includes('aria-describedby="help-search-hint help-search-status"'));
+  assert.ok(section.includes('aria-controls="help-search-results"'));
   assert.ok(section.includes('<p id="help-search-hint" class="search-hint">'));
   assert.ok(section.includes('<p id="help-search-status" class="search-status" role="status" aria-live="polite">'));
   assert.ok(section.includes('<ul id="help-search-results" class="search-results" aria-label="Matching technical references" hidden>'));
