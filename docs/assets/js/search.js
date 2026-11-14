@@ -6,8 +6,23 @@ function normaliseSearchText(value) {
     .trim();
 }
 
+const SEARCH_STOP_WORDS = new Set([
+  'a', 'an', 'and', 'are', 'as', 'at', 'be', 'can', 'could', 'do', 'does',
+  'for', 'from', 'have', 'help', 'how', 'i', 'in', 'is', 'it', 'me', 'my',
+  'need', 'of', 'on', 'or', 'please', 'the', 'this', 'to', 'want', 'what',
+  'when', 'where', 'which', 'who', 'why', 'with', 'would', 'you', 'your'
+]);
+
 export function searchTopics(topics, query, limit = 6) {
-  const terms = normaliseSearchText(query).split(/\s+/).filter(Boolean);
+  const normalisedQuery = normaliseSearchText(query);
+  const rawTerms = normalisedQuery.split(/\\s+/).filter(Boolean);
+  // Keep "to do" together because it is the exact name of an approved product.
+  const asksForToDo = /\\bto\\s+do\\b/.test(normalisedQuery);
+  const usefulTerms = rawTerms.filter(term =>
+    !SEARCH_STOP_WORDS.has(term) || (asksForToDo && (term === 'to' || term === 'do'))
+  );
+  // Preserve short product-name searches such as "Help" or "To Do".
+  const terms = usefulTerms.length ? usefulTerms : rawTerms;
   const maximum = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : 6;
   if (terms.length === 0 || maximum === 0) return [];
   return topics
