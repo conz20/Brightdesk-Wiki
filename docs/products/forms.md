@@ -10,6 +10,10 @@ permalink: /products/forms.html
 
 ![Brightdesk Forms product icon](../assets/images/product-icons/forms.svg){: .product-guide-icon }
 
+![Three-step workflow: create a form, add questions, then preview the form.](../assets/images/workflows/guide-forms.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Forms to create local forms, surveys and quizzes, then review the responses saved on your device.
 
 ## Create a form
