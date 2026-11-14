@@ -122,13 +122,23 @@ a:focus-visible {
 .content-card code { padding: 0.12rem 0.3rem; background: #eef2f6; border-radius: 0.25rem; }
 .content-card pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: 0.5rem; }
 .content-card pre code { padding: 0; background: transparent; }
+.workflow-diagram-scroll {
+  max-width: 100%;
+  margin: 1.25rem 0 0.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  overscroll-behavior-inline: contain;
+}
+.workflow-diagram-scroll:focus-visible {
+  outline: 3px solid #8a4b00;
+  outline-offset: 3px;
+}
 .product-workflow-diagram {
   display: block;
   width: 100%;
+  min-width: 720px;
   height: auto;
-  margin: 1.25rem 0 0.5rem;
-  border: 1px solid var(--line);
-  border-radius: 0.8rem;
 }
 
 .product-guide-icon {
