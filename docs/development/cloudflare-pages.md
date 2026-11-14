@@ -6,7 +6,7 @@ Brightdesk Suite, the ten approved desktop products and Brightdesk Help remain f
 
 Brightdesk Help is a separate, static, read-only public website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency. It does not receive customer documents or product data.
 
-The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 customer site build contains 27 approved HTML pages: the Help homepage, Everyday Help homepage, Suite getting-started guide, ten Everyday Help product guides, the Technical Documentation homepage, three system references and ten technical product references. It also contains one local CSS file, one local browser-search JavaScript file, ten original product icons and ten workflow illustrations: 52 files total. The exact output allowlist in `scripts/check-public-site.mjs` is authoritative.
+The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 customer site build contains 27 approved HTML pages: the Help homepage, Everyday Help homepage, Suite getting-started guide, ten Everyday Help product guides, the Technical Documentation homepage, three system references and ten technical product references. It also contains 24 local assets: one CSS file, one browser-search JavaScript file, ten product icons, ten workflow illustrations, the favicon and the social-preview SVG, plus one `_headers` policy file: 52 files total. The exact output allowlist in `scripts/check-public-site.mjs` is authoritative.
 
 ## Owner authorisation and cost boundary
 
@@ -76,6 +76,15 @@ The output audit requires exactly 52 files:
 - `technical/products/pages.html`, `technical/products/sheets.html`, `technical/products/decks.html`, `technical/products/notes.html`, `technical/products/database.html`, `technical/products/forms.html`, `technical/products/lists.html`, `technical/products/planner.html`, `technical/products/to-do.html` and `technical/products/workspace.html` — ten technical product references.
 
 **24 local assets**
+- `assets/css/site.css` — local styling.
+- `assets/js/search.js` — local-only browser search.
+- `assets/images/product-icons/` — exactly ten product SVG icons.
+- `assets/images/workflows/` — exactly ten explanatory workflow SVGs.
+- `favicon.svg` — Brightdesk Help favicon.
+- `assets/images/brightdesk-help-social.svg` — local social-preview artwork.
+
+**One policy file**
+- `_headers` — Cloudflare response-security headers.
 - `assets/css/site.css` — local styling.
 - `assets/js/search.js` — local-only browser search for the active help area. The generated script must remain free of network requests, analytics and visitor storage.
 - `assets/images/product-icons/` — exactly ten approved Brightdesk product SVG icons.

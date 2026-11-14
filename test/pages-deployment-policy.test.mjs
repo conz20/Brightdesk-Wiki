@@ -49,7 +49,9 @@ test('Jekyll builds from the customer docs folder at the Pages project root', ()
 test('GitHub Actions validates changes but never publishes or grants deployment permissions', () => {
   assert.match(workflow, /pull_request:\s*\n\s+branches:\s*\[main\]/);
   assert.match(workflow, /push:\s*\n\s+branches:\s*\[main\]/);
-  assert.match(workflow, /runs-on:\s*\[self-hosted,\s*macOS,\s*ARM64\]/);
+  assert.match(workflow, /runs-on:\s*ubuntu-latest/);
+  assert.match(workflow, /timeout-minutes:\s*10/);
+  assert.doesNotMatch(workflow, /self-hosted|macOS|ARM64/);
   assert.match(workflow, /run: npm run check:site/);
   assert.doesNotMatch(workflow, /pages:\s*write|id-token:\s*write|actions\/deploy-pages|actions\/upload-pages-artifact|actions\/configure-pages|github-pages/);
   assert.doesNotMatch(workflow, /CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID|wrangler-action/i);

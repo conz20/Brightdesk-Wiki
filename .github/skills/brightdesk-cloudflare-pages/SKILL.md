@@ -9,7 +9,7 @@ description: Use when setting up, configuring, deploying, or troubleshooting the
 
 This repository contains the private source for the separate Brightdesk customer Help website. Maintain it as an existing Cloudflare Pages static-site project. Do not migrate it to Workers, introduce Wrangler, or turn it into a customer product.
 
-The only intended customer URL is https://help.brightdesk.com. It is the approved target, not a verified live site. Never advertise a generated pages.dev hostname as the customer URL.
+The only approved customer URL is https://brightdesk-help.pages.dev/. This is Cloudflare Pages' free project hostname and the permanent customer address. PR preview addresses are review-only and never replace it. Do not add or advertise a paid .com custom domain.
 
 The Help site is optional. It is not bundled with Brightdesk, not required for offline use, and must never receive customer documents or application data.
 
@@ -33,7 +33,7 @@ Do not add paid plans, paid add-ons, metered services, subscriptions, or trials.
 
 ## Required privacy and output boundary
 
-The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 27 HTML pages (Help homepage, Everyday Help homepage, Suite getting-started page, ten Everyday Help product guides, Technical Documentation homepage, three system references, and ten technical product references) plus 22 local assets (one CSS, one search JavaScript, ten product icon SVGs, and ten workflow illustration SVGs), for 52 files total.
+The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 27 HTML pages (Help homepage, Everyday Help homepage, Suite getting-started page, ten Everyday Help product guides, Technical Documentation homepage, three system references, and ten technical product references) plus 24 local assets (one CSS file, one search JavaScript file, ten product icon SVGs, ten workflow illustration SVGs, the root favicon SVG, and the social-preview SVG), plus one `_headers` policy file, for 52 files total.
 
 The generated site must remain static and read-only. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images, external stylesheets, or customer-data collection. Do not publish internal architecture, development, security, release, maintainer, runner, or repository material.
 
@@ -45,19 +45,12 @@ The Cloudflare GitHub App must be installed with repository access restricted to
 
 Cloudflare's GitHub App connection is separate from the Cloudflare API MCP token. A Pages API token does not install or authorise the GitHub App.
 
-## DNS and custom-domain safeguards
+## Domain and DNS safeguards
 
-The domain brightdesk.com is currently recorded as delegated to Sedo parking nameservers. The public DNS snapshot dated 13 November 2026 showed the root, www, and help names resolving to 64.190.63.111. This is not a complete DNS-zone export and does not establish which records are editable in the owner's registrar account.
-
-Never change nameservers, DNS records, DNSSEC, mail records, or domain registration/transfer settings without all of the following:
-
-1. A complete DNS-zone export from the current authoritative provider.
-2. A record-by-record preservation plan for all existing website, mail, verification, and security records.
-3. The owner's explicit approval of the exact proposed DNS change.
-
-Check whether the current Sedo DNS controls support adding the help CNAME first. If they do, keep the current nameservers. Do not migrate DNS just to use Cloudflare Pages.
-
-For a subdomain, add help.brightdesk.com under the Pages project's Custom domains first. Only then use the exact pages.dev CNAME target Cloudflare displays for that project. Never guess the target. Verify DNS resolution and HTTPS before reporting the site live.
+- The approved customer address is **https://brightdesk-help.pages.dev/**, using Cloudflare's free project hostname.
+- No custom domain purchase, paid registration, DNS record change, nameserver change or DNSSEC change is required or authorised.
+- Do not configure `help.brightdesk.com`, transfer or change domain registration, or migrate DNS.
+- A custom domain is outside the current project. Any future proposal would require a complete current DNS-zone export, a preservation plan and the owner's explicit approval of the exact change before any action.
 
 ## Safe use of Cloudflare MCP
 
@@ -83,7 +76,7 @@ A live-site claim requires:
 - The correct private Wiki repository connected.
 - Production branch main; verify the preview-branch setting against the owner's approved policy (target None).
 - A successful current build and the exact 52-file privacy audit.
-- The custom domain help.brightdesk.com active with valid HTTPS.
+- The free project hostname https://brightdesk-help.pages.dev/ serving the verified production deployment over valid HTTPS.
 - The deployed commit SHA recorded.
 - The homepage, Suite guide, and all ten product guides checked on the live .com URL.
 

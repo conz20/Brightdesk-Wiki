@@ -33,9 +33,9 @@ test('Brightdesk Pages skill fixes the private project, build, runtime, and publ
     '24.22.2',
     '3.4.4',
     '27 HTML pages',
-    '22 local assets',
-    '49 files total',
-    'help.brightdesk.com',
+    '24 local assets',
+    '52 files total',
+    'https://brightdesk-help.pages.dev/',
     'Only select repositories',
     'Do not add paid plans',
     'COPILOT_MCP_CLOUDFLARE_API_TOKEN'
