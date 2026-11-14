@@ -56,7 +56,7 @@ Cloudflare's GitHub App connection is separate from the Cloudflare API MCP token
 
 The optional `.github/mcp.json` configuration exposes only Cloudflare's public documentation search server. It is read-only and requires no account token or GitHub secret.
 
-Do not add a Cloudflare API execution server, API token, or GitHub Agents secret to this repository. The website's deployment does not require Cloudflare API credentials. Do not grant DNS Write or broader Cloudflare permissions, and do not delete Pages projects or deployments as part of setup or repair. Cloudflare project changes must be made by the owner in the Cloudflare dashboard and must follow the approval boundaries above.
+Do not add a Cloudflare API execution server, API token, or GitHub Agents secret to this repository. The website's deployment does not require Cloudflare API credentials. Do not grant DNS Write or broader Cloudflare permissions, and do not delete Pages projects. Do not delete Pages projects or deployments as part of setup or repair. Cloudflare project changes must be made by the owner in the Cloudflare dashboard and must follow the approval boundaries above.
 
 ## Deployment verification
 
@@ -65,9 +65,9 @@ Before creating or changing the production project, inspect the current reposito
 A live-site claim requires:
 - The correct private Wiki repository connected.
 - Production branch main; verify the preview-branch setting against the owner's approved policy (target None).
-- A successful current build and the exact 52-file privacy audit.
+- A successful current build and the exact 56-file privacy audit.
 - The free project hostname https://brightdesk-help.pages.dev/ serving the verified production deployment over valid HTTPS.
 - The deployed commit SHA recorded.
-- The homepage, Suite guide, and all ten product guides checked on the live .com URL.
+- The homepage, Suite guide, and all ten product guides checked on the approved free pages.dev URL.
 
 Keep this skill subordinate to the repository's fixed privacy, cost, product-scope, and DNS requirements.
