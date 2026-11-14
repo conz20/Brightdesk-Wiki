@@ -42,7 +42,7 @@ Export creates a separate file. Keep a Brightdesk project copy when you need to 
 
 ## Related references
 
-- [Pages technical reference](/technical/products/pages.html)
-- [Sheets technical reference](/technical/products/sheets.html)
-- [Decks technical reference](/technical/products/decks.html)
-- [Everyday Help: Suite files and exports](/customer-start-here.html)
+- [Pages technical reference](products/pages.html)
+- [Sheets technical reference](products/sheets.html)
+- [Decks technical reference](products/decks.html)
+- [Everyday Help: Suite files and exports](../customer-start-here.html)
