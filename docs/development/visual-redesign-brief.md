@@ -122,3 +122,17 @@ The redesign is not complete until all of the following are true:
 ## Research notes
 
 Craft Wiki demonstrates useful capability patterns: a focused landing page, a browsable app directory, clear app categories, consistent guide families, a persistent app navigation model and detailed workflow pages with supporting visuals. Brightdesk should adapt the usability lessons to its own ten-product scope and static, private-data-safe implementation. Craft's authoring portal, sign-in flow, third-party identity, product catalogue, visual identity and assets are not part of the Brightdesk design.
+
+## Design and verification tools
+
+Use specialist tools when they are connected and available, with each tool limited to its proper job:
+
+- **12ui Design:** required visual exploration and design-to-code workflow for the full multi-page redesign. The CLI is not currently available in the working environment; the previous package-registry attempt failed. Do not replace its required candidate-selection and implementation-review stages with improvised CSS.
+- **Product Design:** proposed for user-flow review, alternative interface directions and prototype critique. It has been suggested for connection; do not claim it is connected or use it until the user completes the connection.
+- **Figma:** proposed for editable screen designs, reusable design-system components and implementation handoff. It has been suggested for connection; do not claim it is connected or use it until the user completes the connection.
+- **GitHub:** source-of-truth for branch changes, review state, commit history and exact-head CI evidence.
+- **Web Validator:** may check supplied HTML/CSS syntax and bounded public pages where permitted. A CSS syntax pass does not establish visual quality, WCAG conformance or browser usability.
+- **Browser context:** may inspect pages already open in the user's browser. The available read-only browser actions do not provide interactive viewport, keyboard or screen-reader testing.
+- **GitHub Actions:** remains the authoritative automated build, regression, link and public-output privacy gate for each exact commit.
+
+Do not connect a design provider to the repository or grant broad account access unless its permissions are clear and the user has approved the connection. Never send private repository content to a third-party design service unless the user explicitly approves that data flow. Prefer sanitized screenshots and synthetic content for design exploration.
