@@ -32,7 +32,7 @@ Use **Search pages** to search page titles and page content.
 1. Open the page you want to edit.
 2. Choose a content type from the block list: **Text**, **Heading**, **Bullet list**, **Callout**, **Checklist** or **Divider**.
 3. For Text, Heading, Bullet list or Callout, enter the content in the text field.
-4. Choose **Add to page**.
+4. Choose **Add block**.
 
 ## Use a checklist
 
