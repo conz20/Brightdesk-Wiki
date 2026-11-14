@@ -46,15 +46,15 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #295](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557189238) passed on the current PR head `e57bd3f572bf41ed73c1d8e62c253cfe298b4cd2`. This exact-head run completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
+[Run #296](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557314209) passed on commit `98500f11db2aabd2bd5c57cb6922161bd3bc8728`. The workflow completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
 
-[Run #294](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556708962) passed on commit `acdec414a39c85f01baff970f96db834113576e1`. It passed on the immediately preceding commit. The exact-head workflow completed its pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
+[Run #295](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557189238) passed on the immediately preceding commit `e57bd3f572bf41ed73c1d8e62c253cfe298b4cd2`. It completed the same validation pipeline successfully.
 
-[Run #293](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556304582) also passed on the immediately preceding commit `60b1c7dcb1ac377b181d73b2db591188afe29b0a`. Its detailed result was 109 tests passed, 0 failed and 0 skipped; 39 Markdown files and 99 local file/directory links checked; Jekyll generation passed; and the privacy audit approved 26 documentation pages and 38 static files.
+[Run #294](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556708962) passed on commit `acdec414a39c85f01baff970f96db834113576e1`. [Run #293](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556304582) passed on commit `60b1c7dcb1ac377b181d73b2db591188afe29b0a`. Run #293 reported 109 tests passed, 0 failed and 0 skipped; 39 Markdown files and 99 local file/directory links checked; Jekyll generation passed; and the privacy audit approved 26 documentation pages and 38 static files.
 
-[Run #292](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556224932) is historical evidence for the earlier commit `acbd5ea86532b6f16eef7eba3181ab5bf27e8ac1`.
+[Run #292](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556224932) is historical evidence for commit `acbd5ea86532b6f16eef7eba3181ab5bf27e8ac1`.
 
-Each new commit must pass its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. Automated CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+These run entries are an audit trail for the exact commits named; they do not claim that an earlier run checked a later commit. Every new commit must pass its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the current branch head. Automated CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 
