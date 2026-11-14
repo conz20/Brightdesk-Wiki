@@ -10,7 +10,9 @@ permalink: /products/lists.html
 
 ![Brightdesk Lists product icon](../assets/images/product-icons/lists.svg){: .product-guide-icon }
 
-![Three-step workflow: create a list, add items and columns, then search, filter or sort.](../assets/images/workflows/guide-lists.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-lists.svg" alt="Three-step workflow: create a list, add items and columns, then search, filter or sort." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
