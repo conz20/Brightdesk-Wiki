@@ -150,3 +150,50 @@ test('technical references explain source-confirmed formula, search and data-rem
   assert.match(todo, /Search checks task titles and notes/i);
   assert.match(workspace, /checklist item text/i);
 });
+
+test('every product has one correctly named reciprocal link and no extra technical product guide', () => {
+  const technicalDirectory = path.join(root, 'docs', 'technical', 'products');
+  const technicalGuideFiles = fs.readdirSync(technicalDirectory)
+    .filter(filename => filename.endsWith('.md'))
+    .sort();
+  assert.deepEqual(
+    technicalGuideFiles,
+    [...expected.keys()].sort(),
+    'Technical Documentation must contain exactly the ten approved product references'
+  );
+
+  const markdownLinks = source => Array.from(
+    source.matchAll(/\\[([^\\]]+)\\]\\(([^)]+)\\)/g),
+    match => ({ label: match[1], href: match[2] })
+  );
+
+  for (const [filename, title] of expected) {
+    const product = filename.slice(0, -'.md'.length);
+    const productName = title.replace(/^Brightdesk /, '');
+    const everydayGuide = fs.readFileSync(path.join(productDirectory, filename), 'utf8');
+    const technicalGuide = fs.readFileSync(path.join(technicalDirectory, filename), 'utf8');
+
+    const technicalLinks = markdownLinks(everydayGuide)
+      .filter(link => link.href.startsWith('../technical/products/'));
+    assert.deepEqual(
+      technicalLinks,
+      [{
+        label: title + ' technical reference',
+        href: '../technical/products/' + product + '.html'
+      }],
+      product + ' everyday guide must have exactly one correctly named link to its own technical reference'
+    );
+
+    const everydayLinks = markdownLinks(technicalGuide)
+      .filter(link => link.href.startsWith('../../products/'));
+    assert.deepEqual(
+      everydayLinks,
+      [{
+        label: 'Everyday Help: ' + productName,
+        href: '../../products/' + product + '.html'
+      }],
+      product + ' technical reference must have exactly one correctly named link back to its own everyday guide'
+    );
+  }
+});
+
