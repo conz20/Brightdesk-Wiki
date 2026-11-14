@@ -315,3 +315,20 @@ test('non-web URL schemes are rejected in resource attributes', t => {
   );
   assert.throws(() => checkPublicSite({ siteRoot }), /external URL/i);
 });
+
+test('customer and technical layouts both advertise the light and dark themes used by the site styles', () => {
+  const layoutPaths = [
+    path.join(process.cwd(), 'docs', '_layouts', 'default.html'),
+    path.join(process.cwd(), 'docs', '_layouts', 'technical.html')
+  ];
+  for (const layoutPath of layoutPaths) {
+    const source = fs.readFileSync(layoutPath, 'utf8');
+    assert.match(
+      source,
+      /<meta name="color-scheme" content="light dark">/,
+      layoutPath + ' must allow the browser to render native controls in both supported themes'
+    );
+  }
+  const styles = fs.readFileSync(path.join(process.cwd(), 'docs', 'assets', 'css', 'site.css'), 'utf8');
+  assert.match(styles, /color-scheme:\s*light\s+dark;/);
+});
