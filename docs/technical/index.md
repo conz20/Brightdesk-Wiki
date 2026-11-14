@@ -1,48 +1,45 @@
 ---
 layout: technical
 title: Technical Documentation
-description: Technical references for Brightdesk Suite, product behaviour, files and data handling.
+description: Detailed technical references for Brightdesk Suite and all ten approved products.
 permalink: /technical/index.html
 ---
 
-# Brightdesk Technical Documentation
+<section class="technical-hero" aria-labelledby="technical-title">
+  <p class="portal-kicker">BRIGHTDESK REFERENCE LIBRARY</p>
+  <h1 id="technical-title">Technical Documentation</h1>
+  <p>Explore product capabilities, system behaviour, file compatibility and data boundaries. This area is designed for technical readers and anyone who wants the detail.</p>
+  <p class="technical-switch"><a href="../index.html">← Prefer plain-English instructions? Go to Everyday Help</a></p>
+</section>
 
-This is the reference area for readers who want product details, implementation boundaries, supported file handling and data behaviour. It is intentionally separate from the plain-English [Everyday Help](../index.html).
+<section class="reference-section" aria-labelledby="system-reference-title">
+  <div class="section-heading">
+    <div><p class="portal-kicker">SYSTEM INFORMATION</p><h2 id="system-reference-title">Suite and system references</h2></div>
+  </div>
+  <div class="reference-card-grid">
+    <a class="reference-card" href="system-overview.html"><span class="reference-symbol" aria-hidden="true">▦</span><strong>System overview</strong><span>How the Suite and product workspaces fit together</span><span class="reference-arrow">Read reference →</span></a>
+    <a class="reference-card" href="file-formats.html"><span class="reference-symbol" aria-hidden="true">▤</span><strong>File formats</strong><span>Supported open and export formats by product</span><span class="reference-arrow">Read reference →</span></a>
+    <a class="reference-card" href="data-and-privacy.html"><span class="reference-symbol" aria-hidden="true">◇</span><strong>Data and privacy</strong><span>Local data boundaries and online services</span><span class="reference-arrow">Read reference →</span></a>
+  </div>
+</section>
 
-Use **Everyday Help** when you want simple instructions that guide you through a task. Use this area when you want to compare capabilities, understand formats or look up a product's technical behaviour.
+<section class="reference-section" aria-labelledby="product-reference-title">
+  <div class="section-heading">
+    <div><p class="portal-kicker">TEN APPROVED PRODUCTS</p><h2 id="product-reference-title">Browse product references</h2><p>Choose the product you want to understand. Each page covers its documented capabilities and current boundaries.</p></div>
+  </div>
+  <div class="product-card-grid technical-product-grid">
+    <a class="product-card" href="products/pages.html"><img src="../assets/images/guide-pages.svg" alt="" loading="lazy"><span class="product-card-name">Pages</span><span class="product-card-description">Documents and writing</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/sheets.html"><img src="../assets/images/guide-sheets.svg" alt="" loading="lazy"><span class="product-card-name">Sheets</span><span class="product-card-description">Spreadsheets and calculations</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/decks.html"><img src="../assets/images/guide-decks.svg" alt="" loading="lazy"><span class="product-card-name">Decks</span><span class="product-card-description">Slide presentations</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/notes.html"><img src="../assets/images/guide-notes.svg" alt="" loading="lazy"><span class="product-card-name">Notes</span><span class="product-card-description">Notes and ideas</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/database.html"><img src="../assets/images/guide-database.svg" alt="" loading="lazy"><span class="product-card-name">Database</span><span class="product-card-description">Structured records</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/forms.html"><img src="../assets/images/guide-forms.svg" alt="" loading="lazy"><span class="product-card-name">Forms</span><span class="product-card-description">Forms and responses</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/lists.html"><img src="../assets/images/guide-lists.svg" alt="" loading="lazy"><span class="product-card-name">Lists</span><span class="product-card-description">Custom lists and records</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/planner.html"><img src="../assets/images/guide-planner.svg" alt="" loading="lazy"><span class="product-card-name">Planner</span><span class="product-card-description">Projects and planning</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/to-do.html"><img src="../assets/images/guide-to-do.svg" alt="" loading="lazy"><span class="product-card-name">To Do</span><span class="product-card-description">Personal tasks</span><span class="reference-arrow">Technical reference →</span></a>
+    <a class="product-card" href="products/workspace.html"><img src="../assets/images/guide-workspace.svg" alt="" loading="lazy"><span class="product-card-name">Workspace</span><span class="product-card-description">Project information together</span><span class="reference-arrow">Technical reference →</span></a>
+  </div>
+</section>
 
-## System references
+<p class="portal-note"><strong>Search stays in this area.</strong> Use the search field above to find technical references only. It does not mix in Everyday Help results.</p>
 
-| Reference | Covers |
-| --- | --- |
-| [System overview](system-overview.html) | How Brightdesk Suite and the ten product workspaces fit together |
-| [File formats](file-formats.html) | Supported open and export formats, with product routing |
-| [Data and privacy](data-and-privacy.html) | Local data boundaries, online services and Help website behaviour |
-
-## Product references
-
-Each page focuses on product capabilities, data structures, important behaviour and current boundaries.
-
-| Product | Technical reference |
-| --- | --- |
-| Pages | [Pages reference](products/pages.html) |
-| Sheets | [Sheets reference](products/sheets.html) |
-| Decks | [Decks reference](products/decks.html) |
-| Notes | [Notes reference](products/notes.html) |
-| Database | [Database reference](products/database.html) |
-| Forms | [Forms reference](products/forms.html) |
-| Lists | [Lists reference](products/lists.html) |
-| Planner | [Planner reference](products/planner.html) |
-| To Do | [To Do reference](products/to-do.html) |
-| Workspace | [Workspace reference](products/workspace.html) |
-
-## Search and navigation
-
-Use the search field above to search the technical references only. It does not mix technical results into Everyday Help search. The navigation at the left keeps the three system references and all ten product references available from every technical page.
-
-## Which area should I use?
-
-- **Everyday Help:** step-by-step instructions, examples and common fixes.
-- **Technical Documentation:** capability details, product behaviour, file compatibility and data boundaries.
-
-Both areas are read-only. They do not open, install or control Brightdesk Suite or any desktop product.
