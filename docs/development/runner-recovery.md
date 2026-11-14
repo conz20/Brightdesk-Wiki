@@ -52,3 +52,9 @@ This is not a one-click action for a user who does not already have the prerequi
 - Do not purchase hosted runners or other services, increase a billing budget, change repository visibility, enable GitHub Pages or change DNS/nameservers.
 - Keep PR #6 draft and unmerged until the exact-head build evidence, privacy review, genuine product screenshots, platform verification, accessibility review and owner approval are complete.
 - The production website must not change as part of runner recovery.
+
+## Latest exact-head runner observation — 15 November 2026
+
+GitHub Actions run [#528](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43603624569) checked commit `22a2a8df79ff1bd371979366acaa982163300c79`. GitHub recorded the only job with label `ubuntu-latest`, `runner_id: 0`, an empty `steps` array, no runner name and no job logs. The job started and failed within approximately one second. This confirms that the job did not reach the workflow's first checkout step; it does **not** identify why GitHub failed to provision or assign the runner, and it does not indicate a source-code test failure.
+
+The workflow still contains the normal GitHub-hosted `ubuntu-latest` configuration and keeps all required validation commands. Do not change the workflow, relax the checks, or move to paid runners based on this evidence alone. Check the exact-head Cloudflare Pages build separately; as of this note, its comment for commit `22a2a8d` reports **Build in progress**, not success.
