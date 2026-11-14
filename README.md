@@ -46,20 +46,13 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #293](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556304582) passed on the exact PR head `60b1c7dcb1ac377b181d73b2db591188afe29b0a`.
+[Run #294](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556708962) passed on commit `acdec414a39c85f01baff970f96db834113576e1`. The exact-head workflow completed its pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
 
-That exact-head workflow reported:
+[Run #293](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556304582) also passed on the immediately preceding commit `60b1c7dcb1ac377b181d73b2db591188afe29b0a`. Its detailed result was 109 tests passed, 0 failed and 0 skipped; 39 Markdown files and 99 local file/directory links checked; Jekyll generation passed; and the privacy audit approved 26 documentation pages and 38 static files.
 
-- **109 tests passed, 0 failed, 0 skipped.**
-- 39 Markdown files and 99 local file/directory links checked successfully.
-- Jekyll customer-site generation passed.
-- The generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
-- Regression checks cover source-confirmed formula and deletion behaviour, the actual Database and Lists controls, the Workspace **Find a page** control, and the separate technical-reference links.
-- The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
+[Run #292](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556224932) is historical evidence for the earlier commit `acbd5ea86532b6f16eef7eba3181ab5bf27e8ac1`.
 
-[Run #292](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556224932) also passed, but it is historical evidence for the earlier commit `acbd5ea86532b6f16eef7eba3181ab5bf27e8ac1`, not the current PR head.
-
-A later documentation commit changes the head and must pass its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+Each new commit must pass its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. Automated CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 
