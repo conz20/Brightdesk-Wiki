@@ -95,6 +95,26 @@ a:focus-visible {
   border-radius: 1rem;
   box-shadow: 0 10px 32px rgb(23 35 52 / 5%);
 }
+.guide-illustration {
+  margin: 1.5rem 0 2rem;
+  padding: clamp(.75rem, 2.5vw, 1.25rem);
+  overflow: hidden;
+  background: linear-gradient(145deg, #f4f7fb, #eaf0f8);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+.guide-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .65rem;
+}
+.guide-illustration figcaption {
+  margin: .75rem .15rem .1rem;
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.55;
+}
 .content-card h1,
 .content-card h2,
 .content-card h3 {
@@ -462,6 +482,7 @@ a:focus-visible {
   .start-link, .technical-link { color: #101925; background: #a8ceff; border-color: #a8ceff; }
   .start-link:hover, .technical-link:hover { background: #c4ddff; }
   .footer-help, .technical-sidebar { color: var(--ink); background: var(--surface); border-color: var(--line); }
+  .guide-illustration { background: #1d2a3b; border-color: var(--line); }
   .technical-sidebar a[aria-current="page"] { color: var(--brand-dark); background: var(--soft-blue); }
   .product-menu > ul { background: var(--surface); border-color: var(--line); }
   .product-menu > ul a { color: var(--ink); }
