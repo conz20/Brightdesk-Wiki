@@ -19,7 +19,7 @@ The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 
 - Do not configure a custom domain or change DNS/nameservers. The free `pages.dev` hostname is the approved customer-facing address.
 
 
-Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 49-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
+Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 52-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
 
 ## Cloudflare project configuration
 
@@ -64,7 +64,7 @@ Cloudflare's build command is npm run build:cloudflare. It performs the followin
 7. Build the real Jekyll site into _site/.
 8. Run scripts/check-public-site.mjs against the generated output.
 
-The output audit requires exactly 49 files:
+The output audit requires exactly 52 files:
 
 **27 HTML pages**
 - `index.html` — Brightdesk Help homepage.
