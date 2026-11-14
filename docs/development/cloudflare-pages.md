@@ -6,7 +6,7 @@ Brightdesk Suite, the ten approved desktop products and Brightdesk Help remain f
 
 Brightdesk Help is a separate, static, read-only public website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency. It does not receive customer documents or product data.
 
-The source repository conz20/Brightdesk-Wiki remains private. The published output is restricted to the customer homepage, Suite getting-started page, exactly ten product guides and one local CSS file: 12 customer pages and 13 static files total (12 HTML pages plus local CSS).
+The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 customer site build contains 27 approved HTML pages: the Help homepage, Everyday Help homepage, Suite getting-started guide, ten Everyday Help product guides, the Technical Documentation homepage, three system references and ten technical product references. It also contains one local CSS file, one local browser-search JavaScript file, ten original product icons and ten workflow illustrations: 49 files total. The exact output allowlist in `scripts/check-public-site.mjs` is authoritative.
 
 ## Owner authorisation and cost boundary
 
@@ -23,7 +23,7 @@ The source repository conz20/Brightdesk-Wiki remains private. The published outp
 - The GitHub App installation must be scoped to **Only select repositories**, with conz20/Brightdesk-Wiki as the only selected repository. Do not grant Cloudflare access to any other Brightdesk source repository.
 - The source repository stays private. Do not change GitHub repository visibility or collaborator permissions.
 
-Cloudflare's current Free Pages limits include 500 builds per month and one concurrent build. The Help site is small (13 static files), and normal documentation updates should fit comfortably within those published limits.
+Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 49-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
 
 ## Cloudflare project configuration
 
@@ -68,14 +68,24 @@ Cloudflare's build command is npm run build:cloudflare. It performs the followin
 7. Build the real Jekyll site into _site/.
 8. Run scripts/check-public-site.mjs against the generated output.
 
-The output audit requires exactly these files:
+The output audit requires exactly 49 files:
 
-- index.html — Brightdesk Help homepage.
-- customer-start-here.html — Suite getting-started guide.
-- products/pages.html, products/sheets.html, products/decks.html, products/notes.html, products/database.html, products/forms.html, products/lists.html, products/planner.html, products/to-do.html, and products/workspace.html.
-- assets/css/site.css — local styling.
+**27 HTML pages**
+- `index.html` — Brightdesk Help homepage.
+- `everyday/index.html` — Everyday Help homepage.
+- `customer-start-here.html` — Suite getting-started guide.
+- `products/pages.html`, `products/sheets.html`, `products/decks.html`, `products/notes.html`, `products/database.html`, `products/forms.html`, `products/lists.html`, `products/planner.html`, `products/to-do.html` and `products/workspace.html` — the ten Everyday Help product guides.
+- `technical/index.html` — Technical Documentation homepage.
+- `technical/system-overview.html`, `technical/file-formats.html` and `technical/data-and-privacy.html` — three system references.
+- `technical/products/pages.html`, `technical/products/sheets.html`, `technical/products/decks.html`, `technical/products/notes.html`, `technical/products/database.html`, `technical/products/forms.html`, `technical/products/lists.html`, `technical/products/planner.html`, `technical/products/to-do.html` and `technical/products/workspace.html` — ten technical product references.
 
-No other output file or folder is permitted. Architecture, development, security, release and maintainer material stays in the private repository and outside the customer site. Do not publish repository READMEs, scripts, tests, workflows, lockfiles, credentials, prompts, internal reports, logs or customer documents.
+**22 local assets**
+- `assets/css/site.css` — local styling.
+- `assets/js/search.js` — local-only browser search for the active help area. The generated script must remain free of network requests, analytics and visitor storage.
+- `assets/images/product-icons/` — exactly ten approved Brightdesk product SVG icons.
+- `assets/images/workflows/` — exactly ten approved workflow SVG illustrations. They are labelled illustrations, not screenshots from running products.
+
+The authoritative exact file list is in `scripts/check-public-site.mjs`. No other output file or folder is permitted. Architecture, development, security, release and maintainer material stays in the private repository and outside the customer site. Do not publish repository READMEs, scripts, tests, workflows, lockfiles, credentials, prompts, internal reports, logs or customer documents.
 
 Customer output must remain static and read-only: no customer login, accounts, forms, uploads, comments, editing, administration controls, analytics scripts, ads, tracking scripts, external fonts, external images or external stylesheets. The output audit is the final authority; a deployment must not proceed when it fails.
 
