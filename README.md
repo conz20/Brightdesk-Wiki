@@ -35,9 +35,9 @@ The initial Help website framework and build/privacy gates are on `main` from [P
 
 PR #5 currently contains:
 
-- **Everyday Help:** a task-first homepage, a clear Suite getting-started route, natural-language local search and plain-English guides for all ten products.
+- **Everyday Help:** a task-first homepage for simple, non-technical tasks, a clear Suite getting-started route, natural-language local search and plain-English guides for all ten products.
 - **Consistent product guides:** each of the ten guides has **Overview**, **Getting started**, **Workflows**, and **Troubleshooting and common questions** sections, with in-page navigation, examples, expected results, product-specific questions, feature boundaries and a link to the relevant technical reference.
-- **Technical Documentation:** a separate `/technical/` area with its own layout, navigation and local search. It includes system references and individual technical references for the same ten products. The two areas link to each other but their search indexes remain separate. The technical references also explain source-confirmed formula limits, record search/filter rules, task fields and Database field and Forms question data-removal warnings.
+- **Technical Documentation:** a separate `/technical/` area for readers who want deeper product and system detail. It has its own layout, navigation and local search. It includes system references and individual technical references for the same ten products. The two areas link to each other but their search indexes remain separate. Technical detail is available to anyone; it is not a prerequisite for everyday help.
 - **Translation:** visitors use their browser's automatic translation or manual translate command. Brightdesk does not provide a separate translation service.
 - **Source-checked control labels:** the current Lists filter/sort and custom-column controls, plus Workspace's **Find a page** control, now match the labels in the product source.
 - **Visual assets:** the ten current product SVGs are explanatory diagrams, not screenshots of Brightdesk. They are labelled accordingly.
@@ -46,18 +46,20 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #292](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556224932) passed on commit `acbd5ea86532b6f16eef7eba3181ab5bf27e8ac1`.
+[Run #293](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556304582) passed on the exact PR head `60b1c7dcb1ac377b181d73b2db591188afe29b0a`.
 
 That exact-head workflow reported:
 
 - **109 tests passed, 0 failed, 0 skipped.**
 - 39 Markdown files and 99 local file/directory links checked successfully.
-- Jekyll customer-site build passed.
-- Generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
+- Jekyll customer-site generation passed.
+- The generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
 - Regression checks cover source-confirmed formula and deletion behaviour, the actual Database and Lists controls, the Workspace **Find a page** control, and the separate technical-reference links.
 - The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-A subsequent README update changes the branch head and must receive its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+[Run #292](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556224932) also passed, but it is historical evidence for the earlier commit `acbd5ea86532b6f16eef7eba3181ab5bf27e8ac1`, not the current PR head.
+
+A later documentation commit changes the head and must pass its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 
