@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">Brightdesk Forms icon</title>
+<desc id="desc">A form sheet with question lines and two selectable response boxes.</desc>
+<rect x="8" y="8" width="112" height="112" rx="26" fill="#eaf5ff"/>
+<rect x="29" y="22" width="70" height="84" rx="8" fill="#fff" stroke="#3477ae" stroke-width="4"/>
+<path d="M43 39h42M43 51h30" fill="none" stroke="#7794ad" stroke-width="4" stroke-linecap="round"/>
+<rect x="43" y="65" width="12" height="12" rx="2" fill="#d8ecff" stroke="#3477ae" stroke-width="2"/>
+<path d="M47 71l3 3 6-7" fill="none" stroke="#3477ae" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M62 71h23" stroke="#7794ad" stroke-width="3" stroke-linecap="round"/>
+<rect x="43" y="85" width="12" height="12" rx="2" fill="#fff" stroke="#7794ad" stroke-width="2"/>
+<path d="M62 91h23" stroke="#7794ad" stroke-width="3" stroke-linecap="round"/>
+</svg>
