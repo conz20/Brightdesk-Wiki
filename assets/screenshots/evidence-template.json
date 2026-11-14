@@ -1,0 +1,23 @@
+{
+  "status": "not-captured",
+  "verified": false,
+  "productId": "",
+  "productName": "",
+  "sourceRepository": "",
+  "imageFilename": "",
+  "appVersion": "",
+  "sourceCommit": "",
+  "operatingSystem": {
+    "name": "",
+    "version": "",
+    "architecture": ""
+  },
+  "capturedAt": "",
+  "workflow": "",
+  "sampleDataDescription": "",
+  "captureMethod": "",
+  "primaryWorkflowInspected": false,
+  "reviewedForSensitiveData": false,
+  "reviewedBy": "",
+  "sha256": ""
+}

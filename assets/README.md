@@ -4,11 +4,11 @@ This directory is the source-controlled visual library for the Brightdesk Help w
 
 ## Asset rules
 
-- Prefer original, accessible SVG illustrations for diagrams, concepts, and reusable visual elements.
+- Prefer original, accessible SVG illustrations for diagrams, concepts and reusable visual elements.
 - Keep SVGs self-contained: no remote images, fonts, scripts, CSS imports or external references.
 - Use descriptive filenames and include useful alternative text in any guide that embeds an asset.
 - Keep illustrations clearly labelled as illustrations. Never present concept artwork as a product screenshot.
-- Product screenshots must be genuine captures from a current running Brightdesk build. Record product, version, operating system, capture date and workflow. Until those captures are available, use a clearly marked placeholder or omit the screenshot.
+- Product screenshots must be genuine captures from a current running Brightdesk build. Record product, version, source commit, operating system, capture date and workflow. See [the screenshot evidence plan](screenshots/README.md).
 - Do not include customer data, personal information, secrets, internal endpoints or private development details in public-facing assets.
 - Keep original Brightdesk visual identity. Do not use Microsoft or Adobe logos, proprietary artwork or copied interface assets.
 
@@ -21,6 +21,7 @@ This directory is the source-controlled visual library for the Brightdesk Help w
 | `illustrations/help-workflow.svg` | Shows how readers find a guide and check its evidence status |
 | `icons/README.md` and `icons/*.svg` | Ten original, distinctive product icons; byte-for-byte public copies are stored in `docs/assets/images/product-icons/` |
 | `illustrations/workflows/README.md` and `guide-*.svg` | Ten product-specific workflow illustrations; byte-for-byte public copies are stored in `docs/assets/images/workflows/` |
+| `screenshots/README.md` and `evidence-template.json` | Internal capture matrix and metadata requirements for genuine Suite and product screenshots |
 
 The product icon pack uses one consistent 128 × 128 design system. Each icon is a separate SVG with its own accessible title and description. Each workflow illustration has its own three-step product scene. See the icon and workflow indexes for their visual concepts and usage rules.
 
@@ -32,6 +33,8 @@ The generated customer site checks that every approved public copy matches its c
 
 ## Screenshot status
 
-The current library contains explanatory illustrations, not genuine product screenshots. No genuine screenshots from current running Brightdesk Suite and product builds were available during this asset-library update. Do not substitute these illustrations for screenshots. Capture and document genuine product evidence separately when current builds can be run.
+**Verified screenshots: 0 of 11.** The 14 November 2026 audit checked the default branches of Brightdesk Suite and all ten approved product repositories, their committed visual assets, and available recent build-workflow artifact listings. The committed product SVGs are design references or preview artwork, not captures of running software. The Suite's older `assets/hero-showcase.png` is a promotional collage, not evidence of a running interface. The checked build artifact listings did not contain screenshot bundles.
+
+Do not substitute design references or promotional artwork for real screenshots. The private capture matrix and metadata requirements are in [screenshots/README.md](screenshots/README.md). Product guides must remain **Needs review** until the relevant current desktop workflow has been run and checked.
 
 Add new assets here as the library grows. Update this index whenever an asset is added, replaced or retired.
