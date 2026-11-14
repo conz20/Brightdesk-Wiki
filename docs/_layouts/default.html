@@ -47,14 +47,17 @@
           <a href="{{ '/customer-start-here.html' | relative_url }}"{% if page.url == '/customer-start-here.html' %} aria-current="page"{% endif %}>Suite guide</a>
           <details class="product-menu" aria-label="Browse product guides">
             <summary>Product guides</summary>
-            <ul>
+            <ul class="product-menu-list">
+              <li class="product-menu-heading">Create and communicate</li>
               <li><a href="{{ '/products/pages.html' | relative_url }}"{% if page.url == '/products/pages.html' %} aria-current="page"{% endif %}>Pages</a></li>
-              <li><a href="{{ '/products/sheets.html' | relative_url }}"{% if page.url == '/products/sheets.html' %} aria-current="page"{% endif %}>Sheets</a></li>
               <li><a href="{{ '/products/decks.html' | relative_url }}"{% if page.url == '/products/decks.html' %} aria-current="page"{% endif %}>Decks</a></li>
               <li><a href="{{ '/products/notes.html' | relative_url }}"{% if page.url == '/products/notes.html' %} aria-current="page"{% endif %}>Notes</a></li>
+              <li class="product-menu-heading">Work with information</li>
+              <li><a href="{{ '/products/sheets.html' | relative_url }}"{% if page.url == '/products/sheets.html' %} aria-current="page"{% endif %}>Sheets</a></li>
               <li><a href="{{ '/products/database.html' | relative_url }}"{% if page.url == '/products/database.html' %} aria-current="page"{% endif %}>Database</a></li>
               <li><a href="{{ '/products/forms.html' | relative_url }}"{% if page.url == '/products/forms.html' %} aria-current="page"{% endif %}>Forms</a></li>
               <li><a href="{{ '/products/lists.html' | relative_url }}"{% if page.url == '/products/lists.html' %} aria-current="page"{% endif %}>Lists</a></li>
+              <li class="product-menu-heading">Plan and organise</li>
               <li><a href="{{ '/products/planner.html' | relative_url }}"{% if page.url == '/products/planner.html' %} aria-current="page"{% endif %}>Planner</a></li>
               <li><a href="{{ '/products/to-do.html' | relative_url }}"{% if page.url == '/products/to-do.html' %} aria-current="page"{% endif %}>To Do</a></li>
               <li><a href="{{ '/products/workspace.html' | relative_url }}"{% if page.url == '/products/workspace.html' %} aria-current="page"{% endif %}>Workspace</a></li>
@@ -98,6 +101,23 @@
     </nav>
     {% assign portal_page_paths = "/index.html|/everyday/index.html" | split: "|" %}
     <main id="main" class="main-content{% if page.url == '/index.html' %} main-content-home{% endif %}">
+      {% unless page.url == '/index.html' %}
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ '/index.html' | relative_url }}">Help home</a>
+        <span aria-hidden="true">/</span>
+        {% if page.url contains '/products/' %}
+          <a href="{{ '/index.html#directory-title' | relative_url }}">Products</a>
+        {% elsif page.url contains '/everyday/' %}
+          <a href="{{ '/everyday/index.html' | relative_url }}">Everyday Help</a>
+        {% elsif page.url contains '/technical/' %}
+          <a href="{{ '/technical/index.html' | relative_url }}">Technical Documentation</a>
+        {% else %}
+          <a href="{{ '/customer-start-here.html' | relative_url }}">Suite guide</a>
+        {% endif %}
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ page.title | default: "Guide" | escape }}</span>
+      </nav>
+      {% endunless %}
       {% if portal_page_paths contains page.url %}
       <div class="content-card{% if page.url == '/index.html' %} content-card-home{% endif %}">
       {% else %}
