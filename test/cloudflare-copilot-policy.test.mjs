@@ -22,7 +22,7 @@ test('Cloudflare deployment remains gated by exact build, privacy, and DNS requi
     'npm run build:cloudflare',
     '24.22.2',
     '3.4.4',
-    '12 HTML pages',
+    '12 customer pages',
     '14 static files',
     'help.brightdesk.com',
     'Preview branch',
