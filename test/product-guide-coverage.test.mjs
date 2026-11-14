@@ -86,3 +86,17 @@ test('Database and Lists guides warn when a table or list is deleted', () => {
   assert.match(database, /must keep at least one table/i);
   assert.match(lists, /remove the list and all its records/i);
 });
+
+test('each technical product reference links back to its matching everyday guide', () => {
+  const technicalDirectory = path.join(root, 'docs', 'technical', 'products');
+  for (const filename of expected.keys()) {
+    const product = filename.slice(0, -'.md'.length);
+    const reference = fs.readFileSync(path.join(technicalDirectory, filename), 'utf8');
+    assert.ok(reference.split(/\r?\n/).includes('layout: technical'), product + ' reference must use the separate technical layout');
+    assert.match(reference, /^## Related information$/m, product + ' reference must provide related routes');
+    assert.ok(
+      reference.includes('](../../products/' + product + '.html)'),
+      product + ' technical reference must return to its matching everyday guide'
+    );
+  }
+});
