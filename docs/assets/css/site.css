@@ -1682,3 +1682,51 @@ summary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+
+/* Product navigation groups and persistent article breadcrumbs. */
+.product-menu > ul { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.product-menu-heading {
+  grid-column: 1 / -1;
+  margin: .35rem .65rem .12rem;
+  padding-top: .55rem;
+  color: #708097;
+  border-top: 1px solid #e5eaf1;
+  font-size: .67rem;
+  font-weight: 850;
+  letter-spacing: .1em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.product-menu-heading:first-child { border-top: 0; padding-top: .15rem; }
+.page-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .55rem;
+  width: min(100%, 930px);
+  margin: 0 auto 1rem;
+  color: #7b899c;
+  font-size: .82rem;
+}
+.page-breadcrumb a {
+  color: #4b6382;
+  font-weight: 650;
+  text-decoration: none;
+}
+.page-breadcrumb a:hover { color: #172f54; text-decoration: underline; }
+.page-breadcrumb [aria-current="page"] {
+  color: #263b5b;
+  font-weight: 700;
+}
+.technical-site .page-breadcrumb { width: min(100%, 1320px); }
+@media (prefers-color-scheme: dark) {
+  .product-menu-heading { color: #9eacc2; border-color: #33445d; }
+  .page-breadcrumb { color: #98a9c0; }
+  .page-breadcrumb a { color: #b7c9e1; }
+  .page-breadcrumb [aria-current="page"] { color: #eef5ff; }
+}
+@media (max-width: 640px) {
+  .page-breadcrumb { margin-bottom: .75rem; font-size: .76rem; }
+  .product-menu > ul { grid-template-columns: 1fr; }
+}
