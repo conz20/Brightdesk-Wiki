@@ -485,3 +485,43 @@ test('product icons cannot escape the generated site through a third parent dire
     /outside the approved local Brightdesk brand and product-icon library/i
   );
 });
+
+
+test('approved first-party social SVGs may use a gradient defined inside the same file', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'assets/images/brightdesk-help-social.svg');
+  const svg = fs.readFileSync(file, 'utf8').replace(
+    '</svg>',
+    '<defs><linearGradient id="local-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#000000"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs><rect x="0" y="0" width="4" height="4" fill="url(#local-gradient)"/></svg>'
+  );
+  fs.writeFileSync(file, svg);
+  assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
+});
+
+test('approved social SVGs reject external gradient or paint URLs', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'assets/images/brightdesk-help-social.svg');
+  const svg = fs.readFileSync(file, 'utf8').replace(
+    'fill="#f4f7fb"',
+    'fill="url(https://example.com/external.svg#paint)"'
+  );
+  fs.writeFileSync(file, svg);
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /active feature or external SVG reference/i
+  );
+});
+
+test('approved social SVG gradients must resolve to an ID inside the same file', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'assets/images/brightdesk-help-social.svg');
+  const svg = fs.readFileSync(file, 'utf8').replace(
+    'fill="#f4f7fb"',
+    'fill="url(#missing-gradient)"'
+  );
+  fs.writeFileSync(file, svg);
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /unresolved local SVG paint reference/i
+  );
+});

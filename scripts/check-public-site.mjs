@@ -33,12 +33,13 @@ const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.
   .concat(TECHNICAL_PAGES)
   .concat(APPROVED_SVG_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
-const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle', 'text']);
+const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle', 'text', 'g', 'defs', 'linearGradient', 'stop']);
 const SVG_ATTRIBUTES = new Set([
   'xmlns', 'width', 'height', 'viewBox', 'role', 'aria-labelledby', 'id',
   'x', 'y', 'rx', 'ry', 'cx', 'cy', 'r', 'd', 'fill', 'stroke',
   'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'text-anchor',
-  'font-family', 'font-size', 'font-weight'
+  'font-family', 'font-size', 'font-weight', 'transform',
+  'x1', 'y1', 'x2', 'y2', 'offset', 'stop-color'
 ]);
 const WORKFLOW_ALT_TEXT = new Map([
   ['pages', 'Three-step workflow: create a document, write and format it, then save or export.'],
@@ -82,9 +83,17 @@ function validateApprovedSvg(file, svg) {
   }
 
   const withoutNamespace = svg.replace('xmlns="http://www.w3.org/2000/svg"', '');
+  const localPaintReferences = [...svg.matchAll(/url\(\s*#([A-Za-z_][A-Za-z0-9_.:-]*)\s*\)/g)];
+  const withoutLocalPaintReferences = svg.replace(/url\(\s*#[A-Za-z_][A-Za-z0-9_.:-]*\s*\)/g, '');
   if (/(?:https?:)?\/\//i.test(withoutNamespace) ||
-      /(?:javascript|data|vbscript):|url\s*\(|\son[a-z][a-z0-9_-]*\s*=|\b(?:href|xlink:href|src)\s*=|<style\b/i.test(svg)) {
+      /(?:javascript|data|vbscript):|url\s*\(|\son[a-z][a-z0-9_-]*\s*=|\b(?:href|xlink:href|src)\s*=|<style\b/i.test(withoutLocalPaintReferences)) {
     fail(relative + ' contains an active feature or external SVG reference');
+  }
+  const elementIds = new Set([...svg.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
+  for (const reference of localPaintReferences) {
+    if (!elementIds.has(reference[1])) {
+      fail(relative + ' contains an unresolved local SVG paint reference: ' + reference[1]);
+    }
   }
 
   const stack = [];
