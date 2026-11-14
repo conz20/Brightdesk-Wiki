@@ -30,8 +30,8 @@ Use **Search pages** to search page titles and page content.
 ## Add content to a page
 
 1. Open the page you want to edit.
-2. Choose a content type from the block list: **Text**, **Heading**, **Bullet point**, **Callout**, **Checklist** or **Divider**.
-3. For Text, Heading, Bullet point or Callout, enter the content in the text field.
+2. Choose a content type from the block list: **Text**, **Heading**, **Bullet list**, **Callout**, **Checklist** or **Divider**.
+3. For Text, Heading, Bullet list or Callout, enter the content in the text field.
 4. Choose **Add to page**.
 
 ## Use a checklist
@@ -82,7 +82,7 @@ Workspaces and pages are saved on this device as you work. Check the local-save 
 1. Create a workspace called **Home renovation**.
 2. Rename the first page **Overview**.
 3. Add another page for a separate topic, such as **Materials**.
-4. Add Text, Bullet point or Callout blocks to record information.
+4. Add Text, Bullet list or Callout blocks to record information.
 5. Use **Search pages** to search for a page by its title or content.
 
 **What you should have:** a workspace with separate pages for related information.
