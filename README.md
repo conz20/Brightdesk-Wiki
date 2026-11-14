@@ -67,3 +67,10 @@ The generated customer site must remain static and read-only. It must not contai
 - [Merged Help website implementation — PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3)
 - [Intended customer Help address](https://help.brightdesk.com) — not yet live
 - [Wiki GitHub Actions](https://github.com/conz20/Brightdesk-Wiki/actions)
+
+
+## Help experience in progress
+
+The next Help release is being reconciled on a review branch from the current `main` revision. It adds two clearly separated reading routes: **Everyday Help** for plain-English, task-first instructions and **Technical Documentation** for deeper product and system references. Both remain static and read-only. Search runs locally in the visitor's browser and does not send search terms anywhere.
+
+The homepage, navigation, local search, product guide improvements and technical references are being reviewed together. The current source is not approved for publication until visual review, genuine product screenshots, end-to-end guide verification, exact-head quality checks and the approved hosting/domain checks are complete.
