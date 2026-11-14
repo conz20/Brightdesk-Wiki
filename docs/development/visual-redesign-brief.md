@@ -258,3 +258,26 @@ Research reviewed on 14 November 2026:
 8. Preserve Brightdesk's permanent product and business rules: the integrated Suite plus exactly Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace; always free; local-first, private and offline-capable; no customer accounts, subscriptions, paid tiers, telemetry, advertising, cloud collaboration or document uploads.
 
 Microsoft's documentation and design patterns are research inputs, not proof that a particular Brightdesk feature exists. Every customer instruction must still match the current Brightdesk source and, before being marked Verified, a genuine product walkthrough on each claimed operating system.
+
+
+## Live Craft Wiki reference review — 15 November 2026
+
+The live Craft Wiki homepage and navigation were inspected again on 15 November 2026. Record the following as usability observations, not a visual or structural template to copy:
+
+- **Clear first message:** the homepage leads with one expressive editorial headline and a short explanation of what the documentation helps people do. Brightdesk should keep its own clear Help headline and put the local Help search in the first view.
+- **A browsable directory:** products are grouped under understandable work categories. Each directory entry combines a sequence number, a short role/category label, product identity, icon and one-line purpose. For Brightdesk, use exactly the ten approved products, their original icons and short truthful descriptions. Do not invent product categories that do not match Brightdesk's real capabilities.
+- **Searchable persistent index:** the reference provides a product-search field and a long app index with product-specific guide links. Brightdesk should use a compact, keyboard-accessible, locally powered index that keeps the current product and its verified guide families easy to reach. Everyday Help and Technical Documentation must continue to use separate local search indexes.
+- **Consistent guide families:** the visible index exposes familiar entry points such as Overview, Getting started, Install and update, Workflows and Troubleshooting, with focused specialist topics where they exist. Brightdesk should use the same predictable information pattern only where the corresponding Brightdesk content and features are real and verified.
+- **Product context on guide pages:** preserve a clear route from a focused article back to its product home and related tasks. Use the article's actual task as its heading; avoid making visitors decode internal feature names.
+- **Editorial hierarchy:** the reference separates the main introduction, directory categories, product entries and footer information. Brightdesk should keep this sense of hierarchy and whitespace while using its approved navy and original Brightdesk colour family, type choices, component shapes and assets.
+
+### Brightdesk-specific translation
+
+1. Keep the chosen combination: **Bright Product Directory structure + Editorial Navy typography and visual restraint**. The live Craft page reinforces the value of a recognisable product directory and navigable guide families; it does not replace the selected direction or authorise copying its UI.
+2. Design the homepage, Everyday Help, Technical Documentation and product guide pages as one coherent system. On a product article, the current product should be obvious and its related guide navigation should remain discoverable without overwhelming the reading column.
+3. Use only the ten approved Brightdesk products: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace. Brightdesk-AI remains engineering tooling. Do not add a broader catalogue, third-party products or mobile editions.
+4. Keep all visual assets original to Brightdesk and locally bundled. Do not reuse Craft icons, screenshots, logos, fonts, CSS, source code, copied page compositions or article wording. Do not add remote fonts, external images, third-party scripts or network search.
+5. Do not copy Craft's editing portal, sign-in links, Discord/community integrations, account model, third-party app listings or AI-agent workflows. Brightdesk Help remains static, read-only and account-free for every reader.
+6. Treat Craft's screenshot-heavy tutorials as a reminder to make procedures visually understandable, not as evidence for Brightdesk. Brightdesk screenshots must come from a current running Brightdesk build and have version, operating-system and commit evidence; diagrams and design mock-ups must remain labelled as such.
+
+The Craft page's structure was reviewed from the live page's accessible content and navigation, and its public descriptions of guide families and workflow articles. This is an information-architecture review; it does not claim a pixel-level visual audit or approval of Craft's implementation.
