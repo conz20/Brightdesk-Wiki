@@ -107,3 +107,22 @@ This confirms that the source snapshot identifiers remain current. It does not a
 ## Public-output boundary recheck — 15 November 2026
 
 The current PR #6 branch expands the customer site from the earlier 12-page structure to the exact 31-page / 24-local-asset / one-headers-file allowlist (56 files total). The source allowlist and regression fixture were updated for this draft. This is a draft branch boundary only: it is not evidence that the current-head build or generated-output audit has passed. Keep this register private and retain all ten product guides as **Needs review** until their running-desktop walkthroughs are completed.
+
+## Product-guide structure audit — 15 November 2026
+
+A source-level structure check was completed across all ten current customer product guides on the review branch: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
+
+| Structure check | Result across ten guides |
+| --- | --- |
+| Product icon SVG | Present in all ten guides |
+| Workflow diagram SVG | Present in all ten guides |
+| Diagram clearly labelled as illustrative, not a product screenshot | Present in all ten guides |
+| On-page contents navigation | Present in all ten guides |
+| Overview, Getting started and Workflows sections | Present in all ten guides |
+| Troubleshooting and common questions | Present in all ten guides |
+| Current feature boundaries | Present in all ten guides |
+| Guide status remains Needs review | Present in all ten guides |
+| Matching technical reference link | Present in all ten guides |
+| Return link to Brightdesk Help | Present in all ten guides |
+
+**Outcome:** the ten product pages have a consistent baseline structure. This does not verify anchor-target correctness in a rendered Jekyll build, visual hierarchy, responsive behaviour, alt-text quality beyond the source markup, or any product workflow. It is not a desktop walkthrough and does not promote a guide to Verified. Keep all ten guides at **Needs review** until the build checks run and their documented workflows are completed in current installed Windows, macOS and Linux builds where claimed.
