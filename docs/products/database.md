@@ -10,6 +10,10 @@ permalink: /products/database.html
 
 ![Brightdesk Database product icon](../assets/images/product-icons/database.svg){: .product-guide-icon }
 
+![Three-step workflow: create a table, choose fields, then add records.](../assets/images/workflows/guide-database.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Database to keep structured information in tables with named fields.
 
 ## Create a table
