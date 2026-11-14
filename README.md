@@ -45,17 +45,18 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #281](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43553818394) passed on commit `7584e06d3c7a4946d385654de9f22a9b3150abf4`, which contains the Overview navigation and matching regression assertion across all ten product guides.
+[Run #285](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43555240991) passed on commit `09c200225676300c3eae2f75dfd2eb602f536907`.
 
-That successful workflow reported:
+That exact-head workflow reported:
 
-- 105 tests passed, 0 failed, 0 skipped.
-- 39 Markdown files and 100 local file/directory links checked successfully.
+- **108 tests passed, 0 failed, 0 skipped.**
+- 39 Markdown files and 99 local file/directory links checked successfully.
 - Jekyll customer-site build passed.
 - Generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
+- New regression checks confirm that each technical product reference links back to its matching Everyday Help guide and that dark-theme text and keyboard focus colours meet the specified contrast thresholds.
 - The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-The README and visual-redesign brief have since received status-documentation updates. Those later commits must also pass the exact-head workflow before the branch is considered fully verified. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. A passing check only verifies the automated gates listed above; it does not establish visual quality, genuine screenshots, live product workflows, manual accessibility, hosting or deployment.
+The README verification section, visual-redesign brief and PR description have been updated since this check. The newest exact-head workflow must also pass before the branch is considered fully verified. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 
