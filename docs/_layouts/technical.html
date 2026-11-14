@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Brightdesk Technical Documentation</title>
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+    <script type="module" src="{{ '/assets/js/search.js' | relative_url }}"></script>
+  </head>
+  <body class="technical-site">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header technical-header">
+      <div class="header-inner">
+        <a class="brand" href="{{ '/technical/index.html' | relative_url }}" aria-label="Brightdesk Technical Documentation home">
+          <span class="brand-mark" aria-hidden="true">B</span>
+          <span>Brightdesk <span class="brand-light">Technical Documentation</span></span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="{{ '/index.html' | relative_url }}">Everyday Help</a>
+          <a href="{{ '/technical/index.html' | relative_url }}" aria-current="page">Technical Documentation</a>
+        </nav>
+      </div>
+      <aside class="translation-help" aria-label="Language help">
+        <p><strong>Prefer another language?</strong> When your browser offers page translation, use its menu or translation control. Brightdesk does not send page text to a separate translation service.</p>
+      </aside>
+      <section class="help-search" role="search" aria-labelledby="help-search-label">
+        <label id="help-search-label" for="help-search">Search Technical Documentation</label>
+        <input id="help-search" type="search" autocomplete="off"
+          placeholder="Search product names, file formats or technical topics"
+          aria-describedby="help-search-hint help-search-status" aria-controls="help-search-results">
+        <p id="help-search-hint" class="search-hint">Search technical overview, file and privacy references, and all ten product references. Search stays in this browser.</p>
+        <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a product, format or technical topic to find a reference.</p>
+        <ul id="help-search-results" class="search-results" aria-label="Matching technical references" hidden></ul>
+      </section>
+    </header>
+    {% assign public_technical_paths = "/technical/index.html|/technical/system-overview.html|/technical/file-formats.html|/technical/data-and-privacy.html|/technical/products/pages.html|/technical/products/sheets.html|/technical/products/decks.html|/technical/products/notes.html|/technical/products/database.html|/technical/products/forms.html|/technical/products/lists.html|/technical/products/planner.html|/technical/products/to-do.html|/technical/products/workspace.html" | split: "|" %}
+    <nav class="search-index" aria-label="Searchable technical documentation content" hidden>
+      {% for help_page in site.pages %}
+        {% if public_technical_paths contains help_page.url %}
+          <a href="{{ help_page.url | relative_url }}" data-search-text="{{ help_page.content | strip_html | strip_newlines | escape }}">{{ help_page.title | default: "Brightdesk Technical Documentation" }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+    <main id="main" class="technical-layout">
+      <aside class="technical-sidebar" aria-label="Technical documentation sections">
+        <nav>
+          <h2>Reference library</h2>
+          <ul>
+            <li><a href="{{ '/technical/index.html' | relative_url }}"{% if page.url == '/technical/index.html' %} aria-current="page"{% endif %}>Overview</a></li>
+          </ul>
+          <h3>System references</h3>
+          <ul>
+            <li><a href="{{ '/technical/system-overview.html' | relative_url }}"{% if page.url == '/technical/system-overview.html' %} aria-current="page"{% endif %}>System overview</a></li>
+            <li><a href="{{ '/technical/file-formats.html' | relative_url }}"{% if page.url == '/technical/file-formats.html' %} aria-current="page"{% endif %}>File formats</a></li>
+            <li><a href="{{ '/technical/data-and-privacy.html' | relative_url }}"{% if page.url == '/technical/data-and-privacy.html' %} aria-current="page"{% endif %}>Data and privacy</a></li>
+          </ul>
+          <h3>Product references</h3>
+          <ul>
+            <li><a href="{{ '/technical/products/pages.html' | relative_url }}"{% if page.url == '/technical/products/pages.html' %} aria-current="page"{% endif %}>Pages</a></li>
+            <li><a href="{{ '/technical/products/sheets.html' | relative_url }}"{% if page.url == '/technical/products/sheets.html' %} aria-current="page"{% endif %}>Sheets</a></li>
+            <li><a href="{{ '/technical/products/decks.html' | relative_url }}"{% if page.url == '/technical/products/decks.html' %} aria-current="page"{% endif %}>Decks</a></li>
+            <li><a href="{{ '/technical/products/notes.html' | relative_url }}"{% if page.url == '/technical/products/notes.html' %} aria-current="page"{% endif %}>Notes</a></li>
+            <li><a href="{{ '/technical/products/database.html' | relative_url }}"{% if page.url == '/technical/products/database.html' %} aria-current="page"{% endif %}>Database</a></li>
+            <li><a href="{{ '/technical/products/forms.html' | relative_url }}"{% if page.url == '/technical/products/forms.html' %} aria-current="page"{% endif %}>Forms</a></li>
+            <li><a href="{{ '/technical/products/lists.html' | relative_url }}"{% if page.url == '/technical/products/lists.html' %} aria-current="page"{% endif %}>Lists</a></li>
+            <li><a href="{{ '/technical/products/planner.html' | relative_url }}"{% if page.url == '/technical/products/planner.html' %} aria-current="page"{% endif %}>Planner</a></li>
+            <li><a href="{{ '/technical/products/to-do.html' | relative_url }}"{% if page.url == '/technical/products/to-do.html' %} aria-current="page"{% endif %}>To Do</a></li>
+            <li><a href="{{ '/technical/products/workspace.html' | relative_url }}"{% if page.url == '/technical/products/workspace.html' %} aria-current="page"{% endif %}>Workspace</a></li>
+          </ul>
+        </nav>
+        <p class="sidebar-return"><a href="{{ '/index.html' | relative_url }}">← Back to Everyday Help</a></p>
+      </aside>
+      <article class="content-card technical-card">
+        <p class="technical-breadcrumb"><a href="{{ '/technical/index.html' | relative_url }}">Technical Documentation</a> <span aria-hidden="true">/</span> {{ page.title | escape }}</p>
+        {{ content }}
+      </article>
+    </main>
+    <footer class="site-footer technical-footer">
+      <p>Need plain-English, step-by-step instructions? <a href="{{ '/index.html' | relative_url }}">Return to Brightdesk Help</a>.</p>
+      <p>Technical Documentation is a separate, static, read-only reference. Its links open documentation pages only; they do not launch or control Brightdesk software.</p>
+    </footer>
+  </body>
+</html>
