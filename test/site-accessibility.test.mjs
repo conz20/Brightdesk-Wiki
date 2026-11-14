@@ -48,6 +48,9 @@ test('help layout exposes navigation, skip link and social metadata', () => {
   assert.ok(layout.includes('property="og:url"'));
   assert.ok(layout.includes('property="og:image"'));
   assert.ok(layout.includes('name="twitter:card" content="summary_large_image"'));
+  assert.ok(layout.includes('type="application/ld+json"'));
+  assert.ok(layout.includes('"@context": "https://schema.org"'));
+  assert.ok(layout.includes('"@type": "WebSite"'));
   assert.ok(layout.includes('rel="icon" type="image/svg+xml"'));
 });
 
@@ -132,4 +135,7 @@ test('technical reference layout provides the same keyboard and screen-reader es
   assert.ok(technicalLayout.includes('property="og:url"'));
   assert.ok(technicalLayout.includes('property="og:image"'));
   assert.ok(technicalLayout.includes('name="twitter:card" content="summary_large_image"'));
+  assert.ok(technicalLayout.includes('type="application/ld+json"'));
+  assert.ok(technicalLayout.includes('"@context": "https://schema.org"'));
+  assert.ok(technicalLayout.includes('"@type": "WebSite"'));
 });
