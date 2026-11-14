@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">Brightdesk Decks icon</title>
+<desc id="desc">A presentation slide with a title line, content lines and a simple chart.</desc>
+<rect x="8" y="8" width="112" height="112" rx="26" fill="#f1edff"/>
+<rect x="23" y="27" width="82" height="60" rx="7" fill="#fff" stroke="#6548ad" stroke-width="4"/>
+<path d="M35 42h34M35 53h24" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+<path d="M78 67V56a12 12 0 0 1 12 11z" fill="#b9a7f2"/>
+<path d="M78 67h12a12 12 0 1 1-12-12z" fill="#6548ad"/>
+<path d="M64 88v12M46 101h36" fill="none" stroke="#6548ad" stroke-width="4" stroke-linecap="round"/>
+</svg>
