@@ -156,3 +156,26 @@ test('homepage presents a clear getting-started route before task suggestions', 
   assert.match(homepage, /<h2 id="start-panel-title">Start with Brightdesk Suite<\/h2>/);
   assert.match(homepage, /href="customer-start-here.html">Open the getting-started guide/);
 });
+
+test('every page provides a direct navigation menu for all ten product guides', () => {
+  const productMenu = layout.match(/<details class="product-menu" aria-label="Browse product guides">([\\s\\S]*?)<\\/details>/);
+  assert.ok(productMenu, 'Every page must provide a keyboard-accessible product guide menu');
+
+  const productPaths = Array.from(
+    productMenu[1].matchAll(/href="\\{\\{\\s*'([^']+)'\\s*\\|\\s*relative_url\\s*\\}\\}"/g),
+    match => match[1]
+  );
+  assert.deepEqual(productPaths, [
+    '/products/pages.html',
+    '/products/sheets.html',
+    '/products/decks.html',
+    '/products/notes.html',
+    '/products/database.html',
+    '/products/forms.html',
+    '/products/lists.html',
+    '/products/planner.html',
+    '/products/to-do.html',
+    '/products/workspace.html'
+  ]);
+  assert.match(productMenu[1], /<summary>Product guides<\\/summary>/);
+});
