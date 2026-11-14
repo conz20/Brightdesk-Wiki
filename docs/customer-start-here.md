@@ -12,11 +12,6 @@ Brightdesk Suite is the starting point for the ten approved Brightdesk desktop p
 
 Brightdesk is free forever. Brightdesk Suite, all ten approved products and this customer help centre are free for every customer. There are no subscriptions, paid tiers, trials, licence fees or charges to read the Wiki. Customers do not need an account, sign-in or password. Your work is kept on your device.
 
-<figure class="product-preview suite-product-preview">
-  <img src="assets/previews/suite.svg" alt="Concept artwork of Brightdesk Suite App Centre with the ten approved products shown as selectable cards." width="1600" height="1210" loading="lazy">
-  <figcaption>Brightdesk Suite design concept only — not a screenshot of a running release. The current Suite interface may differ.</figcaption>
-</figure>
-
 <nav class="guide-contents" aria-label="Sections in this guide">
   <a href="#before-you-start">Install and open</a> · <a href="#use-home">Choose a product</a> · <a href="#use-files">Files and exports</a> · <a href="#notifications-settings-and-languages">Languages and updates</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
 </nav>
