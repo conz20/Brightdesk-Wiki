@@ -10,6 +10,12 @@ permalink: /products/database.html
 
 Use Database to keep structured information in tables with named fields.
 
+
+<figure class="guide-illustration">
+  <img src="../assets/images/guide-database.svg" alt="Three-step illustration for Brightdesk Database: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
+</figure>
+
 ## Create a table
 
 1. Open Brightdesk Database. A new database starts with **Table1**.
@@ -95,5 +101,9 @@ Database is a local table-and-record tool. SQL query execution, table relationsh
 ## Guide status
 
 **Needs review.** These steps are based on the current Database interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
+
+## Need the technical detail?
+
+For product behaviour, file handling and technical boundaries, see the [Brightdesk Database technical reference](../technical/products/database.html).
 
 [Back to Brightdesk Help](../index.html)
