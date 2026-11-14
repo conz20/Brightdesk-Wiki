@@ -10,6 +10,10 @@ permalink: /products/pages.html
 
 ![Brightdesk Pages product icon](../assets/images/product-icons/pages.svg){: .product-guide-icon }
 
+![Three-step workflow: create a document, write and format it, then save or export.](../assets/images/workflows/guide-pages.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Pages to write letters, reports and other text documents.
 
 ## Create a document
