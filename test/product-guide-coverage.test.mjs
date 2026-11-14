@@ -36,6 +36,22 @@ test('each product guide has the correct title, route and review status', () => 
   }
 });
 
+
+test('all ten everyday product guides share the same simple navigation structure', () => {
+  for (const filename of expected.keys()) {
+    const source = fs.readFileSync(path.join(productDirectory, filename), 'utf8');
+    const product = filename.slice(0, -'.md'.length);
+    assert.match(source, /^## Overview$/m, product + ' must explain what the product is for');
+    assert.match(source, /^## Getting started$/m, product + ' must have a clear first-use section');
+    assert.match(source, /^## Workflows$/m, product + ' must group task instructions together');
+    assert.match(source, /^## Troubleshooting and common questions$/m, product + ' must make help with problems easy to find');
+    assert.match(source, /<a href="#getting-started">Getting started<\\/a>/, product + ' must link to its first-use instructions');
+    assert.match(source, /<a href="#workflows">Workflows<\\/a>/, product + ' must link to its task instructions');
+    assert.match(source, /<a href="#troubleshooting-and-common-questions">Troubleshooting<\\/a>/, product + ' must link to its troubleshooting section');
+    assert.match(source, /<a href="\\.\\.\\/technical\\/products\\//, product + ' must link to its separate technical reference');
+  }
+});
+
 test('the Suite getting-started page remains explicitly source-confirmed', () => {
   const source = fs.readFileSync(path.join(root, 'docs', 'customer-start-here.md'), 'utf8');
   assert.ok(source.split(/\r?\n/).includes('status: Source-confirmed'));
