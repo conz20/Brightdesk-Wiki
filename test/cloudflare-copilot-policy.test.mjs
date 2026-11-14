@@ -27,9 +27,9 @@ test('Cloudflare deployment remains gated by exact build, privacy, and DNS requi
     'help.brightdesk.com',
     'Preview branch',
     'complete DNS-zone export',
-    'explicit approval of the exact change'
+    'owner has approved the exact change'
   ]) assert.ok(guide.includes(text), 'maintainer guide includes ' + text);
 
   assert.match(guide, /Do not publish or advertise a `pages\.dev` address/);
-  assert.match(guide, /Do not change nameservers or alter DNS/);
+  assert.match(guide, /Do not replace nameservers or alter DNS until the record set is understood and the owner has approved the exact change/);
 });
