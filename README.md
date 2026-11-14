@@ -49,8 +49,9 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-**Current PR #5 head:** `be05fa7be7e816f2758a5948fb50a7b9f5ac0020`.
+**PR #5 state:** open, draft and unmerged. The PR page is the source of truth for the live branch SHA and review status; the workflow entries below identify the exact commits they checked.
 
+[Run #309](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43564350822) passed on the exact README commit `6db853abd82885057739c3a66ed93acc7fb591f5`. It verified the current README record together with all documentation and public-output regression tests, Markdown links, Jekyll generation and the generated-output privacy audit.
 [Run #308](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43564261848) passed on that exact head `be05fa7be7e816f2758a5948fb50a7b9f5ac0020`. It completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, dependency installation, all documentation and public-output regression tests, Markdown-link checks, Jekyll generation and generated-output privacy audit.
 
 [Run #299](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43558574203) passed on the exact PR head `cd90b8b89b8ff5e05924226fb2725a77ae802ba6`. The workflow completed the pinned runtimes, dependency installation, regression tests, Markdown-link checks, Jekyll generation and public-output privacy audit successfully.
