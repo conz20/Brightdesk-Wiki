@@ -45,13 +45,14 @@ test('shared guide entry points are discoverable', () => {
   assert.ok(decks.includes('decks-slide-shows.html'));
 });
 
-test('Technical Documentation has its own fourteen-page search index', () => {
+test('Technical Documentation has its own seventeen-page search index', () => {
   const layout = read('docs/_layouts/technical.html');
   const allowlist = layout.match(/assign public_technical_paths = "([^"]+)"/);
   assert.ok(allowlist);
   assert.deepEqual(allowlist[1].split('|'), [
     '/technical/index.html','/technical/system-overview.html',
     '/technical/file-formats.html','/technical/data-and-privacy.html',
+    '/technical/guides/install-update.html','/technical/guides/languages-and-spelling.html','/technical/guides/troubleshooting.html',
     ...products.map(product => '/technical/products/' + product + '.html')
   ]);
   assert.match(layout, /Search Technical Documentation/);
@@ -154,4 +155,22 @@ test('breadcrumbs avoid repeating a page as its own parent section', () => {
   assert.match(breadcrumb, /unless page\.url == '\/everyday\/index\.html'/);
   assert.match(breadcrumb, /unless page\.url == '\/technical\/index\.html'/);
   assert.doesNotMatch(breadcrumb, /customer-start-here\.html/);
+});
+
+
+test('technical sidebar groups all ten applications and reuses their approved product icons', () => {
+  const layout = read('docs/_layouts/technical.html');
+  for (const group of ['Create and communicate', 'Work with information', 'Plan and organise']) {
+    assert.ok(layout.includes(group), 'Technical navigation must include ' + group);
+  }
+  for (const product of products) {
+    assert.ok(layout.includes('/technical/products/' + product + '.html'), 'Sidebar must link to ' + product);
+    assert.ok(layout.includes('/assets/images/product-icons/' + product + '.svg'), 'Sidebar must use the approved ' + product + ' icon');
+  }
+  for (const guide of ['install-update', 'languages-and-spelling', 'troubleshooting']) {
+    assert.ok(layout.includes('/technical/guides/' + guide + '.html'), 'Sidebar must include the technical ' + guide + ' guide');
+    const page = read('docs/technical/guides/' + guide + '.md');
+    assert.match(page, /^layout: technical$/m);
+    assert.ok(page.includes('../../everyday/' + guide + '.html'), 'Technical guide must link to its plain-English companion');
+  }
 });
