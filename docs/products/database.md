@@ -8,6 +8,8 @@ permalink: /products/database.html
 
 # Brightdesk Database
 
+![Brightdesk Database product icon](../assets/images/product-icons/database.svg){: .product-guide-icon }
+
 Use Database to keep structured information in tables with named fields.
 
 ## Create a table
