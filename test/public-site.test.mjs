@@ -76,7 +76,7 @@ test('approved first-party canonical and social metadata URLs are allowed', t =>
 test('structured data is restricted to the approved first-party Brightdesk Help website identity', t => {
   const siteRoot = siteFixture(t);
   const file = path.join(siteRoot, 'index.html');
-  const html = fs.readFileSync(file, 'utf8').replace('brightdesk-help.pages.dev/', 'attacker.example/');
+  const html = fs.readFileSync(file, 'utf8').replace('"name":"Brightdesk Help"', '"name":"Not Brightdesk"');
   fs.writeFileSync(file, html);
   assert.throws(() => checkPublicSite({ siteRoot }), /unapproved or non-first-party structured data/i);
 });
