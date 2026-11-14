@@ -8,6 +8,8 @@ permalink: /products/notes.html
 
 # Brightdesk Notes
 
+![Brightdesk Notes product icon](../assets/images/product-icons/notes.svg){: .product-guide-icon }
+
 Use Notes to capture quick thoughts, reminders and short pieces of information.
 
 ## Write a note
