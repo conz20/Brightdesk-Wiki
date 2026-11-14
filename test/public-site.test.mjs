@@ -20,7 +20,7 @@ function siteFixture(t) {
   fs.mkdirSync(path.join(rootDir, 'technical/products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
-  fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\\n');
+  fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
   fs.writeFileSync(path.join(rootDir, 'assets/js/search.js'), 'export function searchTopics() { return []; }\\n');
   const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><script type="module" src="/assets/js/search.js"></script></head><body><input id="help-search" type="search"></body></html>\\n';
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
