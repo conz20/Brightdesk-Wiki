@@ -99,14 +99,14 @@ The list shows products that are included in the Suite and have not been hidden 
 
 To show it again, open the same product card menu and choose **Show in Switch product**.
 
-Hiding a product changes its visibility in the **Switch product** list only. It does not remove the product from the Suite, uninstall a separate desktop product, or delete your documents or project data.
+Hiding a product changes its visibility in the **Switch product** list only. It does not remove the product from the Suite. It does not uninstall a separate desktop product. It does not delete your documents or project data.
 
 ### Add or remove a product from the Suite
 
 - To add a product, choose **Apps**, find a card marked **Available to add**, then choose **Add to Suite**.
 - To remove a product from the Suite, find a card marked **In your Suite** and choose **Remove from Suite**. Read the confirmation message before continuing.
 
-Removing a product changes which bundled workspaces are available inside the Suite. It does not uninstall a separately installed desktop product or delete your documents or project data. Add the product to the Suite again when you need that workspace there.
+Removing a product changes which bundled workspaces are available inside the Suite. It does not uninstall a separately installed desktop product. It does not delete your documents or project data. Add the product to the Suite again when you need that workspace there.
 
 ## Use Files
 
