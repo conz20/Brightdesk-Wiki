@@ -145,7 +145,7 @@ const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), '
 
 test('homepage exposes one primary heading and named section landmarks', () => {
   assert.match(homepage, /<header class="portal-hero" aria-labelledby="portal-title">/);
-  assert.equal((homepage.match(/<h1\\b/g) || []).length, 1, 'The homepage must have one primary heading');
+  assert.equal(homepage.split('<h1').length - 1, 1, 'The homepage must have one primary heading');
   assert.match(homepage, /<section class="portal-note" aria-labelledby="portal-note-title">/);
-  assert.match(homepage, /<h2 id="portal-note-title">About Brightdesk Help<\\/h2>/);
+  assert.ok(homepage.includes('<h2 id="portal-note-title">About Brightdesk Help</h2>'));
 });
