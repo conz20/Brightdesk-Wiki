@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Brightdesk Suite: getting started"
-description: Install Brightdesk Suite, choose products, open workspaces and manage local files.
+description: Get started with Brightdesk Suite, choose from its ten products, open workspaces and manage your local documents and project files.
 status: Source-confirmed
 permalink: /customer-start-here.html
 ---
