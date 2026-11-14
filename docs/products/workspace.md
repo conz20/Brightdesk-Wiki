@@ -8,6 +8,8 @@ permalink: /products/workspace.html
 
 # Brightdesk Workspace
 
+![Brightdesk Workspace product icon](../assets/images/product-icons/workspace.svg){: .product-guide-icon }
+
 Use Workspace to bring related project information together in workspaces and pages.
 
 ## Create a workspace
