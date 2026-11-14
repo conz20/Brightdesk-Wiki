@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+<title id="title">A simple workflow for Brightdesk Notes</title>
+<desc id="desc">Three steps: Create a note, then Capture your idea, then Keep a copy.</desc>
+<rect x="0" y="0" width="1200" height="360" rx="26" fill="#f3f7fc"/>
+<text x="60" y="58" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#142c4a">A simple way to use Notes</text>
+<text x="60" y="91" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Three clear steps to help you get started</text>
+
+  <rect x="60" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
+  <circle cx="102" cy="177" r="23" fill="#245ca6"/>
+  <text x="102" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">1</text>
+  <text x="138" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Create a note</text>
+  <text x="88" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Give the note a title</text>
+<path d="M382 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="450" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
+  <circle cx="492" cy="177" r="23" fill="#337c80"/>
+  <text x="492" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">2</text>
+  <text x="528" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Capture your idea</text>
+  <text x="478" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Write or organise the details</text>
+<path d="M772 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="840" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
+  <circle cx="882" cy="177" r="23" fill="#5b6399"/>
+  <text x="882" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">3</text>
+  <text x="918" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Keep a copy</text>
+  <text x="868" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Save or export the note</text>
+</svg>
