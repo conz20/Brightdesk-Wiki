@@ -18,21 +18,21 @@
           <span>Brightdesk <span class="brand-light">Help</span></span>
         </a>
         <nav class="site-nav" aria-label="Main navigation">
-          <a href="{{ '/index.html' | relative_url }}">Help home</a>
-          <a href="{{ '/customer-start-here.html' | relative_url }}">Suite guide</a>
+          <a href="{{ '/index.html' | relative_url }}"{% if page.url == '/index.html' %} aria-current="page"{% endif %}>Help home</a>
+          <a href="{{ '/customer-start-here.html' | relative_url }}"{% if page.url == '/customer-start-here.html' %} aria-current="page"{% endif %}>Suite guide</a>
           <details class="product-menu" aria-label="Browse product guides">
             <summary>Product guides</summary>
             <ul>
-              <li><a href="{{ '/products/pages.html' | relative_url }}">Pages</a></li>
-              <li><a href="{{ '/products/sheets.html' | relative_url }}">Sheets</a></li>
-              <li><a href="{{ '/products/decks.html' | relative_url }}">Decks</a></li>
-              <li><a href="{{ '/products/notes.html' | relative_url }}">Notes</a></li>
-              <li><a href="{{ '/products/database.html' | relative_url }}">Database</a></li>
-              <li><a href="{{ '/products/forms.html' | relative_url }}">Forms</a></li>
-              <li><a href="{{ '/products/lists.html' | relative_url }}">Lists</a></li>
-              <li><a href="{{ '/products/planner.html' | relative_url }}">Planner</a></li>
-              <li><a href="{{ '/products/to-do.html' | relative_url }}">To Do</a></li>
-              <li><a href="{{ '/products/workspace.html' | relative_url }}">Workspace</a></li>
+              <li><a href="{{ '/products/pages.html' | relative_url }}"{% if page.url == '/products/pages.html' %} aria-current="page"{% endif %}>Pages</a></li>
+              <li><a href="{{ '/products/sheets.html' | relative_url }}"{% if page.url == '/products/sheets.html' %} aria-current="page"{% endif %}>Sheets</a></li>
+              <li><a href="{{ '/products/decks.html' | relative_url }}"{% if page.url == '/products/decks.html' %} aria-current="page"{% endif %}>Decks</a></li>
+              <li><a href="{{ '/products/notes.html' | relative_url }}"{% if page.url == '/products/notes.html' %} aria-current="page"{% endif %}>Notes</a></li>
+              <li><a href="{{ '/products/database.html' | relative_url }}"{% if page.url == '/products/database.html' %} aria-current="page"{% endif %}>Database</a></li>
+              <li><a href="{{ '/products/forms.html' | relative_url }}"{% if page.url == '/products/forms.html' %} aria-current="page"{% endif %}>Forms</a></li>
+              <li><a href="{{ '/products/lists.html' | relative_url }}"{% if page.url == '/products/lists.html' %} aria-current="page"{% endif %}>Lists</a></li>
+              <li><a href="{{ '/products/planner.html' | relative_url }}"{% if page.url == '/products/planner.html' %} aria-current="page"{% endif %}>Planner</a></li>
+              <li><a href="{{ '/products/to-do.html' | relative_url }}"{% if page.url == '/products/to-do.html' %} aria-current="page"{% endif %}>To Do</a></li>
+              <li><a href="{{ '/products/workspace.html' | relative_url }}"{% if page.url == '/products/workspace.html' %} aria-current="page"{% endif %}>Workspace</a></li>
             </ul>
           </details>
           <a href="{{ '/technical/index.html' | relative_url }}">Technical documentation</a>

@@ -84,6 +84,18 @@ a:focus-visible {
 .brand-light { color: var(--muted); font-weight: 550; }
 .site-nav { display: flex; flex-wrap: wrap; gap: 1.1rem; }
 .site-nav a { font-weight: 650; text-decoration: none; }
+.site-nav a[aria-current="page"] {
+  color: var(--brand-dark);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .4rem;
+}
+.product-menu > ul a[aria-current="page"] {
+  color: var(--brand-dark);
+  background: var(--soft-blue);
+  font-weight: 800;
+}
 
 .main-content {
   width: min(calc(100% - 2rem), var(--content-width));
