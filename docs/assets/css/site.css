@@ -554,3 +554,7 @@ a:focus-visible {
 @media(max-width:380px){.product-card-grid{grid-template-columns:1fr}.portal-choice{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.portal-choice,.product-card{transition:none}.portal-choice:hover,.product-card:hover{transform:none}}
 @media(prefers-color-scheme:dark){.portal-choice,.product-card,.reference-card{background:var(--surface);border-color:var(--line)}.portal-choice:hover,.product-card:hover{border-color:var(--brand)}.portal-note{background:#203852}.portal-choice-icon{background:#315f98}.portal-choice-icon-technical{background:#354c6e}}
+
+/* Give the choice and Everyday Help directories enough width for a real product catalogue. */
+.main-content:has(.portal-hero){width:min(calc(100% - 2rem),1240px);margin:1.25rem auto 2.5rem}
+.main-content:has(.portal-hero) .content-card{padding:clamp(1rem,3vw,2rem)}

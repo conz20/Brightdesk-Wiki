@@ -17,7 +17,7 @@ permalink: /technical/index.html
     <div><p class="portal-kicker">SYSTEM INFORMATION</p><h2 id="system-reference-title">Suite and system references</h2></div>
   </div>
   <div class="reference-card-grid">
-    <a class="reference-card" href="system-overview.html"><span class="reference-symbol" aria-hidden="true">▦</span><strong>System overview</strong><span>How the Suite and product workspaces fit together</span><span class="reference-arrow">Read reference →</span></a>
+    <a class="reference-card" href="system-overview.html"><span class="reference-symbol" aria-hidden="true">▦</span><strong>Brightdesk Suite</strong><span>How the Suite and all ten product workspaces fit together</span><span class="reference-arrow">Read reference →</span></a>
     <a class="reference-card" href="file-formats.html"><span class="reference-symbol" aria-hidden="true">▤</span><strong>File formats</strong><span>Supported open and export formats by product</span><span class="reference-arrow">Read reference →</span></a>
     <a class="reference-card" href="data-and-privacy.html"><span class="reference-symbol" aria-hidden="true">◇</span><strong>Data and privacy</strong><span>Local data boundaries and online services</span><span class="reference-arrow">Read reference →</span></a>
   </div>

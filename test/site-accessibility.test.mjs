@@ -233,3 +233,10 @@ test('dark theme keyboard focus ring remains visible on page and content surface
     );
   }
 });
+
+
+test('the portal directory uses a wide responsive layout for product discovery', () => {
+  assert.match(css, /\.main-content:has\(\.portal-hero\)\s*\{[^}]*1240px/is);
+  assert.match(css, /\.product-card-grid\s*\{[^}]*grid-template-columns/is);
+  assert.match(css, /@media\s*\(max-width:\s*680px\)/i);
+});
