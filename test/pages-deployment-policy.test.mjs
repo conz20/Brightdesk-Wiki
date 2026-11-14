@@ -78,7 +78,7 @@ test('customer Help address is the approved .com domain and DNS changes remain g
   assert.match(cloudflareGuide, /not a complete zone export/i);
   assert.match(cloudflareGuide, /Public DNS does not show whether the owner's Sedo account supports custom records/i);
   assert.match(cloudflareGuide, /check whether the Sedo account provides editable DNS records/i);
-  assert.match(cloudflareGuide, /Cloudflare GitHub App was not present/i);
+  assert.match(cloudflareGuide, /Cloudflare successfully built and deployed pull-request previews/i);
   assert.match(cloudflareGuide, /complete DNS-zone export/i);
   assert.match(cloudflareGuide, /change the authoritative nameservers.*after.*owner has approved/i);
   assert.match(cloudflareGuide, /CNAME.*help.*pages\.dev|CNAME.*help.*exact project/i);
@@ -86,8 +86,12 @@ test('customer Help address is the approved .com domain and DNS changes remain g
 });
 
 test('only the audited read-only customer output is configured for publishing', () => {
-  assert.match(cloudflareGuide, /12 customer pages and 13 static files/);
-  assert.match(cloudflareGuide, /customer homepage.*Suite.*ten product guides.*local CSS/i);
+  assert.match(cloudflareGuide, /27 approved HTML pages/);
+  assert.match(cloudflareGuide, /49 files total/);
+  assert.match(cloudflareGuide, /Everyday Help homepage/);
+  assert.match(cloudflareGuide, /Technical Documentation homepage/);
+  assert.match(cloudflareGuide, /22 local assets/);
+  assert.match(cloudflareGuide, /local-only browser search/i);
   assert.match(cloudflareGuide, /internal.*must remain private|maintainer.*private/i);
   assert.match(cloudflareGuide, /No customer login.*comments.*uploads|no customer login.*upload/i);
 });
