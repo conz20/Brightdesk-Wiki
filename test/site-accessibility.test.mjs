@@ -145,7 +145,7 @@ test('technical top navigation marks only its own overview page as current', () 
   const navEnd = technicalLayout.indexOf('</nav>', navStart);
   assert.ok(navStart >= 0 && navEnd > navStart, 'Technical top navigation must be present');
   const navigation = technicalLayout.slice(navStart, navEnd);
-  const technicalLink = navigation.split(/\\r?\\n/).find(line =>
+  const technicalLink = navigation.split('\n').find(line =>
     line.includes(`href="{{ '/technical/index.html' | relative_url }}"`)
   );
   assert.ok(technicalLink, 'Technical overview link must be present in top navigation');
