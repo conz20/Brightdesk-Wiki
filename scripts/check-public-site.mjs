@@ -231,11 +231,6 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (/<(?:form|textarea|select|button|iframe|object|embed)\b/i.test(html) || /\bcontenteditable(?:\s|=|>)/i.test(html)) {
       fail(file + ' contains interactive or editable controls; customer help must remain read-only');
     }
-    const searchInputs = [...html.matchAll(/<input\b[^>]*>/gi)].map(match => match[0]);
-    if (searchInputs.length !== 1 ||
-        !/^<input\b(?=[^>]*\bid=["']help-search["'])(?=[^>]*\btype=["']search["'])[^>]*>$/i.test(searchInputs[0])) {
-      fail(file + ' must contain only the approved read-only Help search field');
-    }
     const urlAttributes = getNormalizedUrlAttributes(html);
     if (/\son[a-z][a-z0-9_-]*\s*=/i.test(html) ||
         urlAttributes.some(containsExecutableUrl)) {
@@ -261,7 +256,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     const imageTags = [...html.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
     const productPage = file.match(/^products\/([a-z-]+)\.html$/);
     if (imageTags.some(imageTag => !/\balt=["'][^"']+["']/i.test(imageTag))) {
-      fail(file + ' contains an image without meaningful alternative text');
+      fail(file + ' does not provide the required meaningful alternative text for each image');
     }
     if (!productPage && imageTags.some(imageTag => {
       const source = imageTag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2] || '';
@@ -318,6 +313,15 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
   if (/\\/.test(css)) fail('site CSS contains a CSS escape that could hide an external resource');
   if (/@import\b/i.test(css) || /(?:https?:)?\/\//i.test(css) || /url\s*\(/i.test(css)) fail('site CSS loads external resources');
+  for (const file of htmlFiles) {
+    const html = decodeHtmlCharacterReferences(fs.readFileSync(path.join(rootDir, file), 'utf8'));
+    const searchInputs = [...html.matchAll(/<input\b[^>]*>/gi)].map(match => match[0]);
+    if (searchInputs.length !== 1 ||
+        !/^<input\b(?=[^>]*\bid=["']help-search["'])(?=[^>]*\btype=["']search["'])[^>]*>$/i.test(searchInputs[0])) {
+      fail(file + ' must contain only the approved read-only Help search field');
+    }
+  }
+
   return { files: files.length, htmlPages: htmlFiles.length };
 }
 
