@@ -1,21 +1,16 @@
 # Brightdesk Wiki
 
-Private source repository for the separate Brightdesk customer Help website.
+The private source repository for the separate Brightdesk customer Help website. The Help website is not a customer product, desktop application, installer component or offline dependency.
 
-## Latest website links
+## Customer Help website
 
-| Link | Address | Purpose |
-|---|---|---|
-| **Customer website** | [brightdesk-help.pages.dev](https://brightdesk-help.pages.dev/) | Permanent public address. Always use this link when directing customers to Brightdesk Help. |
-| **Latest review build** | [Open the latest successful PR #6 preview](https://reconcile-customer-help-main.brightdesk-help.pages.dev/) | Stable Cloudflare branch-preview address; it follows the newest successful PR #6 deployment automatically. It is not the production website. |
+**Customer Help link:** [https://brightdesk-help.pages.dev/](https://brightdesk-help.pages.dev/)
 
-**Keep these links current.** Whenever Cloudflare successfully deploys a newer review build, update the **Latest review build** link in this README to that newest successful preview. Keep the permanent customer address unchanged unless the approved production address itself changes. Never replace the customer link with a temporary preview URL.
+This is the free Cloudflare Pages address for Brightdesk Help. It uses Cloudflare's provided `pages.dev` hostname, so no paid domain registration, subscription or custom DNS setup is required. Keep this as the canonical customer-facing Help link. Verify the live URL and deployed commit when checking a release.
 
-The latest review build is generated from the current head of [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6). The draft has not been promoted to production.
+## Approved customer scope
 
-## What Brightdesk Help covers
-
-Brightdesk Help supports the Brightdesk Suite and exactly ten customer products:
+Brightdesk Help supports the integrated Suite and exactly ten customer products:
 
 1. Pages
 2. Sheets
@@ -28,59 +23,74 @@ Brightdesk Help supports the Brightdesk Suite and exactly ten customer products:
 9. To Do
 10. Workspace
 
-Brightdesk-AI and the shared engineering repositories are engineering tools, not additional customer products.
+Brightdesk-AI and the shared engineering repositories are not additional customer products.
 
-## Current release status
+Brightdesk is free forever. There are no customer subscriptions, trials, paid tiers, licence fees, activation codes, accounts, sign-ins, passwords, paywalls or advertising.
 
-**Draft — not production.**
+## Current status — 14 November 2026
 
-The latest review build has:
+The initial Help website framework, build and privacy checks, maintainer setup documentation, and ten product-guide drafts have been merged into `main` from [PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3).
 
-- **96/96 automated tests passing.**
-- Successful Markdown-link checks, Jekyll build and generated-output privacy audit.
-- Successful Cloudflare Pages preview deployment.
-- A read-only launch audit score of **99/100 (A)**: 26 checks passed, 1 optional structured-data warning, 0 failures.
+**The customer website is not ready for publication.** The merged material is a working source foundation, not a completed customer help centre.
 
-See [quality run #464](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43587357146) and [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6).
+- Suite getting-started guide: **Source-confirmed**. Its complete workflow still needs a live walkthrough.
+- All ten product guides: **Needs review** until each workflow is tested in a current installed desktop build.
+- Genuine screenshots from the running Suite and all ten products: **not yet captured**.
+- Homepage search and task-based suggested-help links: **implemented on PR #6 and covered by regression checks; not yet part of `main`**.
+- Exact current `main` revision: must pass the complete quality workflow, including the real Jekyll build and generated-output privacy audit, before it is considered build-ready.
+- The Cloudflare Pages project has a deployed free hostname at **https://brightdesk-help.pages.dev/**. Pull-request preview deployments are separate review links; they are not the canonical customer Help address. Check the deployed commit before claiming that the latest draft content is live.
 
-The complete professional visual redesign is still a publication blocker. Craft Wiki is the information-architecture reference for grouped product discovery, clear guide navigation, strong search and well-organised article pages. Brightdesk must have its own original identity, artwork, typography and composition. Do not copy Craft branding, code, content or assets.
+Do not label a guide **Verified** until its instructions have been run in the named product version and operating system. Do not use concept artwork as a product screenshot.
 
-The draft is **not ready to replace the production website** until the visual direction is approved and implemented, all customer pages receive desktop and narrow-screen review, genuine screenshots are captured from running Brightdesk products, documented workflows are verified, and release checks are complete.
+## Hosting decision
 
-## Design and content structure
+Cloudflare Pages Free is the approved hosting route. The canonical customer Help address is **https://brightdesk-help.pages.dev/**. This is Cloudflare's free project hostname; no paid custom domain is required.
 
-The Help website keeps two connected but distinct reading areas:
+The Cloudflare Pages GitHub integration is active for this repository. Cloudflare has successfully built and deployed pull-request previews for the private Wiki branch, including PR #6. The production project address remains **https://brightdesk-help.pages.dev/**; PR-specific preview URLs are for review only. The production branch settings, build/output settings, GitHub App repository-access scope and exact deployed production commit still require verification.
 
-- **Everyday Help:** plain-English, task-first instructions and practical workflows.
-- **Technical Documentation:** deeper product, file-format, system and privacy references.
+The source repository must remain private. The free `pages.dev` hostname is sufficient for the public Help website; do not purchase a domain or change DNS/nameservers for this purpose. Confirm HTTPS and the deployed production commit when validating a release.
 
-The two areas link to each other. Search stays local in the visitor's browser and each area searches only its own approved pages.
+Before release, verify the Cloudflare GitHub App is scoped to **Only select repositories** and only `conz20/Brightdesk-Wiki`. Also verify the production branch is `main`, the build command and output directory match this repository, and the branch-preview policy matches the approved runbook. The runbook currently specifies preview deployments as **None** to avoid exposing unfinished help content; preview deployments are presently enabled, so this remains an account-side setting check. Do not change Cloudflare settings or DNS without explicit approval of the exact change.
 
-The design should feel like a professional Brightdesk knowledge base: strong homepage, clear product directory, persistent and searchable product navigation, consistent article layouts, readable typography, deliberate spacing and responsive desktop-first composition. Craft Wiki is a reference, not a template to copy. Microsoft Fluent principles may inform clarity and accessibility, while Brightdesk branding and components remain original.
+## What must be complete before publication
 
-## Product and privacy requirements
+- A professional, usable Help homepage with working search and suggested-help links.
+- A clear Suite guide and ten product-specific guides with simple, accurate instructions and practical examples.
+- Genuine screenshots captured from current running Brightdesk desktop builds.
+- A complete walkthrough of every documented customer workflow, with version, operating system and evidence recorded.
+- Successful exact-head tests, Markdown-link checks, Jekyll generation and the generated-output privacy audit.
+- A browser review of all customer pages, navigation, keyboard use, narrow desktop windows, visible focus and reduced-motion behavior.
+- A verified Cloudflare Pages Free production connection at `https://brightdesk-help.pages.dev/`, valid HTTPS, and a recorded deployed commit.
 
-Brightdesk is free forever. There are no customer subscriptions, trials, paid tiers, licence fees, activation codes, customer accounts, sign-ins, passwords, paywalls or advertising.
+The generated customer site must remain static and read-only. It must not contain accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images or customer-data collection. Keep architecture, development, security, release and maintainer material out of the generated customer output.
 
-The generated customer website must remain static and read-only. It must not contain customer uploads, comments, public editing, analytics, visitor tracking, advertising, cookies, visitor storage, remote AI, third-party scripts, external fonts, external images or customer-data collection. Search must not send visitor search terms anywhere. Keep architecture, development, security, release and maintainer material out of public output.
+## Related work
 
-The hosting provider necessarily processes technical request metadata to deliver and protect the site; this must not be described as Brightdesk analytics or visitor tracking.
+- [Merged Help website implementation — PR #3](https://github.com/conz20/Brightdesk-Wiki/pull/3)
+- [Free public customer Help address](https://brightdesk-help.pages.dev/) — Cloudflare Pages project hostname
+- [Wiki GitHub Actions](https://github.com/conz20/Brightdesk-Wiki/actions)
 
-## Hosting
 
-Cloudflare Pages Free is the approved hosting route. The permanent customer address is [https://brightdesk-help.pages.dev/](https://brightdesk-help.pages.dev/). No paid custom domain, subscription, DNS change or nameserver change is required.
+## Help experience in progress
 
-The source repository must remain private. Pull-request preview URLs are review links only. Before a production release, verify the deployed production commit, the `main` production branch, build/output settings and the GitHub App's repository access scope. Do not change Cloudflare settings or DNS without explicit approval.
+The next Help release is being reviewed on a draft branch created directly from the current `main` revision. It separates **Everyday Help** (plain-English, task-first instructions) from **Technical Documentation** (detailed product and system references). Both remain static and read-only. Search runs locally in the visitor's browser and does not send search terms anywhere.
 
-## Publication checklist
+The following improvements are implemented on the PR #6 branch, but are **not yet part of `main`**:
 
-- [ ] Complete and approve the full Brightdesk visual design across homepage, Everyday Help, Technical Documentation, navigation, search, articles and narrow layouts.
-- [ ] Review all public routes on desktop and narrow screens.
-- [ ] Capture genuine screenshots from current running builds of the Suite and all ten products. Never present concept artwork or workflow diagrams as product screenshots.
-- [ ] Verify every documented workflow on each operating system it claims to support.
-- [ ] Complete keyboard, visible-focus and screen-reader review.
-- [ ] Pass exact-head automated tests, Markdown-link checks, Jekyll build and public-output privacy audit.
-- [ ] Verify the production Cloudflare deployment and deployed commit at the permanent customer address.
-- [ ] Update the **Latest review build** link above whenever a newer successful PR preview is deployed.
+- Separate Everyday Help and Technical Documentation routes, with navigation between them.
+- A separate local search index for each reading area.
+- Expanded, plain-English guides for exactly the ten approved products.
+- Ten matching technical product references and system, file-format and data/privacy references.
+- Regression checks for route structure, guide coverage, reciprocal links and local search.
 
-Keep PR #6 in draft and unmerged until the publication checklist is complete.
+The preceding PR #6 head `8eac3e316b64e40a0fa813323a09dedc3c7165bd` passed [Brightdesk Wiki quality run #452](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43579835862) on 14 November 2026. All 94 tests passed, including the Technical Documentation accessibility-structure test. The Markdown checker verified 75 local links across 44 Markdown files; the Jekyll build and generated-output privacy audit also passed. Check the live PR #6 checks for exact-head results covering this README and runbook update.
+
+This README status block records the last fully completed quality run. The live [PR #6 checks](https://github.com/conz20/Brightdesk-Wiki/pull/6) are the authority for subsequent commits and preview deployments.
+The work is tracked in [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6), based directly on the current `main` revision. It remains open, draft and unmerged. Keep it that way until the following release gates are complete:
+
+- Visual exploration and manual review at desktop and narrow widths. No visual candidates have been generated or approved.
+- Genuine screenshots from current running Brightdesk builds and end-to-end walkthroughs for all ten guides.
+- Manual keyboard, screen-reader and browser visual review.
+- Cloudflare Pages Free, `https://brightdesk-help.pages.dev/`, HTTPS and deployed-commit verification.
+
+Keep `https://brightdesk-help.pages.dev/` as the free public Help address. Do not purchase a custom domain or change DNS/nameservers. Keep the source repository private.

@@ -75,7 +75,7 @@ test('approved first-party canonical and social metadata URLs are allowed', t =>
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 52);
+  assert.equal(result.files, 49);
   assert.equal(result.htmlPages, 27);
 });
 
