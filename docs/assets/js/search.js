@@ -10,7 +10,7 @@ const SEARCH_STOP_WORDS = new Set([
   'a', 'an', 'and', 'are', 'as', 'at', 'be', 'can', 'could', 'do', 'does',
   'for', 'from', 'have', 'help', 'how', 'i', 'in', 'is', 'it', 'me', 'my',
   'need', 'of', 'on', 'or', 'please', 'the', 'this', 'to', 'want', 'what',
-  'when', 'where', 'which', 'who', 'why', 'with', 'would', 'you', 'your'
+  'use', 'using', 'when', 'where', 'which', 'who', 'why', 'with', 'would', 'you', 'your'
 ]);
 
 export function searchTopics(topics, query, limit = 6) {
