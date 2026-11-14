@@ -163,7 +163,7 @@ test('every product has one correctly named reciprocal link and no extra technic
   );
 
   const markdownLinks = source => Array.from(
-    source.matchAll(/\\[([^\\]]+)\\]\\(([^)]+)\\)/g),
+    source.matchAll(/\[([^\]]+)\]\(([^)]+)\)/g),
     match => ({ label: match[1], href: match[2] })
   );
 
