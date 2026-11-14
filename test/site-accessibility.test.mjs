@@ -59,6 +59,22 @@ test('reduced-motion and narrow-screen reading layouts remain supported', () => 
   assert.match(css, /\.content-card table\s*\{[^}]*overflow-x:\s*auto/is);
 });
 
+test('workflow diagrams stay readable and keyboard-scrollable on narrow screens', () => {
+  const viewport = css.match(/\\.workflow-diagram-scroll\\s*\\{([^}]*)\\}/i);
+  assert.ok(viewport, 'Workflow diagrams need a dedicated horizontal scroll region');
+  assert.match(viewport[1], /max-width:\\s*100%/i);
+  assert.match(viewport[1], /overflow-x:\\s*auto/i);
+
+  const diagram = css.match(/\\.product-workflow-diagram\\s*\\{([^}]*)\\}/i);
+  assert.ok(diagram, 'Workflow diagram image styling must be defined');
+  assert.match(diagram[1], /min-width:\\s*720px/i);
+  assert.match(diagram[1], /height:\\s*auto/i);
+
+  const focus = css.match(/\\.workflow-diagram-scroll:focus-visible\\s*\\{([^}]*)\\}/i);
+  assert.ok(focus, 'The scrollable diagram must have a visible keyboard focus state');
+  assert.match(focus[1], /outline:\\s*3px\\s+solid/i);
+});
+
 test('skip link becomes visible when keyboard-focused', () => {
   const rule = css.match(/\.skip-link:focus\s*\{([^}]*)\}/i);
   assert.ok(rule, 'The skip link must have a visible keyboard-focus state');
