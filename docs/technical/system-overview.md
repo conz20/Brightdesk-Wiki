@@ -37,6 +37,6 @@ This reference describes the customer-facing product boundary. It does not publi
 
 ## Related references
 
-- [File formats and product routing](/technical/file-formats.html)
-- [Data and privacy](/technical/data-and-privacy.html)
-- [Everyday Help: get started with Suite](/customer-start-here.html)
+- [File formats and product routing](file-formats.html)
+- [Data and privacy](data-and-privacy.html)
+- [Everyday Help: get started with Suite](../customer-start-here.html)
