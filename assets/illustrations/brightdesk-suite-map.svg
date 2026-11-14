@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Brightdesk Suite and its ten products</title>
+<desc id="desc">A central Brightdesk Suite panel connects to ten product panels: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do, and Workspace.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5f8ff"/><stop offset="1" stop-color="#eef2fb"/></linearGradient><linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2859c5"/><stop offset="1" stop-color="#613bb8"/></linearGradient><style>.h{font:700 30px system-ui,sans-serif;fill:#18243a}.sub{font:500 17px system-ui,sans-serif;fill:#56647a}.name{font:650 20px system-ui,sans-serif;fill:#202c42}.line{stroke:#aab8d2;stroke-width:3;fill:none;stroke-linecap:round}.tile{fill:#fff;stroke:#d7deeb;stroke-width:2}</style></defs>
+<rect width="1200" height="760" rx="28" fill="url(#bg)"/>
+<text x="600" y="65" text-anchor="middle" class="h">One suite. Ten focused products.</text>
+<text x="600" y="96" text-anchor="middle" class="sub">The Brightdesk customer product family</text>
+<path class="line" d="M600 295V350 M160 350H1040 M160 350V410 M380 350V410 M600 350V410 M820 350V410 M1040 350V410 M160 535V575 M380 535V575 M600 535V575 M820 535V575 M1040 535V575"/>
+<rect x="390" y="145" width="420" height="150" rx="24" fill="url(#brand)"/>
+<text x="600" y="210" text-anchor="middle" style="font:750 42px system-ui,sans-serif;fill:#fff">Brightdesk Suite</text>
+<text x="600" y="247" text-anchor="middle" style="font:500 19px system-ui,sans-serif;fill:#e8edff">A connected desktop experience</text>
+<g><rect class="tile" x="55" y="410" width="210" height="125" rx="18"/><text x="160" y="482" text-anchor="middle" class="name">Pages</text>
+<rect class="tile" x="275" y="410" width="210" height="125" rx="18"/><text x="380" y="482" text-anchor="middle" class="name">Sheets</text>
+<rect class="tile" x="495" y="410" width="210" height="125" rx="18"/><text x="600" y="482" text-anchor="middle" class="name">Decks</text>
+<rect class="tile" x="715" y="410" width="210" height="125" rx="18"/><text x="820" y="482" text-anchor="middle" class="name">Notes</text>
+<rect class="tile" x="935" y="410" width="210" height="125" rx="18"/><text x="1040" y="482" text-anchor="middle" class="name">Database</text>
+<rect class="tile" x="55" y="575" width="210" height="125" rx="18"/><text x="160" y="647" text-anchor="middle" class="name">Forms</text>
+<rect class="tile" x="275" y="575" width="210" height="125" rx="18"/><text x="380" y="647" text-anchor="middle" class="name">Lists</text>
+<rect class="tile" x="495" y="575" width="210" height="125" rx="18"/><text x="600" y="647" text-anchor="middle" class="name">Planner</text>
+<rect class="tile" x="715" y="575" width="210" height="125" rx="18"/><text x="820" y="647" text-anchor="middle" class="name">To Do</text>
+<rect class="tile" x="935" y="575" width="210" height="125" rx="18"/><text x="1040" y="647" text-anchor="middle" class="name">Workspace</text></g>
+</svg>
