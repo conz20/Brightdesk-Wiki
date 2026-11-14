@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Lists technical reference
 description: Lists record schema, custom column types and status filter mapping.
-permalink: /technical/products/lists.html
+permalink: /technical../../products/lists.html
 ---
 
 # Lists technical reference
@@ -43,5 +43,5 @@ Lists saves records locally. Connected data sources and shared editing are not p
 
 ## Related information
 
-- [Data and privacy](/technical/data-and-privacy.html)
-- [Everyday Help: Lists](/products/lists.html)
+- [Data and privacy](../data-and-privacy.html)
+- [Everyday Help: Lists](../../products/lists.html)
