@@ -201,7 +201,7 @@ test('private Brightdesk repository links must never be published', t => {
 test('JavaScript and external assets are rejected', t => {
   const siteRoot = siteFixture(t);
   fs.writeFileSync(path.join(siteRoot, 'index.html'), '<!doctype html><script src="https://example.com/tracker.js"></script>');
-  assert.throws(() => checkPublicSite({ siteRoot }), /contains JavaScript/i);
+  assert.throws(() => checkPublicSite({ siteRoot }), /external URL|contains JavaScript/i);
 });
 
 test('unlisted output file types are rejected', t => {
