@@ -41,31 +41,31 @@ function validateProductIcon(file, svg) {
   if (!PRODUCT_ICON_FILES.includes(relative)) {
     fail('SVG is outside the approved product icon library: ' + relative);
   }
-  if (!/^<svg\\b[^>]*>/.test(svg) || !/<\\/svg>\\s*$/.test(svg)) {
+  if (!/^<svg\b[^>]*>/.test(svg) || !/<\/svg>\s*$/.test(svg)) {
     fail(relative + ' is not a complete SVG document');
   }
-  if (!/\\bxmlns="http:\\/\\/www\\.w3\\.org\\/2000\\/svg"/.test(svg) ||
-      !/\\brole="img"/.test(svg) || !/\\baria-labelledby="title desc"/.test(svg) ||
-      !/<title id="title">[\\s\\S]+?<\\/title>/.test(svg) ||
-      !/<desc id="desc">[\\s\\S]+?<\\/desc>/.test(svg)) {
+  if (!/\bxmlns="http:\/\/www\.w3\.org\/2000\/svg"/.test(svg) ||
+      !/\brole="img"/.test(svg) || !/\baria-labelledby="title desc"/.test(svg) ||
+      !/<title id="title">[\s\S]+?<\/title>/.test(svg) ||
+      !/<desc id="desc">[\s\S]+?<\/desc>/.test(svg)) {
     fail(relative + ' must include an SVG namespace, image role, accessible title and description');
   }
 
   const withoutNamespace = svg.replace('xmlns="http://www.w3.org/2000/svg"', '');
-  if (/(?:https?:)?\\/\\//i.test(withoutNamespace) ||
-      /(?:javascript|data|vbscript):|url\\s*\\(|\\son[a-z][a-z0-9_-]*\\s*=|\\b(?:href|xlink:href|src)\\s*=|<style\\b/i.test(svg)) {
+  if (/(?:https?:)?\/\//i.test(withoutNamespace) ||
+      /(?:javascript|data|vbscript):|url\s*\(|\son[a-z][a-z0-9_-]*\s*=|\b(?:href|xlink:href|src)\s*=|<style\b/i.test(svg)) {
     fail(relative + ' contains an active feature or external SVG reference');
   }
 
   const stack = [];
-  const tags = [...svg.matchAll(/<\\/?([a-z][a-z0-9:-]*)\\b[^>]*>/gi)];
+  const tags = [...svg.matchAll(/<\/?([a-z][a-z0-9:-]*)\b[^>]*>/gi)];
   if (tags.length === 0) fail(relative + ' contains no SVG elements');
   for (const match of tags) {
     const token = match[0];
     const name = match[1];
     if (!SVG_ELEMENTS.has(name)) fail(relative + ' contains a disallowed SVG element: ' + name);
-    const attributeText = token.replace(/^<\\/?[a-z][a-z0-9:-]*/i, '').replace(/\\/?>$/, '');
-    const attributeMatches = [...attributeText.matchAll(/\\s+([a-zA-Z_:][a-zA-Z0-9:_.-]*)\\s*=\\s*(?:"[^"]*"|'[^']*')/g)];
+    const attributeText = token.replace(/^<\/?[a-z][a-z0-9:-]*/i, '').replace(/\/?>$/, '');
+    const attributeMatches = [...attributeText.matchAll(/\s+([a-zA-Z_:][a-zA-Z0-9:_.-]*)\s*=\s*(?:"[^"]*"|'[^']*')/g)];
     const parsedAttributeText = attributeMatches.map(item => item[0]).join('');
     if (parsedAttributeText.trim() !== attributeText.trim()) {
       fail(relative + ' contains malformed or unsupported SVG attributes');
@@ -206,8 +206,8 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     }
     if (/github\.com\/conz20/i.test(html)) fail(file + ' contains a link to the private Brightdesk GitHub account');
 
-    const imageTags = [...html.matchAll(/<img\\b[^>]*>/gi)].map(match => match[0]);
-    const productPage = file.match(/^products\\/([a-z-]+)\\.html$/);
+    const imageTags = [...html.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
+    const productPage = file.match(/^products\/([a-z-]+)\.html$/);
     if (!productPage && imageTags.length !== 0) {
       fail(file + ' contains an image outside the approved product-guide icon placement');
     }
@@ -217,8 +217,8 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
         fail(file + ' must contain exactly one approved product icon');
       }
       const imageTag = imageTags[0];
-      const source = imageTag.match(/\\bsrc\\s*=\\s*(["'])(.*?)\\1/i)?.[2];
-      const alternative = imageTag.match(/\\balt\\s*=\\s*(["'])(.*?)\\1/i)?.[2];
+      const source = imageTag.match(/\bsrc\s*=\s*(["'])(.*?)\1/i)?.[2];
+      const alternative = imageTag.match(/\balt\s*=\s*(["'])(.*?)\1/i)?.[2];
       const expectedSource = '../assets/images/product-icons/' + product + '.svg';
       const expectedAlternative = 'Brightdesk ' + PRODUCT_LABELS.get(product) + ' product icon';
       if (source !== expectedSource) {
