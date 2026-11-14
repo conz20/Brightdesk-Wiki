@@ -7,7 +7,7 @@
 
 ## Why this work is required
 
-The current customer-facing site is a working prototype, not a release-quality Help experience. Small isolated CSS changes are not an acceptable substitute. The full visual system, navigation model and page templates must be reconsidered together, then reviewed at desktop and narrow screen sizes.
+The current customer-facing site is a working prototype, not a release-quality Help experience. Small isolated CSS changes are not an acceptable substitute. The full visual system, navigation model and page templates must be reconsidered together. Brightdesk Help supports desktop applications for Windows, macOS and Linux, so the primary design target is a desktop browser on a desktop or laptop computer. Narrow-screen support is required as a readable fallback, not as the design centre.
 
 The redesign is a publication blocker. Do not promote the current presentation as finished.
 
@@ -24,6 +24,19 @@ The redesign is a publication blocker. Do not promote the current presentation a
 - Browser-native translation remains the translation approach. A browser may offer automatic page translation or a manual translate command; the Help site must not try to replace, disable or imitate those browser controls. Write and structure content so browser translation can work reliably, and explain where users can find their browser's translation option without assuming every browser uses the same menu label.
 - The two Help experiences are separate routes within one Brightdesk Help identity. Everyday Help must link to Technical Documentation for deeper detail, and every technical page must offer a clear route back to the plain-English guide. Readers may move between them freely; the technical area is not restricted to experts.
 - Do not publish internal repository or maintainer material.
+
+## Desktop application support — Windows, macOS and Linux
+
+Brightdesk's customer products are desktop applications for **Windows, macOS and Linux**. The Help site is a website that supports those desktop products; it is not a mobile Brightdesk app.
+
+- Design and judge the primary experience at wide desktop and standard laptop sizes first. Prioritise comfortable reading beside a desktop application, clear product navigation, search, workflow steps, tables and technical references.
+- Keep tablet and narrow-mobile layouts responsive and readable, but do not let phone-style navigation, stacked mobile cards or touch-first controls dictate the desktop composition. Narrow layouts are a secondary reading fallback.
+- Write shared instructions once when the steps are genuinely the same across operating systems. Where a menu name, window control, file location, keyboard shortcut or workflow differs, label the variant clearly as **Windows**, **macOS** or **Linux**.
+- Show keyboard shortcuts in platform-aware form, for example **Ctrl** on Windows/Linux and **Command (⌘)** on macOS, but only when the actual Brightdesk build confirms those bindings. Never infer parity from another product or from Craft.
+- Do not publish guessed menu paths, shortcut keys, file locations, settings, features or availability. Mark a platform-specific detail as unverified in internal review notes until it has been checked against a current build for that operating system.
+- Avoid duplicating an entire article for each operating system when only one or two steps differ. Use a shared task flow with short, clearly labelled platform notes or side-by-side comparisons where they materially help.
+- Capture genuine interface evidence separately for each operating system when the visible UI or workflow differs. Record product version, OS version, architecture where relevant, and commit/build identifier. Do not reuse a Windows screenshot as proof of the macOS or Linux interface.
+- Before approving a guide, verify the instructions on every platform they claim to support. If a platform build has not been tested, say so internally and keep the guide in review rather than presenting the steps as confirmed.
 
 ## Design direction
 
@@ -110,7 +123,7 @@ Avoid gratuitous animation, dense decoration, oversized cards and excessive roun
 
 ## Responsive and accessibility acceptance
 
-Review at minimum: wide desktop, standard laptop, tablet and narrow mobile widths. Confirm that:
+Review the desktop-first experience at minimum: wide desktop and standard laptop widths. Then check tablet and narrow-mobile widths as responsive fallbacks. Confirm that:
 
 - Navigation remains understandable and usable without a mouse.
 - Focus is always visible and moves in a sensible order.
@@ -159,13 +172,13 @@ The public Craft Wiki was reviewed on 14 November 2026:
 
 - [Craft Wiki homepage](https://craft.wiki/) presents a clear directory of its app family, grouped into broad areas such as graphics, video, audio, office and developer tools. Brightdesk should keep its directory limited to the ten approved products and organise entry points around the jobs people want to do, rather than adopting Craft's product categories or naming.
 - [Craft Wiki Getting started guide](https://craft.wiki/apps/figcraft/getting-started/) uses a numbered first-use journey, explains the visible areas of the interface and gives concrete actions. Brightdesk guides should retain this step-by-step approach, use the exact labels found in the relevant Brightdesk build, and state the expected result after important actions.
-- [Craft Wiki DeckCraft workflows](https://craft.wiki/apps/deckcraft/workflows/) groups instructions by real tasks, then explains controls and keyboard shortcuts in context. Brightdesk can use the same general documentation principle while writing original product-specific instructions and avoiding assumptions that every Brightdesk product has the same controls.
+- [Craft Wiki DeckCraft workflows](https://craft.wiki/apps/deckcraft/workflows/) groups instructions by real tasks, then explains controls and keyboard shortcuts in context. Brightdesk can use the same general documentation principle while writing original product-specific instructions and avoiding assumptions that every Brightdesk product has the same controls. Its VectorCraft workflow reference explicitly distinguishes Windows/Linux shortcuts from macOS shortcuts ([example](https://craft.wiki/apps/vectorcraft/workflows/)); Brightdesk should follow the platform-labelling principle only where its own current builds confirm differences.
 - The Craft Wiki repository describes a searchable app sidebar with expandable guide links and the current app expanded on its pages ([source repository](https://github.com/storytold/craft-wiki)). This is a useful navigation behaviour to evaluate during Brightdesk's visual exploration. It is not an instruction to reproduce Craft's sidebar, layout, typography or visual styling.
 
 ### Brightdesk application
 
 1. Keep the homepage directory compact and scannable, with exactly ten approved product destinations and a separate, clearly labelled route to Technical Documentation.
-2. Make the current product and current guide section easy to identify in navigation. Keep navigation usable by keyboard and at narrow widths.
+2. Make the current product and current guide section easy to identify in navigation. Optimise the main composition for desktop and laptop browsers, then reflow it cleanly at narrow widths.
 3. Structure each guide around a task, not a feature catalogue. Use numbered steps, visible control names, expected outcomes and troubleshooting paths.
 4. Use real screenshots only when they help identify the current Brightdesk interface. Until verified captures exist, retain clearly labelled explanatory diagrams and do not imply that they show the running software.
 5. Keep the Brightdesk visual identity, wording, implementation and assets original. Craft is a research reference, not a source of copied page templates, code, logos, icons, screenshots or text.
