@@ -110,7 +110,7 @@ const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html
 
 test('technical reference layout provides the same keyboard and screen-reader essentials', () => {
   assert.match(technicalLayout, /<html lang="en-AU">/);
-  assert.match(technicalLayout, /<a class="skip-link" href="#main">Skip to content<\\/a>/);
+  assert.ok(technicalLayout.includes('<a class="skip-link" href="#main">Skip to content</a>'));
   assert.match(technicalLayout, /<nav class="site-nav" aria-label="Main navigation">/);
   assert.match(technicalLayout, /<main id="main" class="technical-layout">/);
   assert.match(technicalLayout, /<aside class="technical-sidebar" aria-label="Technical documentation sections">/);
