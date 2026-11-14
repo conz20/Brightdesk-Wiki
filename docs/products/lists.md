@@ -38,7 +38,7 @@ A new list starts with the columns **Title**, **Status**, **Priority**, **Due da
 ## Search, filter and sort
 
 - Enter a word in **Search this list** to find matching records.
-- Use **Filter by status** to choose **All records**, **Active** or **Done**.
+- Use **Filter by status** to choose **All records**, **Active** (Not started and In progress) or **Done**. The Active option shows both unfinished statuses; Done shows completed records.
 - Choose a field in **Sort by column**.
 - Choose **Ascending** or **Descending** under **Sort direction**, then choose **Sort**.
 
