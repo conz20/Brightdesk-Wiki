@@ -68,26 +68,24 @@ test('Cloudflare Git integration is restricted to the private Wiki repository an
   assert.match(cloudflareGuide, /no paid|no purchase|no upgrade/i);
 });
 
-test('customer Help address is the approved .com domain and DNS changes remain gated', () => {
-  assert.match(cloudflareGuide, /https:\/\/help\.brightdesk\.com/);
-  assert.match(cloudflareGuide, /owner has confirmed.*own.*brightdesk\.com/i);
-  assert.match(cloudflareGuide, /ns1\.sedoparking\.com.*ns2\.sedoparking\.com/i);
-  assert.match(cloudflareGuide, /root A record.*64\.190\.63\.111/i);
-  assert.match(cloudflareGuide, /fresh lookup.*both.*www.*help.*64\.190\.63\.111/i);
-  assert.doesNotMatch(cloudflareGuide, /64\.190\.63\.222/);
-  assert.match(cloudflareGuide, /not a complete zone export/i);
-  assert.match(cloudflareGuide, /Public DNS does not show whether the owner's Sedo account supports custom records/i);
-  assert.match(cloudflareGuide, /check whether the Sedo account provides editable DNS records/i);
-  assert.match(cloudflareGuide, /Cloudflare GitHub App was not present/i);
-  assert.match(cloudflareGuide, /complete DNS-zone export/i);
-  assert.match(cloudflareGuide, /change the authoritative nameservers.*after.*owner has approved/i);
-  assert.match(cloudflareGuide, /CNAME.*help.*pages\.dev|CNAME.*help.*exact project/i);
-  assert.match(cloudflareGuide, /pages\.dev.*technical.*origin|technical.*Pages origin only/i);
+test('customer Help address is the approved free Pages hostname and custom DNS is not required', () => {
+  assert.match(cloudflareGuide, /https:\/\/brightdesk-help\.pages\.dev\//);
+  assert.match(cloudflareGuide, /canonical free project hostname|canonical public Help address/i);
+  assert.match(cloudflareGuide, /No paid custom domain.*DNS change or nameserver change is required/i);
+  assert.match(cloudflareGuide, /do not change DNS or nameservers/i);
+  assert.match(cloudflareGuide, /Cloudflare successfully built and deployed pull-request previews/i);
+  assert.match(cloudflareGuide, /production branch.*main/i);
+  assert.match(cloudflareGuide, /deployed commit SHA/i);
+  assert.doesNotMatch(cloudflareGuide, /help\.brightdesk\.com|64\.190\.63\.222|64\.190\.63\.111/);
 });
 
 test('only the audited read-only customer output is configured for publishing', () => {
-  assert.match(cloudflareGuide, /12 customer pages and 13 static files/);
-  assert.match(cloudflareGuide, /customer homepage.*Suite.*ten product guides.*local CSS/i);
+  assert.match(cloudflareGuide, /27 approved HTML pages/);
+  assert.match(cloudflareGuide, /49 files total/);
+  assert.match(cloudflareGuide, /Everyday Help homepage/);
+  assert.match(cloudflareGuide, /Technical Documentation homepage/);
+  assert.match(cloudflareGuide, /22 local assets/);
+  assert.match(cloudflareGuide, /local-only browser search/i);
   assert.match(cloudflareGuide, /internal.*must remain private|maintainer.*private/i);
   assert.match(cloudflareGuide, /No customer login.*comments.*uploads|no customer login.*upload/i);
 });
