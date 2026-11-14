@@ -97,3 +97,11 @@ test('every product guide labels its workflow image as an illustration, not a sc
   }
 });
 
+test('every product workflow diagram is placed in a keyboard-scrollable region', () => {
+  for (const product of expected.keys()) {
+    const source = fs.readFileSync(path.join(productDirectory, product), 'utf8');
+    assert.match(source, /<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">/);
+    assert.match(source, /class="product-workflow-diagram"/);
+  }
+});
+
