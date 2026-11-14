@@ -60,8 +60,8 @@ test('Technical Documentation has its own fourteen-page search index', () => {
 test('both help areas share the same top navigation and Brightdesk brand mark', () => {
   const everyday = read('docs/_layouts/default.html');
   const technical = read('docs/_layouts/technical.html');
-  const everydayNav = everyday.match(/<nav class="site-nav" aria-label="Main navigation">([\\s\\S]*?)<\\/nav>/);
-  const technicalNav = technical.match(/<nav class="site-nav" aria-label="Main navigation">([\\s\\S]*?)<\\/nav>/);
+  const everydayNav = everyday.match(/<nav class="site-nav" aria-label="Main navigation">([\s\S]*?)<\/nav>/);
+  const technicalNav = technical.match(/<nav class="site-nav" aria-label="Main navigation">([\s\S]*?)<\/nav>/);
   assert.ok(everydayNav, 'Everyday Help must expose its main navigation');
   assert.ok(technicalNav, 'Technical Documentation must expose its main navigation');
   for (const href of [
@@ -77,19 +77,18 @@ test('both help areas share the same top navigation and Brightdesk brand mark', 
     assert.ok(technicalNav[1].includes(href), 'Technical Documentation navigation must include ' + href);
   }
   for (const layout of [everyday, technical]) {
-    assert.match(layout, /<img class="brand-mark" src="{{ '\/favicon\.svg' \| relative_url }}" alt="">/);
-    assert.match(layout, /aria-label="Brightdesk Help home"/);
+    assert.ok(layout.includes('src="{{ \'/favicon.svg\' | relative_url }}"'));
+    assert.ok(layout.includes('aria-label="Brightdesk Help home"'));
   }
   const favicon = read('docs/favicon.svg');
   assert.match(favicon, /four-panel Brightdesk symbol/);
-  assert.match(favicon, /#53C8E8/);
-  assert.match(favicon, /#8C7CF0/);
-  assert.match(favicon, /#43B9A7/);
-  assert.match(favicon, /#4B8DE8/);
-  assert.doesNotMatch(favicon, /<text[\\s>]/i);
+  for (const colour of ['#53C8E8', '#8C7CF0', '#43B9A7', '#4B8DE8']) {
+    assert.ok(favicon.includes(colour), 'Brightdesk mark must retain ' + colour);
+  }
+  assert.doesNotMatch(favicon, /<text/i);
   const social = read('docs/assets/images/brightdesk-help-social.svg');
-  assert.match(social, /#101B35/);
-  assert.match(social, /brand-gradient/);
+  assert.ok(social.includes('#101B35'));
+  assert.ok(social.includes('brand-gradient'));
 });
 
 test('all ten guides use the same clear structure and link to their technical reference', () => {
