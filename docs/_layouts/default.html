@@ -104,17 +104,23 @@
       {% unless page.url == '/index.html' %}
       <nav class="page-breadcrumb" aria-label="Breadcrumb">
         <a href="{{ '/index.html' | relative_url }}">Help home</a>
-        <span aria-hidden="true">/</span>
         {% if page.url contains '/products/' %}
+          <span aria-hidden="true">/</span>
           <a href="{{ '/index.html#directory-title' | relative_url }}">Products</a>
+          <span aria-hidden="true">/</span>
         {% elsif page.url contains '/everyday/' %}
+          {% unless page.url == '/everyday/index.html' %}
+          <span aria-hidden="true">/</span>
           <a href="{{ '/everyday/index.html' | relative_url }}">Everyday Help</a>
+          <span aria-hidden="true">/</span>
+          {% endunless %}
         {% elsif page.url contains '/technical/' %}
+          {% unless page.url == '/technical/index.html' %}
+          <span aria-hidden="true">/</span>
           <a href="{{ '/technical/index.html' | relative_url }}">Technical Documentation</a>
-        {% else %}
-          <a href="{{ '/customer-start-here.html' | relative_url }}">Suite guide</a>
+          <span aria-hidden="true">/</span>
+          {% endunless %}
         {% endif %}
-        <span aria-hidden="true">/</span>
         <span aria-current="page">{{ page.title | default: "Guide" | escape }}</span>
       </nav>
       {% endunless %}
