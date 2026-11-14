@@ -252,3 +252,25 @@ test('Lists guide explains the working Active and Done status filters', () => {
   assert.match(listsGuide, /\*\*Active\*\* \(Not started and In progress\)/);
   assert.match(listsGuide, /Done shows completed records/);
 });
+
+test('product guides use the actual Database, Lists, Forms, Planner and Workspace labels', () => {
+  const guide = name => fs.readFileSync(new URL('../docs/products/' + name + '.md', import.meta.url), 'utf8');
+  const database = guide('database');
+  const lists = guide('lists');
+  const forms = guide('forms');
+  const planner = guide('planner');
+  const workspace = guide('workspace');
+
+  assert.match(database, /\*\*Sort by\*\*/);
+  assert.match(database, /\*\*Order\*\*/);
+  assert.doesNotMatch(database, /\*\*Sort records\*\*/);
+  assert.match(lists, /\*\*Active\*\* \(Not started and In progress\)/);
+  assert.match(lists, /Done shows completed records/);
+  assert.match(forms, /\*\*Required question\*\*/);
+  assert.match(planner, /\*\*New bucket\*\*/);
+  assert.match(planner, /\*\*Bucket name\*\*/);
+  assert.match(planner, /\*\*New task\*\*/);
+  assert.match(planner, /\*\*Task name\*\*/);
+  assert.match(workspace, /\*\*Bullet list\*\*/);
+  assert.match(workspace, /\*\*Add block\*\*/);
+});
