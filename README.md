@@ -36,7 +36,7 @@ The initial Help website framework, build and privacy checks, maintainer setup d
 - Suite getting-started guide: **Source-confirmed**. Its complete workflow still needs a live walkthrough.
 - All ten product guides: **Needs review** until each workflow is tested in a current installed desktop build.
 - Genuine screenshots from the running Suite and all ten products: **not yet captured**.
-- Site-wide Help search and clickable task suggestions: **implemented in draft [PR #5](https://github.com/conz20/Brightdesk-Wiki/pull/5)**. The search index is explicitly restricted to the 12 approved customer pages; it does not index maintainer documentation. This work is not yet on `main` or in a live site.
+- Site-wide Help search, homepage task suggestions and a direct product-guide menu on every page: **implemented in draft [PR #5](https://github.com/conz20/Brightdesk-Wiki/pull/5)**. The menu links directly to all ten approved products; the Suite guide remains one click away. The search index is explicitly restricted to the 12 approved customer pages; it does not index maintainer documentation. This work is not yet on `main` or in a live site.
 - Earlier PR #5 quality workflow: run [#173](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43539553672) passed on 14 November 2026 for PR head `096fc7cf760a9a4f22da398d8d70d2231e860f3c`.
 - Latest exact-head PR #5 quality workflow: [run #176](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43541319544) passed on commit `037facdf049272d1434339a268db1bf84e332466`. It verified the accessible Help search landmark and connected status/results relationship, plus exactly eleven footer suggestions for the Suite and ten products. Regression tests: **82 passed, 0 failed, 0 skipped**; Markdown links, the Jekyll build and the 12-page/14-file privacy audit also passed. A later README-only commit records this result and must itself retain a successful exact-head quality check before merge. GitHub ran the `pull_request` workflow against merge ref `415d5a9e2668bda8647be0005ec2ed7ade134a15`; the macOS ARM64 job completed successfully with Node.js 24.22.2 and Ruby 3.4.4. Regression tests: **80 passed, 0 failed, 0 skipped**. Markdown link check: 23 files and 35 local file/directory links. Jekyll generation passed. The generated-output privacy audit passed with exactly 12 customer pages and 14 static files, with no private repository links, internal documents, external scripts or external assets. This verifies that PR revision in its current main-branch context; it does not merge the draft into `main` or publish the site.
 - This is evidence for that exact commit only. Every later PR-head change must receive its own successful exact-head workflow run. Automated CI does not verify the product walkthroughs, screenshots, browser usability or production deployment listed below.
@@ -55,7 +55,7 @@ Do not change nameservers or DNS records without a complete current zone export,
 
 ## What must be complete before publication
 
-- A professional, usable Help homepage with working search and suggested-help links.
+- A professional, usable Help homepage with working search, task-based suggestions and clearly labelled direct links to all customer guides.
 - A clear Suite guide and ten product-specific guides with simple, accurate instructions and practical examples.
 - Genuine screenshots captured from current running Brightdesk desktop builds.
 - A complete walkthrough of every documented customer workflow, with version, operating system and evidence recorded.
@@ -63,7 +63,7 @@ Do not change nameservers or DNS records without a complete current zone export,
 - A browser review of all customer pages, navigation, keyboard use, narrow desktop windows, visible focus and reduced-motion behavior.
 - A verified Cloudflare Pages Free production connection, the approved custom domain with valid HTTPS, and a recorded deployed commit.
 
-The generated customer site remains static and read-only. Its only interactive element is the accessible Help search field, powered by one audited local JavaScript module that searches the published guide text in the browser. That module must not make network requests, use cookies or visitor storage, or send search terms anywhere. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images or customer-data collection. Keep architecture, development, security, release and maintainer material out of the generated customer output.
+The generated customer site remains static and read-only. Its interactive elements are a native, keyboard-accessible product-guide menu and the accessible Help search field. The search is powered by one audited local JavaScript module that searches the published guide text in the browser. That module must not make network requests, use cookies or visitor storage, or send search terms anywhere. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images or customer-data collection. Keep architecture, development, security, release and maintainer material out of the generated customer output.
 
 ## Related work
 
