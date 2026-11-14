@@ -159,7 +159,13 @@ function decodeHtmlCharacterReferences(value) {
 }
 
 function stripApprovedMetadataUrls(html) {
-  return html.replace(/<(?:link|meta)\b[^>]*>/gi, tag => {
+  const withoutApprovedStructuredDataUrls = html.replace(
+    /<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi,
+    tag => tag
+      .replace(/https:\/\/schema\.org/gi, '')
+      .replace(/https:\/\/brightdesk-help\.pages\.dev\//gi, '')
+  );
+  return withoutApprovedStructuredDataUrls.replace(/<(?:link|meta)\b[^>]*>/gi, tag => {
     const canonical = /<link\b/i.test(tag) && /\brel\s*=\s*(["'])canonical\1/i.test(tag);
     const openGraph = /<meta\b/i.test(tag) && /\bproperty\s*=\s*(["'])og:(?:url|image)\1/i.test(tag);
     const twitter = /<meta\b/i.test(tag) && /\bname\s*=\s*(["'])twitter:image\1/i.test(tag);
@@ -307,9 +313,31 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     }
 
     const scriptTags = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi)].map(match => match[0]);
-    if (scriptTags.length !== 1 ||
-        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
-        /<script\b/i.test(html.replace(scriptTags[0] || '', ''))) {
+    const structuredDataTags = scriptTags.filter(tag => /\btype=["']application\/ld\+json["']/i.test(tag));
+    const executableScriptTags = scriptTags.filter(tag => !/\btype=["']application\/ld\+json["']/i.test(tag));
+    if (structuredDataTags.length !== 1) {
+      fail(file + ' must contain exactly one approved static WebSite structured-data block');
+    }
+    const structuredDataContent = structuredDataTags[0].replace(/^<script\b[^>]*>/i, '').replace(/<\/script>$/i, '').trim();
+    let structuredData;
+    try {
+      structuredData = JSON.parse(structuredDataContent);
+    } catch {
+      fail(file + ' contains invalid JSON-LD structured data');
+    }
+    const expectedStructuredDataKeys = ['@context', '@type', 'name', 'url', 'description', 'inLanguage'].sort();
+    if (Object.keys(structuredData).sort().join('|') !== expectedStructuredDataKeys.join('|') ||
+        structuredData['@context'] !== 'https://schema.org' ||
+        structuredData['@type'] !== 'WebSite' ||
+        structuredData.name !== 'Brightdesk Help' ||
+        structuredData.url !== 'https://brightdesk-help.pages.dev/' ||
+        structuredData.description !== 'Public, read-only customer help for Brightdesk desktop products.' ||
+        structuredData.inLanguage !== 'en-AU') {
+      fail(file + ' contains unapproved or non-first-party structured data');
+    }
+    if (executableScriptTags.length !== 1 ||
+        !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(executableScriptTags[0]) ||
+        /<script\b/i.test(html.replace(structuredDataTags[0], '').replace(executableScriptTags[0] || '', ''))) {
       fail(file + ' contains JavaScript other than the approved local Help search script');
     }
   }
