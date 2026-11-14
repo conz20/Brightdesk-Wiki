@@ -10,6 +10,10 @@ permalink: /products/sheets.html
 
 ![Brightdesk Sheets product icon](../assets/images/product-icons/sheets.svg){: .product-guide-icon }
 
+![Three-step workflow: enter spreadsheet data, add a formula, then check the result.](../assets/images/workflows/guide-sheets.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Sheets to organise information in a grid and calculate values with supported formulas.
 
 ## Enter information
