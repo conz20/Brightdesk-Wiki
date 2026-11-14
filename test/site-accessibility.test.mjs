@@ -41,7 +41,7 @@ test('help layout exposes navigation, skip link and social metadata', () => {
   assert.match(layout, /<html lang="en-AU">/);
   assert.match(layout, /<a class="skip-link" href="#main">Skip to content<\/a>/);
   assert.match(layout, /<nav class="site-nav" aria-label="Main navigation">/);
-  assert.match(layout, /<main id="main" class="main-content">/);
+  assert.match(layout, /<main id="main" class="main-content(?: main-content-home)?">/);
   assert.ok(layout.includes('rel="canonical" href="{{ page.url | absolute_url }}"'));
   assert.ok(layout.includes('property="og:title"'));
   assert.ok(layout.includes('property="og:description"'));
@@ -144,10 +144,12 @@ test('technical reference layout provides the same keyboard and screen-reader es
 const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
 
 test('homepage exposes one primary heading and named section landmarks', () => {
-  assert.match(homepage, /<header class="portal-hero" aria-labelledby="portal-title">/);
+  assert.match(homepage, /<section class="home-hero" aria-labelledby="home-title">/);
   assert.equal(homepage.split('<h1').length - 1, 1, 'The homepage must have one primary heading');
-  assert.match(homepage, /<section class="portal-note" aria-labelledby="portal-note-title">/);
-  assert.ok(homepage.includes('<h2 id="portal-note-title">About Brightdesk Help</h2>'));
+  assert.match(homepage, /<section class="home-directory" aria-labelledby="directory-title">/);
+  assert.match(homepage, /<section class="home-guides" aria-labelledby="guides-title">/);
+  assert.match(homepage, /<section class="home-reassurance" aria-labelledby="reassurance-title">/);
+  assert.ok(homepage.includes('<h2 id="reassurance-title">Clear help. No extra hurdles.</h2>'));
 });
 
 test('homepage description is long enough to explain the Help site in search results', () => {

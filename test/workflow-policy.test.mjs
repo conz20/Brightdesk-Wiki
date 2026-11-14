@@ -5,7 +5,8 @@ import fs from 'node:fs';
 const workflow = fs.readFileSync(new URL('../.github/workflows/quality.yml', import.meta.url), 'utf8');
 
 test('quality workflow uses the standard GitHub-hosted Linux runner', () => {
-  assert.match(workflow, /runs-on:\s*ubuntu-latest/);
+  assert.match(workflow, /runs-on:\s*ubuntu-24\.04/);
+  assert.doesNotMatch(workflow, /runs-on:\s*ubuntu-latest/);
   assert.doesNotMatch(workflow, /self-hosted|macOS|ARM64|windows-latest|macos-latest/);
 });
 
