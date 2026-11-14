@@ -61,6 +61,37 @@ Lists are saved on this device as you work. Check the local-save status in the w
 6. Use **Search this list** to find the title.
 
 **What you should have:** a local reading list with a custom Genre column that you can search and sort.
+## More examples to try
+
+### Organise a home inventory
+
+1. Create a list called **Home inventory**.
+2. Add a record for an item.
+3. Expand **Add a custom column** and add **Room** as a **Choice** column.
+4. Enter room names separated by commas.
+5. Edit the item and choose its room.
+6. Use **Search this list** to find an item.
+
+**What you should have:** a local inventory list with a custom room column.
+
+### Track follow-up items
+
+1. Create a list called **Follow-ups**.
+2. Add a record for each item that needs attention.
+3. Use the default **Status**, **Priority** and **Due date** fields to organise each record.
+4. Use **Filter by status** to show items with the status you need.
+5. Sort by a useful column when you want to change the order.
+
+**What you should have:** a list of follow-up items that you can search, filter and sort.
+
+## Common questions and fixes
+
+**Which custom column types can I add?** The current guide lists **Text**, **Date** and **Choice**.
+
+**How do I show only certain records?** Use **Filter by status**. Use **Search this list** when you need to find a word or title.
+
+**What happens if I delete a list?** The list and all its records are removed. Make sure you intend to remove the records before choosing **Delete list**.
+
 ## Current feature boundaries
 
 Lists is a local structured-list tool. Shared editing, user permissions, attachments, automation, connected data sources and online forms are not included in the current stated scope.
