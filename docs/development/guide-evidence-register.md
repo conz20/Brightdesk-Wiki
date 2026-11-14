@@ -43,7 +43,7 @@ The Workspace repository's current README, committed `src/index.html`, `src/work
 
 ## Release boundary
 
-This register is maintainer-only. The public website may contain only the help homepage, Suite getting-started page, the ten approved product guides and local CSS. Do not publish repository source links, build notes, this register or other maintainer documents.
+This register is maintainer-only. The current PR #6 draft public-output allowlist is 31 HTML pages, 24 local assets and one `_headers` policy file (56 files total). This includes the Help homepage, Everyday Help, Suite guide, shared topic guides, ten product guides, the Decks slide-show guide and Technical Documentation. Do not publish repository source links, build notes, this register or other maintainer documents.
 
 
 ## Source review update — 13 November 2026
@@ -102,3 +102,8 @@ The source files listed in the 13 November snapshot table were fetched again fro
 | Workspace | `src/workspace-service.js` | `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` | Unchanged |
 
 This confirms that the source snapshot identifiers remain current. It does not add new workflow verification, build evidence or screenshots. All ten guides remain **Needs review** until the required running-desktop walkthroughs are complete.
+
+
+## Public-output boundary recheck — 15 November 2026
+
+The current PR #6 branch expands the customer site from the earlier 12-page structure to the exact 31-page / 24-local-asset / one-headers-file allowlist (56 files total). The source allowlist and regression fixture were updated for this draft. This is a draft branch boundary only: it is not evidence that the current-head build or generated-output audit has passed. Keep this register private and retain all ten product guides as **Needs review** until their running-desktop walkthroughs are completed.
