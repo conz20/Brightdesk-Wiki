@@ -49,7 +49,9 @@ Each area has its own navigation and local-only search. Visitors can move betwee
 
 The earlier completed [quality run #464](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43587357146) passed 96 automated tests, Markdown-link checks, the Jekyll build and the generated-output privacy audit. Its Cloudflare preview deployment succeeded and its read-only launch audit scored 99/100 (A).
 
-The newer exact-head quality run [#474](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43588576068) is pending and has no assigned job yet. The latest Cloudflare Pages check for the newer draft reported a failed build. Therefore, run #464 does **not** verify the current PR #6 head, and the current head is not yet verified or published.
+The previous quality workflow could not obtain its required self-hosted Mac runner. It has now been changed to a standard GitHub-hosted Ubuntu runner, with Node.js 24.22.2, Ruby 3.4.4 and a 10-minute job limit. The first `ubuntu-slim` attempt ([run #477](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43590053483)) failed before any workflow step ran, so it did not test the site. The workflow now uses the standard `ubuntu-latest` label; an exact-head successful run is still required.
+
+The latest Cloudflare Pages preview build also reports failure. Its GitHub check does not expose the build log, and the authenticated Cloudflare dashboard log is not available through this connection. Therefore, run #464 does **not** verify the current PR #6 head, and the current head is not yet verified or published.
 
 ## Design and content
 
