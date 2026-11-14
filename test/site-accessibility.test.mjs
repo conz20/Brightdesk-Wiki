@@ -19,21 +19,29 @@ function contrastRatio(first, second) {
   return (values[0] + 0.05) / (values[1] + 0.05);
 }
 
+
 test('keyboard focus indicator is visible against both page and content surfaces', () => {
-  const rule = css.match(/a:focus-visible\s*\{([^}]*)\}/i);
+  const rule = css.match(/a:focus-visible\\s*\\{([^}]*)\\}/i);
   assert.ok(rule, 'The stylesheet must provide a visible keyboard focus rule for links');
-  const outline = rule[1].match(/outline:\s*(\d+)px\s+solid\s+(#[0-9a-f]{6})/i);
-  assert.ok(outline, 'The focus rule must use a solid, explicit-colour outline');
+  const outline = rule[1].match(/outline:\\s*(\\d+)px\\s+solid\\s+var\\(--focus-ring\\)/i);
+  assert.ok(outline, 'The focus rule must use the solid, theme-aware focus colour');
   assert.ok(Number(outline[1]) >= 2, 'The focus outline must be at least 2 CSS pixels wide');
 
-  for (const surface of ['#ffffff', '#f4f7fb']) {
+  const root = css.match(/:root\\s*\\{([^}]*)\\}/i);
+  assert.ok(root, 'The stylesheet must define light-theme colour tokens');
+  const token = name => {
+    const match = root[1].match(new RegExp('(?:^|\\\\s)--' + name + ':\\\\s*(#[0-9a-f]{6})', 'i'));
+    assert.ok(match, 'Missing light-theme colour token --' + name);
+    return match[1];
+  };
+  const focus = token('focus-ring');
+  for (const surface of [token('surface'), token('page')]) {
     assert.ok(
-      contrastRatio(outline[2], surface) >= 3,
-      `Focus outline ${outline[2]} must have at least 3:1 contrast against ${surface}`
+      contrastRatio(focus, surface) >= 3,
+      'Focus outline ' + focus + ' must have at least 3:1 contrast against ' + surface
     );
   }
 });
-
 
 const layout = fs.readFileSync(new URL('../docs/_layouts/default.html', import.meta.url), 'utf8');
 
