@@ -7,7 +7,7 @@ Private source repository for the separate Brightdesk customer Help website.
 - **Customer Help:** https://brightdesk-help.pages.dev/ — the permanent public address. It uses the free Cloudflare Pages address; no paid domain, subscription or DNS change is required.
 - **PR #6 review preview:** https://reconcile-customer-help-main.brightdesk-help.pages.dev/ — a review-only preview address, not the production website.
 
-The source repository remains private. Do not replace the permanent customer address with a temporary preview URL.
+When the latest preview build fails, the stable preview address may continue to show an older successful build. It is not proof that the current PR commit has deployed. The source repository remains private. Do not replace the permanent customer address with a temporary preview URL.
 
 ## What Brightdesk Help covers
 
@@ -49,9 +49,11 @@ Each area has its own navigation and local-only search. Visitors can move betwee
 
 The earlier completed [quality run #464](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43587357146) passed 96 automated tests, Markdown-link checks, the Jekyll build and the generated-output privacy audit. Its Cloudflare preview deployment succeeded and its read-only launch audit scored 99/100 (A).
 
-The previous quality workflow could not obtain its required self-hosted Mac runner. It has been changed to standard GitHub-hosted `ubuntu-latest`, with Node.js 24.22.2, Ruby 3.4.4 and a 10-minute job limit. The hosted attempts ([run #477](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43590053483), [#478](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43590162798) and [#479](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43590173561)) failed before any workflow step ran. GitHub assigned no runner (`runner_id: 0`), so these runs did not execute the tests or build. No further hosted-runner retries are being made.
+The quality workflow now uses standard GitHub-hosted `ubuntu-latest`, with Node.js 24.22.2, Ruby 3.4.4 and a 10-minute job limit. The latest attempt, [run #486](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43591046107), failed before any workflow step ran. GitHub assigned no runner (`runner_id: 0`), so it did not execute tests or build the site. This is a runner-allocation failure, not a test result.
 
-The latest Cloudflare Pages preview build also reports failure. Its GitHub check does not expose the build log, and the authenticated Cloudflare dashboard log is not available through this connection. Therefore, run #464 does **not** verify the current PR #6 head, and the current head is not yet verified or published.
+The exact-head Cloudflare Pages preview check also failed on commit `91614217878c691483e64a3eda1a5adfe682a7ba`. Its GitHub check provides only the generic failure status; the full error is available in the authenticated [Cloudflare build log](https://dash.cloudflare.com/?to=/a7ac2321cd83b2afb1be0dcca520f9d7/pages/view/brightdesk-help/b82d426c-2b8e-41ce-b59d-4178f718ce9c). That dashboard log has not been accessible through the connected GitHub repository tools. The earlier successful [run #464](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43587357146) does **not** verify this latest PR head. The current head is not verified or published.
+
+The repository now uses only the read-only Cloudflare documentation MCP server. It does not require a Cloudflare API token or GitHub Agents secret. The site build and full validation pipeline remain in the Cloudflare Pages build command.
 
 ## Design and content
 
