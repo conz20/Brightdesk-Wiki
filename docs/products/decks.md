@@ -10,7 +10,9 @@ permalink: /products/decks.html
 
 ![Brightdesk Decks product icon](../assets/images/product-icons/decks.svg){: .product-guide-icon }
 
-![Three-step workflow: add slides, arrange the content, then present your work.](../assets/images/workflows/guide-decks.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-decks.svg" alt="Three-step workflow: add slides, arrange the content, then present your work." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
