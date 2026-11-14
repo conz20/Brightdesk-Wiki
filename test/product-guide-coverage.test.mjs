@@ -92,7 +92,7 @@ test('every product guide labels its workflow image as an illustration, not a sc
   for (const product of expected.keys()) {
     const name = product.replace(/\.md$/, '');
     const source = fs.readFileSync(path.join(productDirectory, product), 'utf8');
-    assert.match(source, new RegExp('guide-' + name + '\\\\.svg'));
+    assert.ok(source.includes('guide-' + name + '.svg'));
     assert.match(source, /Illustrative workflow, not a screenshot of the Brightdesk interface/i);
   }
 });
