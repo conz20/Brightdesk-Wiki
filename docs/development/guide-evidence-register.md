@@ -105,3 +105,27 @@ The following blob SHAs identify the key modules inspected for this review. They
 | Workspace | `src/workspace-service.js` | `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` |
 
 **Outcome:** the inspected source supports the behaviours above. All ten guides remain `Needs review` until the documented workflows are run in current installed desktop builds. No screenshots, publication, Pages configuration, PR approval or merge were performed.
+
+## Source revalidation — 14 November 2026
+
+A fresh read-only check against the current `main` branches of the Suite and all ten product repositories was completed on 14 November 2026. The implementation-module blob identifiers below match the source snapshot identifiers recorded in the 13 November source review. The current product-page HTML identifiers are recorded alongside them so that future reviews can identify which interface markup was inspected.
+
+| Customer guide | Current `src/index.html` blob SHA on product `main` | Current supporting implementation blob SHA on product `main` |
+| --- | --- | --- |
+| Pages | `2a97fd47c4c4db9671d74b3a1b4c3a792439aa29` | `src/app.js` — `f499a20e8bf1283e67f50f73c6aeda5fb52a0c3b` |
+| Sheets | `5742f40cdf78f70e5c8d22f755df0020390db8f7` | `src/app.js` — `0a7643a1fa406775b23fa54ff2421c7107d1d9fd` |
+| Decks | `d9fe05b7251e3656569be675fa030dac95400df0` | `src/app.js` — `7c24d368e62761aad95dd672bfe3529018fa9ae4` |
+| Notes | `ab33cc214ae8cb8171fdb6d40b43f9b5b1821dce` | `src/app.js` — `08e3c08967e7fe24ee268cd8c0e4f237c40d6c68` |
+| Database | `f0aaa30f752883507686f94abfb9f4a4e2a708` | `src/database-service.js` — `1eefab8c225cf6e4eae426305ee0378838681e41` |
+| Forms | `3d6a79451fbb52ceb3162a7a66a0b99b536df6ed` | `src/forms-service.js` — `d925764977a79ec6b7d79af5e1a0d6e08ab9d8e4` |
+| Lists | `dfe890c6b25d0d3c9a87e233fa8e19f25185431c` | `src/lists-service.js` — `ae3aebadd3194af4846c80fe58a2f1c98c88c57f` |
+| Planner | `0e5eed092577288e972ccb11c149297aaa109ed9` | `src/planner-service.js` — `6b05218a71f0f0d63beebdf20decae5ea112f7fc` |
+| To Do | `0e5eed092577288e972ccb11c149297aaa109ed9` | `src/todo-service.js` — `34e048b651dfdd50cb8b3292c660e1dbd57fe7f8` |
+| Workspace | `0e5eed092577288e972ccb11c149297aaa109ed9` | `src/workspace-service.js` — `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` |
+
+The Suite getting-started guide's relevant current source references were also checked: `src/index.html` (`fccb5fb0c38b535c2eb7d408abd2312e4c34f00c`), `src/main.js` (`8436ba07165824851d5e1fc1cc19670ac7ab78f9`), `src/app.js` (`6f08131b743ce6453d1b34130ec38feee67ab7fa`), `src/app-catalog.js` (`75c760ce4d555c16fcff51d4fd03a1318f5c2921`) and the current `README.md` (`e03bcb28e0e223404ef5b7317aa97bb2ba313212`). The Suite README confirms that the product cards manage Suite availability and that **Open** creates a product's own window without replacing the Suite Home, Apps or Files window.
+
+**Scope of this revalidation:** this was read-only source inspection and blob-identifier comparison. It confirms the recorded source snapshots have not changed; it does not establish that the visible interface is identical in a running build, that a workflow succeeds end to end, or that a screenshot has been captured.
+
+**Customer guide status is unchanged:** the Suite guide remains `Source-confirmed`; all ten product guides remain `Needs review`. Do not promote any guide to `Verified` until the complete workflow has been run in a current installed build and its product version, operating system, build/commit and genuine screenshots have been recorded.
+
