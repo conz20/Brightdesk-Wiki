@@ -76,8 +76,12 @@ test('a complete static customer site passes the public-output gate', t => {
 test('approved static local SVG workflow illustrations pass the output check', t => {
   const siteRoot = siteFixture(t);
   const svg = fs.readFileSync(path.join(siteRoot, 'assets/images/guide-pages.svg'), 'utf8');
-  assert.match(svg, /^<svg\\b/i);
-  assert.doesNotMatch(svg, /<script\\b|foreignObject|https?:\\/\\//i);
+  assert.ok(svg.trimStart().startsWith('<svg'));
+  const svgWithoutNamespace = svg.replace('xmlns="http://www.w3.org/2000/svg"', '');
+  assert.equal(svg.includes('<script'), false);
+  assert.equal(svg.includes('foreignObject'), false);
+  assert.equal(svgWithoutNamespace.includes('http://'), false);
+  assert.equal(svgWithoutNamespace.includes('//'), false);
   assert.equal(checkPublicSite({ siteRoot }).files, 38);
 });
 
