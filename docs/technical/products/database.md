@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Database technical reference
 description: Database field types, record operations, search, sorting and CSV export.
-permalink: /technical/products/database.html
+permalink: /technical../../products/database.html
 ---
 
 # Database technical reference
@@ -36,5 +36,5 @@ Database data is stored on the device. CSV export produces a separate file; it d
 
 ## Related information
 
-- [File formats](/technical/file-formats.html)
-- [Everyday Help: Database](/products/database.html)
+- [File formats](../file-formats.html)
+- [Everyday Help: Database](../../products/database.html)
