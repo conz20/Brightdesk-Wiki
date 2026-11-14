@@ -274,3 +274,50 @@ test('product guides use the actual Database, Lists, Forms, Planner and Workspac
   assert.match(workspace, /\*\*Bullet list\*\*/);
   assert.match(workspace, /\*\*Add block\*\*/);
 });
+
+
+test('everyday Help links to a separate Technical Documentation area', () => {
+  assert.match(layout, /Technical documentation/);
+  assert.match(layout, /\\/technical\\/index\\.html/);
+
+  const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html', import.meta.url), 'utf8');
+  assert.match(technicalLayout, /Everyday Help/);
+  assert.match(technicalLayout, /Technical Documentation/);
+  assert.match(technicalLayout, /aria-label="Technical documentation sections"/);
+  assert.match(technicalLayout, /Search Technical Documentation/);
+
+  const declaration = technicalLayout.match(/\\{%\\s*assign public_technical_paths = "([^"]+)"\\s*\\|\\s*split:\\s*"\\|"\\s*%\\}/);
+  assert.ok(declaration, 'Technical search must declare its own explicit page allowlist');
+  const actualPaths = declaration[1].split('|');
+  const expectedPaths = [
+    '/technical/index.html',
+    '/technical/system-overview.html',
+    '/technical/file-formats.html',
+    '/technical/data-and-privacy.html',
+    '/technical/products/pages.html',
+    '/technical/products/sheets.html',
+    '/technical/products/decks.html',
+    '/technical/products/notes.html',
+    '/technical/products/database.html',
+    '/technical/products/forms.html',
+    '/technical/products/lists.html',
+    '/technical/products/planner.html',
+    '/technical/products/to-do.html',
+    '/technical/products/workspace.html'
+  ];
+  assert.deepEqual(actualPaths, expectedPaths);
+  assert.equal(new Set(actualPaths).size, 14);
+  assert.match(technicalLayout, /public_technical_paths contains help_page\\.url/);
+});
+
+test('technical reference pages cover exactly the ten approved Brightdesk products', () => {
+  const productRefs = [
+    'pages','sheets','decks','notes','database',
+    'forms','lists','planner','to-do','workspace'
+  ];
+  for (const product of productRefs) {
+    const page = fs.readFileSync(new URL('../docs/technical/products/' + product + '.md', import.meta.url), 'utf8');
+    assert.match(page, /^layout: technical$/m, product + ' technical page must use its separate layout');
+    assert.match(page, new RegExp('permalink: /technical/products/' + product.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&') + '\\\\.html'));
+  }
+});
