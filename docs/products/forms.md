@@ -10,6 +10,12 @@ permalink: /products/forms.html
 
 Use Forms to create local forms, surveys and quizzes, then review the responses saved on your device.
 
+
+<figure class="guide-illustration">
+  <img src="../assets/images/guide-forms.svg" alt="Three-step illustration for Brightdesk Forms: start the task, add the information you need, then finish or save your work." width="1200" height="360" loading="lazy">
+  <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
+</figure>
+
 ## Create a form
 
 1. Under **Your forms**, enter a name in **New form name**.
@@ -94,5 +100,9 @@ Forms collects responses locally on the device. Online publishing, public respon
 ## Guide status
 
 **Needs review.** These steps are based on the current Forms interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
+
+## Need the technical detail?
+
+For product behaviour, file handling and technical boundaries, see the [Brightdesk Forms technical reference](../technical/products/forms.html).
 
 [Back to Brightdesk Help](../index.html)
