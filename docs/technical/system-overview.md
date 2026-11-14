@@ -7,9 +7,6 @@ permalink: /technical/system-overview.html
 
 # System overview
 
-<img class="technical-product-icon" src="../assets/images/product-icons/pages.svg" alt="Brightdesk Suite brand mark" width="80" height="80" loading="lazy">
-
-
 Brightdesk is a desktop productivity suite with one Suite entry point and ten customer products. The Suite helps people choose which products are included and open them. Each product works in its own window.
 
 ## Product model
