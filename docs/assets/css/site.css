@@ -122,6 +122,14 @@ a:focus-visible {
 .content-card code { padding: 0.12rem 0.3rem; background: #eef2f6; border-radius: 0.25rem; }
 .content-card pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: 0.5rem; }
 .content-card pre code { padding: 0; background: transparent; }
+.product-guide-icon {
+  display: block;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0.5rem 0 1.25rem;
+  object-fit: contain;
+}
+
 .guide-status {
   display: inline-block;
   margin: 0 0 1rem;
