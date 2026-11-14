@@ -11,12 +11,20 @@ function siteFixture(t) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'brightdesk-public-site-'));
   fs.mkdirSync(path.join(rootDir, 'products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/images/product-icons'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
   const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"></head><body>Brightdesk Help</body></html>\n';
+  const icon = '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc"><title id="title">Test product icon</title><desc id="desc">A sample product icon.</desc><rect width="128" height="128" rx="12" fill="#ffffff"/></svg>';
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
   for (const product of PRODUCTS) {
-    fs.writeFileSync(path.join(rootDir, 'products', product + '.html'), html);
+    const label = PRODUCT_LABELS[product];
+    const productHtml = html.replace(
+      '</body>',
+      '<img src="../assets/images/product-icons/' + product + '.svg" alt="Brightdesk ' + label + ' product icon"></body>'
+    );
+    fs.writeFileSync(path.join(rootDir, 'products', product + '.html'), productHtml);
+    fs.writeFileSync(path.join(rootDir, 'assets/images/product-icons', product + '.svg'), icon);
   }
   t.after(() => fs.rmSync(rootDir, { recursive: true, force: true }));
   return rootDir;
@@ -25,9 +33,83 @@ function siteFixture(t) {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 13);
+  assert.equal(result.files, 23);
   assert.equal(result.htmlPages, 12);
 });
+
+test('all ten product guides use their matching local SVG icon with useful alternative text', t => {
+  const siteRoot = siteFixture(t);
+  for (const product of PRODUCTS) {
+    const html = fs.readFileSync(path.join(siteRoot, 'products', product + '.html'), 'utf8');
+    assert.match(html, new RegExp('<img src="../assets/images/product-icons/' + product + '\\\\.svg" alt="Brightdesk ' + PRODUCT_LABELS[product] + ' product icon">'));
+    assert.doesNotMatch(html, /https?:|\\/\\//i);
+  }
+});
+
+test('product icon SVGs must contain only the approved static vector elements', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'assets/images/product-icons/pages.svg'),
+    '<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc"><title id="title">Pages</title><desc id="desc">A document icon.</desc><script>alert(1)</script></svg>'
+  );
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /disallowed SVG element: script/i
+  );
+});
+
+test('product icon SVGs require accessible title and description elements', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'assets/images/product-icons/pages.svg'),
+    '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc"><title id="title">Pages</title><rect width="128" height="128" fill="#fff"/></svg>'
+  );
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /accessible title and description/i
+  );
+});
+
+test('product guide images must use the matching product icon', t => {
+  const siteRoot = siteFixture(t);
+  const page = path.join(siteRoot, 'products', 'pages.html');
+  const html = fs.readFileSync(page, 'utf8').replace(
+    'product-icons/pages.svg',
+    'product-icons/sheets.svg'
+  );
+  fs.writeFileSync(page, html);
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /must use its own approved local product icon/i
+  );
+});
+
+test('product guide images require meaningful alternative text', t => {
+  const siteRoot = siteFixture(t);
+  const page = path.join(siteRoot, 'products', 'pages.html');
+  const html = fs.readFileSync(page, 'utf8').replace(
+    'alt="Brightdesk Pages product icon"',
+    'alt=""'
+  );
+  fs.writeFileSync(page, html);
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /meaningful alternative text/i
+  );
+});
+
+test('SVG files outside the ten approved product icon paths are rejected', t => {
+  const siteRoot = siteFixture(t);
+  fs.writeFileSync(
+    path.join(siteRoot, 'assets/images/product-icons/extra.svg'),
+    '<svg xmlns="http://www.w3.org/2000/svg"></svg>'
+  );
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /outside the approved customer-help allowlist/i
+  );
+});
+
 
 test('internal maintainer documentation must never enter the public output', t => {
   const siteRoot = siteFixture(t);
