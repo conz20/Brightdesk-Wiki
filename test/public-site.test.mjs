@@ -6,6 +6,10 @@ import path from 'node:path';
 import { checkPublicSite } from '../scripts/check-public-site.mjs';
 
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+const TECHNICAL_PAGES = [
+  'technical/index.html','technical/system-overview.html','technical/file-formats.html','technical/data-and-privacy.html',
+  ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
+];
 const PRODUCT_LABELS = {
   pages: 'Pages', sheets: 'Sheets', decks: 'Decks', notes: 'Notes', database: 'Database',
   forms: 'Forms', lists: 'Lists', planner: 'Planner', 'to-do': 'To Do', workspace: 'Workspace'
@@ -26,7 +30,10 @@ const WORKFLOW_ALT_TEXT = {
 function siteFixture(t) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'brightdesk-public-site-'));
   fs.mkdirSync(path.join(rootDir, 'products'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'everyday'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'technical/products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/images/product-icons'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/images/workflows'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
@@ -34,7 +41,9 @@ function siteFixture(t) {
   const icon = '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc"><title id="title">Test product icon</title><desc id="desc">A sample product icon.</desc><rect width="128" height="128" rx="12" fill="#ffffff"/></svg>';
   const workflow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc"><title id="title">Test product workflow</title><desc id="desc">A simple three-step product workflow.</desc><rect x="0" y="0" width="1200" height="360" fill="#ffffff"/><text x="20" y="40" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#111111">Step one</text></svg>';
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
+  fs.writeFileSync(path.join(rootDir, 'everyday/index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
+  for (const page of TECHNICAL_PAGES) fs.writeFileSync(path.join(rootDir, page), html);
   for (const product of PRODUCTS) {
     const label = PRODUCT_LABELS[product];
     const productHtml = html.replace(
@@ -53,8 +62,8 @@ function siteFixture(t) {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 33);
-  assert.equal(result.htmlPages, 12);
+  assert.equal(result.files, 49);
+  assert.equal(result.htmlPages, 27);
 });
 
 test('all ten product guides use their matching local icon and workflow diagram with descriptive alternative text', t => {

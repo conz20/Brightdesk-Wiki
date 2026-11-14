@@ -31,7 +31,7 @@ a {
 }
 a:hover { text-decoration-thickness: 2px; }
 a:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 3px solid #8a4b00;
   outline-offset: 3px;
   border-radius: 3px;
 }

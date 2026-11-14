@@ -245,7 +245,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (scriptTags.length !== 1 ||
         !/^<script\b(?=[^>]*\bsrc=["']\/assets\/js\/search\.js["'])(?=[^>]*\btype=["']module["'])[^>]*>\s*<\/script>$/i.test(scriptTags[0]) ||
         /<script\b/i.test(html.replace(scriptTags[0] || '', ''))) {
-      fail(file + ' must load only the approved local Help search script');
+      fail(file + ' contains JavaScript other than the approved local Help search script');
     }
     if (/<style\b/i.test(html) || /\sstyle\s*=/i.test(html)) {
       fail(file + ' contains inline CSS; customer styling must use the approved local stylesheet');
