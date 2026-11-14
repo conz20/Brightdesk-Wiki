@@ -32,7 +32,7 @@ test('Brightdesk Pages skill fixes the private project, free hostname, build, ru
     'https://brightdesk-help.pages.dev/',
     'Only select repositories',
     'Do not add paid plans',
-    'No Cloudflare API token or GitHub Agents secret'
+    'does not require Cloudflare API credentials'
   ]) assert.ok(skill.includes(text), 'skill includes ' + text);
 
   assert.match(skill, /Do not change repository visibility/);
