@@ -33,7 +33,7 @@ Do not add paid plans, paid add-ons, metered services, subscriptions, or trials.
 
 ## Required privacy and output boundary
 
-The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 27 HTML pages (Help homepage, Everyday Help homepage, Suite getting-started page, ten Everyday Help product guides, Technical Documentation homepage, three system references, and ten technical product references) plus 22 local assets (one CSS, one search JavaScript, ten product icon SVGs, and ten workflow illustration SVGs), for 49 files total.
+The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 27 HTML pages (Help homepage, Everyday Help homepage, Suite getting-started page, ten Everyday Help product guides, Technical Documentation homepage, three system references, and ten technical product references) plus 22 local assets (one CSS, one search JavaScript, ten product icon SVGs, and ten workflow illustration SVGs), for 52 files total.
 
 The generated site must remain static and read-only. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images, external stylesheets, or customer-data collection. Do not publish internal architecture, development, security, release, maintainer, runner, or repository material.
 
@@ -82,7 +82,7 @@ Before creating or changing the production project, inspect the current reposito
 A live-site claim requires:
 - The correct private Wiki repository connected.
 - Production branch main; verify the preview-branch setting against the owner's approved policy (target None).
-- A successful current build and the exact 49-file privacy audit.
+- A successful current build and the exact 52-file privacy audit.
 - The custom domain help.brightdesk.com active with valid HTTPS.
 - The deployed commit SHA recorded.
 - The homepage, Suite guide, and all ten product guides checked on the live .com URL.
