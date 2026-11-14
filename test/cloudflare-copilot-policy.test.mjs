@@ -26,7 +26,7 @@ test('Brightdesk Pages skill fixes the private project, build, runtime, and publ
     'conz20/Brightdesk-Wiki',
     'Pages Free',
     'Production branch: main',
-    'Preview branch deployments: None',
+    'Preview branch deployments: target **None**',
     'Root directory: repository root (/)',
     'npm run build:cloudflare',
     '_site',
