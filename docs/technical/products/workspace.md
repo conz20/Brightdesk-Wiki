@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Workspace technical reference
 description: Workspace and page hierarchy, content blocks, search and deletion safeguards.
-permalink: /technical../../products/workspace.html
+permalink: /technical/products/workspace.html
 ---
 
 # Workspace technical reference
