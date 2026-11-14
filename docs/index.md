@@ -26,7 +26,9 @@ Use the search field at the top of this page to search the instructions and exam
 
 At the bottom of every page, choose one of the suggested tasks if you are not sure which product to open.
 
-Each guide includes a plain-English description, numbered steps and a small example with the expected result. Guide status tells you whether the steps have been checked in the running product.
+Each guide explains what to do in plain English, one step at a time. It includes worked examples and the result you should see, plus notes about current limits and common questions. Follow the instructions while using Brightdesk on your computer.
+
+**These links open help pages only. They do not launch Brightdesk Suite or any of its applications.**
 ## What are you trying to do?
 
 You do not need to know which Brightdesk product to choose. Start with the task:
@@ -45,6 +47,25 @@ You do not need to know which Brightdesk product to choose. Start with the task:
 </ul>
 
 If you are new to Brightdesk, [start with the simple Suite guide](customer-start-here.html). It explains where to click first.
+
+## Not sure which product to use?
+
+Some Brightdesk products have similar names, but they are designed for different jobs:
+
+| When you want to… | Start with… |
+| --- | --- |
+| Write a letter, report or formatted document | [Pages](products/pages.html) |
+| Capture a quick thought or reminder | [Notes](products/notes.html) |
+| Calculate totals or work with spreadsheet formulas | [Sheets](products/sheets.html) |
+| Keep structured records with your own fields | [Database](products/database.html) |
+| Organise a straightforward list with columns and filters | [Lists](products/lists.html) |
+| Create a form and review responses saved on your device | [Forms](products/forms.html) |
+| Break a project into groups of tasks | [Planner](products/planner.html) |
+| Keep track of your own daily tasks | [To Do](products/to-do.html) |
+| Bring project pages, notes and checklists together | [Workspace](products/workspace.html) |
+| Build and present slides | [Decks](products/decks.html) |
+
+You can also use the search field above. Try describing the task in your own words, such as “add up expenses”, “track reading”, “make a feedback form” or “plan a project”.
 
 ## Browse the ten Brightdesk products
 
