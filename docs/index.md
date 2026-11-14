@@ -20,6 +20,15 @@ Brightdesk Suite, all ten approved Brightdesk products and this customer help ce
   <a class="start-link" href="customer-start-here.html">Open the getting-started guide <span aria-hidden="true">→</span></a>
 </section>
 
+<section class="technical-panel" aria-labelledby="technical-panel-title">
+  <div>
+    <p class="eyebrow">FOR TECHNICAL READERS</p>
+    <h2 id="technical-panel-title">Need detailed reference information?</h2>
+    <p>Technical Documentation is a separate reference area for product capabilities, file formats, system boundaries and data handling. Use this Help centre for plain-English, step-by-step instructions.</p>
+  </div>
+  <a class="technical-link" href="technical/index.html">Open Technical Documentation <span aria-hidden="true">→</span></a>
+</section>
+
 ## Search the Help centre
 
 Use the search field at the top of this page to search the homepage, the Suite getting-started guide and all ten product guides. Enter a product name, a feature or what you are trying to do. Search runs in your browser using the local Help files; it does not send your search to an external service.
