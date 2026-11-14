@@ -10,6 +10,12 @@ permalink: /products/decks.html
 
 Use Decks to build and present a slide presentation.
 
+
+<figure class="guide-illustration">
+  <img src="../assets/images/guide-decks.svg" alt="Three-step illustration for Brightdesk Decks: start the task, add the information you need, then finish or save your work." width="1200" height="360">
+  <figcaption>Illustrative workflow map only. It explains the task sequence; it is not a screenshot of the Brightdesk interface.</figcaption>
+</figure>
+
 ## Edit the first slide
 
 1. Open Brightdesk Decks. A new presentation starts with a slide.
@@ -95,5 +101,9 @@ Decks provides a core slide-editing and presenting workflow. Advanced layouts, t
 ## Guide status
 
 **Needs review.** These steps are based on the current Decks interface and product documentation. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
+
+## Need the technical detail?
+
+For product behaviour, file handling and technical boundaries, see the [Brightdesk Decks technical reference](../technical/products/decks.html).
 
 [Back to Brightdesk Help](../index.html)
