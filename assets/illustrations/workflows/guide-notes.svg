@@ -1,27 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-<title id="title">A simple workflow for Brightdesk Notes</title>
-<desc id="desc">Three steps: Create a note, then Capture your idea, then Keep a copy.</desc>
-<rect x="0" y="0" width="1200" height="360" rx="26" fill="#f3f7fc"/>
-<text x="60" y="58" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#142c4a">A simple way to use Notes</text>
-<text x="60" y="91" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Three clear steps to help you get started</text>
-
-  <rect x="60" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="102" cy="177" r="23" fill="#245ca6"/>
-  <text x="102" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">1</text>
-  <text x="138" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Create a note</text>
-  <text x="88" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Give the note a title</text>
-<path d="M382 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <rect x="450" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="492" cy="177" r="23" fill="#337c80"/>
-  <text x="492" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">2</text>
-  <text x="528" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Capture your idea</text>
-  <text x="478" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Write or organise the details</text>
-<path d="M772 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <rect x="840" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="882" cy="177" r="23" fill="#5b6399"/>
-  <text x="882" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">3</text>
-  <text x="918" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Keep a copy</text>
-  <text x="868" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Save or export the note</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">Capture ideas in Notes</title><desc id="desc">Three illustrated moments: make a note, capture an idea while it is fresh, and keep an organised copy.</desc>
+<rect x="0" y="0" width="1200" height="420" rx="26" fill="#f4f6fb"/>
+<text x="56" y="53" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#172b47">Capture ideas in Notes</text>
+<text x="56" y="82" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#596b82">A visual guide to the main steps</text>
+<rect x="54" y="111" width="316" height="277" rx="22" fill="#fff5df" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="82" cy="139" r="14" fill="#d18a25"/><text x="82" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<rect x="136" y="174" width="122" height="90" rx="9" fill="#f7d98c" stroke="#d4ad55" stroke-width="2"/><rect x="156" y="160" width="122" height="90" rx="9" fill="#fff1bf" stroke="#d4ad55" stroke-width="2"/><rect x="176" y="173" width="122" height="90" rx="9" fill="#fff9df" stroke="#d4ad55" stroke-width="2"/><path d="M194 200 L279 200" fill="none" stroke="#c8a75a" stroke-width="3" stroke-linecap="round"/><path d="M194 216 L279 216" fill="none" stroke="#c8a75a" stroke-width="3" stroke-linecap="round"/><path d="M194 232 L260 232" fill="none" stroke="#c8a75a" stroke-width="3" stroke-linecap="round"/><circle cx="261" cy="165" r="7" fill="#d18a25" stroke="none" stroke-width="0"/>
+<text x="212" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Create a note</text>
+<text x="212" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Start with a fresh page</text>
+<rect x="442" y="111" width="316" height="277" rx="22" fill="#fff5df" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="470" cy="139" r="14" fill="#d18a25"/><text x="470" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<rect x="513" y="163" width="164" height="108" rx="12" fill="#fffdf4" stroke="#d4ad55" stroke-width="3"/><path d="M536 191 L651 191" fill="none" stroke="#d7c58e" stroke-width="3" stroke-linecap="round"/><path d="M536 210 L651 210" fill="none" stroke="#d7c58e" stroke-width="3" stroke-linecap="round"/><path d="M536 229 L628 229" fill="none" stroke="#d7c58e" stroke-width="3" stroke-linecap="round"/><circle cx="654" cy="171" r="9" fill="#e1a33a" stroke="none" stroke-width="0"/><path d="M648 264 L684 228 L691 235 L655 271 Z" fill="#efc36c" stroke="#9d6414" stroke-width="2" stroke-linejoin="round"/><path d="M645 266 L656 255 L663 262 L652 273 Z" fill="#c57b43" stroke="#9d6414" stroke-width="1" stroke-linejoin="round"/>
+<text x="600" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Capture an idea</text>
+<text x="600" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Write it down clearly</text>
+<rect x="830" y="111" width="316" height="277" rx="22" fill="#fff5df" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="858" cy="139" r="14" fill="#d18a25"/><text x="858" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<rect x="898" y="167" width="162" height="100" rx="12" fill="#ffffff" stroke="#d4ad55" stroke-width="3"/><rect x="915" y="182" width="128" height="18" rx="5" fill="#fff1bf" stroke="none" stroke-width="0"/><rect x="915" y="209" width="128" height="43" rx="5" fill="#fff9df" stroke="none" stroke-width="0"/><path d="M930 221 L1022 221" fill="none" stroke="#c8a75a" stroke-width="3" stroke-linecap="round"/><path d="M930 234 L1004 234" fill="none" stroke="#c8a75a" stroke-width="3" stroke-linecap="round"/><circle cx="1072" cy="186" r="21" fill="#e7b651" stroke="none" stroke-width="0"/><path d="M1063 186 L1070 194 L1085 177 Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/><rect x="1050" y="242" width="50" height="24" rx="9" fill="#f6e3b4" stroke="none" stroke-width="0"/>
+<text x="988" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Keep a copy</text>
+<text x="988" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Save it for later</text>
+<path d="M406 247 L430 247 M420 237 L430 247 L420 257" fill="none" stroke="#8b9bb1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M794 247 L818 247 M808 237 L818 247 L808 257" fill="none" stroke="#8b9bb1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

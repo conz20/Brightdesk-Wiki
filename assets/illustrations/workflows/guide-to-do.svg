@@ -1,27 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-<title id="title">A simple workflow for Brightdesk To Do</title>
-<desc id="desc">Three steps: Open My Day, then Add your tasks, then Mark work complete.</desc>
-<rect x="0" y="0" width="1200" height="360" rx="26" fill="#f3f7fc"/>
-<text x="60" y="58" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#142c4a">A simple way to use To Do</text>
-<text x="60" y="91" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Three clear steps to help you get started</text>
-
-  <rect x="60" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="102" cy="177" r="23" fill="#245ca6"/>
-  <text x="102" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">1</text>
-  <text x="138" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Open My Day</text>
-  <text x="88" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Choose your daily view</text>
-<path d="M382 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <rect x="450" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="492" cy="177" r="23" fill="#337c80"/>
-  <text x="492" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">2</text>
-  <text x="528" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Add your tasks</text>
-  <text x="478" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Write down each action</text>
-<path d="M772 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <rect x="840" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="882" cy="177" r="23" fill="#5b6399"/>
-  <text x="882" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">3</text>
-  <text x="918" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Mark work complete</text>
-  <text x="868" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Tick off finished tasks</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">Make the most of To Do</title><desc id="desc">Three illustrated moments: open My Day, add tasks, and mark finished work as complete.</desc>
+<rect x="0" y="0" width="1200" height="420" rx="26" fill="#f4f6fb"/>
+<text x="56" y="53" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#172b47">Make the most of To Do</text>
+<text x="56" y="82" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#596b82">A visual guide to the main steps</text>
+<rect x="54" y="111" width="316" height="277" rx="22" fill="#fff0e9" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="82" cy="139" r="14" fill="#c66b46"/><text x="82" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<rect x="125" y="169" width="174" height="98" rx="13" fill="#ffffff" stroke="#e4b6a4" stroke-width="3"/><circle cx="163" cy="200" r="19" fill="#f5c06f" stroke="none" stroke-width="0"/><path d="M190 200 L198 200" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><path d="M182.09188309203677 219.09188309203677 L187.74873734152916 224.74873734152916" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><path d="M163 227 L163 235" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><path d="M143.90811690796323 219.09188309203677 L138.25126265847084 224.74873734152916" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><path d="M136 200 L128 200" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><path d="M143.9081169079632 180.90811690796323 L138.25126265847084 175.25126265847084" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><path d="M163 173 L163 165" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><path d="M182.09188309203677 180.9081169079632 L187.74873734152916 175.25126265847084" fill="none" stroke="#e0a24b" stroke-width="3" stroke-linecap="round"/><text x="233" y="199" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#9f4e30" text-anchor="middle">My Day</text><path d="M202 219 L278 219" fill="none" stroke="#d7b6a8" stroke-width="3" stroke-linecap="round"/><path d="M202 234 L269 234" fill="none" stroke="#d7b6a8" stroke-width="3" stroke-linecap="round"/>
+<text x="212" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Open My Day</text>
+<text x="212" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Focus on today</text>
+<rect x="442" y="111" width="316" height="277" rx="22" fill="#fff0e9" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="470" cy="139" r="14" fill="#c66b46"/><text x="470" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<rect x="513" y="163" width="174" height="108" rx="13" fill="#ffffff" stroke="#e4b6a4" stroke-width="3"/><rect x="531" y="178" width="138" height="20" rx="6" fill="#fff2eb" stroke="none" stroke-width="0"/><circle cx="544" cy="188" r="6" fill="#c66b46" stroke="none" stroke-width="0"/><circle cx="544" cy="214" r="7" fill="#ffffff" stroke="none" stroke-width="0"/><path d="M561 214 L658 214" fill="none" stroke="#c99a88" stroke-width="3" stroke-linecap="round"/><circle cx="544" cy="233" r="7" fill="#ffffff" stroke="none" stroke-width="0"/><path d="M561 233 L658 233" fill="none" stroke="#c99a88" stroke-width="3" stroke-linecap="round"/><circle cx="544" cy="252" r="7" fill="#ffffff" stroke="none" stroke-width="0"/><path d="M561 252 L658 252" fill="none" stroke="#c99a88" stroke-width="3" stroke-linecap="round"/><circle cx="669" cy="188" r="13" fill="#c66b46" stroke="none" stroke-width="0"/><text x="669" y="194" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">+</text>
+<text x="600" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Add tasks</text>
+<text x="600" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Break work into steps</text>
+<rect x="830" y="111" width="316" height="277" rx="22" fill="#fff0e9" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="858" cy="139" r="14" fill="#c66b46"/><text x="858" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<rect x="895" y="163" width="187" height="108" rx="13" fill="#ffffff" stroke="#e4b6a4" stroke-width="3"/><circle cx="923" cy="190" r="9" fill="#79b58e" stroke="none" stroke-width="0"/><path d="M917 190 L922 195 L930 181 Z" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/><path d="M943 190 L1057 190" fill="none" stroke="#aa7e6d" stroke-width="3" stroke-linecap="round"/><circle cx="923" cy="217" r="9" fill="#79b58e" stroke="none" stroke-width="0"/><path d="M917 217 L922 222 L930 208 Z" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/><path d="M943 217 L1057 217" fill="none" stroke="#aa7e6d" stroke-width="3" stroke-linecap="round"/><circle cx="923" cy="244" r="9" fill="#ffffff" stroke="none" stroke-width="0"/><path d="M917 244 L923 250" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M923 250 L931 240" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/><path d="M943 244 L1057 244" fill="none" stroke="#d9b4a6" stroke-width="3" stroke-linecap="round"/>
+<text x="988" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Mark complete</text>
+<text x="988" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">See what you have finished</text>
+<path d="M406 247 L430 247 M420 237 L430 247 L420 257" fill="none" stroke="#8b9bb1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M794 247 L818 247 M808 237 L818 247 L808 257" fill="none" stroke="#8b9bb1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

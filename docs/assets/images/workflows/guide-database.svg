@@ -1,27 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
-<title id="title">A simple workflow for Brightdesk Database</title>
-<desc id="desc">Three steps: Create a table, then Choose your fields, then Add records.</desc>
-<rect x="0" y="0" width="1200" height="360" rx="26" fill="#f3f7fc"/>
-<text x="60" y="58" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#142c4a">A simple way to use Database</text>
-<text x="60" y="91" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Three clear steps to help you get started</text>
-
-  <rect x="60" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="102" cy="177" r="23" fill="#245ca6"/>
-  <text x="102" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">1</text>
-  <text x="138" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Create a table</text>
-  <text x="88" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Name the information set</text>
-<path d="M382 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <rect x="450" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="492" cy="177" r="23" fill="#337c80"/>
-  <text x="492" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">2</text>
-  <text x="528" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Choose your fields</text>
-  <text x="478" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Decide what to record</text>
-<path d="M772 209h54m-15 -14 15 14-15 14" fill="none" stroke="#6a7c92" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <rect x="840" y="132" width="300" height="154" rx="22" fill="#ffffff" stroke="#d5deea" stroke-width="2"/>
-  <circle cx="882" cy="177" r="23" fill="#5b6399"/>
-  <text x="882" y="185" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff">3</text>
-  <text x="918" y="181" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#142c4a">Add records</text>
-  <text x="868" y="231" font-family="Arial,sans-serif" font-size="19" fill="#52647b">Find and sort entries</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">Organise structured information</title><desc id="desc">Three illustrated moments: create a table, define the fields, and add individual records.</desc>
+<rect x="0" y="0" width="1200" height="420" rx="26" fill="#f4f6fb"/>
+<text x="56" y="53" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#172b47">Organise structured information</text>
+<text x="56" y="82" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#596b82">A visual guide to the main steps</text>
+<rect x="54" y="111" width="316" height="277" rx="22" fill="#e8f4f8" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="82" cy="139" r="14" fill="#347e98"/><text x="82" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<rect x="120" y="164" width="184" height="106" rx="9" fill="#ffffff" stroke="#9bbdc9" stroke-width="3"/><rect x="120" y="164" width="184" height="25" rx="7" fill="#347e98" stroke="none" stroke-width="0"/><path d="M120 189 L120 270" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><path d="M166 189 L166 270" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><path d="M212 189 L212 270" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><path d="M258 189 L258 270" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><path d="M120 189 L304 189" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><path d="M120 209 L304 209" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><path d="M120 229 L304 229" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><path d="M120 249 L304 249" fill="none" stroke="#c9dfe6" stroke-width="1.5" stroke-linecap="round"/><text x="142" y="181" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">ID</text><text x="188" y="181" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Name</text><text x="235" y="181" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Type</text><text x="280" y="181" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Date</text><circle cx="142" cy="200" r="4" fill="#62a7bd" stroke="none" stroke-width="0"/><circle cx="142" cy="220" r="4" fill="#62a7bd" stroke="none" stroke-width="0"/><circle cx="142" cy="240" r="4" fill="#62a7bd" stroke="none" stroke-width="0"/>
+<text x="212" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Create a table</text>
+<text x="212" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Set up the structure</text>
+<rect x="442" y="111" width="316" height="277" rx="22" fill="#e8f4f8" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="470" cy="139" r="14" fill="#347e98"/><text x="470" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<rect x="512" y="159" width="178" height="112" rx="12" fill="#ffffff" stroke="#9bbdc9" stroke-width="3"/><rect x="528" y="173" width="146" height="20" rx="6" fill="#e8f4f8" stroke="none" stroke-width="0"/><text x="601" y="188" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#286579" text-anchor="middle">Fields</text><rect x="528" y="202" width="146" height="16" rx="5" fill="#f4f9fb" stroke="#c8dfe6" stroke-width="1"/><circle cx="542" cy="210" r="4" fill="#347e98" stroke="none" stroke-width="0"/><text x="602" y="215" font-family="Arial,sans-serif" font-size="12" font-weight="600" fill="#476b77" text-anchor="middle">Name</text><rect x="648" y="206" width="18" height="9" rx="4" fill="#347e98" stroke="none" stroke-width="0"/><rect x="528" y="223" width="146" height="16" rx="5" fill="#dff1f5" stroke="#c8dfe6" stroke-width="1"/><circle cx="542" cy="231" r="4" fill="#347e98" stroke="none" stroke-width="0"/><text x="602" y="236" font-family="Arial,sans-serif" font-size="12" font-weight="600" fill="#476b77" text-anchor="middle">Category</text><rect x="648" y="227" width="18" height="9" rx="4" fill="#c7dbe2" stroke="none" stroke-width="0"/><rect x="528" y="244" width="146" height="16" rx="5" fill="#f4f9fb" stroke="#c8dfe6" stroke-width="1"/><circle cx="542" cy="252" r="4" fill="#347e98" stroke="none" stroke-width="0"/><text x="602" y="257" font-family="Arial,sans-serif" font-size="12" font-weight="600" fill="#476b77" text-anchor="middle">Created</text><rect x="648" y="248" width="18" height="9" rx="4" fill="#c7dbe2" stroke="none" stroke-width="0"/>
+<text x="600" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Choose fields</text>
+<text x="600" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Name the information to store</text>
+<rect x="830" y="111" width="316" height="277" rx="22" fill="#e8f4f8" stroke="#dce3ed" stroke-width="2"/>
+<circle cx="858" cy="139" r="14" fill="#347e98"/><text x="858" y="144" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+<rect x="895" y="165" width="188" height="105" rx="12" fill="#ffffff" stroke="#9bbdc9" stroke-width="3"/><rect x="895" y="165" width="188" height="24" rx="7" fill="#347e98" stroke="none" stroke-width="0"/><text x="989" y="182" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Records</text><circle cx="920" cy="208" r="7" fill="#81b8c9" stroke="none" stroke-width="0"/><rect x="937" y="200" width="118" height="15" rx="5" fill="#f2f8fa" stroke="none" stroke-width="0"/><path d="M947 208 L1023 208" fill="none" stroke="#91b4c0" stroke-width="2" stroke-linecap="round"/><circle cx="920" cy="230" r="7" fill="#81b8c9" stroke="none" stroke-width="0"/><rect x="937" y="222" width="118" height="15" rx="5" fill="#e6f3f7" stroke="none" stroke-width="0"/><path d="M947 230 L1023 230" fill="none" stroke="#91b4c0" stroke-width="2" stroke-linecap="round"/><circle cx="920" cy="252" r="7" fill="#81b8c9" stroke="none" stroke-width="0"/><rect x="937" y="244" width="118" height="15" rx="5" fill="#f2f8fa" stroke="none" stroke-width="0"/><path d="M947 252 L1023 252" fill="none" stroke="#91b4c0" stroke-width="2" stroke-linecap="round"/><circle cx="1066" cy="256" r="13" fill="#d8eef4" stroke="none" stroke-width="0"/><text x="1066" y="261" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#286579" text-anchor="middle">+</text>
+<text x="988" y="337" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#172b47" text-anchor="middle">Add records</text>
+<text x="988" y="362" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#596b82" text-anchor="middle">Build a useful collection</text>
+<path d="M406 247 L430 247 M420 237 L430 247 L420 257" fill="none" stroke="#8b9bb1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M794 247 L818 247 M808 237 L818 247 L808 257" fill="none" stroke="#8b9bb1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
