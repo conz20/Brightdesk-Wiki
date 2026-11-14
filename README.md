@@ -82,16 +82,16 @@ The generated customer site remains static and read-only. Its only interactive e
 
 ## Latest PR #5 verification — 14 November 2026
 
-This section is the current status for the latest PR revision and supersedes older statements above that describe run #261 as the most recent successful check.
+**Latest successful exact-head check for the guide restructure:** [run #277](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43552920141) passed on commit `d4e3d7bdf1276656943f4642847774098a2819b6`.
 
-- **Earlier successful PR head:** `274b63bc7a8300f0c7385e22fb0145e60ebd5726`; run #269 verified that revision.
-- **Latest exact-head workflow:** [run #272](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43552373809) passed on commit `4b0f340493a22cdc386534fd0ebc2fabf1a57051`. The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4. Regression tests: **104 passed, 0 failed, 0 skipped**; Markdown link check: 39 Markdown files and 100 local file/directory links; Jekyll build passed; generated-output privacy audit passed with exactly 26 documentation pages and 38 static files, with no private repository links, internal documents, external scripts or external assets.
-- Run #272 verifies the named commit only. The guide-structure and documentation updates described in this PR are newer and must pass their own exact-head workflow before merge. Check [PR #5's Actions checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) for the current commit's result.
-- **Regression tests:** 104 passed, 0 failed, 0 skipped.
-- **Markdown links:** 39 Markdown files and 100 local file/directory links checked successfully.
-- **Site build and privacy gate:** Jekyll generation passed. The public-output audit passed with exactly 26 approved documentation pages (12 Everyday Help pages and 14 Technical Documentation pages) and 38 static files in total, including the shared CSS and search module and ten labelled local SVG workflow diagrams. No private repository links, internal documents, external scripts or external assets were found in the generated output.
-- **Previous failure explained:** run [#268](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43551605235) failed one accessibility regression test. The test had an over-escaped selector pattern and did not recognise the existing `a:focus-visible` CSS rule. The test was corrected in commit `274b63bc7a8300f0c7385e22fb0145e60ebd5726`; run #269 then passed all checks.
-- **What CI does not prove:** the automated run does not verify live product workflows, genuine application screenshots, manual keyboard/screen-reader use, visual quality at each viewport, hosting, deployment or the custom domain.
+- The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
+- Regression tests: **105 passed, 0 failed, 0 skipped**, including the new check that all ten product guides use the same section structure and navigation.
+- Markdown links: **39 Markdown files and 100 local file/directory links** checked successfully.
+- Jekyll customer-site build passed.
+- Generated-output privacy audit passed with exactly **26 approved documentation pages** (12 Everyday Help and 14 Technical Documentation) and **38 static files**. No private repository links, internal documents, external scripts or external assets were found.
+- Runs #273–#276 exposed test-maintenance issues as the guide structure changed: older checks expected the previous heading names, a newly added test had incorrectly escaped regular expressions, and one assertion expected an HTML link where the guide correctly uses Markdown. The tests were corrected; run #277 passed on the corrected revision.
+- This README status update is newer than the run #277 commit. Its own exact-head workflow must pass before the PR is considered fully verified. Check [PR #5's Actions checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) for the current commit's result.
+- Automated CI does not verify visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader use, hosting, deployment or the custom domain.
 
 ## Remaining publication blockers
 
