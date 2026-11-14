@@ -6,10 +6,18 @@ import path from 'node:path';
 import { checkPublicSite } from '../scripts/check-public-site.mjs';
 
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+const TECHNICAL_PAGES = [
+  'technical/index.html',
+  'technical/system-overview.html',
+  'technical/file-formats.html',
+  'technical/data-and-privacy.html',
+  ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
+];
 
 function siteFixture(t) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'brightdesk-public-site-'));
   fs.mkdirSync(path.join(rootDir, 'products'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'technical/products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/js'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
@@ -20,6 +28,11 @@ function siteFixture(t) {
   for (const product of PRODUCTS) {
     fs.writeFileSync(path.join(rootDir, 'products', product + '.html'), html);
   }
+  for (const page of TECHNICAL_PAGES) {
+    const target = path.join(rootDir, page);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, html);
+  }
   t.after(() => fs.rmSync(rootDir, { recursive: true, force: true }));
   return rootDir;
 }
@@ -27,8 +40,8 @@ function siteFixture(t) {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 14)
-  assert.equal(result.htmlPages, 12);
+  assert.equal(result.files, 28);
+  assert.equal(result.htmlPages, 26);
 });
 
 test('internal maintainer documentation must never enter the public output', t => {
