@@ -132,7 +132,7 @@ Craft Wiki demonstrates useful capability patterns: a focused landing page, a br
 
 Use specialist tools when they are connected and available, with each tool limited to its proper job:
 
-- **12ui Design:** required visual exploration and design-to-code workflow for the full multi-page redesign. The CLI is not currently available in the working environment; the previous package-registry attempt failed. Do not replace its required candidate-selection and implementation-review stages with improvised CSS.
+- **12ui Design:** required visual exploration and design-to-code workflow for the full multi-page redesign. One CLI installation attempt was made on 14 November 2026 with `npx -y @12ui/design cli install`; the npm registry lookup failed with `EAI_AGAIN`, and no `12ui` executable is available in this environment. No design candidates were generated, selected or implemented. Do not repeat the installation attempt here, claim this design stage is complete, or replace the required candidate-selection and implementation-review stages with improvised CSS. Resume the 12ui workflow when the tool is available in an approved environment.
 - **Product Design:** proposed for user-flow review, alternative interface directions and prototype critique. It has been suggested for connection; do not claim it is connected or use it until the user completes the connection.
 - **Figma:** proposed for editable screen designs, reusable design-system components and implementation handoff. It has been suggested for connection; do not claim it is connected or use it until the user completes the connection.
 - **GitHub:** source-of-truth for branch changes, review state, commit history and exact-head CI evidence.
