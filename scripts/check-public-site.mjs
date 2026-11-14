@@ -312,7 +312,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       const alternative = imageAttribute(imageTag, 'alt');
       return alternative === null || (!alternative.trim() && !isDecorativeBrandMark(imageTag) && !isDecorativeProductIcon(imageTag));
     })) {
-      fail(file + ' does not provide meaningful alternative text or a justified decorative-image alternative for each image');
+      fail(file + ' does not provide the required meaningful alternative text or a justified decorative-image alternative for each image');
     }
     if (!productPage && imageTags.some(imageTag => {
       const source = imageAttribute(imageTag, 'src') || '';
