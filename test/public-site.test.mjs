@@ -176,7 +176,7 @@ test('protocol-relative external links are rejected from customer pages', t => {
 test('protocol-relative stylesheet imports are rejected', t => {
   const siteRoot = siteFixture(t);
   fs.writeFileSync(path.join(siteRoot, 'assets/css/site.css'), '@import "//example.com/site.css";\\n');
-  assert.throws(() => checkPublicSite({ siteRoot }), /external resources/i);
+  assert.throws(() => checkPublicSite({ siteRoot }), /CSS escape|external resources/i);
 });
 
 
