@@ -19,7 +19,7 @@ The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 
 - Do not configure a custom domain or change DNS/nameservers. The free `pages.dev` hostname is the approved customer-facing address.
 
 
-Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 52-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
+Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 56-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
 
 ## Cloudflare project configuration
 
@@ -129,7 +129,7 @@ The Wiki remains a separate optional Help resource. It is not bundled, installed
 
 The repository may provide a documentation-only MCP configuration in `.github/mcp.json`. It exposes Cloudflare's public documentation search server and requires no account credentials.
 
-When using a compatible Copilot client, configure the repository MCP settings to use the JSON in [`.github/mcp.json`](../../.github/mcp.json). Do not create a `COPILOT_MCP_CLOUDFLARE_API_TOKEN` secret, add a Cloudflare API execution server, or grant an agent permission to modify Pages projects or DNS.
+When using a compatible Copilot client, configure the repository MCP settings to use the JSON in [`.github/mcp.json`](../../.github/mcp.json). Do not create a Cloudflare credential secret or add an API execution server. Do not grant an agent permission to modify Pages projects or DNS.
 
 Cloudflare Pages deployments use the existing GitHub App integration, restricted to **Only select repositories** with only `conz20/Brightdesk-Wiki` selected. This GitHub App connection is separate from documentation search. No Cloudflare API token is required for the approved Git-based build and deployment route.
 
