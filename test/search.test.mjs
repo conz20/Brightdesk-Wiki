@@ -210,7 +210,7 @@ test('Suite guide explains supported files, Brightdesk projects, exports and spe
   assert.match(suiteGuide, /## Save a Brightdesk project/);
   assert.match(suiteGuide, /## Export a copy from a product/);
   assert.match(suiteGuide, /## Common questions and fixes/);
-  assert.match(suiteGuide, /## Languages and spelling/);
+  assert.match(suiteGuide, /## Notifications, Settings and languages/);
   assert.match(suiteGuide, /Check spelling/);
   assert.match(suiteGuide, /does not change your document/);
 });
