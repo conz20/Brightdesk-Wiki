@@ -184,3 +184,31 @@ The public Craft Wiki was reviewed on 14 November 2026:
 5. Keep the Brightdesk visual identity, wording, implementation and assets original. Craft is a research reference, not a source of copied page templates, code, logos, icons, screenshots or text.
 
 These observations inform the design brief; they do not satisfy the required full visual redesign, product walkthroughs or screenshot evidence.
+
+## Microsoft documentation and Fluent design research
+
+Microsoft is a second reference, alongside Craft Wiki, but the two references serve different purposes:
+
+- **Craft Wiki** informs app-directory organisation, guide families, task-led workflows and contextual illustrations.
+- **Microsoft Support / Microsoft Learn** informs customer-help discovery, article navigation, search, breadcrumbs, in-page section navigation and feedback paths.
+- **Microsoft Fluent 2** informs the visual language of clear hierarchy, typography, spacing, surfaces, reusable components, responsive layout and accessible interaction states. It is a design-system reference, not a source of Brightdesk branding or copied components.
+
+Research reviewed on 14 November 2026:
+
+- [Microsoft 365 help & learning](https://support.microsoft.com/en-au/microsoft-365/) groups help by product and common customer needs, and makes install/manage and troubleshooting routes discoverable. Brightdesk should provide similarly direct routes for its own Suite and ten products, but must not import Microsoft account, subscription, licence, activation, billing or cloud-service assumptions.
+- [Microsoft 365 documentation navigation guide](https://learn.microsoft.com/en-us/microsoft-365/microsoft-365-docs-navigation-guide?view=o365-worldwide) describes a hub entry point, table-of-contents search, breadcrumbs, article section navigation and page-level feedback. Brightdesk should evaluate these as distinct navigation functions: a clear route back to the Help home, a way to find a guide in the current information area, breadcrumbs showing the guide's place, in-page section links for long articles, and a simple way to report a documentation problem if a privacy-safe route is approved. Do not add a public comment system, customer account, tracking or data-collection form.
+- [Microsoft 365 documentation hub](https://learn.microsoft.com/office365/) shows how a broad product family can be grouped into understandable areas and audience routes. Brightdesk should retain its much smaller, fixed product family and its own Everyday Help / Technical Documentation split.
+- [Fluent 2 design system](https://fluent2.microsoft.design/) is the primary visual reference for web-friendly layout, typography, colour, geometry, iconography, elevation, motion and interaction states. Use its principles to assess consistency and usability, then map them to original Brightdesk tokens and components.
+
+### Microsoft patterns translated into Brightdesk decisions
+
+1. Provide a clear Help home route from every page, without making visitors depend on browser history.
+2. Keep Everyday Help search and Technical Documentation search separate, scoped to their own approved public pages, and entirely local in the visitor's browser.
+3. Show breadcrumbs on guide and reference pages so visitors understand where they are and can move up a level.
+4. Provide in-page contents navigation for long guides. On wide desktop screens, assess a restrained right-side section navigator; on narrow screens, keep it compact and avoid taking space away from the article.
+5. Make product navigation predictable and accessible, with the active product and current page visibly identified. Use expandable groups only where they genuinely reduce scanning effort.
+6. Keep article feedback privacy-safe. Do not add comments, sign-in, remote forms, analytics or telemetry; a local mail link or a clearly documented contact route may be evaluated only if it fits the approved privacy and support model.
+7. Apply Fluent-inspired hierarchy, spacing, typography, focus states and restrained surfaces without copying Microsoft's exact page composition, logos, icons, wording, proprietary assets or code.
+8. Preserve Brightdesk's permanent product and business rules: the integrated Suite plus exactly Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace; always free; local-first, private and offline-capable; no customer accounts, subscriptions, paid tiers, telemetry, advertising, cloud collaboration or document uploads.
+
+Microsoft's documentation and design patterns are research inputs, not proof that a particular Brightdesk feature exists. Every customer instruction must still match the current Brightdesk source and, before being marked Verified, a genuine product walkthrough on each claimed operating system.
