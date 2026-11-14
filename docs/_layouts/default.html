@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ page.description | default: site.description | escape }}">
     <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#101b35">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
     <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
     <meta property="og:site_name" content="Brightdesk Help">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} · Brightdesk Help{% else %}Brightdesk Help{% endif %}">
+    <meta property="og:title" content="{% if page.url == '/index.html' %}Brightdesk Help{% elsif page.title %}{{ page.title | escape }} · Brightdesk Help{% else %}Brightdesk Help{% endif %}">
     <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
     <meta property="og:image" content="{{ '/assets/images/brightdesk-help-social.svg' | absolute_url }}">
     <meta property="og:image:alt" content="Brightdesk Help: Everyday Help and Technical Documentation">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% if page.title %}{{ page.title | escape }} · Brightdesk Help{% else %}Brightdesk Help{% endif %}">
+    <meta name="twitter:title" content="{% if page.url == '/index.html' %}Brightdesk Help{% elsif page.title %}{{ page.title | escape }} · Brightdesk Help{% else %}Brightdesk Help{% endif %}">
     <meta name="twitter:description" content="{{ page.description | default: site.description | escape }}">
     <meta name="twitter:image" content="{{ '/assets/images/brightdesk-help-social.svg' | absolute_url }}">
     <script type="application/ld+json">
@@ -24,11 +25,11 @@
         "@type": "WebSite",
         "name": "Brightdesk Help",
         "url": "https://brightdesk-help.pages.dev/",
-        "description": "Public, read-only customer help for Brightdesk desktop products.",
+        "description": "Free, read-only customer help for Brightdesk desktop products.",
         "inLanguage": "en-AU"
       }
     </script>
-    <title>{% if page.title %}{{ page.title | escape }} · {% endif %}Brightdesk Help</title>
+    <title>{% if page.url == '/index.html' %}Brightdesk Help{% elsif page.title %}{{ page.title | escape }} · Brightdesk Help{% else %}Brightdesk Help{% endif %}</title>
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
     <script type="module" src="{{ '/assets/js/search.js' | relative_url }}"></script>
   </head>
@@ -37,7 +38,7 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="{{ '/index.html' | relative_url }}" aria-label="Brightdesk Help home">
-          <img class="brand-mark" src="{{ '/favicon.svg' | relative_url }}" alt="">
+          <img class="brand-mark" src="{{ '/favicon.svg' | relative_url }}" alt="" width="36" height="36">
           <span>Brightdesk <span class="brand-light">Help</span></span>
         </a>
         <nav class="site-nav" aria-label="Main navigation">
@@ -68,21 +69,24 @@
               <li><a href="{{ '/products/decks-slide-shows.html' | relative_url }}">Decks slide shows</a></li>
             </ul>
           </details>
-          <a href="{{ '/technical/index.html' | relative_url }}">Technical documentation</a>
+          <a href="{{ '/technical/index.html' | relative_url }}"{% if page.url == '/technical/index.html' %} aria-current="page"{% endif %}>Technical Documentation</a>
         </nav>
       </div>
-      <aside class="translation-help" aria-label="Language help">
-        <p><strong>Prefer another language?</strong> If your browser offers page translation, use its menu or translation control. Translation is provided by your browser or its provider, not Brightdesk; that provider may process page text. Check its translation and privacy settings before using the feature. Brightdesk Help does not run a separate translation service.</p>
-      </aside>
+      <details class="translation-help">
+        <summary>Need another language? Check your browser's page-translation control.</summary>
+        <p>Translation is provided by your browser or its provider, not Brightdesk. That provider may process page text, so check its translation and privacy settings before using the feature. Brightdesk Help does not run a separate translation service.</p>
+      </details>
+      {% unless page.url == '/index.html' %}
       <section class="help-search" role="search" aria-labelledby="help-search-label">
         <label id="help-search-label" for="help-search">Search Brightdesk Help</label>
         <input id="help-search" type="search" autocomplete="off"
-          placeholder="Try “PDF”, “formula”, “checklist” or a product name"
+          placeholder="Search a task, feature or product name"
           aria-describedby="help-search-hint help-search-status" aria-controls="help-search-results">
-        <p id="help-search-hint" class="search-hint">Search Everyday Help, the Suite guide and all ten product guides.</p>
+        <p id="help-search-hint" class="search-hint">Search Everyday Help, the Suite guide and all ten product guides. Your search stays in this browser.</p>
         <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a word or task to find a guide.</p>
         <ul id="help-search-results" class="search-results" aria-label="Matching help guides" hidden></ul>
       </section>
+      {% endunless %}
     </header>
     {% assign public_help_paths = "/index.html|/everyday/index.html|/customer-start-here.html|/everyday/install-update.html|/everyday/languages-and-spelling.html|/everyday/troubleshooting.html|/products/decks-slide-shows.html|/products/pages.html|/products/sheets.html|/products/decks.html|/products/notes.html|/products/database.html|/products/forms.html|/products/lists.html|/products/planner.html|/products/to-do.html|/products/workspace.html" | split: "|" %}
     <nav class="search-index" aria-label="Searchable help guide content" hidden>
@@ -92,8 +96,8 @@
         {% endif %}
       {% endfor %}
     </nav>
-    <main id="main" class="main-content">
-      <article class="content-card">
+    <main id="main" class="main-content{% if page.url == '/index.html' %} main-content-home{% endif %}">
+      <article class="content-card{% if page.url == '/index.html' %} content-card-home{% endif %}">
         {% if page.status %}
           <p class="guide-status"><strong>Guide status:</strong> {{ page.status | escape }}</p>
         {% endif %}
