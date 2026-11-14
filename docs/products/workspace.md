@@ -10,7 +10,9 @@ permalink: /products/workspace.html
 
 ![Brightdesk Workspace product icon](../assets/images/product-icons/workspace.svg){: .product-guide-icon }
 
-![Three-step workflow: create a workspace, add pages and blocks, then use a checklist.](../assets/images/workflows/guide-workspace.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-workspace.svg" alt="Three-step workflow: create a workspace, add pages and blocks, then use a checklist." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
