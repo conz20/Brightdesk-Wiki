@@ -7,11 +7,11 @@ Private source repository for the separate Brightdesk customer Help website.
 | Link | Address | Purpose |
 |---|---|---|
 | **Customer website** | [brightdesk-help.pages.dev](https://brightdesk-help.pages.dev/) | Permanent public address. Always use this link when directing customers to Brightdesk Help. |
-| **Latest review build** | [Open the latest successful PR #6 preview](https://6d491e3c.brightdesk-help.pages.dev/) | Newest deployed review version of the current draft. It is not the production website. |
+| **Latest review build** | [Open the latest successful PR #6 preview](https://reconcile-customer-help-main.brightdesk-help.pages.dev/) | Stable Cloudflare branch-preview address; it follows the newest successful PR #6 deployment automatically. It is not the production website. |
 
 **Keep these links current.** Whenever Cloudflare successfully deploys a newer review build, update the **Latest review build** link in this README to that newest successful preview. Keep the permanent customer address unchanged unless the approved production address itself changes. Never replace the customer link with a temporary preview URL.
 
-The current review build is based on commit `fc85319ca4ae387466bfdef66f696026af23b172` on [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6). The draft has not been promoted to production.
+The latest review build is generated from the current head of [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6). The draft has not been promoted to production.
 
 ## What Brightdesk Help covers
 
@@ -32,7 +32,7 @@ Brightdesk-AI and the shared engineering repositories are engineering tools, not
 
 ## Current release status
 
-<badge>Draft — not production</badge>
+**Draft — not production.**
 
 The latest review build has:
 
