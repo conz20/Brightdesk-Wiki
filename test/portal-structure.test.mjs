@@ -141,3 +141,16 @@ test('both help areas explain the browser translation privacy boundary', () => {
     assert.match(layout, /Brightdesk Help does not run a separate translation service/);
   }
 });
+
+
+test('breadcrumbs avoid repeating a page as its own parent section', () => {
+  const layout = read('docs/_layouts/default.html');
+  const match = layout.match(/<nav class="page-breadcrumb" aria-label="Breadcrumb">([\\s\\S]*?)<\\/nav>/);
+  assert.ok(match, 'shared layout must provide breadcrumbs');
+  const breadcrumb = match[1];
+  assert.match(breadcrumb, /if page\\.url contains '\\/products\\/'/);
+  assert.match(breadcrumb, /index\\.html#directory-title/);
+  assert.match(breadcrumb, /unless page\\.url == '\\/everyday\\/index\\.html'/);
+  assert.match(breadcrumb, /unless page\\.url == '\\/technical\\/index\\.html'/);
+  assert.doesNotMatch(breadcrumb, /customer-start-here\\.html/);
+});
