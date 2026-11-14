@@ -106,3 +106,40 @@ test('body, secondary and link text maintain readable contrast', () => {
     }
   }
 });
+
+test('dark theme body, secondary and link text maintain readable contrast', () => {
+  const darkRoot = css.match(/@media\s*\(prefers-color-scheme:\s*dark\)\s*\{\s*:root\s*\{([^}]*)\}/i);
+  assert.ok(darkRoot, 'The stylesheet must define dark-theme colour tokens');
+  const token = name => {
+    const match = darkRoot[1].match(new RegExp('(?:^|\\s)--' + name + ':\\s*(#[0-9a-f]{6})', 'i'));
+    assert.ok(match, 'Missing dark-theme colour token --' + name);
+    return match[1];
+  };
+  const surfaces = [token('surface'), token('page')];
+  const textColours = [token('ink'), token('muted'), token('brand-dark')];
+  for (const textColour of textColours) {
+    for (const surface of surfaces) {
+      assert.ok(
+        contrastRatio(textColour, surface) >= 4.5,
+        'Dark-theme text colour ' + textColour + ' must meet 4.5:1 contrast against ' + surface
+      );
+    }
+  }
+});
+
+test('dark theme keyboard focus ring remains visible on page and content surfaces', () => {
+  const darkRoot = css.match(/@media\s*\(prefers-color-scheme:\s*dark\)\s*\{\s*:root\s*\{([^}]*)\}/i);
+  assert.ok(darkRoot, 'The stylesheet must define dark-theme colour tokens');
+  const token = name => {
+    const match = darkRoot[1].match(new RegExp('(?:^|\\s)--' + name + ':\\s*(#[0-9a-f]{6})', 'i'));
+    assert.ok(match, 'Missing dark-theme colour token --' + name);
+    return match[1];
+  };
+  const focus = token('focus-ring');
+  for (const surface of [token('surface'), token('page')]) {
+    assert.ok(
+      contrastRatio(focus, surface) >= 3,
+      'Dark-theme focus ring ' + focus + ' must meet 3:1 contrast against ' + surface
+    );
+  }
+});
