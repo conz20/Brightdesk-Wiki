@@ -8,6 +8,8 @@ permalink: /products/lists.html
 
 # Brightdesk Lists
 
+![Brightdesk Lists product icon](../assets/images/product-icons/lists.svg){: .product-guide-icon }
+
 Use Lists to organise projects, stock, contacts or other information as structured records.
 
 ## Create a list
