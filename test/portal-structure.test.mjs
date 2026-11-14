@@ -82,3 +82,13 @@ test('local Help search finds natural-language product tasks without network ser
   const script = read('docs/assets/js/search.js');
   assert.doesNotMatch(script, /\b(fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|localStorage|sessionStorage|document\.cookie)\b/);
 });
+
+test('both help areas explain the browser translation privacy boundary', () => {
+  for (const path of ['docs/_layouts/default.html', 'docs/_layouts/technical.html']) {
+    const layout = read(path);
+    assert.match(layout, /Translation is provided by your browser or its provider, not Brightdesk/);
+    assert.match(layout, /that provider may process page text/);
+    assert.match(layout, /Check its translation and privacy settings before using the feature/);
+    assert.match(layout, /Brightdesk Help does not run a separate translation service/);
+  }
+});
