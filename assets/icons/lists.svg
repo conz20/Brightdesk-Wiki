@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">Brightdesk Lists icon</title>
+<desc id="desc">Three list rows, each with a checkbox and a text line.</desc>
+<rect x="8" y="8" width="112" height="112" rx="26" fill="#f0f3ff"/>
+<rect x="25" y="25" width="78" height="78" rx="10" fill="#fff" stroke="#536bb2" stroke-width="4"/>
+<rect x="38" y="39" width="13" height="13" rx="2" fill="#dfe7ff" stroke="#536bb2" stroke-width="2"/>
+<path d="M41 45l3 3 6-7" fill="none" stroke="#536bb2" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M60 46h29" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+<rect x="38" y="59" width="13" height="13" rx="2" fill="#fff" stroke="#8290b7" stroke-width="2"/>
+<path d="M60 66h29" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+<rect x="38" y="79" width="13" height="13" rx="2" fill="#fff" stroke="#8290b7" stroke-width="2"/>
+<path d="M60 86h22" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+</svg>
