@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Brightdesk Help
-description: Choose simple Everyday Help or detailed Technical Documentation, then find the Brightdesk desktop product you use.
+description: Find practical help for Brightdesk Suite and all ten desktop products, from everyday tasks to detailed technical documentation.
 permalink: /index.html
 ---
 
