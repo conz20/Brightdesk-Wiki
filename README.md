@@ -81,8 +81,9 @@ The following improvements are implemented on the PR #6 branch, but are **not ye
 - Ten matching technical product references and system, file-format and data/privacy references.
 - Regression checks for route structure, guide coverage, reciprocal links and local search.
 
-The last completed exact-head quality run before this README correction was [run #440](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43576254243). It passed on PR branch commit `7d8364882e820316ccf5922c8735f659b5c7a6e6` on 14 November 2026. All job steps succeeded, including the pinned Node.js and Ruby setup, regression tests, Markdown-link checks, Jekyll build and generated-output privacy audit. This README correction creates a new commit, so its own exact-head workflow must pass before that newer revision is considered verified.
+The implementation, including the new translation privacy guidance and its regression test, passed [Brightdesk Wiki quality run #444](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43578996619) on 14 November 2026. The successful run completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, documentation and public-output regression tests, Markdown link checks, Jekyll build and generated-site privacy audit. The run's exact commit is `88d44b087536841c0ccfbccfc9f083eba15cbca6`.
 
+This README status correction is a later documentation-only change on the same draft branch. Check the live [PR #6 checks](https://github.com/conz20/Brightdesk-Wiki/pull/6) for the exact-head result covering the latest README revision.
 The work is tracked in [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6), based directly on the current `main` revision. It remains open, draft and unmerged. Keep it that way until the following release gates are complete:
 
 - Visual exploration and manual review at desktop and narrow widths. No visual candidates have been generated or approved.
