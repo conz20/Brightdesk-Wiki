@@ -37,6 +37,6 @@ The visible product names provide each icon's label, so the preview images use e
 
 ## Publication status
 
-These are approved original source-library illustrations, not screenshots of the Brightdesk interface. On the current `main` branch, the generated customer-site allowlist does not yet permit SVG files. Keep this icon pack in the source library until the public-output checker and tests are deliberately updated and pass on the exact branch head. Do not link these files from customer pages before that gate is in place.
+These are approved original source-library illustrations, not screenshots of the Brightdesk interface. Each icon also has a byte-for-byte copy in `docs/assets/images/product-icons/` for use by its matching customer guide. The public-output checker allows only these ten named SVGs and validates their structure, accessible title and description, static element and attribute allowlist, local use and alternative text. Keep the private source copies canonical; the regression tests detect any mismatch with the published copies.
 
 No external images, font files, scripts, CSS imports or remote references are used.
