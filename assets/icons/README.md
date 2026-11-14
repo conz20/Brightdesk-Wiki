@@ -2,6 +2,15 @@
 
 This folder contains the original Brightdesk product icon pack. Each icon is a separate, self-contained SVG with a consistent 128 × 128 view box and an accessible title and description.
 
+## Visual index
+
+|  |  |  |  |  |
+| --- | --- | --- | --- | --- |
+| <img src="pages.svg" width="56" height="56" alt=""> **Pages** | <img src="sheets.svg" width="56" height="56" alt=""> **Sheets** | <img src="decks.svg" width="56" height="56" alt=""> **Decks** | <img src="notes.svg" width="56" height="56" alt=""> **Notes** | <img src="database.svg" width="56" height="56" alt=""> **Database** |
+| <img src="forms.svg" width="56" height="56" alt=""> **Forms** | <img src="lists.svg" width="56" height="56" alt=""> **Lists** | <img src="planner.svg" width="56" height="56" alt=""> **Planner** | <img src="to-do.svg" width="56" height="56" alt=""> **To Do** | <img src="workspace.svg" width="56" height="56" alt=""> **Workspace** |
+
+The visible product names provide each icon's label, so the preview images use empty alternative text to avoid repeating the same names to screen-reader users.
+
 ## Included icons
 
 | File | Product | Visual concept |
