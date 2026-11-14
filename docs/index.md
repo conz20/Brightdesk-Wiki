@@ -11,7 +11,14 @@ Welcome to the Brightdesk Help centre. This separate, public, read-only website 
 
 Brightdesk Suite, all ten approved Brightdesk products and this customer help centre are free for every customer. There are no subscriptions, paid tiers, trials, licence fees or charges to read these guides. You do not need a customer account, sign-in or password.
 
-[**Start here: find the help you need**](customer-start-here.html)
+<section class="start-panel" aria-labelledby="start-panel-title">
+  <div>
+    <p class="eyebrow">NEW TO BRIGHTDESK?</p>
+    <h2 id="start-panel-title">Start with Brightdesk Suite</h2>
+    <p>Not sure which product to open? This simple guide shows you where to begin and how the ten products fit together.</p>
+  </div>
+  <a class="start-link" href="customer-start-here.html">Open the getting-started guide <span aria-hidden="true">→</span></a>
+</section>
 
 ## Search the Help centre
 
