@@ -214,3 +214,10 @@ test('Suite guide explains supported files, Brightdesk projects, exports and spe
   assert.match(suiteGuide, /Check spelling/);
   assert.match(suiteGuide, /does not change your document/);
 });
+
+test('Help search understands natural questions without matching filler words literally', () => {
+  assert.deepEqual(
+    searchTopics(topics, 'How do I export a PDF?').map(topic => topic.title),
+    ['Brightdesk Pages']
+  );
+});
