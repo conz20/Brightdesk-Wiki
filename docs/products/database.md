@@ -21,8 +21,8 @@ Use Database to keep structured information in tables with named fields.
 
 1. Expand **Manage fields**.
 2. Under **Add a field**, enter a **Field name**.
-3. Choose a **Field type**: Text, Number, Date, Email, Web address, Checkbox or Choice list.
-4. For a Choice list, enter the available choices separated by commas.
+3. Choose a **Field type**: Text, Number, Date, Email, URL, Checkbox or Choice.
+4. For a Choice field, enter the available choices separated by commas.
 5. Select **Required field** when every record must have a value.
 6. Choose **Add field**.
 
