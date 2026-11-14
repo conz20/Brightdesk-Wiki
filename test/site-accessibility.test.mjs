@@ -67,6 +67,11 @@ test('help layout exposes a named main navigation and skip link', () => {
 });
 
 test('Everyday Help marks the current homepage, Suite and product navigation links', () => {
+  const navigationStart = layout.indexOf('<nav class="site-nav"');
+  const navigationEnd = layout.indexOf('</nav>', navigationStart);
+  assert.ok(navigationStart >= 0 && navigationEnd > navigationStart, 'Everyday Help navigation must be present');
+  const navigation = layout.slice(navigationStart, navigationEnd);
+
   const routes = [
     '/index.html',
     '/customer-start-here.html',
@@ -83,7 +88,7 @@ test('Everyday Help marks the current homepage, Suite and product navigation lin
   ];
 
   for (const route of routes) {
-    const anchor = layout.split(/\r?\n/).find(line =>
+    const anchor = navigation.split(/\r?\n/).find(line =>
       line.includes(`href="{{ '${route}' | relative_url }}"`)
     );
     assert.ok(anchor, 'Navigation link must exist for ' + route);
