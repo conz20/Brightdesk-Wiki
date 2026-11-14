@@ -44,6 +44,23 @@ test('technical documentation landing page has its stable public URL', () => {
   assert.doesNotMatch(source, /^permalink: \/technical\.\.\//m);
 });
 
+test('all technical documentation pages use stable public URLs', () => {
+  const pages = [
+    'index.md',
+    'system-overview.md',
+    'file-formats.md',
+    'data-and-privacy.md',
+    ...PRODUCTS.map(product => 'products/' + product + '.md')
+  ];
+  for (const page of pages) {
+    const sourcePath = path.join(process.cwd(), 'docs', 'technical', page);
+    const source = fs.readFileSync(sourcePath, 'utf8');
+    const expected = '/technical/' + page.replace(/\\.md$/, '.html');
+    const actual = source.match(/^permalink: (\\S+)$/m)?.[1];
+    assert.equal(actual, expected, page + ' permalink');
+  }
+});
+
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
