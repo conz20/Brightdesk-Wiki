@@ -46,7 +46,7 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #288](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43555630651) passed on commit `7284f80b206e9b551d6f4b17658dc7cbde1215e6`.
+[Run #290](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43555939100) passed on commit `39ac94580aa3c980f561c01586afb3433e88ec18`.
 
 That exact-head workflow reported:
 
@@ -54,10 +54,10 @@ That exact-head workflow reported:
 - 39 Markdown files and 99 local file/directory links checked successfully.
 - Jekyll customer-site build passed.
 - Generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
-- Regression checks cover the source-backed technical references, including data-removal warnings and each technical page's return link to its matching everyday guide.
+- Regression checks cover the source-backed technical references, the real Lists status and sort labels, the Workspace **Find a page** label, and the confirmed Sheets circular-reference output.
 - The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-The Lists and Workspace guide-label corrections and formula error-code correction are newer than this check and must pass their own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+A subsequent README update changes the branch head and must receive its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 
