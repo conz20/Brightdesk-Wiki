@@ -63,7 +63,7 @@ Your new field appears as a column in the table. The system ID field is managed 
 
 1. Create a table called **Household equipment**.
 2. Add a **Name** field with type **Text**.
-3. Add a **Category** field with type **Choice list**, then enter choices separated by commas.
+3. Add a **Category** field with type **Choice**, then enter choices separated by commas.
 4. Add a **Purchase date** field with type **Date**.
 5. Add a **Needs repair** field with type **Checkbox**.
 6. Add a few sample records and use **Search records** to find one.
@@ -86,7 +86,7 @@ Your new field appears as a column in the table. The system ID field is managed 
 
 **What happens if I delete a table?** The table and its records are removed. Export a CSV copy first when you need to keep the records elsewhere.
 
-**How do I create a drop-down choice field?** Add a field with type **Choice list** and enter the options separated by commas.
+**How do I create a drop-down choice field?** Add a field with type **Choice** and enter the options separated by commas.
 
 ## Current feature boundaries
 
