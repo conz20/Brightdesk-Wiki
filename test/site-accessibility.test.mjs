@@ -20,19 +20,33 @@ function contrastRatio(first, second) {
 }
 
 
-test('keyboard focus indicator is visible against both page and content surfaces', () => {
-  const rule = css.match(/a:focus-visible\\s*\\{([^}]*)\\}/i);
-  assert.ok(rule, 'The stylesheet must provide a visible keyboard focus rule for links');
-  const outline = rule[1].match(/outline:\\s*(\\d+)px\\s+solid\\s+var\\(--focus-ring\\)/i);
-  assert.ok(outline, 'The focus rule must use the solid, theme-aware focus colour');
-  assert.ok(Number(outline[1]) >= 2, 'The focus outline must be at least 2 CSS pixels wide');
 
-  const root = css.match(/:root\\s*\\{([^}]*)\\}/i);
-  assert.ok(root, 'The stylesheet must define light-theme colour tokens');
+test('keyboard focus indicator is visible against both page and content surfaces', () => {
+  const selectorStart = css.indexOf('a:focus-visible');
+  assert.ok(selectorStart >= 0, 'The stylesheet must provide a visible keyboard focus rule for links');
+  const ruleOpen = css.indexOf('{', selectorStart);
+  const ruleClose = css.indexOf('}', ruleOpen);
+  assert.ok(ruleOpen >= 0 && ruleClose > ruleOpen, 'The link focus rule must be complete');
+  const declarations = css.slice(ruleOpen + 1, ruleClose);
+  const outline = declarations.split(';').find(value => value.trim().startsWith('outline:'));
+  assert.ok(outline, 'The focus rule must declare an outline');
+  const compactOutline = outline.replaceAll(' ', '').replaceAll('\n', '').replaceAll('\t', '');
+  assert.ok(compactOutline.includes('solidvar(--focus-ring)'), 'The focus rule must use the theme-aware focus colour');
+  const width = Number(compactOutline.slice('outline:'.length).split('px')[0]);
+  assert.ok(Number.isFinite(width) && width >= 2, 'The focus outline must be at least 2 CSS pixels wide');
+
+  const rootStart = css.indexOf(':root {');
+  const rootOpen = css.indexOf('{', rootStart);
+  const rootClose = css.indexOf('}', rootOpen);
+  assert.ok(rootStart >= 0 && rootClose > rootOpen, 'The stylesheet must define light-theme colour tokens');
+  const root = css.slice(rootOpen + 1, rootClose);
   const token = name => {
-    const match = root[1].match(new RegExp('(?:^|\\\\s)--' + name + ':\\\\s*(#[0-9a-f]{6})', 'i'));
-    assert.ok(match, 'Missing light-theme colour token --' + name);
-    return match[1];
+    const line = root.split('\n').find(value => value.trim().startsWith('--' + name + ':'));
+    assert.ok(line, 'Missing light-theme colour token --' + name);
+    const value = line.slice(line.indexOf(':') + 1).trim();
+    const colour = value.endsWith(';') ? value.slice(0, -1) : value;
+    assert.ok(colour.length === 7 && colour.startsWith('#'), 'Colour token --' + name + ' must be a six-digit hex value');
+    return colour;
   };
   const focus = token('focus-ring');
   for (const surface of [token('surface'), token('page')]) {
