@@ -8,6 +8,8 @@ permalink: /products/pages.html
 
 # Brightdesk Pages
 
+![Brightdesk Pages product icon](../assets/images/product-icons/pages.svg){: .product-guide-icon }
+
 Use Pages to write letters, reports and other text documents.
 
 ## Create a document
