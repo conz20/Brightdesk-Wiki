@@ -55,8 +55,8 @@ test('all technical documentation pages use stable public URLs', () => {
   for (const page of pages) {
     const sourcePath = path.join(process.cwd(), 'docs', 'technical', page);
     const source = fs.readFileSync(sourcePath, 'utf8');
-    const expected = '/technical/' + page.replace(/\\.md$/, '.html');
-    const actual = source.match(/^permalink: (\\S+)$/m)?.[1];
+    const expected = '/technical/' + page.replace(/\.md$/, '.html');
+    const actual = source.match(/^permalink: (\S+)$/m)?.[1];
     assert.equal(actual, expected, page + ' permalink');
   }
 });
