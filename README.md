@@ -46,9 +46,11 @@ Do not label a guide **Verified** until its instructions have been run in the na
 
 Cloudflare Pages Free is the approved hosting route. The intended customer address is **https://help.brightdesk.com**. This is a target address, not a live website.
 
-The source repository must remain private. The Cloudflare GitHub App has not yet been installed for this repository, the Pages project has not been connected or verified, and the custom domain is not configured. Public DNS checks on 13 November 2026 showed the domain using Sedo parking nameservers; this is not a complete DNS-zone export.
+The Cloudflare Pages GitHub integration is now active for this repository. Cloudflare has successfully built and deployed pull-request previews for the private Wiki branch, including the current PR #6 commit. This confirms the preview integration and a Pages project are working. It does **not** confirm the production branch settings, build/output settings, GitHub App repository-access scope or custom-domain setup. The current PR previews are enabled and produce `*.brightdesk-help.pages.dev` review URLs; keep those URLs for internal review only and do not advertise them as the customer Help address.
 
-Do not change nameservers or DNS records without a complete current zone export, a preservation plan and the owner's approval of the exact change. Do not advertise a generated `pages.dev` hostname as the customer Help address. Do not claim the website is live until the exact `.com` address, HTTPS, deployed commit and all customer pages have been verified.
+The source repository must remain private. The production custom domain is not configured or verified. Public DNS checks on 13 November 2026 showed the domain using Sedo parking nameservers; this is not a complete DNS-zone export. Do not change nameservers or DNS records without a complete current zone export, a preservation plan and the owner's approval of the exact change. Do not claim the website is live until the exact `.com` address, HTTPS, deployed production commit and all customer pages have been verified.
+
+Before production, verify the Cloudflare GitHub App is scoped to **Only select repositories** and only `conz20/Brightdesk-Wiki`. Also verify the production branch is `main`, the build command and output directory match this repository, and the branch-preview policy matches the approved runbook. The runbook currently specifies preview deployments as **None** to avoid exposing unfinished help content; preview deployments are presently enabled, so this is an outstanding account-side setting check. Do not change Cloudflare settings or DNS without explicit approval of the exact change.
 
 ## What must be complete before publication
 
