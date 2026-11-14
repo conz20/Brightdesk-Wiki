@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Planner technical reference
 description: Planner's plan, bucket and task model, status fields and bucket deletion behaviour.
-permalink: /technical/products/planner.html
+permalink: /technical../../products/planner.html
 ---
 
 # Planner technical reference
@@ -38,5 +38,5 @@ Plans, buckets and tasks are saved locally. Shared plans, connected user directo
 
 ## Related information
 
-- [Data and privacy](/technical/data-and-privacy.html)
-- [Everyday Help: Planner](/products/planner.html)
+- [Data and privacy](../data-and-privacy.html)
+- [Everyday Help: Planner](../../products/planner.html)
