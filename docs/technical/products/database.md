@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Database technical reference
 description: Database field types, record operations, search, sorting and CSV export.
-permalink: /technical../../products/database.html
+permalink: /technical/products/database.html
 ---
 
 # Database technical reference
