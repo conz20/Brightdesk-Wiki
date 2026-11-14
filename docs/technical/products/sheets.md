@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Sheets technical reference
 description: Spreadsheet input, calculation expressions and export capabilities in Brightdesk Sheets.
-permalink: /technical../../products/sheets.html
+permalink: /technical/products/sheets.html
 ---
 
 # Sheets technical reference
