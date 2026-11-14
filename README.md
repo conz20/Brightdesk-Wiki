@@ -84,10 +84,11 @@ The generated customer site remains static and read-only. Its only interactive e
 
 This section is the current status for the latest PR revision and supersedes older statements above that describe run #261 as the most recent successful check.
 
-- **Last completed PR head:** `274b63bc7a8300f0c7385e22fb0145e60ebd5726` on `improve/customer-search-examples-2026-11-14`. Run #269 verified that earlier head. This README records that completed evidence but is itself newer than run #269, so the latest commit containing this note must pass its own exact-head workflow before merge. Check [PR #5's Actions checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) for the current commit's result.
-- **Latest exact-head workflow:** [run #269](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43551631417) completed successfully on that head. The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
+- **Earlier successful PR head:** `274b63bc7a8300f0c7385e22fb0145e60ebd5726`; run #269 verified that revision.
+- **Latest completed workflow:** [run #270](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43552223513) passed on README-update commit `548652d15edb5d6071f41068810a990dd3427987`. The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
+- Run #270 verifies the named commit only. This README update is newer and must pass its own exact-head workflow before merge. Check [PR #5's Actions checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) for the current commit's result.
 - **Regression tests:** 104 passed, 0 failed, 0 skipped.
-- **Markdown links:** 39 Markdown files and 99 local file/directory links checked successfully.
+- **Markdown links:** 39 Markdown files and 100 local file/directory links checked successfully.
 - **Site build and privacy gate:** Jekyll generation passed. The public-output audit passed with exactly 26 approved documentation pages (12 Everyday Help pages and 14 Technical Documentation pages) and 38 static files in total, including the shared CSS and search module and ten labelled local SVG workflow diagrams. No private repository links, internal documents, external scripts or external assets were found in the generated output.
 - **Previous failure explained:** run [#268](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43551605235) failed one accessibility regression test. The test had an over-escaped selector pattern and did not recognise the existing `a:focus-visible` CSS rule. The test was corrected in commit `274b63bc7a8300f0c7385e22fb0145e60ebd5726`; run #269 then passed all checks.
 - **What CI does not prove:** the automated run does not verify live product workflows, genuine application screenshots, manual keyboard/screen-reader use, visual quality at each viewport, hosting, deployment or the custom domain.
