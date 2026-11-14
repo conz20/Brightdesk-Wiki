@@ -46,7 +46,9 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #294](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556708962) passed on commit `acdec414a39c85f01baff970f96db834113576e1`. The exact-head workflow completed its pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
+[Run #295](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43557189238) passed on the current PR head `e57bd3f572bf41ed73c1d8e62c253cfe298b4cd2`. This exact-head run completed the pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
+
+[Run #294](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556708962) passed on commit `acdec414a39c85f01baff970f96db834113576e1`. It passed on the immediately preceding commit. The exact-head workflow completed its pinned Node.js 24.22.2 and Ruby 3.4.4 setup, validation-script checks, automated regression tests, Markdown-link check, Jekyll customer-site generation and generated-output privacy audit successfully.
 
 [Run #293](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556304582) also passed on the immediately preceding commit `60b1c7dcb1ac377b181d73b2db591188afe29b0a`. Its detailed result was 109 tests passed, 0 failed and 0 skipped; 39 Markdown files and 99 local file/directory links checked; Jekyll generation passed; and the privacy audit approved 26 documentation pages and 38 static files.
 
