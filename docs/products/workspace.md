@@ -64,6 +64,37 @@ Workspaces and pages are saved on this device as you work. Check the local-save 
 6. Tick an item when it is complete.
 
 **What you should have:** one project page with a heading, notes and a checklist. It stays on this device.
+## More examples to try
+
+### Keep a project brief and actions together
+
+1. Create a workspace called **Website refresh**.
+2. Rename the starting page **Project brief**.
+3. Add a **Heading** block for the project goal.
+4. Add a **Text** block with the background and key details.
+5. Add a **Checklist** block for the next actions.
+6. Use the up and down controls to put the blocks in a useful order.
+
+**What you should have:** one project page with a brief and an action checklist.
+
+### Organise information across pages
+
+1. Create a workspace called **Home renovation**.
+2. Rename the first page **Overview**.
+3. Add another page for a separate topic, such as **Materials**.
+4. Add Text, Bullet point or Callout blocks to record information.
+5. Use **Find a page** to search for a page by its title or content.
+
+**What you should have:** a workspace with separate pages for related information.
+
+## Common questions and fixes
+
+**Can I share a workspace with another person?** The current Workspace scope is local workspaces and pages. Live collaboration and shared workspaces are not included.
+
+**What happens when I delete a page?** The page and all its content are removed. A workspace must keep at least one page.
+
+**Can I delete every workspace?** No. At least one workspace must remain.
+
 ## Current feature boundaries
 
 Workspace supports local workspaces and pages with text, heading, bullet, callout, divider and checklist blocks. Live collaboration, shared workspaces, accounts, cloud sync, permissions, external integrations and connected multi-user components are not included in the current stated scope.
