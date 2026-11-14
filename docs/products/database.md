@@ -10,7 +10,9 @@ permalink: /products/database.html
 
 ![Brightdesk Database product icon](../assets/images/product-icons/database.svg){: .product-guide-icon }
 
-![Three-step workflow: create a table, choose fields, then add records.](../assets/images/workflows/guide-database.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-database.svg" alt="Three-step workflow: create a table, choose fields, then add records." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
