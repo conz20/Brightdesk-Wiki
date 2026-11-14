@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Pages technical reference
 description: Page layout, document handling and export capabilities in Brightdesk Pages.
-permalink: /technical../../products/pages.html
+permalink: /technical/products/pages.html
 ---
 
 # Pages technical reference
