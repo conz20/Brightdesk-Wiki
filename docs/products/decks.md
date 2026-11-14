@@ -10,6 +10,10 @@ permalink: /products/decks.html
 
 ![Brightdesk Decks product icon](../assets/images/product-icons/decks.svg){: .product-guide-icon }
 
+![Three-step workflow: add slides, arrange the content, then present your work.](../assets/images/workflows/guide-decks.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use Decks to build and present a slide presentation.
 
 ## Edit the first slide
