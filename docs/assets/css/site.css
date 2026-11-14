@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   --ink: #172334;
   --muted: #536274;
   --line: #d9e0e8;
@@ -8,6 +8,7 @@
   --brand: #175cbd;
   --brand-dark: #124995;
   --soft-blue: #eaf2ff;
+  --focus-ring: #8a4b00;
   --content-width: 900px;
 }
 
@@ -30,7 +31,7 @@ a {
 }
 a:hover { text-decoration-thickness: 2px; }
 a:focus-visible {
-  outline: 3px solid #8a4b00;
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
   border-radius: 3px;
 }
@@ -83,6 +84,18 @@ a:focus-visible {
 .brand-light { color: var(--muted); font-weight: 550; }
 .site-nav { display: flex; flex-wrap: wrap; gap: 1.1rem; }
 .site-nav a { font-weight: 650; text-decoration: none; }
+.site-nav a[aria-current="page"] {
+  color: var(--brand-dark);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: .4rem;
+}
+.product-menu > ul a[aria-current="page"] {
+  color: var(--brand-dark);
+  background: var(--soft-blue);
+  font-weight: 800;
+}
 
 .main-content {
   width: min(calc(100% - 2rem), var(--content-width));
@@ -94,6 +107,26 @@ a:focus-visible {
   border: 1px solid var(--line);
   border-radius: 1rem;
   box-shadow: 0 10px 32px rgb(23 35 52 / 5%);
+}
+.guide-illustration {
+  margin: 1.5rem 0 2rem;
+  padding: clamp(.75rem, 2.5vw, 1.25rem);
+  overflow: hidden;
+  background: linear-gradient(145deg, #f4f7fb, #eaf0f8);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+.guide-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .65rem;
+}
+.guide-illustration figcaption {
+  margin: .75rem .15rem .1rem;
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.55;
 }
 .content-card h1,
 .content-card h2,
@@ -122,33 +155,6 @@ a:focus-visible {
 .content-card code { padding: 0.12rem 0.3rem; background: #eef2f6; border-radius: 0.25rem; }
 .content-card pre { overflow-x: auto; padding: 1rem; background: #eef2f6; border-radius: 0.5rem; }
 .content-card pre code { padding: 0; background: transparent; }
-.workflow-diagram-scroll {
-  max-width: 100%;
-  margin: 1.25rem 0 0.5rem;
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: 0.8rem;
-  overscroll-behavior-inline: contain;
-}
-.workflow-diagram-scroll:focus-visible {
-  outline: 3px solid #8a4b00;
-  outline-offset: 3px;
-}
-.product-workflow-diagram {
-  display: block;
-  width: 100%;
-  min-width: 720px;
-  height: auto;
-}
-
-.product-guide-icon {
-  display: block;
-  width: 5.5rem;
-  height: 5.5rem;
-  margin: 0.5rem 0 1.25rem;
-  object-fit: contain;
-}
-
 .guide-status {
   display: inline-block;
   margin: 0 0 1rem;
@@ -175,4 +181,420 @@ a:focus-visible {
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+/* Local Help search and task suggestions */
+.help-search{width:min(calc(100% - 2rem),var(--content-width));margin:1.15rem auto 1.35rem;padding:1.15rem 1.25rem;background:var(--surface);border:1px solid var(--line);border-radius:.85rem;box-shadow:0 6px 22px rgb(23 35 52 / 5%)}
+.help-search label{display:block;margin-bottom:.4rem;font-weight:750}
+.help-search input[type="search"]{display:block;width:100%;min-height:3.1rem;padding:.7rem .9rem;color:var(--ink);background:#fff;border:1px solid #9aa9ba;border-radius:.55rem;font:inherit}
+.help-search input[type="search"]:focus-visible{outline:3px solid var(--focus-ring);outline-offset:2px;border-color:var(--brand)}
+.search-hint,.search-status{margin:.35rem 0 0;color:var(--muted);font-size:.9rem}
+.search-results{display:grid;gap:.45rem;margin:.8rem 0 0;padding:0;list-style:none}
+.search-results li{padding:.7rem .85rem;background:#f7f9fc;border:1px solid var(--line);border-radius:.55rem}
+.search-results a{font-weight:700;text-decoration:none}
+.footer-help{margin-bottom:1.25rem;padding:1.2rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:.85rem}
+.footer-help h2{margin:0;font-size:1.2rem}
+.footer-help p{margin:.3rem 0 .85rem}
+.footer-suggestions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.5rem;margin:0;padding:0;list-style:none}
+.footer-suggestions a{display:block;height:100%;padding:.65rem .75rem;background:#f4f7fb;border:1px solid var(--line);border-radius:.5rem;font-weight:650;text-decoration:none}
+.footer-suggestions a:hover{background:var(--soft-blue)}
+.footer-suggestions a:focus-visible{outline:3px solid var(--focus-ring);outline-offset:2px}
+@media(max-width:600px){.help-search{margin:.75rem auto;padding:1rem}.footer-suggestions{grid-template-columns:1fr}}
+
+
+/* Task-first guidance and browser translation help */
+.translation-help {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin: .85rem auto 0;
+  padding: .7rem 1rem;
+  color: var(--muted);
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  font-size: .9rem;
+}
+.translation-help p { margin: 0; }
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .75rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+.task-grid li {
+  display: flex;
+  min-height: 6rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .55rem;
+  padding: .9rem 1rem;
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  border-radius: .7rem;
+}
+.task-grid a {
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.task-grid a:hover { text-decoration: underline; }
+.task-grid span {
+  color: var(--muted);
+  font-size: .88rem;
+}
+@media (max-width: 600px) {
+  .task-grid { grid-template-columns: 1fr; }
+}
+
+/* Clear first step for visitors who are new to Brightdesk */
+.start-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 1.25rem 0 2rem;
+  padding: 1.2rem 1.3rem;
+  background: #edf4ff;
+  border: 1px solid #c9dcf7;
+  border-radius: .8rem;
+}
+.start-panel .eyebrow {
+  margin: 0 0 .25rem;
+  color: var(--brand-dark);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.start-panel h2 { margin: 0 0 .35rem; font-size: 1.25rem; }
+.start-panel p:last-child { margin: 0; }
+.start-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .7rem .95rem;
+  color: #fff;
+  background: var(--brand-dark);
+  border: 1px solid var(--brand-dark);
+  border-radius: .5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.start-link:hover { background: #0d3975; }
+.start-link:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+@media (max-width: 600px) {
+  .start-panel { align-items: stretch; flex-direction: column; }
+  .start-link { justify-content: center; }
+}
+
+/* Persistent, lightweight navigation to every approved product guide */
+.site-header { position: relative; z-index: 3; }
+.site-nav { align-items: center; }
+.product-menu { position: relative; }
+.product-menu > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--brand-dark);
+  cursor: pointer;
+  font-weight: 650;
+  list-style: none;
+}
+.product-menu > summary::-webkit-details-marker { display: none; }
+.product-menu > summary::after {
+  width: .42rem;
+  height: .42rem;
+  margin-top: -.22rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  content: "";
+  transform: rotate(45deg);
+  transition: transform .15s ease, margin .15s ease;
+}
+.product-menu[open] > summary::after {
+  margin-top: .2rem;
+  transform: rotate(225deg);
+}
+.product-menu > summary:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+.product-menu > ul {
+  position: absolute;
+  top: calc(100% + .75rem);
+  right: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .2rem;
+  width: min(25rem, calc(100vw - 2rem));
+  margin: 0;
+  padding: .55rem;
+  list-style: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  box-shadow: 0 14px 36px rgb(23 35 52 / 14%);
+}
+.product-menu > ul a {
+  display: block;
+  padding: .6rem .7rem;
+  color: var(--ink);
+  border-radius: .45rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.product-menu > ul a:hover { background: var(--soft-blue); color: var(--brand-dark); }
+.product-menu > ul a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+@media (max-width: 600px) {
+  .product-menu > ul { right: auto; left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-menu > summary::after { transition: none; }
+}
+
+
+/* Separate technical reference portal */
+.technical-header .header-inner,
+.technical-site .help-search,
+.technical-site .translation-help,
+.technical-footer {
+  width: min(calc(100% - 2rem), 1240px);
+}
+.technical-layout {
+  width: min(calc(100% - 2rem), 1240px);
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  align-items: start;
+  gap: 1.25rem;
+}
+.technical-sidebar {
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: .85rem;
+  box-shadow: 0 6px 22px rgb(23 35 52 / 4%);
+}
+.technical-sidebar h2 { margin: 0 0 .75rem; font-size: 1.05rem; }
+.technical-sidebar h3 {
+  margin: 1.2rem 0 .45rem;
+  color: var(--muted);
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.technical-sidebar ul {
+  display: grid;
+  gap: .18rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.technical-sidebar a {
+  display: block;
+  padding: .42rem .55rem;
+  border-radius: .4rem;
+  color: var(--ink);
+  font-size: .92rem;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.technical-sidebar a:hover { background: var(--soft-blue); color: var(--brand-dark); }
+.technical-sidebar a[aria-current="page"] {
+  color: var(--brand-dark);
+  background: var(--soft-blue);
+  font-weight: 750;
+}
+.technical-sidebar a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.sidebar-return {
+  margin: 1.1rem 0 0;
+  padding-top: .85rem;
+  border-top: 1px solid var(--line);
+  font-size: .86rem;
+}
+.technical-card { min-width: 0; }
+.technical-breadcrumb {
+  margin: 0 0 1.25rem !important;
+  color: var(--muted);
+  font-size: .85rem;
+}
+.technical-breadcrumb a { font-weight: 700; }
+.technical-site .content-card h1 { font-size: clamp(1.85rem, 4vw, 2.35rem); }
+.technical-site .content-card h2 { margin-top: 1.7rem; }
+.technical-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 1.25rem 0 2rem;
+  padding: 1.2rem 1.3rem;
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  border-radius: .8rem;
+}
+.technical-panel .eyebrow {
+  margin: 0 0 .25rem;
+  color: var(--muted);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.technical-panel h2 { margin: 0 0 .35rem; font-size: 1.2rem; }
+.technical-panel p:last-child { margin: 0; }
+.technical-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .7rem .95rem;
+  color: #fff;
+  background: var(--brand-dark);
+  border: 1px solid var(--brand-dark);
+  border-radius: .5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.technical-link:hover { background: #0d3975; }
+.technical-link:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+.technical-site .content-card table { table-layout: auto; }
+@media (max-width: 820px) {
+  .technical-layout { grid-template-columns: 1fr; gap: .8rem; margin: 1rem auto; }
+  .technical-sidebar { padding: .8rem; }
+  .technical-sidebar nav > ul:last-child { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .technical-sidebar h3 { margin-top: .9rem; }
+  .technical-card { order: 2; }
+}
+@media (max-width: 600px) {
+  .technical-panel { align-items: stretch; flex-direction: column; }
+  .technical-link { justify-content: center; }
+  .technical-sidebar nav > ul:last-child { grid-template-columns: 1fr; }
+}
+
+/* Respect the operating system's theme without cookies or visitor storage. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e7edf6;
+    --muted: #aab7c8;
+    --line: #344256;
+    --surface: #182333;
+    --page: #101925;
+    --brand: #8bbcff;
+    --brand-dark: #a8ceff;
+    --soft-blue: #203852;
+    --focus-ring: #ffcf70;
+  }
+  .help-search input[type="search"] { color: var(--ink); background: #111d2b; border-color: #56677d; }
+  .search-results li, .footer-suggestions a, .task-grid li { background: #1d2a3b; }
+  .content-card th, .content-card pre, .content-card code { color: var(--ink); background: #26364b; }
+  .content-card pre code { background: transparent; }
+  .translation-help, .technical-panel { color: var(--muted); background: #1d2a3b; }
+  .start-panel { color: var(--ink); background: #203852; border-color: #3b5d82; }
+  .start-panel .eyebrow { color: var(--brand-dark); }
+  .start-link, .technical-link { color: #101925; background: #a8ceff; border-color: #a8ceff; }
+  .start-link:hover, .technical-link:hover { background: #c4ddff; }
+  .footer-help, .technical-sidebar { color: var(--ink); background: var(--surface); border-color: var(--line); }
+  .guide-illustration { background: #1d2a3b; border-color: var(--line); }
+  .technical-sidebar a[aria-current="page"] { color: var(--brand-dark); background: var(--soft-blue); }
+  .product-menu > ul { background: var(--surface); border-color: var(--line); }
+  .product-menu > ul a { color: var(--ink); }
+  .product-menu > ul a:hover { color: var(--brand-dark); background: var(--soft-blue); }
+}
+
+/* Product-directory landing pages: clear choices, real product artwork, easy scanning */
+.portal-hero,.product-directory,.portal-note,.technical-hero,.reference-section{width:min(calc(100% - 2rem),1180px);margin-inline:auto}
+.portal-hero{padding:clamp(2rem,5vw,4.5rem) 0 2.25rem}
+.portal-kicker{margin:0 0 .55rem;color:var(--brand-dark);font-size:.75rem;font-weight:850;letter-spacing:.12em}
+.portal-hero h1,.technical-hero h1{max-width:16ch;margin:0;font-size:clamp(2.35rem,5vw,4rem);line-height:1.05;letter-spacing:-.045em}
+.portal-intro,.technical-hero>p:not(.portal-kicker){max-width:68ch;color:var(--muted);font-size:1.1rem}
+.portal-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem;margin-top:2rem}
+.portal-choice{display:flex;min-height:220px;gap:1.1rem;align-items:flex-start;padding:1.5rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:1.1rem;box-shadow:0 12px 32px rgb(23 35 52 / 6%);text-decoration:none;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.portal-choice:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:0 18px 42px rgb(23 35 52 / 11%)}
+.portal-choice:focus-visible,.product-card:focus-visible,.reference-card:focus-visible{outline:3px solid var(--focus-ring);outline-offset:3px}
+.portal-choice-icon,.product-card-mark{flex:0 0 3.5rem;width:3.5rem;height:3.5rem;display:grid;place-items:center;color:#fff;background:#175cbd;border-radius:1rem;font-size:1.65rem;font-weight:850}
+.portal-choice-icon-technical{color:#fff;background:#253d61}
+.portal-choice-icon-technical span{font-size:1.8rem}
+.portal-choice-copy{display:grid;gap:.45rem}
+.portal-choice-label{color:var(--muted);font-size:.7rem;font-weight:850;letter-spacing:.11em}
+.portal-choice-copy strong{font-size:1.55rem;line-height:1.2;letter-spacing:-.025em}
+.portal-choice-copy>span:not(.portal-choice-label){color:var(--muted);line-height:1.5}
+.portal-choice-action{margin-top:.5rem;color:var(--brand-dark)!important;font-weight:800}
+.product-directory{padding:1.6rem 0 2.4rem}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:1.15rem}
+.section-heading h2,.reference-section h2{margin:.1rem 0 .35rem;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.03em}
+.section-heading p:not(.portal-kicker){margin:.25rem 0;color:var(--muted)}
+.suite-guide-link{flex:0 0 auto;font-weight:750;text-decoration:none}
+.product-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.85rem}
+.product-card{display:flex;min-width:0;min-height:180px;flex-direction:column;align-items:flex-start;gap:.35rem;padding:1rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:.9rem;text-decoration:none;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+.product-card:hover{transform:translateY(-2px);border-color:var(--brand);box-shadow:0 10px 25px rgb(23 35 52 / 8%)}
+.product-card img{display:block;width:4.25rem;height:4.25rem;object-fit:contain;object-position:left center;margin-bottom:.25rem}
+.product-card-name{font-size:1.05rem;font-weight:800}
+.product-card-description{color:var(--muted);font-size:.88rem;line-height:1.4}
+.product-card-suite{justify-content:flex-start}
+.product-card-mark{width:4.1rem;height:4.1rem;margin-bottom:.25rem}
+.portal-note{margin-top:0;margin-bottom:2.5rem;padding:1rem 1.2rem;background:var(--soft-blue);border:1px solid var(--line);border-radius:.8rem}
+.portal-note p{margin:.25rem 0 0;color:var(--muted)}
+.technical-hero{padding:2.3rem 0 1.2rem}
+.technical-switch{margin-top:1.1rem}
+.technical-switch a{font-weight:750;text-decoration:none}
+.reference-section{padding:1.1rem 0 1.8rem}
+.reference-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem}
+.reference-card{display:flex;min-height:170px;flex-direction:column;align-items:flex-start;gap:.45rem;padding:1rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:.85rem;text-decoration:none}
+.reference-symbol{display:grid;place-items:center;width:2.6rem;height:2.6rem;color:var(--brand-dark);background:var(--soft-blue);border-radius:.7rem;font-size:1.45rem}
+.reference-card strong{font-size:1.05rem}
+.reference-card>span:not(.reference-symbol){color:var(--muted);font-size:.88rem}
+.reference-card .reference-arrow,.reference-arrow{margin-top:auto;color:var(--brand-dark)!important;font-weight:750}
+.technical-product-grid .product-card{min-height:205px}
+.technical-product-grid .product-card img{height:4.25rem}
+.technical-site .technical-hero,.technical-site .reference-section,.technical-site .portal-note{width:min(calc(100% - 2rem),1180px)}
+@media(max-width:900px){.product-card-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){.portal-choices{grid-template-columns:1fr}.portal-choice{min-height:0}.product-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.reference-card-grid{grid-template-columns:1fr}.section-heading{align-items:flex-start;flex-direction:column}.suite-guide-link{margin-top:.25rem}}
+@media(max-width:380px){.product-card-grid{grid-template-columns:1fr}.portal-choice{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.portal-choice,.product-card{transition:none}.portal-choice:hover,.product-card:hover{transform:none}}
+@media(prefers-color-scheme:dark){.portal-choice,.product-card,.reference-card{background:var(--surface);border-color:var(--line)}.portal-choice:hover,.product-card:hover{border-color:var(--brand)}.portal-note{background:#203852}.portal-choice-icon{background:#315f98}.portal-choice-icon-technical{background:#354c6e}}
+
+/* Give the choice and Everyday Help directories enough width for a real product catalogue. */
+.main-content:has(.portal-hero){width:min(calc(100% - 2rem),1240px);margin:1.25rem auto 2.5rem}
+.main-content:has(.portal-hero) .content-card{padding:clamp(1rem,3vw,2rem)}
+
+/* Original Brightdesk identity and product artwork */
+.brand-mark-image{display:block;flex:0 0 auto;width:2.15rem;height:2.15rem;object-fit:contain;border-radius:.55rem}
+.product-card-mark-img{display:block;width:4.1rem;height:4.1rem;object-fit:contain;margin-bottom:.25rem}
+.product-preview{margin:1.35rem 0 1.75rem;padding:clamp(.65rem,2vw,1rem);overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:1rem}
+.product-preview img{display:block;width:100%;height:auto;max-height:min(66vw,760px);object-fit:contain;background:#f3f6fa;border-radius:.65rem}
+.product-preview figcaption{margin:.75rem .15rem .1rem;color:var(--muted);font-size:.9rem;line-height:1.55}
+.suite-product-preview img{max-height:820px}
+@media(prefers-color-scheme:dark){.product-preview img{background:#f3f6fa}}
+
+.technical-product-icon{display:block;width:4.5rem;height:4.5rem;margin:0 0 1rem;object-fit:contain}
+
+
+/* Preserve the canonical, keyboard-scrollable Brightdesk workflow diagrams. */
+.workflow-diagram-scroll {
+  max-width: 100%;
+  margin: 1.25rem 0 0.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  overscroll-behavior-inline: contain;
+}
+.workflow-diagram-scroll:focus-visible {
+  outline: 3px solid #8a4b00;
+  outline-offset: 3px;
+}
+.product-workflow-diagram {
+  display: block;
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+}
+
+.product-guide-icon {
+  display: block;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0.5rem 0 1.25rem;
+  object-fit: contain;
 }

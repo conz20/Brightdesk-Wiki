@@ -1,38 +1,97 @@
 ---
 layout: default
 title: Brightdesk Help
-description: Find the right Brightdesk product guide and see what has been verified.
+description: Choose simple Everyday Help or detailed Technical Documentation, then find the Brightdesk product you use.
 permalink: /index.html
 ---
 
-# Brightdesk Help
+<section class="portal-hero" aria-labelledby="portal-title">
+  <p class="portal-kicker">BRIGHTDESK SUPPORT</p>
+  <h1 id="portal-title">What would you like help with?</h1>
+  <p class="portal-intro">Choose the kind of information you want. Both areas are part of one Brightdesk Help website, and you can switch between them at any time.</p>
+  <div class="portal-choices">
+    <a class="portal-choice portal-choice-everyday" href="everyday/index.html">
+      <span class="portal-choice-icon" aria-hidden="true">B</span>
+      <span class="portal-choice-copy">
+        <span class="portal-choice-label">A SIMPLE PLACE TO START</span>
+        <strong>Everyday Help</strong>
+        <span>Plain-English instructions, step-by-step guides, examples and help with common tasks. No technical knowledge needed.</span>
+        <span class="portal-choice-action">Go to Everyday Help <span aria-hidden="true">→</span></span>
+      </span>
+    </a>
+    <a class="portal-choice portal-choice-technical" href="technical/index.html">
+      <span class="portal-choice-icon portal-choice-icon-technical" aria-hidden="true"><span>⌘</span></span>
+      <span class="portal-choice-copy">
+        <span class="portal-choice-label">FOR DEEPER READING</span>
+        <strong>Technical Documentation</strong>
+        <span>Detailed product references, capabilities, file formats, system behaviour and data boundaries.</span>
+        <span class="portal-choice-action">Go to Technical Documentation <span aria-hidden="true">→</span></span>
+      </span>
+    </a>
+  </div>
+</section>
 
-Welcome to the Brightdesk Help centre. This separate, public, read-only website contains practical guides for Brightdesk Suite and its ten approved desktop products.
+<section class="product-directory" aria-labelledby="product-directory-title">
+  <div class="section-heading">
+    <div>
+      <p class="portal-kicker">THE BRIGHTDESK SUITE</p>
+      <h2 id="product-directory-title">Find the product you use</h2>
+      <p>Choose a product to open its help guide. Not sure where to begin? Start with the Suite guide.</p>
+    </div>
+    <a class="suite-guide-link" href="customer-start-here.html">Explore Brightdesk Suite <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="product-card-grid">
+    <a class="product-card product-card-suite" href="customer-start-here.html">
+      <span class="product-card-mark-img" aria-hidden="true">B</span>
+      <span class="product-card-name">Brightdesk Suite</span>
+      <span class="product-card-description">How the Suite fits together and where to start</span>
+    </a>
+    <a class="product-card" href="products/pages.html">
+      <img src="assets/images/product-icons/pages.svg" alt="Brightdesk Pages product icon" loading="lazy">
+      <span class="product-card-name">Pages</span><span class="product-card-description">Documents and writing</span>
+    </a>
+    <a class="product-card" href="products/sheets.html">
+      <img src="assets/images/product-icons/sheets.svg" alt="Brightdesk Sheets product icon" loading="lazy">
+      <span class="product-card-name">Sheets</span><span class="product-card-description">Spreadsheets and calculations</span>
+    </a>
+    <a class="product-card" href="products/decks.html">
+      <img src="assets/images/product-icons/decks.svg" alt="Brightdesk Decks product icon" loading="lazy">
+      <span class="product-card-name">Decks</span><span class="product-card-description">Slide presentations</span>
+    </a>
+    <a class="product-card" href="products/notes.html">
+      <img src="assets/images/product-icons/notes.svg" alt="Brightdesk Notes product icon" loading="lazy">
+      <span class="product-card-name">Notes</span><span class="product-card-description">Notes and ideas</span>
+    </a>
+    <a class="product-card" href="products/database.html">
+      <img src="assets/images/product-icons/database.svg" alt="Brightdesk Database product icon" loading="lazy">
+      <span class="product-card-name">Database</span><span class="product-card-description">Structured records</span>
+    </a>
+    <a class="product-card" href="products/forms.html">
+      <img src="assets/images/product-icons/forms.svg" alt="Brightdesk Forms product icon" loading="lazy">
+      <span class="product-card-name">Forms</span><span class="product-card-description">Forms and responses</span>
+    </a>
+    <a class="product-card" href="products/lists.html">
+      <img src="assets/images/product-icons/lists.svg" alt="Brightdesk Lists product icon" loading="lazy">
+      <span class="product-card-name">Lists</span><span class="product-card-description">Custom lists and records</span>
+    </a>
+    <a class="product-card" href="products/planner.html">
+      <img src="assets/images/product-icons/planner.svg" alt="Brightdesk Planner product icon" loading="lazy">
+      <span class="product-card-name">Planner</span><span class="product-card-description">Projects and planning</span>
+    </a>
+    <a class="product-card" href="products/to-do.html">
+      <img src="assets/images/product-icons/to-do.svg" alt="Brightdesk To Do product icon" loading="lazy">
+      <span class="product-card-name">To Do</span><span class="product-card-description">Personal tasks</span>
+    </a>
+    <a class="product-card" href="products/workspace.html">
+      <img src="assets/images/product-icons/workspace.svg" alt="Brightdesk Workspace product icon" loading="lazy">
+      <span class="product-card-name">Workspace</span><span class="product-card-description">Project information together</span>
+    </a>
+  </div>
+</section>
 
-Brightdesk Suite, all ten approved Brightdesk products and this customer help centre are free for every customer. There are no subscriptions, paid tiers, trials, licence fees or charges to read these guides. You do not need a customer account, sign-in or password.
+<section class="portal-note" aria-label="About Brightdesk Help">
+  <strong>One website. Two ways to explore.</strong>
+  <p>Everyday Help and Technical Documentation have separate navigation and separate search results. Search stays in your browser. This site is read-only and does not require an account.</p>
+</section>
 
-[**Start here: find the help you need**](customer-start-here.html)
-
-## Browse the ten Brightdesk products
-
-| Product | What it is for |
-| --- | --- |
-| [Pages](products/pages.html) | Documents, writing and page layout |
-| [Sheets](products/sheets.html) | Spreadsheets and calculations |
-| [Decks](products/decks.html) | Slide presentations |
-| [Notes](products/notes.html) | Notes and ideas |
-| [Database](products/database.html) | Structured records and tables |
-| [Forms](products/forms.html) | Forms and responses |
-| [Lists](products/lists.html) | Custom lists and records |
-| [Planner](products/planner.html) | Projects and planning boards |
-| [To Do](products/to-do.html) | Personal tasks and due dates |
-| [Workspace](products/workspace.html) | Project information in one workspace |
-
-These descriptions identify the intended purpose of each product. They do not mean every feature or workflow is available. Each product guide shows its current evidence status.
-
-## About this help site
-
-- It is separate from the Brightdesk Suite and all ten desktop products.
-- It is read-only. It does not ask you to create a Brightdesk account or upload documents.
-- It contains no advertising, analytics scripts, embedded third-party fonts or tracking widgets.
-- It is not required to install, open or use Brightdesk. The desktop products remain designed for local use.
+**Brightdesk Suite and all ten approved products are free.** There are no subscriptions, trials, paid tiers, licence fees or customer accounts.
