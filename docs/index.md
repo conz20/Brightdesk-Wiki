@@ -20,6 +20,25 @@ Use the search field at the top of this page to search the instructions and exam
 At the bottom of every page, choose one of the suggested tasks if you are not sure which product to open.
 
 Each guide includes a plain-English description, numbered steps and a small example with the expected result. Guide status tells you whether the steps have been checked in the running product.
+## What are you trying to do?
+
+You do not need to know which Brightdesk product to choose. Start with the task:
+
+<ul class="task-grid">
+  <li><a href="products/pages.html">Write a letter, report or document</a><span>Pages</span></li>
+  <li><a href="products/sheets.html">Add up numbers or make a budget</a><span>Sheets</span></li>
+  <li><a href="products/decks.html">Make a presentation</a><span>Decks</span></li>
+  <li><a href="products/notes.html">Write down an idea or reminder</a><span>Notes</span></li>
+  <li><a href="products/database.html">Keep information in an organised table</a><span>Database</span></li>
+  <li><a href="products/forms.html">Create a form or survey</a><span>Forms</span></li>
+  <li><a href="products/lists.html">Organise items or records</a><span>Lists</span></li>
+  <li><a href="products/planner.html">Plan a project and its tasks</a><span>Planner</span></li>
+  <li><a href="products/to-do.html">Keep track of things you need to do</a><span>To Do</span></li>
+  <li><a href="products/workspace.html">Bring project notes and information together</a><span>Workspace</span></li>
+</ul>
+
+If you are new to Brightdesk, [start with the simple Suite guide](customer-start-here.html). It explains where to click first.
+
 ## Browse the ten Brightdesk products
 
 | Product | What it is for |
