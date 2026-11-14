@@ -456,3 +456,22 @@ test('external SVG gradient resources are rejected', t => {
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10" fill="url(https://example.com/gradient.svg#id)"/></svg>');
   assert.throws(() => checkPublicSite({ siteRoot }), /external reference/i);
 });
+
+
+test('technical product references carry the matching Brightdesk product icon', () => {
+  for (const product of PRODUCTS) {
+    const source = fs.readFileSync(
+      path.join(process.cwd(), 'docs', 'technical', 'products', product + '.md'),
+      'utf8'
+    );
+    assert.ok(
+      source.includes('src="../../assets/icons/' + product + '.svg"'),
+      product + ' technical reference must show its official product icon'
+    );
+  }
+  const suite = fs.readFileSync(
+    path.join(process.cwd(), 'docs', 'technical', 'system-overview.md'),
+    'utf8'
+  );
+  assert.ok(suite.includes('src="../assets/brand/brightdesk-suite-mark.svg"'));
+});

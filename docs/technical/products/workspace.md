@@ -7,6 +7,9 @@ permalink: /technical/products/workspace.html
 
 # Workspace technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/workspace.svg" alt="Brightdesk Workspace application icon" width="80" height="80" loading="lazy">
+
+
 Workspace groups related project information into workspaces and pages.
 
 ## Content model

@@ -7,6 +7,9 @@ permalink: /technical/products/planner.html
 
 # Planner technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/planner.svg" alt="Brightdesk Planner application icon" width="80" height="80" loading="lazy">
+
+
 Planner organises local work into plans, buckets and tasks.
 
 ## Data model

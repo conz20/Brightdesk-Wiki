@@ -7,6 +7,9 @@ permalink: /technical/products/forms.html
 
 # Forms technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/forms.svg" alt="Brightdesk Forms application icon" width="80" height="80" loading="lazy">
+
+
 Forms lets customers create local forms and review the responses submitted on the same device.
 
 ## Question model

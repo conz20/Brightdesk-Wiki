@@ -7,6 +7,9 @@ permalink: /technical/products/to-do.html
 
 # To Do technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/to-do.svg" alt="Brightdesk To Do application icon" width="80" height="80" loading="lazy">
+
+
 To Do is Brightdesk's personal task workspace.
 
 ## Task properties

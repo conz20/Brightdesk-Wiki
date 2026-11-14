@@ -7,6 +7,9 @@ permalink: /technical/products/decks.html
 
 # Decks technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/decks.svg" alt="Brightdesk Decks application icon" width="80" height="80" loading="lazy">
+
+
 Decks is Brightdesk's slide presentation workspace.
 
 ## Slide operations

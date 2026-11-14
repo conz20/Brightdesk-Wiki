@@ -7,6 +7,9 @@ permalink: /technical/products/database.html
 
 # Database technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/database.svg" alt="Brightdesk Database application icon" width="80" height="80" loading="lazy">
+
+
 Database is Brightdesk's local structured-data workspace for tables, fields and records.
 
 ## Field types

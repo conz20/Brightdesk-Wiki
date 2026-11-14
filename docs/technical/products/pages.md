@@ -7,6 +7,9 @@ permalink: /technical/products/pages.html
 
 # Pages technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/pages.svg" alt="Brightdesk Pages application icon" width="80" height="80" loading="lazy">
+
+
 Pages is Brightdesk's document editor for letters, reports and other formatted documents.
 
 ## Page layout model

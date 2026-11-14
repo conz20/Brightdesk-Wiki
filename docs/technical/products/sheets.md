@@ -7,6 +7,9 @@ permalink: /technical/products/sheets.html
 
 # Sheets technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/sheets.svg" alt="Brightdesk Sheets application icon" width="80" height="80" loading="lazy">
+
+
 Sheets is Brightdesk's spreadsheet workspace for tabular data, calculations and totals.
 
 ## Formula engine

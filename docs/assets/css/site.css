@@ -567,3 +567,5 @@ a:focus-visible {
 .product-preview figcaption{margin:.75rem .15rem .1rem;color:var(--muted);font-size:.9rem;line-height:1.55}
 .suite-product-preview img{max-height:820px}
 @media(prefers-color-scheme:dark){.product-preview img{background:#f3f6fa}}
+
+.technical-product-icon{display:block;width:4.5rem;height:4.5rem;margin:0 0 1rem;object-fit:contain}

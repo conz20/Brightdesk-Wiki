@@ -7,6 +7,9 @@ permalink: /technical/products/notes.html
 
 # Notes technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/notes.svg" alt="Brightdesk Notes application icon" width="80" height="80" loading="lazy">
+
+
 Notes is a lightweight workspace for capturing text, ideas and reminders.
 
 ## Content elements

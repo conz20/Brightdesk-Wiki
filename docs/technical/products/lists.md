@@ -7,6 +7,9 @@ permalink: /technical/products/lists.html
 
 # Lists technical reference
 
+<img class="technical-product-icon" src="../../assets/icons/lists.svg" alt="Brightdesk Lists application icon" width="80" height="80" loading="lazy">
+
+
 Lists is a local structured-list workspace.
 
 ## Default record fields
