@@ -10,6 +10,10 @@ permalink: /products/to-do.html
 
 ![Brightdesk To Do product icon](../assets/images/product-icons/to-do.svg){: .product-guide-icon }
 
+![Three-step workflow: open My Day, add tasks, then mark finished work complete.](../assets/images/workflows/guide-to-do.svg){: .product-workflow-diagram }
+
+*Illustrative workflow, not a screenshot of the Brightdesk interface.*
+
 Use To Do to keep track of personal tasks, due dates and priorities.
 
 ## Add a task
