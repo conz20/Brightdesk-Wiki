@@ -8,6 +8,11 @@ permalink: /products/lists.html
 
 # Brightdesk Lists
 
+<figure class="product-preview">
+  <img src="../assets/previews/lists.svg" alt="Illustrative design preview of the Brightdesk Lists workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
+
 ## Overview
 
 Use Lists to organise projects, stock, contacts or other information as structured records.

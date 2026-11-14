@@ -8,6 +8,11 @@ permalink: /products/to-do.html
 
 # Brightdesk To Do
 
+<figure class="product-preview">
+  <img src="../assets/previews/to-do.svg" alt="Illustrative design preview of the Brightdesk To Do workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
+
 ## Overview
 
 Use To Do to keep track of personal tasks, due dates and priorities.

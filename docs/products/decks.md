@@ -8,6 +8,11 @@ permalink: /products/decks.html
 
 # Brightdesk Decks
 
+<figure class="product-preview">
+  <img src="../assets/previews/decks.svg" alt="Illustrative design preview of the Brightdesk Decks workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
+
 ## Overview
 
 Use Decks to build and present a slide presentation.

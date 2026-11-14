@@ -8,6 +8,11 @@ permalink: /products/pages.html
 
 # Brightdesk Pages
 
+<figure class="product-preview">
+  <img src="../assets/previews/pages.svg" alt="Illustrative design preview of the Brightdesk Pages workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
+
 ## Overview
 
 Use Pages to write letters, reports and other text documents.

@@ -8,6 +8,11 @@ permalink: /products/notes.html
 
 # Brightdesk Notes
 
+<figure class="product-preview">
+  <img src="../assets/previews/notes.svg" alt="Illustrative design preview of the Brightdesk Notes workspace." width="1440" height="900" loading="lazy">
+  <figcaption>Design preview only — not a screenshot of the current running product. The actual interface and available controls must be checked against the installed release.</figcaption>
+</figure>
+
 ## Overview
 
 Use Notes to capture quick thoughts, reminders and short pieces of information.
