@@ -149,3 +149,10 @@ test('the homepage gives task-first links to exactly the ten approved products',
   ]);
   assert.match(homepage, /start with the simple Suite guide/);
 });
+
+test('homepage presents a clear getting-started route before task suggestions', () => {
+  const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
+  assert.match(homepage, /<section class="start-panel" aria-labelledby="start-panel-title">/);
+  assert.match(homepage, /<h2 id="start-panel-title">Start with Brightdesk Suite<\/h2>/);
+  assert.match(homepage, /href="customer-start-here.html">Open the getting-started guide/);
+});
