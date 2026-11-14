@@ -83,7 +83,7 @@ test('Everyday Help marks the current homepage, Suite and product navigation lin
   ];
 
   for (const route of routes) {
-    const anchor = layout.split(/\\r?\\n/).find(line =>
+    const anchor = layout.split(/\r?\n/).find(line =>
       line.includes(`href="{{ '${route}' | relative_url }}"`)
     );
     assert.ok(anchor, 'Navigation link must exist for ' + route);
