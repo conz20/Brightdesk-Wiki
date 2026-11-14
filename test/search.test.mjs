@@ -276,9 +276,10 @@ test('product guides use the actual Database, Lists, Forms, Planner and Workspac
 });
 
 
+
 test('everyday Help links to a separate Technical Documentation area', () => {
   assert.match(layout, /Technical documentation/);
-  assert.match(layout, /\\/technical\\/index\\.html/);
+  assert.ok(layout.includes('/technical/index.html'));
 
   const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html', import.meta.url), 'utf8');
   assert.match(technicalLayout, /Everyday Help/);
@@ -318,6 +319,6 @@ test('technical reference pages cover exactly the ten approved Brightdesk produc
   for (const product of productRefs) {
     const page = fs.readFileSync(new URL('../docs/technical/products/' + product + '.md', import.meta.url), 'utf8');
     assert.match(page, /^layout: technical$/m, product + ' technical page must use its separate layout');
-    assert.match(page, new RegExp('permalink: /technical/products/' + product.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&') + '\\\\.html'));
+    assert.ok(page.includes('permalink: /technical/products/' + product + '.html'));
   }
 });
