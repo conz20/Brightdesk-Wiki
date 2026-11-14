@@ -40,6 +40,21 @@ Brightdesk's customer products are desktop applications for **Windows, macOS and
 
 ## Design direction
 
+### Approved visual direction to explore — 15 November 2026
+
+The owner approved a richer, more distinctive Brightdesk editorial style for the Help site. This is the starting direction for design exploration, not permission to skip visual candidates or release review.
+
+- **Memorable first view:** a confident deep-navy feature area using Brightdesk navy `#101B35`, with local Help search visible immediately.
+- **Original Brightdesk colour family:** cyan `#53C8E8`, violet `#7868E8` / `#8C7CF0`, teal `#43B9A7` and blue `#4B8DE8`. Use colour to support hierarchy and product recognition, not to make every section equally loud.
+- **Editorial hierarchy:** expressive display treatment for major headings, calm readable body text, comfortable line lengths and generous section rhythm. Use approved local font assets or system fallbacks only; no remote font services.
+- **Use the desktop canvas:** explore a balanced content frame around the existing 1180–1240px section widths instead of constraining the entire home experience to a 900px article column.
+- **Give the products presence:** larger original icons, concise task descriptions and restrained product-colour accents for exactly Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
+- **Create visual variety without clutter:** combine a strong feature area, task-led sections, product destinations and quiet reading surfaces. Avoid repeating the same white rounded card for every section.
+- **Keep both audiences coherent:** Everyday Help stays welcoming and task-first; Technical Documentation stays structured for deeper reading. Both use one recognisable Brightdesk design system.
+- **Preserve the business rules:** Brightdesk is free forever. Never add sign-in, customer accounts, logins, authentication, subscriptions, trials, paid versions, paid tiers, paywalls, payment or licensing steps.
+
+The palette and principles above are approved as the direction to explore. Final compositions, component states and responsive layouts still require design comparison and accessibility review.
+
 Create a polished, distinctive Brightdesk documentation experience with the clarity and confidence expected of a finished desktop-software support site. It should feel deliberately art-directed, not like a default theme with a logo added.
 
 Explore multiple clearly different compositions before selecting one direction. Review hierarchy, rhythm, typography, colour, density, page navigation, search placement, component states and small-screen behaviour together. The chosen direction must be implemented as one coherent system across all public routes.
