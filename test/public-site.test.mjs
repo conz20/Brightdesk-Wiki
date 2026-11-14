@@ -460,3 +460,28 @@ test('the shared Brightdesk site logo is separate from the two required product 
   fs.writeFileSync(page, html);
   assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
 });
+
+
+test('technical product references may use their approved local product icon two folders above', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'technical/products/database.html');
+  const html = fs.readFileSync(file, 'utf8').replace(
+    '<body><input id="help-search" type="search"></body>',
+    '<body><input id="help-search" type="search"><img class="technical-product-icon" src="../../assets/images/product-icons/database.svg" alt="Brightdesk Database application icon"></body>'
+  );
+  fs.writeFileSync(file, html);
+  assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
+});
+
+test('product icons cannot escape the generated site through a third parent directory', t => {
+  const siteRoot = siteFixture(t);
+  const file = path.join(siteRoot, 'technical/products/database.html');
+  fs.writeFileSync(
+    file,
+    '<!doctype html><img src="../../../assets/images/product-icons/database.svg" alt="Brightdesk Database application icon"><input id="help-search" type="search">'
+  );
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /outside the approved local Brightdesk brand and product-icon library/i
+  );
+});

@@ -318,7 +318,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     if (!productPage && imageTags.some(imageTag => {
       const source = imageAttribute(imageTag, 'src') || '';
       const className = imageAttribute(imageTag, 'class') || '';
-      const isProductIcon = /^(?:\.\.\/)?assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
+      const isProductIcon = /^(?:\.\.\/){0,2}assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
       const isApprovedBrandMark = isBrandMark(imageTag);
       const isSuiteMark = className === 'product-card-mark-img' && source === '../favicon.svg' &&
         imageAttribute(imageTag, 'alt') === 'Brightdesk Suite brand mark';
