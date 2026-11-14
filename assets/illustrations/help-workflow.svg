@@ -1,10 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
-<title id="title">How to use a Brightdesk Help guide</title><desc id="desc">Four steps: choose a product, open a guide, follow the steps, and check the result.</desc>
-<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f6f8fd"/><stop offset="1" stop-color="#f0f3fa"/></linearGradient><style>.h{font:700 32px system-ui,sans-serif;fill:#1b2940}.n{font:700 24px system-ui,sans-serif;fill:#263752}.s{font:500 17px system-ui,sans-serif;fill:#5b6a80}.card{fill:#fff;stroke:#d5deeb;stroke-width:2}</style></defs>
-<rect width="1200" height="520" rx="28" fill="url(#bg)"/><text x="600" y="75" text-anchor="middle" class="h">Find the answer. Follow the steps.</text>
-<g><rect class="card" x="55" y="165" width="245" height="220" rx="22"/><circle cx="177" cy="235" r="38" fill="#e8efff"/><path d="M157 220h40v30h-40z M165 211h24" stroke="#416bc0" stroke-width="4" fill="none" stroke-linejoin="round"/><text x="177" y="315" text-anchor="middle" class="n">1. Choose</text><text x="177" y="348" text-anchor="middle" class="s">Select your product</text>
-<rect class="card" x="350" y="165" width="245" height="220" rx="22"/><circle cx="472" cy="235" r="38" fill="#f0eaff"/><path d="M455 215h34v42h-34z M462 226h20 M462 237h20 M462 248h14" stroke="#7652b8" stroke-width="3" fill="none"/><text x="472" y="315" text-anchor="middle" class="n">2. Open</text><text x="472" y="348" text-anchor="middle" class="s">Find the right guide</text>
-<rect class="card" x="645" y="165" width="245" height="220" rx="22"/><circle cx="767" cy="235" r="38" fill="#e7f5ed"/><path d="M748 237l13 13 26-30" stroke="#34865b" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="767" y="315" text-anchor="middle" class="n">3. Follow</text><text x="767" y="348" text-anchor="middle" class="s">Work through each step</text>
-<rect class="card" x="940" y="165" width="205" height="220" rx="22"/><circle cx="1042" cy="235" r="38" fill="#fff2e4"/><path d="M1025 235l12 12 24-26" stroke="#bd7835" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="1042" y="315" text-anchor="middle" class="n">4. Check</text><text x="1042" y="348" text-anchor="middle" class="s">Confirm the result</text></g>
-<g stroke="#9cabc0" stroke-width="4" fill="none" stroke-linecap="round"><path d="M300 275h50m-16-14 16 14-16 14 M595 275h50m-16-14 16 14-16 14 M890 275h50m-16-14 16 14-16 14"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-labelledby="title desc">
+<title id="title">A simple journey through Brightdesk Help</title>
+<desc id="desc">Three steps help a reader find a product guide: identify the product and task, open the matching guide, then check its status before following the steps.</desc>
+<rect width="1200" height="470" rx="32" fill="#f3f6fc"/>
+<text x="64" y="72" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#172b47">Find the help you need.</text>
+<text x="66" y="108" font-family="Arial,sans-serif" font-size="18" fill="#5d6f85">A straightforward path from your question to the right guide.</text>
+<!-- first -->
+<rect x="64" y="148" width="320" height="254" rx="22" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="88" y="174" width="58" height="58" rx="16" fill="#eaf0ff"/>
+<circle cx="117" cy="202" r="16" fill="none" stroke="#4169c5" stroke-width="3.5"/>
+<path d="M129 214l12 12" stroke="#4169c5" stroke-width="4" stroke-linecap="round"/>
+<path d="M111 199h12M111 206h8" stroke="#4169c5" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="343" cy="174" r="14" fill="#3266c5"/>
+<text x="343" y="179" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff">1</text>
+<text x="88" y="274" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#172b47">Start with your task</text>
+<text x="88" y="309" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">Choose the Brightdesk product</text>
+<text x="88" y="333" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">you are using and the job you</text>
+<text x="88" y="357" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">want to complete.</text>
+<!-- arrow -->
+<path d="M397 275h28m-10-10 10 10-10 10" fill="none" stroke="#9aabc0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- second -->
+<rect x="440" y="148" width="320" height="254" rx="22" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="464" y="174" width="58" height="58" rx="16" fill="#e7f6f0"/>
+<path d="M480 187h23l9 9v26h-32z" fill="#ffffff" stroke="#21856f" stroke-width="3" stroke-linejoin="round"/>
+<path d="M503 187v10h9M486 206h18M486 214h15" fill="none" stroke="#21856f" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="719" cy="174" r="14" fill="#21856f"/>
+<text x="719" y="179" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff">2</text>
+<text x="464" y="274" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#172b47">Open the matching guide</text>
+<text x="464" y="309" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">Use the product directory to find</text>
+<text x="464" y="333" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">steps for the feature or task you</text>
+<text x="464" y="357" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">need help with.</text>
+<path d="M773 275h28m-10-10 10 10-10 10" fill="none" stroke="#9aabc0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- third -->
+<rect x="816" y="148" width="320" height="254" rx="22" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="840" y="174" width="58" height="58" rx="16" fill="#fff5df"/>
+<path d="M869 184l18 7v13c0 12-8 19-18 24-10-5-18-12-18-24v-13z" fill="#ffffff" stroke="#c18a30" stroke-width="3" stroke-linejoin="round"/>
+<path d="M861 205l6 6 11-13" fill="none" stroke="#c18a30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1095" cy="174" r="14" fill="#c18a30"/>
+<text x="1095" y="179" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff">3</text>
+<text x="840" y="274" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#172b47">Check the guide status</text>
+<text x="840" y="309" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">See whether the steps are verified,</text>
+<text x="840" y="333" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">source-confirmed or still need a</text>
+<text x="840" y="357" font-family="Arial,sans-serif" font-size="16" fill="#5a6c83">full product walkthrough.</text>
+<text x="600" y="442" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#718198">Guides are read-only. They never ask you to upload your documents.</text>
 </svg>

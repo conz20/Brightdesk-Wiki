@@ -1,12 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
-<title id="title">Brightdesk local-first privacy model</title><desc id="desc">A document remains on the user's device. Optional official updates are shown separately from document content.</desc>
-<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f5f8ff"/><stop offset="1" stop-color="#edf5f2"/></linearGradient><style>.heading{font:700 32px system-ui,sans-serif;fill:#1c2b40}.label{font:650 22px system-ui,sans-serif;fill:#22324a}.copy{font:500 17px system-ui,sans-serif;fill:#59697d}.stroke{stroke:#9aabc2;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}</style></defs>
-<rect width="1200" height="680" rx="28" fill="url(#bg)"/><text x="600" y="70" text-anchor="middle" class="heading">Your work stays yours</text><text x="600" y="105" text-anchor="middle" class="copy">Local-first by design, with a clear boundary for official updates</text>
-<rect x="90" y="170" width="650" height="390" rx="26" fill="#fff" stroke="#cbd6e5" stroke-width="3"/><text x="415" y="220" text-anchor="middle" class="label">Your device</text>
-<rect x="155" y="270" width="240" height="210" rx="18" fill="#edf3ff" stroke="#9fb8e8" stroke-width="2"/><path d="M235 320h80l35 35v90H235z" fill="#fff" stroke="#5277c5" stroke-width="4" stroke-linejoin="round"/><path d="M315 320v38h35 M255 385h75 M255 410h75" class="stroke"/><text x="275" y="520" text-anchor="middle" class="copy">Documents and settings</text>
-<rect x="455" y="270" width="220" height="210" rx="18" fill="#eef7f2" stroke="#9bc9ae" stroke-width="2"/><path d="M565 315v75m-30-30 30 30 30-30" class="stroke"/><path d="M510 410h110" class="stroke"/><text x="565" y="450" text-anchor="middle" class="copy">Local processing</text>
-<path d="M395 375h60" class="stroke"/><path d="M435 360l20 15-20 15" class="stroke"/>
-<rect x="825" y="235" width="285" height="255" rx="24" fill="#fff" stroke="#cbd6e5" stroke-width="3"/><circle cx="967" cy="315" r="42" fill="#f1f4fb" stroke="#7890b6" stroke-width="3"/><path d="M967 285v35m-18-18 18 18 18-18" class="stroke"/><text x="967" y="395" text-anchor="middle" class="label">Official updates</text><text x="967" y="430" text-anchor="middle" class="copy">Product and language</text><text x="967" y="455" text-anchor="middle" class="copy">resources only</text>
-<path d="M740 360h85" class="stroke" stroke-dasharray="9 10"/><text x="782" y="335" text-anchor="middle" class="copy">Separate</text>
-<text x="600" y="625" text-anchor="middle" class="copy">No document-content upload, telemetry, advertising, or cloud sync</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Brightdesk local-first privacy model</title>
+<desc id="desc">Documents, settings and product processing stay on the user's device. Official Brightdesk product and language resources are a separate optional update channel. Document content is not uploaded.</desc>
+<rect width="1200" height="700" rx="34" fill="#f3f6fc"/>
+<text x="64" y="72" font-family="Arial,sans-serif" font-size="38" font-weight="700" fill="#172b47">Your work stays on your device.</text>
+<text x="66" y="108" font-family="Arial,sans-serif" font-size="19" fill="#5c6d83">Local-first work, with a clear boundary for official updates.</text>
+<!-- device frame -->
+<rect x="64" y="150" width="710" height="448" rx="28" fill="#ffffff" stroke="#cbd6e5" stroke-width="3"/>
+<rect x="88" y="176" width="662" height="58" rx="14" fill="#172b47"/>
+<circle cx="112" cy="205" r="5" fill="#8fa4c1"/>
+<circle cx="130" cy="205" r="5" fill="#8fa4c1"/>
+<circle cx="148" cy="205" r="5" fill="#8fa4c1"/>
+<text x="174" y="212" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">YOUR DEVICE</text>
+<rect x="96" y="260" width="292" height="248" rx="18" fill="#edf3ff" stroke="#cfdbef" stroke-width="2"/>
+<rect x="122" y="285" width="64" height="64" rx="16" fill="#ffffff" stroke="#7593ca" stroke-width="2"/>
+<path d="M140 296h24l12 12v27h-36z" fill="#ffffff" stroke="#3266c5" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M164 296v12h12M147 320h19M147 328h15" fill="none" stroke="#3266c5" stroke-width="2" stroke-linecap="round"/>
+<text x="122" y="384" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#234c93">Local files</text>
+<text x="122" y="414" font-family="Arial,sans-serif" font-size="16" fill="#566c8d">Documents, projects</text>
+<text x="122" y="438" font-family="Arial,sans-serif" font-size="16" fill="#566c8d">and settings</text>
+<rect x="414" y="260" width="326" height="248" rx="18" fill="#eaf6f1" stroke="#c2e0d2" stroke-width="2"/>
+<rect x="440" y="285" width="64" height="64" rx="16" fill="#ffffff" stroke="#85b7a1" stroke-width="2"/>
+<rect x="455" y="300" width="34" height="32" rx="4" fill="#ffffff" stroke="#21856f" stroke-width="2.5"/>
+<path d="M455 310h34M466 310v22M477 310v22" stroke="#85b7a1" stroke-width="2"/>
+<text x="440" y="384" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#176552">Product processing</text>
+<text x="440" y="414" font-family="Arial,sans-serif" font-size="16" fill="#527366">Create, edit and manage</text>
+<text x="440" y="438" font-family="Arial,sans-serif" font-size="16" fill="#527366">work locally</text>
+<path d="M388 385h26m-10-10 10 10-10 10" fill="none" stroke="#688c7e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="96" y="530" width="644" height="44" rx="12" fill="#f5f7fa"/>
+<path d="M120 550l8 8 16-18" fill="none" stroke="#33845f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="160" y="558" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#3f596e">Documents and settings remain local</text>
+<!-- update channel -->
+<rect x="834" y="178" width="302" height="332" rx="22" fill="#ffffff" stroke="#cbd6e5" stroke-width="2.5"/>
+<rect x="860" y="204" width="62" height="62" rx="16" fill="#fff5df"/>
+<path d="M891 217v28m-12-12 12 12 12-12" fill="none" stroke="#c18a30" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="942" y="227" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#172b47">Official resources</text>
+<text x="942" y="250" font-family="Arial,sans-serif" font-size="14" fill="#62738a">Optional, separate channel</text>
+<rect x="860" y="294" width="250" height="72" rx="13" fill="#f5f8ff"/>
+<circle cx="889" cy="330" r="13" fill="#e4ecff"/>
+<path d="M889 321v18m-7-7 7 7 7-7" fill="none" stroke="#3d68b9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="914" y="326" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#315b9a">Product updates</text>
+<text x="914" y="347" font-family="Arial,sans-serif" font-size="13" fill="#63748a">Official Brightdesk releases</text>
+<rect x="860" y="382" width="250" height="72" rx="13" fill="#f1f8f4"/>
+<circle cx="889" cy="418" r="13" fill="#def0e6"/>
+<path d="M882 418h14M889 411v14" stroke="#32815e" stroke-width="2.5" stroke-linecap="round"/>
+<text x="914" y="414" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#28694e">Language resources</text>
+<text x="914" y="435" font-family="Arial,sans-serif" font-size="13" fill="#63748a">Official language packs</text>
+<!-- separated optional download path -->
+<path d="M834 330h-34v-64H774" fill="none" stroke="#bd8b35" stroke-width="3" stroke-dasharray="7 8" stroke-linecap="round"/>
+<path d="M786 258l-12 8 12 8" fill="none" stroke="#bd8b35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="804" y="242" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#9c722e">OPTIONAL</text>
+<!-- no upload barrier -->
+<path d="M774 470h27" stroke="#c36a58" stroke-width="3" stroke-linecap="round"/>
+<circle cx="806" cy="470" r="15" fill="#fff0ed" stroke="#c36a58" stroke-width="2.5"/>
+<path d="M799 463l14 14M813 463l-14 14" stroke="#b84f42" stroke-width="2.5" stroke-linecap="round"/>
+<text x="953" y="487" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#a44f43">NO DOCUMENT UPLOAD</text>
+<text x="600" y="650" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#344b65">No telemetry, advertising, cloud sync or customer-content upload.</text>
 </svg>

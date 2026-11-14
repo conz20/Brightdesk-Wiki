@@ -1,22 +1,125 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850" role="img" aria-labelledby="title desc">
 <title id="title">Brightdesk Suite and its ten products</title>
-<desc id="desc">A central Brightdesk Suite panel connects to ten product panels: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do, and Workspace.</desc>
-<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5f8ff"/><stop offset="1" stop-color="#eef2fb"/></linearGradient><linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2859c5"/><stop offset="1" stop-color="#613bb8"/></linearGradient><style>.h{font:700 30px system-ui,sans-serif;fill:#18243a}.sub{font:500 17px system-ui,sans-serif;fill:#56647a}.name{font:650 20px system-ui,sans-serif;fill:#202c42}.line{stroke:#aab8d2;stroke-width:3;fill:none;stroke-linecap:round}.tile{fill:#fff;stroke:#d7deeb;stroke-width:2}</style></defs>
-<rect width="1200" height="760" rx="28" fill="url(#bg)"/>
-<text x="600" y="65" text-anchor="middle" class="h">One suite. Ten focused products.</text>
-<text x="600" y="96" text-anchor="middle" class="sub">The Brightdesk customer product family</text>
-<path class="line" d="M600 295V350 M160 350H1040 M160 350V410 M380 350V410 M600 350V410 M820 350V410 M1040 350V410 M160 535V575 M380 535V575 M600 535V575 M820 535V575 M1040 535V575"/>
-<rect x="390" y="145" width="420" height="150" rx="24" fill="url(#brand)"/>
-<text x="600" y="210" text-anchor="middle" style="font:750 42px system-ui,sans-serif;fill:#fff">Brightdesk Suite</text>
-<text x="600" y="247" text-anchor="middle" style="font:500 19px system-ui,sans-serif;fill:#e8edff">A connected desktop experience</text>
-<g><rect class="tile" x="55" y="410" width="210" height="125" rx="18"/><text x="160" y="482" text-anchor="middle" class="name">Pages</text>
-<rect class="tile" x="275" y="410" width="210" height="125" rx="18"/><text x="380" y="482" text-anchor="middle" class="name">Sheets</text>
-<rect class="tile" x="495" y="410" width="210" height="125" rx="18"/><text x="600" y="482" text-anchor="middle" class="name">Decks</text>
-<rect class="tile" x="715" y="410" width="210" height="125" rx="18"/><text x="820" y="482" text-anchor="middle" class="name">Notes</text>
-<rect class="tile" x="935" y="410" width="210" height="125" rx="18"/><text x="1040" y="482" text-anchor="middle" class="name">Database</text>
-<rect class="tile" x="55" y="575" width="210" height="125" rx="18"/><text x="160" y="647" text-anchor="middle" class="name">Forms</text>
-<rect class="tile" x="275" y="575" width="210" height="125" rx="18"/><text x="380" y="647" text-anchor="middle" class="name">Lists</text>
-<rect class="tile" x="495" y="575" width="210" height="125" rx="18"/><text x="600" y="647" text-anchor="middle" class="name">Planner</text>
-<rect class="tile" x="715" y="575" width="210" height="125" rx="18"/><text x="820" y="647" text-anchor="middle" class="name">To Do</text>
-<rect class="tile" x="935" y="575" width="210" height="125" rx="18"/><text x="1040" y="647" text-anchor="middle" class="name">Workspace</text></g>
+<desc id="desc">A polished overview of Brightdesk Suite with ten distinct product cards: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.</desc>
+<rect width="1200" height="850" rx="34" fill="#f3f6fc"/>
+<path d="M0 0h1200v210H0z" fill="#172b47"/>
+<circle cx="1080" cy="60" r="130" fill="#244a79" opacity=".45"/>
+<circle cx="1140" cy="170" r="74" fill="#4b5fc0" opacity=".25"/>
+<rect x="66" y="48" width="190" height="34" rx="17" fill="#29496f"/>
+<text x="161" y="70" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2" fill="#dfeaff">BRIGHTDESK SUITE</text>
+<text x="66" y="135" font-family="Arial,sans-serif" font-size="48" font-weight="700" fill="#ffffff">One suite. Ten focused tools.</text>
+<text x="68" y="174" font-family="Arial,sans-serif" font-size="20" fill="#cbd8ec">Choose the right workspace for the work in front of you.</text>
+<rect x="66" y="224" width="1068" height="112" rx="22" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="90" y="249" width="62" height="62" rx="18" fill="#eaf0ff"/>
+<path d="M108 264h18l11 11v22h-29z" fill="#ffffff" stroke="#4169c5" stroke-width="3" stroke-linejoin="round"/>
+<path d="M126 264v12h11" fill="none" stroke="#4169c5" stroke-width="3" stroke-linejoin="round"/>
+<path d="M114 284h16M114 291h13" stroke="#4169c5" stroke-width="2.5" stroke-linecap="round"/>
+<text x="176" y="270" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#172b47">Brightdesk Suite</text>
+<text x="176" y="300" font-family="Arial,sans-serif" font-size="17" fill="#5a6c83">A home for your documents, ideas, data and plans.</text>
+<rect x="905" y="259" width="195" height="42" rx="21" fill="#edf3ff"/>
+<circle cx="929" cy="280" r="6" fill="#3972c5"/>
+<text x="946" y="286" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#315b9a">10 PRODUCTS</text>
+<text x="66" y="392" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#172b47">Find your workspace</text>
+<text x="1133" y="392" text-anchor="end" font-family="Arial,sans-serif" font-size="15" fill="#677990">Ten distinct products, one consistent family</text>
+<!-- Row one -->
+<g>
+<rect x="66" y="418" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="86" y="439" width="62" height="62" rx="16" fill="#edf3ff"/>
+<path d="M105 448h21l10 10v32h-31z" fill="#fff" stroke="#3266c5" stroke-width="3" stroke-linejoin="round"/>
+<path d="M126 448v11h10M112 469h18M112 477h18M112 485h12" fill="none" stroke="#3266c5" stroke-width="2.5" stroke-linecap="round"/>
+<text x="86" y="539" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Pages</text>
+<text x="86" y="565" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Documents and writing</text>
+</g>
+<g>
+<rect x="282" y="418" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="302" y="439" width="62" height="62" rx="16" fill="#e7f6f0"/>
+<rect x="313" y="450" width="40" height="38" rx="4" fill="#fff" stroke="#21856f" stroke-width="3"/>
+<path d="M313 462h40M313 475h40M326 462v26M340 462v26" fill="none" stroke="#78b6a0" stroke-width="2"/>
+<rect x="327" y="463" width="12" height="11" rx="1.5" fill="#bde9d4" stroke="#21856f" stroke-width="1.5"/>
+<text x="302" y="539" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Sheets</text>
+<text x="302" y="565" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Spreadsheets and data</text>
+</g>
+<g>
+<rect x="498" y="418" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="518" y="439" width="62" height="62" rx="16" fill="#f0ebff"/>
+<rect x="528" y="451" width="42" height="30" rx="4" fill="#fff" stroke="#7651c7" stroke-width="3"/>
+<rect x="535" y="457" width="22" height="4" rx="2" fill="#7651c7"/>
+<path d="M535 468h9M549 468h13" stroke="#aa9bd5" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M549 481v7M539 488h20" stroke="#7651c7" stroke-width="3" stroke-linecap="round"/>
+<text x="518" y="539" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Decks</text>
+<text x="518" y="565" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Slides and presentations</text>
+</g>
+<g>
+<rect x="714" y="418" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="734" y="439" width="62" height="62" rx="16" fill="#fff5df"/>
+<path d="M748 449h23l10 10v29h-33z" fill="#ffe7a8" stroke="#d18a25" stroke-width="3" stroke-linejoin="round"/>
+<path d="M771 449v11h10M754 469h19M754 477h14" fill="none" stroke="#a97732" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M766 489l14-14 6 6-14 14-8 2z" fill="#f0b45e" stroke="#9d6414" stroke-width="1.5"/>
+<text x="734" y="539" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Notes</text>
+<text x="734" y="565" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Notes and ideas</text>
+</g>
+<g>
+<rect x="930" y="418" width="204" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="950" y="439" width="62" height="62" rx="16" fill="#e8f4f8"/>
+<path d="M961 456c0-6 9-10 20-10s20 4 20 10v27c0 6-9 10-20 10s-20-4-20-10z" fill="#fff" stroke="#347e98" stroke-width="3"/>
+<ellipse cx="981" cy="456" rx="20" ry="10" fill="#d2eaf1" stroke="#347e98" stroke-width="3"/>
+<path d="M961 469c0 6 9 10 20 10s20-4 20-10" fill="none" stroke="#347e98" stroke-width="2"/>
+<text x="950" y="539" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Database</text>
+<text x="950" y="565" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Tables and records</text>
+</g>
+<!-- Row two -->
+<g>
+<rect x="66" y="612" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="86" y="633" width="62" height="62" rx="16" fill="#f8ebf7"/>
+<rect x="99" y="643" width="36" height="43" rx="5" fill="#fff" stroke="#a65aa7" stroke-width="2.5"/>
+<path d="M110 643v-4a4 4 0 0 1 4-4h7a4 4 0 0 1 4 4v4" fill="#e9c9e8" stroke="#a65aa7" stroke-width="2"/>
+<rect x="105" y="655" width="7" height="7" rx="1.5" fill="#f3e3f3" stroke="#a65aa7" stroke-width="1.2"/>
+<path d="M118 659h11M105 670h7M118 674h11" stroke="#a65aa7" stroke-width="2" stroke-linecap="round"/>
+<text x="86" y="733" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Forms</text>
+<text x="86" y="759" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Questions and responses</text>
+</g>
+<g>
+<rect x="282" y="612" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="302" y="633" width="62" height="62" rx="16" fill="#e9f6ee"/>
+<rect x="312" y="642" width="43" height="44" rx="5" fill="#fff" stroke="#398d68" stroke-width="2.5"/>
+<rect x="319" y="650" width="8" height="8" rx="1.5" fill="#d9f0e2" stroke="#398d68" stroke-width="1.2"/>
+<path d="M320 654l2 2 4-5M333 654h14" fill="none" stroke="#398d68" stroke-width="1.8" stroke-linecap="round"/>
+<rect x="319" y="665" width="8" height="8" rx="1.5" fill="#fff" stroke="#9ab8a5" stroke-width="1.2"/>
+<path d="M333 669h14" stroke="#7c9b88" stroke-width="2" stroke-linecap="round"/>
+<text x="302" y="733" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Lists</text>
+<text x="302" y="759" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Items and tracking</text>
+</g>
+<g>
+<rect x="498" y="612" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="518" y="633" width="62" height="62" rx="16" fill="#eaf2fb"/>
+<rect x="528" y="643" width="42" height="42" rx="5" fill="#fff" stroke="#3977b9" stroke-width="2.5"/>
+<path d="M528 655h42M540 655v30M557 655v30M538 638v10M560 638v10" fill="none" stroke="#3977b9" stroke-width="2"/>
+<rect x="533" y="662" width="6" height="8" rx="1" fill="#9dc2e6"/>
+<rect x="544" y="662" width="7" height="12" rx="1" fill="#85b7a4"/>
+<rect x="561" y="662" width="6" height="8" rx="1" fill="#efd39c"/>
+<text x="518" y="733" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Planner</text>
+<text x="518" y="759" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Plans and projects</text>
+</g>
+<g>
+<rect x="714" y="612" width="198" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="734" y="633" width="62" height="62" rx="16" fill="#fff0e9"/>
+<rect x="745" y="642" width="41" height="44" rx="6" fill="#fff" stroke="#c66b46" stroke-width="2.5"/>
+<circle cx="758" cy="658" r="7" fill="#d8f0e2" stroke="#39855f" stroke-width="1.5"/>
+<path d="M754 658l3 3 5-6" fill="none" stroke="#39855f" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M770 658h10M753 675h6M770 675h10" stroke="#b8806c" stroke-width="2.3" stroke-linecap="round"/>
+<text x="734" y="733" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">To Do</text>
+<text x="734" y="759" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Daily tasks and focus</text>
+</g>
+<g>
+<rect x="930" y="612" width="204" height="174" rx="18" fill="#ffffff" stroke="#dce4f0" stroke-width="2"/>
+<rect x="950" y="633" width="62" height="62" rx="16" fill="#edf0ff"/>
+<rect x="960" y="643" width="42" height="43" rx="5" fill="#fff" stroke="#5c6dbe" stroke-width="2.5"/>
+<path d="M960 654h42" stroke="#5c6dbe" stroke-width="2"/>
+<rect x="967" y="661" width="11" height="18" rx="2" fill="#dce3ff"/>
+<rect x="982" y="661" width="13" height="8" rx="2" fill="#e9edf9"/>
+<rect x="982" y="673" width="13" height="6" rx="2" fill="#e8f3ed"/>
+<text x="950" y="733" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#172b47">Workspace</text>
+<text x="950" y="759" font-family="Arial,sans-serif" font-size="14" fill="#63748a">Project information</text>
+</g>
+<text x="600" y="824" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#718198">An overview of the approved Brightdesk customer product family.</text>
 </svg>
