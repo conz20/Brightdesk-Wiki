@@ -149,3 +149,12 @@ Cloudflare Pages deployments use the existing GitHub App integration, restricted
 - [Jekyll on Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-jekyll-site/)
 - [Cloudflare Pages build image and runtime versions](https://developers.cloudflare.com/pages/configuration/build-image/)
 - [Cloudflare Pages Free plan limits](https://developers.cloudflare.com/pages/platform/limits/)
+
+
+## Distinguish runner startup failures from code failures
+
+Inspect the job details before interpreting a failed GitHub Actions run. A job with `runner_id: 0`, an empty runner name, an empty steps list and no job log ended before GitHub assigned a runner. Checkout, runtime setup, tests, Markdown-link validation, Jekyll and the generated-output privacy audit did not execute. Record this as **verification unavailable because no runner was allocated**. Do not report it as a test failure or a passing check.
+
+Do not work around runner allocation by enabling a paid runner, adding a self-hosted machine, changing account billing or weakening the required checks. Keep the existing approved workflow and cost boundary. The free Cloudflare Pages Git integration is the separate build route; it must build the current PR branch revision before its result can be used as current evidence.
+
+On 15 November 2026, GitHub Actions run #505 for PR #6 head `c63aad03d4e11978181f405cab947adbb2d5839a` completed after two seconds with `runner_id: 0` and no steps. It did not execute the workflow. The Cloudflare follow-up deployment `fe3b8c18-ea72-4195-859a-8d3d280710d0` instead identifies old source commit `c8b651096d15ddb9a24211384bb81cef31a25788` and cannot validate the current PR head.
