@@ -8,6 +8,8 @@ permalink: /products/sheets.html
 
 # Brightdesk Sheets
 
+![Brightdesk Sheets product icon](../assets/images/product-icons/sheets.svg){: .product-guide-icon }
+
 Use Sheets to organise information in a grid and calculate values with supported formulas.
 
 ## Enter information
