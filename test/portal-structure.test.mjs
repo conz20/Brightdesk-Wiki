@@ -166,6 +166,8 @@ test('technical sidebar groups all ten applications and reuses their approved pr
   for (const product of products) {
     assert.ok(layout.includes('/technical/products/' + product + '.html'), 'Sidebar must link to ' + product);
     assert.ok(layout.includes('/assets/images/product-icons/' + product + '.svg'), 'Sidebar must use the approved ' + product + ' icon');
+    assert.ok(layout.includes('class="technical-nav-icon"'), 'Sidebar icons must have the decorative-image class');
+    assert.ok(layout.includes('aria-hidden="true"'), 'Sidebar icons must be hidden from assistive technology because the link text names the product');
   }
   for (const guide of ['install-update', 'languages-and-spelling', 'troubleshooting']) {
     assert.ok(layout.includes('/technical/guides/' + guide + '.html'), 'Sidebar must include the technical ' + guide + ' guide');
