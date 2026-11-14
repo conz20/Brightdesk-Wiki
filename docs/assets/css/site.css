@@ -1944,14 +1944,14 @@ a:focus-visible { outline-color: #7a4fe0; }
   --group-border: #d3e9f6;
   --group-tint: #edf8ff;
   --group-icon-tint: #dff2ff;
-  --group-ink: #3479ae;
+  --group-ink: #2d6794;
 }
 .home-group-plan {
   --group-accent: #43b9a7;
   --group-border: #d4eee6;
   --group-tint: #effbf5;
   --group-icon-tint: #dcf5e9;
-  --group-ink: #278879;
+  --group-ink: #1e7166;
 }
 .home-group-kicker { color: var(--group-ink); }
 .home-group-kicker span {
@@ -2012,15 +2012,15 @@ a:focus-visible { outline-color: #7a4fe0; }
   border-radius: .55rem;
 }
 .home-guide-list a:nth-child(4n + 2) > span:first-child {
-  color: #257b9b;
+  color: #216d88;
   background: #dff5fc;
 }
 .home-guide-list a:nth-child(4n + 3) > span:first-child {
-  color: #2c897a;
+  color: #216b59;
   background: #def5eb;
 }
 .home-guide-list a:nth-child(4n + 4) > span:first-child {
-  color: #ad5a4c;
+  color: #934a3a;
   background: #ffe7df;
 }
 .home-guide-list strong { color: #263b60; }
@@ -2259,4 +2259,34 @@ a:focus-visible { outline-color: #7a4fe0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-pathway { transition: none; }
+}
+
+
+/* Dark-mode colour contrast: keep the brighter accents readable on dark surfaces. */
+@media (prefers-color-scheme: dark) {
+  .home-section-kicker { color: #c1b6ff; }
+  .home-suite-start .home-section-kicker { color: #ffb8ae; }
+  .home-group-create { --group-ink: #ffb8c5; }
+  .home-group-information { --group-ink: #9ce5ff; }
+  .home-group-plan { --group-ink: #91e5d0; }
+  .home-guide-list a > span:first-child {
+    color: #e0d9ff;
+    background: #39335f;
+  }
+  .home-guide-list a:nth-child(4n + 2) > span:first-child {
+    color: #b5ecff;
+    background: #21465a;
+  }
+  .home-guide-list a:nth-child(4n + 3) > span:first-child {
+    color: #a9ead7;
+    background: #20483e;
+  }
+  .home-guide-list a:nth-child(4n + 4) > span:first-child {
+    color: #ffc1b5;
+    background: #58383a;
+  }
+  .portal-kicker,
+  .technical-hero .portal-kicker { color: #c4b9ff; }
+  .page-breadcrumb a,
+  .technical-breadcrumb a { color: #c3b8ff; }
 }
