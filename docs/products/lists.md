@@ -30,18 +30,17 @@ A new list starts with the columns **Title**, **Status**, **Priority**, **Due da
 
 ## Add a custom column
 
-1. Expand **Add a custom column**.
-2. Enter a **Column name**.
-3. Choose **Text**, **Date** or **Choice** as the column type.
-4. For a Choice column, enter the options separated by commas.
-5. Choose **Add column**.
+1. Under the list, enter a name in **New column name**.
+2. Choose **Text**, **Date** or **Choice** as the column type.
+3. For a Choice column, enter the options in the comma-separated options field.
+4. Choose **Add column**.
 
 ## Search, filter and sort
 
 - Enter a word in **Search this list** to find matching records.
-- Use **Filter by status** to show all statuses, Not started, In progress or Done.
-- Choose a field under **Sort by column**.
-- Choose **A to Z** or **Z to A** under **Sort direction**, then choose **Sort**.
+- Use **Filter by status** to choose **All records**, **Active** or **Done**.
+- Choose a field in **Sort by column**.
+- Choose **Ascending** or **Descending** under **Sort direction**, then choose **Sort**.
 
 ## Rename or delete a list
 
