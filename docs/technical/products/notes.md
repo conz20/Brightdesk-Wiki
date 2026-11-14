@@ -2,7 +2,7 @@
 layout: technical
 title: Brightdesk Notes technical reference
 description: Note content elements, local data and export formats in Brightdesk Notes.
-permalink: /technical../../products/notes.html
+permalink: /technical/products/notes.html
 ---
 
 # Notes technical reference
