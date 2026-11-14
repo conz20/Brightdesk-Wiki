@@ -33,6 +33,17 @@ Explore multiple clearly different compositions before selecting one direction. 
 
 The exact palette, type scale, icon style and decorative language are to be chosen during visual exploration and review; do not treat the current prototype styling as the design baseline. Use original Brightdesk marks and locally available assets. Do not copy Craft branding, page layouts, content, code or screenshots.
 
+## Shared Brightdesk visual references
+
+Before selecting the Help website's visual direction, review the existing portfolio sources:
+
+- [Brightdesk Design System tokens](https://github.com/conz20/Brightdesk-Design-System/blob/main/css/tokens.css) define the current shared colour, surface, spacing, radius, focus and motion values. Use them as the first reference for visual consistency, then decide during exploration which values should map into web-specific Help tokens. Do not transplant desktop product-window widths or application-shell layouts into the website.
+- [Brightdesk Design System navigation artwork](https://github.com/conz20/Brightdesk-Design-System/blob/main/assets/navigation-states.svg) is original design reference artwork, not a screenshot of a running product. It may inform the review of Brightdesk navigation patterns but must not be presented as a product screenshot.
+- [Brightdesk Assets](https://github.com/conz20/Brightdesk-Assets) is the intended governed library for approved original logos, marks, product icons, screenshots and media. Its current `assets/manifest.json` is empty; its README confirms there are no approved distributable visual assets or product screenshots in that collection at present. Do not assume an asset is approved merely because it exists elsewhere in a repository. Check provenance, rights and bundling approval before using it.
+- The Help site's existing SVG workflow diagrams are explanatory illustrations, not approved product screenshots. Keep that distinction visible until genuine captures from verified builds are available.
+
+The current website's CSS palette is not the canonical Design System token set. Do not treat either palette as automatically approved for the redesign; compare and map them during the required visual exploration. Keep all customer-facing assets local and within the existing static-output privacy allowlist.
+
 ## Everyday Help experience
 
 ### Homepage
