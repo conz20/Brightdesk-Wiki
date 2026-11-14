@@ -76,4 +76,4 @@ The next Help release is being reconciled on a review branch from the current `m
 The homepage, navigation, local search, product guide improvements and technical references are being reviewed together. The current source is not approved for publication until visual review, genuine product screenshots, end-to-end guide verification, exact-head quality checks and the approved hosting/domain checks are complete.
 
 
-The reconciled implementation is tracked in [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6), based directly on the current `main` revision. PR #6 is under exact-head automated verification and remains unmerged. The customer Help site is not live.
+The reconciled implementation is tracked in [draft PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6), based directly on the current `main` revision. PR #6 exact head `a5457a8f6b7231ab206efd56e2ea3bb7bb605ec6` passed the full quality workflow on 14 November 2026: regression tests, Markdown links, Jekyll build and generated-output privacy audit. It remains a draft and unmerged. The customer Help site is not live.
