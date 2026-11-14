@@ -81,7 +81,7 @@ function validateProductIcon(file, svg) {
       stack.push(name);
     }
   }
-  if (stack.length !== 0 || tags[0][1] !== 'svg') {
+  if (stack.length !== 0 || tags[0][1] !== 'svg' || !tags[tags.length - 1][0].startsWith('</svg>')) {
     fail(relative + ' contains unclosed or incorrectly nested SVG elements');
   }
 }
@@ -231,7 +231,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
   }
 
   for (const file of files.filter(item => item.endsWith('.svg'))) {
-    validateProductIcon(path.join(rootDir, file), fs.readFileSync(path.join(rootDir, file), 'utf8'));
+    validateProductIcon(file, fs.readFileSync(path.join(rootDir, file), 'utf8'));
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
