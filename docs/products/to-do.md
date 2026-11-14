@@ -10,7 +10,9 @@ permalink: /products/to-do.html
 
 ![Brightdesk To Do product icon](../assets/images/product-icons/to-do.svg){: .product-guide-icon }
 
-![Three-step workflow: open My Day, add tasks, then mark finished work complete.](../assets/images/workflows/guide-to-do.svg){: .product-workflow-diagram }
+<div class="workflow-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable three-step workflow diagram">
+  <img src="../assets/images/workflows/guide-to-do.svg" alt="Three-step workflow: open My Day, add tasks, then mark finished work complete." class="product-workflow-diagram">
+</div>
 
 *Illustrative workflow, not a screenshot of the Brightdesk interface.*
 
