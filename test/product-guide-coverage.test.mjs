@@ -48,7 +48,7 @@ test('all ten everyday product guides share the same simple navigation structure
     assert.match(source, /<a href="#getting-started">Getting started<\/a>/, product + ' must link to its first-use instructions');
     assert.match(source, /<a href="#workflows">Workflows<\/a>/, product + ' must link to its task instructions');
     assert.match(source, /<a href="#troubleshooting-and-common-questions">Troubleshooting<\/a>/, product + ' must link to its troubleshooting section');
-    assert.match(source, /<a href="\.\.\/technical\/products\//, product + ' must link to its separate technical reference');
+    assert.ok(source.includes('](../technical/products/' + product + '.html)'), product + ' must link to its separate technical reference');
   }
 });
 
