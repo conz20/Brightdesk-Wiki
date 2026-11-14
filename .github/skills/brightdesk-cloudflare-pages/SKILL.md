@@ -33,7 +33,7 @@ Do not add paid plans, paid add-ons, metered services, subscriptions, or trials.
 
 ## Required privacy and output boundary
 
-The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 31 HTML pages (Help homepage, Everyday Help homepage, Suite getting-started page, ten Everyday Help product guides, Technical Documentation homepage, three system references, and ten technical product references) plus 24 local assets (one CSS file, one search JavaScript file, ten product icon SVGs, ten workflow illustration SVGs, the root favicon SVG, and the social-preview SVG), plus one `_headers` policy file, for 56 files total.
+The production build must pass the repository's full validation pipeline and scripts/check-public-site.mjs. The public output allowlist is exact: 31 HTML pages (Help homepage, Everyday Help homepage, Suite getting-started page, three shared Everyday Help topic guides, ten Everyday Help product guides, one Decks slide-show guide, Technical Documentation homepage, three system references, and ten technical product references) plus 24 local assets (one CSS file, one search JavaScript file, ten product icon SVGs, ten workflow illustration SVGs, the root favicon SVG, and the social-preview SVG), plus one `_headers` policy file, for 56 files total.
 
 The generated site must remain static and read-only. Do not add accounts, authentication, forms, uploads, comments, editing, analytics, advertising, tracking, external scripts, external fonts, external images, external stylesheets, or customer-data collection. Do not publish internal architecture, development, security, release, maintainer, runner, or repository material.
 
