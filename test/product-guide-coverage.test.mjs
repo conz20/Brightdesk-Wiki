@@ -79,12 +79,17 @@ test('Sheets guide distinguishes the selected cell reference from its formula in
   assert.match(source, /selected cell reference.*beside the formula input/i);
 });
 
-test('Database and Lists guides warn when a table or list is deleted', () => {
+test('customer guides explain field, table, list and question removal effects', () => {
   const database = fs.readFileSync(path.join(productDirectory, 'database.md'), 'utf8');
+  const forms = fs.readFileSync(path.join(productDirectory, 'forms.md'), 'utf8');
   const lists = fs.readFileSync(path.join(productDirectory, 'lists.md'), 'utf8');
+  assert.match(database, /field and its values are removed from every record/i);
+  assert.match(database, /system ID field cannot be removed/i);
   assert.match(database, /remove that table and its records/i);
   assert.match(database, /must keep at least one table/i);
+  assert.match(forms, /removes that question's answer from every saved response/i);
   assert.match(lists, /remove the list and all its records/i);
+  assert.match(lists, /does not provide a control for removing custom columns/i);
 });
 
 test('each technical product reference links back to its matching everyday guide', () => {
@@ -116,11 +121,10 @@ test('technical references explain source-confirmed formula, search and data-rem
   assert.match(sheets, /circular reference.*#VALUE!/i);
   assert.doesNotMatch(sheets, /#CYCLE!/);
   assert.match(database, /search checks the values in all fields/i);
-  assert.match(database, /deleting a custom field also removes that field's value from every record/i);
+  assert.match(database, /removing a custom field also removes that field's value from every record/i);
   assert.match(forms, /between 2 and 30 distinct options/i);
   assert.match(forms, /removes that question's answer from every saved response/i);
-  assert.match(lists, /Built-in columns cannot be deleted/i);
-  assert.match(lists, /removes the values stored for that column from every record/i);
+  assert.match(lists, /does not expose a control to remove them/i);
   assert.match(planner, /labels/i);
   assert.match(planner, /first remaining bucket/i);
   assert.match(todo, /Search checks task titles and notes/i);

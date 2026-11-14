@@ -27,7 +27,7 @@ Built-in columns cannot be deleted.
 
 The current custom column types are **Text**, **Date** and **Choice**. A Choice column contains between 1 and 30 distinct options.
 
-Deleting a custom column also removes the values stored for that column from every record in the list. Review the impact before deleting a column.
+The current Lists workspace supports adding custom columns, but it does not expose a control to remove them.
 
 ## Search, sorting and status filtering
 

@@ -17,11 +17,11 @@ The current field types are:
 - Number
 - Date
 - Email
-- URL
+- Web address
 - Checkbox
-- Choice
+- Choice list
 
-Choice fields use a set of named options. Field values are checked against the selected field type when a record is saved or updated.
+Choice list fields use a set of named options. Field values are checked against the selected field type when a record is saved or updated.
 
 ## Record operations
 
@@ -34,11 +34,11 @@ The workspace provides record search, sorting and CSV export.
 Two protected structures are important:
 
 - The final table is protected from deletion.
-- The system ID field cannot be changed or deleted.
+- The system ID field cannot be changed or removed.
 
 ## Deletion and data handling
 
-Deleting a custom field also removes that field's value from every record in the table. Export a CSV copy before deleting a field when those values may be needed later.
+Removing a custom field also removes that field's value from every record in the table. The interface asks for confirmation before removing it. Export a CSV copy before removing a field when those values may be needed later.
 
 Deleting a table removes that table and its records. Check that you have selected the intended table before confirming its removal.
 

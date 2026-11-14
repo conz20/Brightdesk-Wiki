@@ -27,26 +27,36 @@ Use Database to keep structured information in tables with named fields.
 ### Create a table
 
 1. Open Brightdesk Database. A new database starts with **Table1**.
-2. Under **Tables**, enter a name in the **New table** field.
-3. Choose **Add table**.
+2. Under **Tables**, enter a name in **New table name**.
+3. Choose **Create table**.
 4. Select a table in the left-hand list to work with it.
 
 ## Workflows
 
 ### Add fields
 
-1. Open the **Fields** section.
+1. Expand **Manage fields**.
 2. Under **Add a field**, enter a **Field name**.
-3. Choose a **Field type**: Text, Number, Date, Email, URL, Checkbox or Choice.
-4. For a Choice field, enter the available choices separated by commas.
+3. Choose a **Field type**: Text, Number, Date, Email, Web address, Checkbox or Choice list.
+4. For a Choice list field, enter the available choices separated by commas.
 5. Select **Required field** when every record must have a value.
 6. Choose **Add field**.
 
 Your new field appears as a column in the table. The system ID field is managed by Database.
 
+### Remove a field
+
+1. Expand **Manage fields**.
+2. Find the field you want to remove.
+3. Choose **Remove** next to that field.
+4. Read the confirmation, which says the field and its values will be removed from every record.
+5. Export a CSV copy first when you need to keep those values.
+
+The system ID field is protected and cannot be removed.
+
 ### Add and update records
 
-1. Go to the **New record** section.
+1. Open the **Add a record** section.
 2. Complete the fields shown for the selected table.
 3. Choose **Add record**.
 4. To update a value later, edit it directly in the table. The change is saved on this device.
@@ -102,7 +112,9 @@ Your new field appears as a column in the table. The system ID field is managed 
 
 **What happens if I delete a table?** The table and its records are removed. Export a CSV copy first when you need to keep the records elsewhere.
 
-**How do I create a drop-down choice field?** Add a field with type **Choice** and enter the options separated by commas.
+**How do I create a drop-down choice field?** Add a field with type **Choice list** and enter the options separated by commas.
+
+**What happens if I remove a field?** The field and its values are removed from every record in the table. Export a CSV copy first if you need to keep those values. The system ID field cannot be removed.
 
 ## Current feature boundaries
 

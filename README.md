@@ -37,7 +37,7 @@ PR #5 currently contains:
 
 - **Everyday Help:** a task-first homepage, a clear Suite getting-started route, natural-language local search and plain-English guides for all ten products.
 - **Consistent product guides:** each of the ten guides has **Overview**, **Getting started**, **Workflows**, and **Troubleshooting and common questions** sections, with in-page navigation, examples, expected results, product-specific questions, feature boundaries and a link to the relevant technical reference.
-- **Technical Documentation:** a separate `/technical/` area with its own layout, navigation and local search. It includes system references and individual technical references for the same ten products. The two areas link to each other but their search indexes remain separate. The technical references also explain source-confirmed formula limits, record search/filter rules, task fields and destructive field/column/question deletion behaviour.
+- **Technical Documentation:** a separate `/technical/` area with its own layout, navigation and local search. It includes system references and individual technical references for the same ten products. The two areas link to each other but their search indexes remain separate. The technical references also explain source-confirmed formula limits, record search/filter rules, task fields and Database field and Forms question data-removal warnings.
 - **Translation:** visitors use their browser's automatic translation or manual translate command. Brightdesk does not provide a separate translation service.
 - **Source-checked control labels:** the current Lists filter/sort and custom-column controls, plus Workspace's **Find a page** control, now match the labels in the product source.
 - **Visual assets:** the ten current product SVGs are explanatory diagrams, not screenshots of Brightdesk. They are labelled accordingly.
@@ -46,7 +46,7 @@ The source changes are not yet merged into `main`. PR #5 remains a **draft** and
 
 ## Verification — exact commits matter
 
-[Run #290](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43555939100) passed on commit `39ac94580aa3c980f561c01586afb3433e88ec18`.
+[Run #291](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43556018745) passed on commit `b7b48bc3c15cccea9482dba68f5220094d52e90d`.
 
 That exact-head workflow reported:
 
@@ -54,10 +54,10 @@ That exact-head workflow reported:
 - 39 Markdown files and 99 local file/directory links checked successfully.
 - Jekyll customer-site build passed.
 - Generated-output privacy audit passed with 26 approved documentation pages and 38 static files. No private repository links, internal documents, external scripts or external assets were found.
-- Regression checks cover the source-backed technical references, the real Lists status and sort labels, the Workspace **Find a page** label, and the confirmed Sheets circular-reference output.
+- Regression checks cover the source-backed technical references, exact Lists and Workspace controls, and the confirmed Sheets circular-reference output.
 - The macOS ARM64 runner used Node.js 24.22.2 and Ruby 3.4.4.
 
-A subsequent README update changes the branch head and must receive its own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
+The Database field-removal instructions, actual Database field labels, and Lists custom-column boundary are newer than this check and must pass their own exact-head workflow. Use [PR #5's current checks](https://github.com/conz20/Brightdesk-Wiki/pull/5/checks) as the source of truth for the latest commit. CI does not establish visual quality, genuine product screenshots, live product workflows, manual keyboard/screen-reader usability, production hosting or deployment.
 
 ## Publication blockers
 

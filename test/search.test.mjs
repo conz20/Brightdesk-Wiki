@@ -243,8 +243,11 @@ test('Workspace and Database examples use the exact current Suite control labels
   const databaseGuide = fs.readFileSync(new URL('../docs/products/database.md', import.meta.url), 'utf8');
   assert.match(workspaceGuide, /Find a page/);
   assert.doesNotMatch(workspaceGuide, /Search pages/);
-  assert.match(databaseGuide, /Text, Number, Date, Email, URL, Checkbox or Choice/);
-  assert.doesNotMatch(databaseGuide, /Choice list|Web address/);
+  assert.match(databaseGuide, /Text, Number, Date, Email, Web address, Checkbox or Choice list/);
+  assert.match(databaseGuide, /New table name/);
+  assert.match(databaseGuide, /Create table/);
+  assert.match(databaseGuide, /Manage fields/);
+  assert.match(databaseGuide, /Add a record/);
 });
 
 test('Lists guide uses the current status filter and sort-direction labels', () => {

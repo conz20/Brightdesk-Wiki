@@ -106,7 +106,7 @@ Lists are saved on this device as you work. Check the local-save status in the w
 
 **Which status filters are available?** Choose **All statuses**, **Not started**, **In progress** or **Done**. Use **Search this list** when you need to find a word or title.
 
-**What happens if I delete a custom column?** Its values are removed from every record in the list. Check the records before deleting the column.
+**Can I remove a custom column?** The current Lists workspace does not provide a control for removing custom columns.
 
 **What happens if I delete a list?** The list and all its records are removed. Make sure you intend to remove the records before choosing **Delete list**.
 
