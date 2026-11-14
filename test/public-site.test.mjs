@@ -10,25 +10,41 @@ const PRODUCT_LABELS = {
   pages: 'Pages', sheets: 'Sheets', decks: 'Decks', notes: 'Notes', database: 'Database',
   forms: 'Forms', lists: 'Lists', planner: 'Planner', 'to-do': 'To Do', workspace: 'Workspace'
 };
+const WORKFLOW_ALT_TEXT = {
+  pages: 'Three-step workflow: create a document, write and format it, then save or export.',
+  sheets: 'Three-step workflow: enter spreadsheet data, add a formula, then check the result.',
+  decks: 'Three-step workflow: add slides, arrange the content, then present your work.',
+  notes: 'Three-step workflow: create a note, capture an idea, then keep a copy.',
+  database: 'Three-step workflow: create a table, choose fields, then add records.',
+  forms: 'Three-step workflow: create a form, add questions, then preview the form.',
+  lists: 'Three-step workflow: create a list, add items and columns, then search, filter or sort.',
+  planner: 'Three-step workflow: create a plan, add buckets and tasks, then track progress.',
+  'to-do': 'Three-step workflow: open My Day, add tasks, then mark finished work complete.',
+  workspace: 'Three-step workflow: create a workspace, add pages and blocks, then use a checklist.'
+};
 
 function siteFixture(t) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'brightdesk-public-site-'));
   fs.mkdirSync(path.join(rootDir, 'products'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/css'), { recursive: true });
   fs.mkdirSync(path.join(rootDir, 'assets/images/product-icons'), { recursive: true });
+  fs.mkdirSync(path.join(rootDir, 'assets/images/workflows'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'assets/css/site.css'), 'body { font-family: sans-serif; }\n');
   const html = '<!doctype html><html lang="en-AU"><head><meta charset="utf-8"></head><body>Brightdesk Help</body></html>\n';
   const icon = '<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc"><title id="title">Test product icon</title><desc id="desc">A sample product icon.</desc><rect width="128" height="128" rx="12" fill="#ffffff"/></svg>';
+  const workflow = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc"><title id="title">Test product workflow</title><desc id="desc">A simple three-step product workflow.</desc><rect x="0" y="0" width="1200" height="360" fill="#ffffff"/><text x="20" y="40" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start" fill="#111111">Step one</text></svg>';
   fs.writeFileSync(path.join(rootDir, 'index.html'), html);
   fs.writeFileSync(path.join(rootDir, 'customer-start-here.html'), html);
   for (const product of PRODUCTS) {
     const label = PRODUCT_LABELS[product];
     const productHtml = html.replace(
       '</body>',
-      '<img src="../assets/images/product-icons/' + product + '.svg" alt="Brightdesk ' + label + ' product icon"></body>'
+      '<img src="../assets/images/product-icons/' + product + '.svg" alt="Brightdesk ' + label + ' product icon" class="product-guide-icon">' +
+      '<img src="../assets/images/workflows/guide-' + product + '.svg" alt="' + WORKFLOW_ALT_TEXT[product] + '" class="product-workflow-diagram"></body>'
     );
     fs.writeFileSync(path.join(rootDir, 'products', product + '.html'), productHtml);
     fs.writeFileSync(path.join(rootDir, 'assets/images/product-icons', product + '.svg'), icon);
+    fs.writeFileSync(path.join(rootDir, 'assets/images/workflows/guide-' + product + '.svg'), workflow);
   }
   t.after(() => fs.rmSync(rootDir, { recursive: true, force: true }));
   return rootDir;
@@ -37,15 +53,16 @@ function siteFixture(t) {
 test('a complete static customer site passes the public-output gate', t => {
   const siteRoot = siteFixture(t);
   const result = checkPublicSite({ siteRoot });
-  assert.equal(result.files, 23);
+  assert.equal(result.files, 33);
   assert.equal(result.htmlPages, 12);
 });
 
-test('all ten product guides use their matching local SVG icon with useful alternative text', t => {
+test('all ten product guides use their matching local icon and workflow diagram with descriptive alternative text', t => {
   const siteRoot = siteFixture(t);
   for (const product of PRODUCTS) {
     const html = fs.readFileSync(path.join(siteRoot, 'products', product + '.html'), 'utf8');
-    assert.ok(html.includes('src="../assets/images/product-icons/' + product + '.svg" alt="Brightdesk ' + PRODUCT_LABELS[product] + ' product icon"'));
+    assert.ok(html.includes('src="../assets/images/product-icons/' + product + '.svg" alt="Brightdesk ' + PRODUCT_LABELS[product] + ' product icon" class="product-guide-icon"'));
+    assert.ok(html.includes('src="../assets/images/workflows/guide-' + product + '.svg" alt="' + WORKFLOW_ALT_TEXT[product] + '" class="product-workflow-diagram"'));
     assert.equal(html.includes('https://'), false);
     assert.equal(html.includes('//'), false);
   }
@@ -89,6 +106,34 @@ test('product guide images must use the matching product icon', t => {
   );
 });
 
+test('product guide workflow diagrams require meaningful alternative text', t => {
+  const siteRoot = siteFixture(t);
+  const page = path.join(siteRoot, 'products', 'pages.html');
+  const html = fs.readFileSync(page, 'utf8').replace(
+    'alt="' + WORKFLOW_ALT_TEXT.pages + '"',
+    'alt=""'
+  );
+  fs.writeFileSync(page, html);
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /required meaningful alternative text/i
+  );
+});
+
+test('workflow SVG text uses only the approved local font family', t => {
+  const siteRoot = siteFixture(t);
+  const workflowPath = path.join(siteRoot, 'assets/images/workflows/guide-pages.svg');
+  const svg = fs.readFileSync(workflowPath, 'utf8').replace(
+    'Arial,sans-serif',
+    'RemoteWebFont'
+  );
+  fs.writeFileSync(workflowPath, svg);
+  assert.throws(
+    () => checkPublicSite({ siteRoot }),
+    /unapproved font family/i
+  );
+});
+
 test('product guide images require meaningful alternative text', t => {
   const siteRoot = siteFixture(t);
   const page = path.join(siteRoot, 'products', 'pages.html');
@@ -103,7 +148,7 @@ test('product guide images require meaningful alternative text', t => {
   );
 });
 
-test('SVG files outside the ten approved product icon paths are rejected', t => {
+test('SVG files outside the twenty approved product image paths are rejected', t => {
   const siteRoot = siteFixture(t);
   fs.writeFileSync(
     path.join(siteRoot, 'assets/images/product-icons/extra.svg'),
