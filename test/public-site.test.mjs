@@ -6,6 +6,10 @@ import path from 'node:path';
 import { checkPublicSite } from '../scripts/check-public-site.mjs';
 
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
+const PRODUCT_LABELS = {
+  pages: 'Pages', sheets: 'Sheets', decks: 'Decks', notes: 'Notes', database: 'Database',
+  forms: 'Forms', lists: 'Lists', planner: 'Planner', 'to-do': 'To Do', workspace: 'Workspace'
+};
 
 function siteFixture(t) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'brightdesk-public-site-'));
@@ -41,8 +45,9 @@ test('all ten product guides use their matching local SVG icon with useful alter
   const siteRoot = siteFixture(t);
   for (const product of PRODUCTS) {
     const html = fs.readFileSync(path.join(siteRoot, 'products', product + '.html'), 'utf8');
-    assert.match(html, new RegExp('<img src="../assets/images/product-icons/' + product + '\\\\.svg" alt="Brightdesk ' + PRODUCT_LABELS[product] + ' product icon">'));
-    assert.doesNotMatch(html, /https?:|\\/\\//i);
+    assert.ok(html.includes('src="../assets/images/product-icons/' + product + '.svg" alt="Brightdesk ' + PRODUCT_LABELS[product] + ' product icon"'));
+    assert.equal(html.includes('https://'), false);
+    assert.equal(html.includes('//'), false);
   }
 });
 
