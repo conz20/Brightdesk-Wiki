@@ -1,7 +1,7 @@
 ---
 layout: technical
 title: Technical Documentation
-description: Detailed technical references for Brightdesk Suite and ten desktop products, covering documented features, file formats, system behaviour and privacy boundaries.
+description: Technical references for Brightdesk Suite and ten desktop products, including documented features, file formats, system behaviour and privacy boundaries.
 permalink: /technical/index.html
 ---
 
