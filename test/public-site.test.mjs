@@ -333,18 +333,25 @@ test('customer and technical layouts both advertise the light and dark themes us
   assert.match(styles, /color-scheme:\s*light\s+dark;/);
 });
 
+
 test('keyboard focus outlines meet 3:1 contrast in light and dark themes', () => {
   const styles = fs.readFileSync(path.join(process.cwd(), 'docs', 'assets', 'css', 'site.css'), 'utf8');
-  const lightRoot = styles.match(/:root\\s*\\{([^}]*)\\}/);
-  const darkTheme = styles.match(/@media\\s*\\(prefers-color-scheme:\\s*dark\\)\\s*\\{([\\s\\S]*)/);
-  const darkRoot = darkTheme?.[1]?.match(/:root\\s*\\{([^}]*)\\}/);
-  assert.ok(lightRoot, 'Light theme tokens must be declared');
-  assert.ok(darkRoot, 'Dark theme tokens must be declared');
+  const blockAt = start => {
+    const open = styles.indexOf('{', start);
+    const close = styles.indexOf('}', open);
+    assert.ok(open >= 0 && close > open, 'Theme token block must be complete');
+    return styles.slice(open + 1, close);
+  };
+  const lightRoot = blockAt(styles.indexOf(':root {'));
+  const darkThemeStart = styles.indexOf('@media (prefers-color-scheme: dark)');
+  assert.ok(darkThemeStart >= 0, 'Dark theme media query must exist');
+  const darkRoot = blockAt(styles.indexOf(':root {', darkThemeStart));
 
   const readColour = (block, name) => {
-    const match = block.match(new RegExp('--' + name + ':\\\\s*(#[0-9a-f]{6})', 'i'));
-    assert.ok(match, 'Missing CSS colour token --' + name);
-    return match[1].slice(1).match(/.{2}/g).map(channel => Number.parseInt(channel, 16));
+    const line = block.split('\n').find(value => value.trim().startsWith('--' + name + ':'));
+    const hex = line?.match(/#[0-9a-f]{6}/i)?.[0];
+    assert.ok(hex, 'Missing CSS colour token --' + name);
+    return hex.slice(1).match(/.{2}/g).map(channel => Number.parseInt(channel, 16));
   };
   const luminance = rgb => {
     const [r, g, b] = rgb.map(channel => {
@@ -358,10 +365,7 @@ test('keyboard focus outlines meet 3:1 contrast in light and dark themes', () =>
     return (values[0] + 0.05) / (values[1] + 0.05);
   };
 
-  for (const [themeName, tokens] of [
-    ['light', lightRoot[1]],
-    ['dark', darkRoot[1]]
-  ]) {
+  for (const [themeName, tokens] of [['light', lightRoot], ['dark', darkRoot]]) {
     const focus = readColour(tokens, 'focus-ring');
     for (const backgroundName of ['page', 'surface', 'soft-blue']) {
       const background = readColour(tokens, backgroundName);
@@ -372,9 +376,23 @@ test('keyboard focus outlines meet 3:1 contrast in light and dark themes', () =>
     }
   }
 
-  const focusRules = [...styles.matchAll(/[^{}]*:focus-visible[^{}]*\\{([^{}]*)\\}/g)];
-  assert.ok(focusRules.length >= 1, 'Keyboard focus styles must exist');
-  for (const rule of focusRules) {
-    assert.match(rule[1], /outline:\\s*3px\\s+solid\\s+var\\(--focus-ring\\)/);
+  const focusSelectors = [
+    'a:focus-visible',
+    '.help-search input[type="search"]:focus-visible',
+    '.footer-suggestions a:focus-visible',
+    '.start-link:focus-visible',
+    '.product-menu > summary:focus-visible',
+    '.product-menu > ul a:focus-visible',
+    '.technical-sidebar a:focus-visible',
+    '.technical-link:focus-visible'
+  ];
+  for (const selector of focusSelectors) {
+    const selectorStart = styles.indexOf(selector);
+    assert.ok(selectorStart >= 0, 'Missing keyboard focus rule: ' + selector);
+    const rule = blockAt(selectorStart).replaceAll(' ', '').replaceAll('\n', '').replaceAll('\t', '');
+    assert.ok(
+      rule.includes('outline:3pxsolidvar(--focus-ring)'),
+      selector + ' must use the theme-aware focus colour'
+    );
   }
 });
