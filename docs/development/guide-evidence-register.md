@@ -43,7 +43,7 @@ The Workspace repository's current README, committed `src/index.html`, `src/work
 
 ## Release boundary
 
-This register is maintainer-only. The public website may contain only the help homepage, Suite getting-started page, the ten approved product guides and local CSS. Do not publish repository source links, build notes, this register or other maintainer documents.
+This register is maintainer-only. The current PR #6 draft public-output allowlist is 31 HTML pages, 24 local assets and one `_headers` policy file (56 files total). This includes the Help homepage, Everyday Help, Suite guide, shared topic guides, ten product guides, the Decks slide-show guide and Technical Documentation. Do not publish repository source links, build notes, this register or other maintainer documents.
 
 
 ## Source review update — 13 November 2026
@@ -82,3 +82,47 @@ The following blob SHAs identify the key modules inspected for this review. They
 | Workspace | `src/workspace-service.js` | `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` |
 
 **Outcome:** the inspected source supports the behaviours above. All ten guides remain `Needs review` until the documented workflows are run in current installed desktop builds. No screenshots, publication, Pages configuration, PR approval or merge were performed.
+
+## Source snapshot recheck — 14 November 2026
+
+The source files listed in the 13 November snapshot table were fetched again from the current `main` branch of each owning product repository on 14 November 2026. All eleven file blob SHAs still match the recorded values exactly:
+
+| Product | File checked | Current blob SHA | Result |
+| --- | --- | --- | --- |
+| Pages | `src/page-layout.js` | `9777090bbbd01fee1b2789c703619dc8faa87859` | Unchanged |
+| Pages | `src/app.js` | `f499a20e8bf1283e67f50f73c6aeda5fb52a0c3b` | Unchanged |
+| Sheets | `src/formula.js` | `4b75569239c9834308f77815392b98d7371ea459` | Unchanged |
+| Decks | `src/app.js` | `7c24d368e62761aad95dd672bfe3529018fa9ae4` | Unchanged |
+| Notes | `src/app.js` | `08e3c08967e7fe24ee268cd8c0e4f237c40d6c68` | Unchanged |
+| Database | `src/database-service.js` | `1eefab8c225cf6e4eae426305ee0378838681e41` | Unchanged |
+| Forms | `src/forms-service.js` | `d925764977a79ec6b7d79af5e1a0d6e08ab9d8e4` | Unchanged |
+| Lists | `src/lists-service.js` | `ae3aebadd3194af4846c80fe58a2f1c98c88c57` | Unchanged |
+| Planner | `src/planner-service.js` | `6b05218a71f0f0d63beebdf20decae5ea112f7fc` | Unchanged |
+| To Do | `src/todo-service.js` | `34e048b651dfdd50cb8b3292c660e1dbd57fe7f8` | Unchanged |
+| Workspace | `src/workspace-service.js` | `a5a73ac3b727064f43fde0a14320fe2f594a5ba7` | Unchanged |
+
+This confirms that the source snapshot identifiers remain current. It does not add new workflow verification, build evidence or screenshots. All ten guides remain **Needs review** until the required running-desktop walkthroughs are complete.
+
+
+## Public-output boundary recheck — 15 November 2026
+
+The current PR #6 branch expands the customer site from the earlier 12-page structure to the exact 31-page / 24-local-asset / one-headers-file allowlist (56 files total). The source allowlist and regression fixture were updated for this draft. This is a draft branch boundary only: it is not evidence that the current-head build or generated-output audit has passed. Keep this register private and retain all ten product guides as **Needs review** until their running-desktop walkthroughs are completed.
+
+## Product-guide structure audit — 15 November 2026
+
+A source-level structure check was completed across all ten current customer product guides on the review branch: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
+
+| Structure check | Result across ten guides |
+| --- | --- |
+| Product icon SVG | Present in all ten guides |
+| Workflow diagram SVG | Present in all ten guides |
+| Diagram clearly labelled as illustrative, not a product screenshot | Present in all ten guides |
+| On-page contents navigation | Present in all ten guides |
+| Overview, Getting started and Workflows sections | Present in all ten guides |
+| Troubleshooting and common questions | Present in all ten guides |
+| Current feature boundaries | Present in all ten guides |
+| Guide status remains Needs review | Present in all ten guides |
+| Matching technical reference link | Present in all ten guides |
+| Return link to Brightdesk Help | Present in all ten guides |
+
+**Outcome:** the ten product pages have a consistent baseline structure. This does not verify anchor-target correctness in a rendered Jekyll build, visual hierarchy, responsive behaviour, alt-text quality beyond the source markup, or any product workflow. It is not a desktop walkthrough and does not promote a guide to Verified. Keep all ten guides at **Needs review** until the build checks run and their documented workflows are completed in current installed Windows, macOS and Linux builds where claimed.

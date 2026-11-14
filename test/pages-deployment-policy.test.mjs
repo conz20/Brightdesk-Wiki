@@ -49,7 +49,10 @@ test('Jekyll builds from the customer docs folder at the Pages project root', ()
 test('GitHub Actions validates changes but never publishes or grants deployment permissions', () => {
   assert.match(workflow, /pull_request:\s*\n\s+branches:\s*\[main\]/);
   assert.match(workflow, /push:\s*\n\s+branches:\s*\[main\]/);
-  assert.match(workflow, /runs-on:\s*\[self-hosted,\s*macOS,\s*ARM64\]/);
+  assert.match(workflow, /runs-on:\s*ubuntu-24\.04/);
+  assert.doesNotMatch(workflow, /runs-on:\s*ubuntu-latest/);
+  assert.match(workflow, /timeout-minutes:\s*10/);
+  assert.doesNotMatch(workflow, /self-hosted|macOS|ARM64/);
   assert.match(workflow, /run: npm run check:site/);
   assert.doesNotMatch(workflow, /pages:\s*write|id-token:\s*write|actions\/deploy-pages|actions\/upload-pages-artifact|actions\/configure-pages|github-pages/);
   assert.doesNotMatch(workflow, /CLOUDFLARE_API_TOKEN|CLOUDFLARE_ACCOUNT_ID|wrangler-action/i);
@@ -80,14 +83,24 @@ test('customer Help address is the approved free Pages hostname and custom DNS i
 });
 
 test('only the audited read-only customer output is configured for publishing', () => {
-  assert.match(cloudflareGuide, /27 approved HTML pages/);
-  assert.match(cloudflareGuide, /49 files total/);
+  assert.match(cloudflareGuide, /31 approved HTML pages/);
+  assert.match(cloudflareGuide, /56 files total/);
   assert.match(cloudflareGuide, /Everyday Help homepage/);
   assert.match(cloudflareGuide, /Technical Documentation homepage/);
-  assert.match(cloudflareGuide, /22 local assets/);
+  assert.match(cloudflareGuide, /24 local assets/);
   assert.match(cloudflareGuide, /local-only browser search/i);
   assert.match(cloudflareGuide, /internal.*must remain private|maintainer.*private/i);
   assert.match(cloudflareGuide, /No customer login.*comments.*uploads|no customer login.*upload/i);
+});
+
+test('Cloudflare response policy applies same-origin-only resources and browser protections', () => {
+  const headers = fs.readFileSync(new URL('../docs/_headers', import.meta.url), 'utf8');
+  assert.match(headers, /X-Content-Type-Options: nosniff/);
+  assert.match(headers, /Referrer-Policy: strict-origin-when-cross-origin/);
+  assert.match(headers, /X-Frame-Options: DENY/);
+  assert.match(headers, /Permissions-Policy: camera=\(\), microphone=\(\), geolocation=\(\)/);
+  assert.match(headers, /Strict-Transport-Security: max-age=31536000/);
+  assert.match(headers, /Content-Security-Policy: default-src 'self'.*object-src 'none'.*frame-ancestors 'none'.*script-src 'self'.*style-src 'self'/);
 });
 
 test('hosting privacy notes disclose Cloudflare visitor metadata processing', () => {

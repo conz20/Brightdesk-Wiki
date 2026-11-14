@@ -19,9 +19,18 @@ const expected = new Map([
   ['workspace.md', 'Brightdesk Workspace']
 ]);
 
-test('customer help contains exactly the ten approved product guides', () => {
+test('customer help contains exactly the ten approved product guides plus separately classified specialist topics', () => {
   const actual = fs.readdirSync(productDirectory).filter(name => name.endsWith('.md')).sort();
-  assert.deepEqual(actual, [...expected.keys()].sort());
+  const specialistTopics = ['decks-slide-shows.md'];
+  assert.deepEqual(actual, [...expected.keys(), ...specialistTopics].sort());
+});
+
+test('specialist Decks slide-show help is not treated as an eleventh customer product', () => {
+  const source = fs.readFileSync(path.join(productDirectory, 'decks-slide-shows.md'), 'utf8');
+  assert.ok(source.split(/\r?\n/).includes('title: Present a slide show in Brightdesk Decks'));
+  assert.ok(source.split(/\r?\n/).includes('permalink: /products/decks-slide-shows.html'));
+  assert.ok(source.split(/\r?\n/).includes('status: Needs review'));
+  assert.match(source, /Brightdesk Decks/);
 });
 
 test('each product guide has the correct title, route and review status', () => {

@@ -37,11 +37,25 @@ test('keyboard focus indicator is visible against both page and content surfaces
 
 const layout = fs.readFileSync(new URL('../docs/_layouts/default.html', import.meta.url), 'utf8');
 
-test('help layout exposes a named main navigation and skip link', () => {
+test('help layout exposes navigation, skip link and social metadata', () => {
   assert.match(layout, /<html lang="en-AU">/);
   assert.match(layout, /<a class="skip-link" href="#main">Skip to content<\/a>/);
   assert.match(layout, /<nav class="site-nav" aria-label="Main navigation">/);
-  assert.match(layout, /<main id="main" class="main-content">/);
+  assert.match(layout, /<main id="main" class="main-content/);
+  assert.ok(layout.includes("main-content-home"), 'Homepage layout must apply its dedicated width and content styling');
+  assert.ok(layout.includes("Brightdesk Help Centre | Brightdesk Suite Guides"), "Homepage browser and social title must describe the Help centre");
+  assert.match(layout, /<div class="help-search" role="search" aria-labelledby="help-search-label">/);
+  assert.doesNotMatch(layout, /<section class="help-search"/);
+  assert.ok(layout.includes('rel="canonical" href="{{ page.url | absolute_url }}"'));
+  assert.ok(layout.includes('property="og:title"'));
+  assert.ok(layout.includes('property="og:description"'));
+  assert.ok(layout.includes('property="og:url"'));
+  assert.ok(layout.includes('property="og:image"'));
+  assert.ok(layout.includes('name="twitter:card" content="summary_large_image"'));
+  assert.ok(layout.includes('type="application/ld+json"'));
+  assert.ok(layout.includes('"@context": "https://schema.org"'));
+  assert.ok(layout.includes('"@type": "WebSite"'));
+  assert.ok(layout.includes('rel="icon" type="image/svg+xml"'));
 });
 
 test('help typography keeps comfortable reading size and spacing', () => {
@@ -104,4 +118,59 @@ test('body, secondary and link text maintain readable contrast', () => {
       );
     }
   }
+});
+
+const technicalLayout = fs.readFileSync(new URL('../docs/_layouts/technical.html', import.meta.url), 'utf8');
+
+test('technical reference layout provides the same keyboard and screen-reader essentials', () => {
+  assert.match(technicalLayout, /<html lang="en-AU">/);
+  assert.ok(technicalLayout.includes('<a class="skip-link" href="#main">Skip to content</a>'));
+  assert.match(technicalLayout, /<nav class="site-nav" aria-label="Main navigation">/);
+  assert.match(technicalLayout, /<main id="main" class="technical-layout">/);
+  assert.match(technicalLayout, /<aside class="technical-sidebar" aria-label="Technical documentation sections">/);
+  assert.match(technicalLayout, /<nav aria-label="Technical reference navigation">/);
+  assert.match(technicalLayout, /<div class="help-search" role="search" aria-labelledby="help-search-label">/);
+  assert.doesNotMatch(technicalLayout, /<section class="help-search"/);
+  assert.match(technicalLayout, /aria-controls="help-search-results"/);
+  assert.match(technicalLayout, /role="status" aria-live="polite"/);
+  assert.match(technicalLayout, /aria-label="Matching technical references"/);
+  assert.ok(technicalLayout.includes('rel="canonical" href="{{ page.url | absolute_url }}"'));
+  assert.ok(technicalLayout.includes('property="og:title"'));
+  assert.ok(technicalLayout.includes('property="og:description"'));
+  assert.ok(technicalLayout.includes('property="og:url"'));
+  assert.ok(technicalLayout.includes('property="og:image"'));
+  assert.ok(technicalLayout.includes('name="twitter:card" content="summary_large_image"'));
+  assert.ok(technicalLayout.includes('type="application/ld+json"'));
+  assert.ok(technicalLayout.includes('"@context": "https://schema.org"'));
+  assert.ok(technicalLayout.includes('"@type": "WebSite"'));
+});
+
+
+const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
+
+test('homepage exposes one primary heading and named section landmarks', () => {
+  assert.match(homepage, /<header class="home-hero" aria-labelledby="home-title">/);
+  assert.equal(homepage.split('<h1').length - 1, 1, 'The homepage must have one primary heading');
+  assert.match(homepage, /<section class="home-directory" aria-labelledby="directory-title">/);
+  assert.match(homepage, /<section class="home-guides" aria-labelledby="guides-title">/);
+  assert.match(homepage, /<section class="home-reassurance" aria-labelledby="reassurance-title">/);
+  assert.ok(homepage.includes('<h2 id="reassurance-title">Clear help. No extra hurdles.</h2>'));
+});
+
+test('homepage description is long enough to explain the Help site in search results', () => {
+  const line = homepage.split(String.fromCharCode(10)).find(value => value.startsWith('description:'));
+  const description = line?.slice('description:'.length).trim();
+  assert.ok(description, 'The homepage must declare a search description');
+  assert.ok(description.length >= 120 && description.length <= 160,
+    'The homepage description should be between 120 and 160 characters');
+});
+
+
+test('directory landing pages use page headers and non-article wrappers', () => {
+  const everydayIndex = fs.readFileSync(new URL('../docs/everyday/index.md', import.meta.url), 'utf8');
+  const technicalIndex = fs.readFileSync(new URL('../docs/technical/index.md', import.meta.url), 'utf8');
+  assert.match(everydayIndex, /<header class="portal-hero" aria-labelledby="everyday-title">/);
+  assert.match(technicalIndex, /<header class="technical-hero" aria-labelledby="technical-title">/);
+  assert.ok(layout.includes('portal_page_paths = "/index.html|/everyday/index.html"'));
+  assert.ok(technicalLayout.includes("page.url == '/technical/index.html'"));
 });

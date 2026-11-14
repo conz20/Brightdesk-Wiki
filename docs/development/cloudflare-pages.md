@@ -6,7 +6,7 @@ Brightdesk Suite, the ten approved desktop products and Brightdesk Help remain f
 
 Brightdesk Help is a separate, static, read-only public website. It is not a customer product, desktop application, Suite component, installer payload, App Centre item or runtime dependency. It does not receive customer documents or product data.
 
-The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 customer site build contains 27 approved HTML pages: the Help homepage, Everyday Help homepage, Suite getting-started guide, ten Everyday Help product guides, the Technical Documentation homepage, three system references and ten technical product references. It also contains one local CSS file, one local browser-search JavaScript file, ten original product icons and ten workflow illustrations: 49 files total. The exact output allowlist in `scripts/check-public-site.mjs` is authoritative.
+The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 customer site build contains 31 approved HTML pages: the Help homepage, Everyday Help homepage, Suite getting-started guide, ten Everyday Help product guides, the Technical Documentation homepage, three system references and ten technical product references. It also contains 24 local assets: one CSS file, one browser-search JavaScript file, ten product icons, ten workflow illustrations, the favicon and the social-preview SVG, plus one `_headers` policy file: 56 files total. The exact output allowlist in `scripts/check-public-site.mjs` is authoritative.
 
 ## Owner authorisation and cost boundary
 
@@ -19,7 +19,7 @@ The source repository conz20/Brightdesk-Wiki remains private. The current PR #6 
 - Do not configure a custom domain or change DNS/nameservers. The free `pages.dev` hostname is the approved customer-facing address.
 
 
-Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 49-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
+Cloudflare Pages Free currently allows 500 builds per month and one concurrent build. The 56-file Help output is well below the Free plan's 20,000-file limit. Check the [official Pages limits](https://developers.cloudflare.com/pages/platform/limits/) before relying on quotas, as provider limits can change.
 
 ## Cloudflare project configuration
 
@@ -64,18 +64,29 @@ Cloudflare's build command is npm run build:cloudflare. It performs the followin
 7. Build the real Jekyll site into _site/.
 8. Run scripts/check-public-site.mjs against the generated output.
 
-The output audit requires exactly 49 files:
+The output audit requires exactly 56 files:
 
-**27 HTML pages**
+**31 HTML pages**
 - `index.html` — Brightdesk Help homepage.
 - `everyday/index.html` — Everyday Help homepage.
 - `customer-start-here.html` — Suite getting-started guide.
+- `everyday/install-update.html`, `everyday/languages-and-spelling.html` and `everyday/troubleshooting.html` — shared customer topic guides.
+- `products/decks-slide-shows.html` — focused Decks slide-show guide.
 - `products/pages.html`, `products/sheets.html`, `products/decks.html`, `products/notes.html`, `products/database.html`, `products/forms.html`, `products/lists.html`, `products/planner.html`, `products/to-do.html` and `products/workspace.html` — the ten Everyday Help product guides.
 - `technical/index.html` — Technical Documentation homepage.
 - `technical/system-overview.html`, `technical/file-formats.html` and `technical/data-and-privacy.html` — three system references.
 - `technical/products/pages.html`, `technical/products/sheets.html`, `technical/products/decks.html`, `technical/products/notes.html`, `technical/products/database.html`, `technical/products/forms.html`, `technical/products/lists.html`, `technical/products/planner.html`, `technical/products/to-do.html` and `technical/products/workspace.html` — ten technical product references.
 
-**22 local assets**
+**24 local assets**
+- `assets/css/site.css` — local styling.
+- `assets/js/search.js` — local-only browser search.
+- `assets/images/product-icons/` — exactly ten product SVG icons.
+- `assets/images/workflows/` — exactly ten explanatory workflow SVGs.
+- `favicon.svg` — Brightdesk Help favicon.
+- `assets/images/brightdesk-help-social.svg` — local social-preview artwork.
+
+**One policy file**
+- `_headers` — Cloudflare response-security headers.
 - `assets/css/site.css` — local styling.
 - `assets/js/search.js` — local-only browser search for the active help area. The generated script must remain free of network requests, analytics and visitor storage.
 - `assets/images/product-icons/` — exactly ten approved Brightdesk product SVG icons.
@@ -90,6 +101,14 @@ Customer output must remain static and read-only: no customer login, accounts, f
 The website itself contains no Brightdesk analytics, advertising, tracking scripts, forms or customer upload mechanism. Opening Help from a desktop product sends no product documents or application data.
 
 Cloudflare operates the hosting network and processes technical request metadata for visitors, which can include IP addresses and traffic-routing information. Do not claim that visitor IP addresses or all request metadata are never processed. See [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/) and [Cloudflare's Australia Privacy Act information](https://www.cloudflare.com/en-au/trust-hub/australia-privacy-act/).
+
+## Manual redeploy revision check
+
+A manual **Redeploy** action can rebuild the commit already recorded on the selected deployment; it does not necessarily select the latest commit on the pull-request branch. Always compare the deployment's displayed commit SHA with the current PR head before treating its build result as validation of the latest source.
+
+On 14 November 2026, deployment `a3b372c5-b1ff-4e46-84af-08f3d084b77a` was manually redeployed from commit `c8b651096d15ddb9a24211384bb81cef31a25788`, while PR #6 had already advanced to `002f6eb2374255c3912ad4ff58c6b78792775f5e`. The redeployment therefore could not validate the fixes on the newer PR head.
+
+Before relying on a result, confirm all three match: repository `conz20/Brightdesk-Wiki`, branch `reconcile/customer-help-main-2026-11-14`, and the exact commit SHA displayed as the current PR head. A passing older deployment is historical evidence only; a failed older deployment does not prove the latest source still fails.
 
 ## Current publication status and release
 
@@ -116,26 +135,11 @@ The Wiki remains a separate optional Help resource. It is not bundled, installed
 
 ## GitHub Copilot repository integration
 
-The Cloudflare agent-setup instructions have been adapted for this repository so the setup lives in GitHub rather than on the owner's Mac. The project-scoped skill is `.github/skills/brightdesk-cloudflare-pages/SKILL.md`; the MCP configuration for Copilot CLI is `.github/mcp.json`. Neither file contains a credential.
+The repository may provide a documentation-only MCP configuration in `.github/mcp.json`. It exposes Cloudflare's public documentation search server and requires no account credentials.
 
-### Copilot cloud agent configuration
+When using a compatible Copilot client, configure the repository MCP settings to use the JSON in [`.github/mcp.json`](../../.github/mcp.json). Do not create a Cloudflare credential secret or add an API execution server. Do not grant an agent permission to modify Pages projects or DNS.
 
-The repository MCP file is available to project-level Copilot CLI clients. GitHub Copilot cloud agent uses the repository's MCP settings page as a separate configuration step:
-
-1. Open **Brightdesk-Wiki → Settings → Copilot → MCP servers**.
-2. Paste the complete JSON from [`.github/mcp.json`](../../.github/mcp.json) into **MCP configuration** and save it.
-3. Open **Settings → Secrets and variables → Agents → Secrets**.
-4. Create a repository secret named `COPILOT_MCP_CLOUDFLARE_API_TOKEN` and store the Cloudflare API token as its value. Do not paste the token into chat, source files, Actions secrets, issues, or logs. GitHub exposes this prefixed secret to the MCP server, not to ordinary agent shell commands.
-
-Copilot cloud agent can use MCP tools autonomously without asking for approval before each call. The API server's `execute` tool can call Cloudflare API endpoints, so the token scope below is mandatory, not optional. The documentation server is public and read-only; it needs no secret.
-
-### Cloudflare API token scope
-
-Create a custom Cloudflare API token for the single account that owns the Brightdesk Help project. Use only **Cloudflare Pages Edit** and **Account Settings Read** (for account/resource discovery if required). Cloudflare documents that Pages Edit can create, update, and delete Pages projects; keep this token in the GitHub Agents secret and never reuse it for other repositories. Do not grant DNS Write, Zone Edit, Account Settings Edit, Workers, Billing, User, API Tokens, Global API Key, or unrelated permissions. Pages Edit is account-scoped, so it permits changes to Pages projects in that account; the skill prohibits deleting projects or deployments.
-
-The Cloudflare API MCP server is configured with the `search` and `execute` tools only. The Cloudflare Docs MCP server exposes only `search_cloudflare_documentation`. An API token does not install or authorise the GitHub App for Cloudflare Pages. The GitHub App must still be installed separately with **Only select repositories**, choosing Brightdesk-Wiki only.
-
-No Cloudflare token or GitHub secret has been created by this repository change. The Pages project and GitHub preview integration are active, but the exact GitHub App access scope, production settings, DNS configuration and live custom domain are not yet verified. Do not describe the site as live.
+Cloudflare Pages deployments use the existing GitHub App integration, restricted to **Only select repositories** with only `conz20/Brightdesk-Wiki` selected. This GitHub App connection is separate from documentation search. No Cloudflare API token is required for the approved Git-based build and deployment route.
 
 ## Official Cloudflare documentation
 
@@ -145,3 +149,12 @@ No Cloudflare token or GitHub secret has been created by this repository change.
 - [Jekyll on Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-jekyll-site/)
 - [Cloudflare Pages build image and runtime versions](https://developers.cloudflare.com/pages/configuration/build-image/)
 - [Cloudflare Pages Free plan limits](https://developers.cloudflare.com/pages/platform/limits/)
+
+
+## Distinguish runner startup failures from code failures
+
+Inspect the job details before interpreting a failed GitHub Actions run. A job with `runner_id: 0`, an empty runner name, an empty steps list and no job log ended before GitHub assigned a runner. Checkout, runtime setup, tests, Markdown-link validation, Jekyll and the generated-output privacy audit did not execute. Record this as **verification unavailable because no runner was allocated**. Do not report it as a test failure or a passing check.
+
+Do not work around runner allocation by enabling a paid runner, adding a self-hosted machine, changing account billing or weakening the required checks. Keep the existing approved workflow and cost boundary. The free Cloudflare Pages Git integration is the separate build route; it must build the current PR branch revision before its result can be used as current evidence.
+
+On 15 November 2026, GitHub Actions run #505 for PR #6 head `c63aad03d4e11978181f405cab947adbb2d5839a` completed after two seconds with `runner_id: 0` and no steps. It did not execute the workflow. The Cloudflare follow-up deployment `fe3b8c18-ea72-4195-859a-8d3d280710d0` instead identifies old source commit `c8b651096d15ddb9a24211384bb81cef31a25788` and cannot validate the current PR head.
