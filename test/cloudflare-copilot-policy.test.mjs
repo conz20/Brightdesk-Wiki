@@ -2,60 +2,34 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const mcp = JSON.parse(fs.readFileSync(new URL('../.github/mcp.json', import.meta.url), 'utf8'));
-const api = mcp.mcpServers['cloudflare-api'];
-const docs = mcp.mcpServers['cloudflare-docs'];
-const skill = fs.readFileSync(new URL('../.github/skills/brightdesk-cloudflare-pages/SKILL.md', import.meta.url), 'utf8');
 const guide = fs.readFileSync(new URL('../docs/development/cloudflare-pages.md', import.meta.url), 'utf8');
+const mcpConfig = new URL('../.github/mcp.json', import.meta.url);
+const agentSkill = new URL('../.github/skills/brightdesk-cloudflare-pages/SKILL.md', import.meta.url);
 
-test('Cloudflare MCP configuration uses only the documented API and documentation servers', () => {
-  assert.deepEqual(Object.keys(mcp.mcpServers).sort(), ['cloudflare-api', 'cloudflare-docs']);
-  assert.equal(api.type, 'http');
-  assert.equal(api.url, 'https://mcp.cloudflare.com/mcp');
-  assert.deepEqual(api.tools, ['search', 'execute']);
-  assert.equal(api.headers.Authorization, 'Bearer ${COPILOT_MCP_CLOUDFLARE_API_TOKEN}');
-  assert.equal(docs.type, 'http');
-  assert.equal(docs.url, 'https://docs.mcp.cloudflare.com/mcp');
-  assert.deepEqual(docs.tools, ['search_cloudflare_documentation']);
-  assert.doesNotMatch(JSON.stringify(mcp), /Bearer\s+[A-Za-z0-9._-]{24,}/, 'no literal API token is committed');
-  assert.ok(!JSON.stringify(mcp).includes('DNS Write'));
+test('Cloudflare Pages deployment uses the repository-scoped GitHub integration without API credentials', () => {
+  assert.match(guide, /Use Cloudflare's GitHub integration/);
+  assert.match(guide, /Only select repositories/);
+  assert.match(guide, /select only Brightdesk-Wiki/);
+  assert.match(guide, /Cloudflare Pages Git integration is the approved deployment path/);
+  assert.match(guide, /Do not create a Cloudflare API token, GitHub Actions secret, Copilot Agents secret, or remote MCP execution configuration/);
+  assert.doesNotMatch(guide, /COPILOT_MCP_CLOUDFLARE_API_TOKEN|Cloudflare Pages Edit|GitHub Copilot repository integration/);
+  assert.equal(fs.existsSync(mcpConfig), false, 'remote Cloudflare API MCP configuration is not present');
+  assert.equal(fs.existsSync(agentSkill), false, 'credential-based Copilot agent instructions are not present');
 });
 
-test('Brightdesk Pages skill fixes the private project, build, runtime, and public-output boundaries', () => {
+test('Cloudflare deployment remains gated by exact build, privacy, and DNS requirements', () => {
   for (const text of [
-    'conz20/Brightdesk-Wiki',
-    'Pages Free',
-    'Production branch: main',
-    'Preview branch deployments: None',
-    'Root directory: repository root (/)',
     'npm run build:cloudflare',
-    '_site',
     '24.22.2',
     '3.4.4',
     '12 HTML pages',
     '14 static files',
     'help.brightdesk.com',
-    'Only select repositories',
-    'Do not add paid plans',
-    'COPILOT_MCP_CLOUDFLARE_API_TOKEN'
-  ]) assert.ok(skill.includes(text), 'skill includes ' + text);
+    'Preview branch',
+    'complete DNS-zone export',
+    'explicit approval of the exact change'
+  ]) assert.ok(guide.includes(text), 'maintainer guide includes ' + text);
 
-  assert.match(skill, /Do not change repository visibility/);
-  assert.match(skill, /Never change nameservers, DNS records/);
-  assert.match(skill, /complete DNS-zone export/);
-  assert.match(skill, /Do not grant DNS Write/);
-  assert.match(skill, /Do not delete Pages projects/);
-  assert.match(skill, /Never read, print, log, copy, expose, or commit the token value/);
-});
-
-test('maintainer guide explains repository MCP settings and the dedicated Agents secret', () => {
-  assert.match(guide, /GitHub Copilot repository integration/);
-  assert.match(guide, /Settings.*Copilot.*MCP servers/);
-  assert.match(guide, /Secrets and variables.*Agents/);
-  assert.match(guide, /COPILOT_MCP_CLOUDFLARE_API_TOKEN/);
-  assert.match(guide, /Cloudflare Pages Edit/);
-  assert.match(guide, /Account Settings Read/);
-  assert.match(guide, /does not install or authorise the GitHub App for Cloudflare Pages/i);
-  assert.match(guide, /Cloudflare Pages Edit.*delete/i);
-  assert.match(guide, /DNS Write.*not granted|Do not grant DNS Write/i);
+  assert.match(guide, /Do not publish or advertise a `pages\.dev` address/);
+  assert.match(guide, /Do not change nameservers or alter DNS/);
 });
