@@ -265,8 +265,8 @@ test('product guides use the actual Database, Lists, Forms, Planner and Workspac
   assert.match(database, /\*\*Sort by\*\*/);
   assert.match(database, /\*\*Order\*\*/);
   assert.doesNotMatch(database, /\*\*Sort records\*\*/);
-  assert.match(lists, /\*\*Active\*\* \(Not started and In progress\)/);
-  assert.match(lists, /Done shows completed records/);
+  assert.match(lists, /\*\*All statuses\*\*.*\*\*Not started\*\*.*\*\*In progress\*\*.*\*\*Done\*\*/s);
+  assert.doesNotMatch(lists, /\*\*Active\*\*|\*\*All records\*\*/);
   assert.match(forms, /\*\*Required question\*\*/);
   assert.match(planner, /\*\*New bucket\*\*/);
   assert.match(planner, /\*\*Bucket name\*\*/);
