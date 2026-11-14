@@ -40,13 +40,6 @@ function siteFixture(t) {
 test('technical documentation landing page has its stable public URL', () => {
   const sourcePath = path.join(process.cwd(), 'docs', 'technical', 'index.md');
   const source = fs.readFileSync(sourcePath, 'utf8');
-  assert.match(source, /^permalink: \/technical\/index\\.html$/m);
-  assert.doesNotMatch(source, /^permalink: \/technical\.\.\//m);
-});
-
-test('technical documentation landing page has its stable public URL', () => {
-  const sourcePath = path.join(process.cwd(), 'docs', 'technical', 'index.md');
-  const source = fs.readFileSync(sourcePath, 'utf8');
   assert.match(source, /^permalink: \/technical\/index\.html$/m);
   assert.doesNotMatch(source, /^permalink: \/technical\.\.\//m);
 });
