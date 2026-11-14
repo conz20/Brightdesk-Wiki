@@ -237,3 +237,12 @@ test('Suite guide explains switching, hiding, restoring and removing products sa
   assert.match(suiteGuide, /Show in Switch product/);
   assert.match(suiteGuide, /does not delete your documents or project data/i);
 });
+
+test('Workspace and Database examples use the exact current Suite control labels', () => {
+  const workspaceGuide = fs.readFileSync(new URL('../docs/products/workspace.md', import.meta.url), 'utf8');
+  const databaseGuide = fs.readFileSync(new URL('../docs/products/database.md', import.meta.url), 'utf8');
+  assert.match(workspaceGuide, /Search pages/);
+  assert.doesNotMatch(workspaceGuide, /Find a page/);
+  assert.match(databaseGuide, /Text, Number, Date, Email, URL, Checkbox or Choice/);
+  assert.doesNotMatch(databaseGuide, /Choice list|Web address/);
+});
