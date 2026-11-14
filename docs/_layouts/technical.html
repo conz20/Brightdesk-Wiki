@@ -74,7 +74,7 @@
       <aside class="translation-help" aria-label="Language help">
         <p><strong>Prefer another language?</strong> If your browser offers page translation, use its menu or translation control. Translation is provided by your browser or its provider, not Brightdesk; that provider may process page text. Check its translation and privacy settings before using the feature. Brightdesk Help does not run a separate translation service.</p>
       </aside>
-      <section class="help-search" role="search" aria-labelledby="help-search-label">
+      <div class="help-search" role="search" aria-labelledby="help-search-label">
         <label id="help-search-label" for="help-search">Search Technical Documentation</label>
         <input id="help-search" type="search" autocomplete="off"
           placeholder="Search product names, file formats or technical topics"
@@ -82,7 +82,7 @@
         <p id="help-search-hint" class="search-hint">Search technical overview, file and privacy references, and all ten product references. Search stays in this browser.</p>
         <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a product, format or technical topic to find a reference.</p>
         <ul id="help-search-results" class="search-results" aria-label="Matching technical references" hidden></ul>
-      </section>
+      </div>
     </header>
     {% assign public_technical_paths = "/technical/index.html|/technical/system-overview.html|/technical/file-formats.html|/technical/data-and-privacy.html|/technical/products/pages.html|/technical/products/sheets.html|/technical/products/decks.html|/technical/products/notes.html|/technical/products/database.html|/technical/products/forms.html|/technical/products/lists.html|/technical/products/planner.html|/technical/products/to-do.html|/technical/products/workspace.html" | split: "|" %}
     <nav class="search-index" aria-label="Searchable technical documentation content" hidden>
@@ -121,10 +121,20 @@
         </nav>
         <p class="sidebar-return"><a href="{{ '/everyday/index.html' | relative_url }}">← Back to Everyday Help</a></p>
       </aside>
+      {% if page.url == '/technical/index.html' %}
+      <div class="content-card technical-card">
+      {% else %}
       <article class="content-card technical-card">
+      {% endif %}
+        {% unless page.url == '/technical/index.html' %}
         <p class="technical-breadcrumb"><a href="{{ '/technical/index.html' | relative_url }}">Technical Documentation</a> <span aria-hidden="true">/</span> {{ page.title | escape }}</p>
+        {% endunless %}
         {{ content }}
+      {% if page.url == '/technical/index.html' %}
+      </div>
+      {% else %}
       </article>
+      {% endif %}
     </main>
     <footer class="site-footer technical-footer">
       <p>Need plain-English, step-by-step instructions? <a href="{{ '/everyday/index.html' | relative_url }}">Return to Everyday Help</a>.</p>

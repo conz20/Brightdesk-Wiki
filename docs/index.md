@@ -5,7 +5,7 @@ description: Clear, practical help for Brightdesk Suite and ten desktop products
 permalink: /index.html
 ---
 
-<section class="home-hero" aria-labelledby="home-title">
+<header class="home-hero" aria-labelledby="home-title">
   <div class="home-hero-intro">
     <p class="home-eyebrow">BRIGHTDESK HELP CENTRE</p>
     <h1 id="home-title">Find your way through Brightdesk.</h1>
@@ -36,7 +36,7 @@ permalink: /index.html
       <span class="home-pathway-action">Explore technical references <span aria-hidden="true">→</span></span>
     </a>
   </nav>
-</section>
+</header>
 
 <section class="home-suite-start" aria-labelledby="suite-start-title">
   <div>

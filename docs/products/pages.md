@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Brightdesk Pages
-description: Create, format and organise documents in Brightdesk Pages.
+description: Find practical help for Brightdesk Pages, including creating documents, writing and formatting content, saving files and working with supported document formats.
 status: Needs review
 permalink: /products/pages.html
 ---

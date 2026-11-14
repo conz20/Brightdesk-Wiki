@@ -43,6 +43,9 @@ test('help layout exposes navigation, skip link and social metadata', () => {
   assert.match(layout, /<nav class="site-nav" aria-label="Main navigation">/);
   assert.match(layout, /<main id="main" class="main-content/);
   assert.ok(layout.includes("main-content-home"), 'Homepage layout must apply its dedicated width and content styling');
+  assert.ok(layout.includes("Brightdesk Help Centre | Brightdesk Suite Guides"), "Homepage browser and social title must describe the Help centre");
+  assert.match(layout, /<div class="help-search" role="search" aria-labelledby="help-search-label">/);
+  assert.doesNotMatch(layout, /<section class="help-search"/);
   assert.ok(layout.includes('rel="canonical" href="{{ page.url | absolute_url }}"'));
   assert.ok(layout.includes('property="og:title"'));
   assert.ok(layout.includes('property="og:description"'));
@@ -126,7 +129,8 @@ test('technical reference layout provides the same keyboard and screen-reader es
   assert.match(technicalLayout, /<main id="main" class="technical-layout">/);
   assert.match(technicalLayout, /<aside class="technical-sidebar" aria-label="Technical documentation sections">/);
   assert.match(technicalLayout, /<nav aria-label="Technical reference navigation">/);
-  assert.match(technicalLayout, /<section class="help-search" role="search" aria-labelledby="help-search-label">/);
+  assert.match(technicalLayout, /<div class="help-search" role="search" aria-labelledby="help-search-label">/);
+  assert.doesNotMatch(technicalLayout, /<section class="help-search"/);
   assert.match(technicalLayout, /aria-controls="help-search-results"/);
   assert.match(technicalLayout, /role="status" aria-live="polite"/);
   assert.match(technicalLayout, /aria-label="Matching technical references"/);
@@ -145,7 +149,7 @@ test('technical reference layout provides the same keyboard and screen-reader es
 const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
 
 test('homepage exposes one primary heading and named section landmarks', () => {
-  assert.match(homepage, /<section class="home-hero" aria-labelledby="home-title">/);
+  assert.match(homepage, /<header class="home-hero" aria-labelledby="home-title">/);
   assert.equal(homepage.split('<h1').length - 1, 1, 'The homepage must have one primary heading');
   assert.match(homepage, /<section class="home-directory" aria-labelledby="directory-title">/);
   assert.match(homepage, /<section class="home-guides" aria-labelledby="guides-title">/);
@@ -159,4 +163,14 @@ test('homepage description is long enough to explain the Help site in search res
   assert.ok(description, 'The homepage must declare a search description');
   assert.ok(description.length >= 120 && description.length <= 160,
     'The homepage description should be between 120 and 160 characters');
+});
+
+
+test('directory landing pages use page headers and non-article wrappers', () => {
+  const everydayIndex = fs.readFileSync(new URL('../docs/everyday/index.md', import.meta.url), 'utf8');
+  const technicalIndex = fs.readFileSync(new URL('../docs/technical/index.md', import.meta.url), 'utf8');
+  assert.match(everydayIndex, /<header class="portal-hero" aria-labelledby="everyday-title">/);
+  assert.match(technicalIndex, /<header class="technical-hero" aria-labelledby="technical-title">/);
+  assert.ok(layout.includes('portal_page_paths = "/index.html|/everyday/index.html"'));
+  assert.ok(technicalLayout.includes("page.url == '/technical/index.html'"));
 });

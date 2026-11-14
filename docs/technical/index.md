@@ -1,17 +1,17 @@
 ---
 layout: technical
 title: Technical Documentation
-description: Detailed technical references for Brightdesk Suite and all ten approved products.
+description: Detailed technical references for Brightdesk Suite and ten desktop products, covering documented features, file formats, system behaviour and privacy boundaries.
 permalink: /technical/index.html
 ---
 
-<section class="technical-hero" aria-labelledby="technical-title">
+<header class="technical-hero" aria-labelledby="technical-title">
   <p class="portal-kicker">BRIGHTDESK REFERENCE LIBRARY</p>
   <h1 id="technical-title">Technical Documentation</h1>
   <p>Explore product capabilities, system behaviour, file compatibility and data boundaries. This area is designed for technical readers, curious customers and anyone who wants to read further or research how Brightdesk works.</p>
   <p>For a useful reading path, start with <a href="system-overview.html">System overview</a>, compare <a href="file-formats.html">File formats</a>, review <a href="data-and-privacy.html">Data and privacy</a>, then open the relevant product reference. Each product reference links back to its plain-English guide.</p>
   <p class="technical-switch"><a href="../everyday/index.html">← Prefer plain-English instructions? Go to Everyday Help</a></p>
-</section>
+</header>
 
 <section class="reference-section" aria-labelledby="system-reference-title">
   <div class="section-heading">

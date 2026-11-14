@@ -1,16 +1,16 @@
 ---
 layout: default
 title: Everyday Help
-description: Plain-English step-by-step help for Brightdesk Suite and all ten products.
+description: Plain-English, step-by-step help for Brightdesk Suite and ten desktop products, with setup instructions, everyday tasks, language guidance and troubleshooting.
 permalink: /everyday/index.html
 ---
 
-<section class="portal-hero" aria-labelledby="everyday-title">
+<header class="portal-hero" aria-labelledby="everyday-title">
   <p class="portal-kicker">EVERYDAY HELP</p>
   <h1 id="everyday-title">Let's find what you need</h1>
   <p class="portal-intro">You do not need technical knowledge. Choose the Brightdesk product you use, or tell us what you are trying to do and follow a simple guide.</p>
   <p class="technical-switch"><a href="../index.html">← Back to the Help home</a> <span aria-hidden="true">·</span> <a href="../technical/index.html">Want the detailed version? Open Technical Documentation →</a></p>
-</section>
+</header>
 <section class="product-directory" aria-labelledby="everyday-suite-title">
   <div class="section-heading"><div><p class="portal-kicker">THE SUITE AND ITS PRODUCTS</p><h2 id="everyday-suite-title">Choose your Brightdesk product</h2><p>Each guide uses plain language and shows you what to do, step by step.</p></div></div>
   <div class="product-card-grid">
