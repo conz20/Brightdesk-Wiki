@@ -47,7 +47,7 @@ Cloudflare's GitHub App connection is separate from the Cloudflare API MCP token
 
 ## DNS and custom-domain safeguards
 
-The domain brightdesk.com is currently recorded as delegated to Sedo parking nameservers. The public DNS snapshot dated 13 November 2026 showed the root, www, and help names resolving to 64.190.63.111. This is not a complete DNS-zone export and does not establish which records are editable in the owner's registrar account.
+The domain brightdesk.com is currently recorded as delegated to Sedo parking nameservers. A DNS lookup on 14 November 2026 at 01:15 UTC showed help.brightdesk.com resolving to 64.190.63.222, with no CNAME or AAAA record. The visible MX record is priority 0 localhost, TXT includes v=spf1 -all, and the SOA identifies hostmaster.sedo.de; nameservers are ns1.sedoparking.com and ns2.sedoparking.com. This is not a complete DNS-zone export; the www hostname was not checked in this lookup.
 
 Never change nameservers, DNS records, DNSSEC, mail records, or domain registration/transfer settings without all of the following:
 
@@ -82,7 +82,7 @@ Before creating or changing the production project, inspect the current reposito
 A live-site claim requires:
 - The correct private Wiki repository connected.
 - Production branch main and preview deployments set to None.
-- A successful current build and the exact 13-file privacy audit.
+- A successful current build and the exact 14-static-file public-output audit (12 HTML pages, one local CSS file and one local search module).
 - The custom domain help.brightdesk.com active with valid HTTPS.
 - The deployed commit SHA recorded.
 - The homepage, Suite guide, and all ten product guides checked on the live .com URL.
