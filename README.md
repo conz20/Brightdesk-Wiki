@@ -66,7 +66,7 @@ Label every workflow accurately as Verified, Source-confirmed, Planned, Under te
 
 ## Design and content
 
-Brightdesk Help must have an original, professional Brightdesk identity and a consistent visual system across the homepage, Everyday Help, Technical Documentation, search, navigation and article templates. Craft Wiki is an information-architecture reference only. Microsoft Fluent principles may inform clarity and accessibility. Do not copy either brand's logos, code, wording, assets or page designs.
+Brightdesk Help must have an original, professional Brightdesk identity and a consistent visual system across the homepage, Suite guide, ten product guides, search, navigation and article templates. Craft Wiki is an information-architecture reference only. Microsoft Fluent principles may inform clarity and accessibility. Do not copy either brand's logos, code, wording, assets or page designs.
 
 Workflow illustrations are explanatory diagrams, not screenshots of running Brightdesk software. Genuine screenshots must be captured from current Windows, macOS and Linux desktop builds where those platforms are claimed, with product version, operating system and commit/build evidence recorded. Do not mark an untested workflow as verified.
 
@@ -90,21 +90,10 @@ Keep publication separate from Brightdesk software builds and releases. The Wiki
 
 - [ ] Reduce the Wiki to one homepage, one Suite getting-started guide and exactly ten product guides.
 - [ ] Remove internal development, architecture, security, release, maintainer and owner-operation material from the Wiki source and customer navigation.
-- [ ] Review all customer instructions against current source, tests and genuinely verified product workflows.
+- [ ] Review customer instructions against current source, tests and genuinely verified product workflows.
 - [ ] Complete keyboard, visible-focus, contrast and screen-reader review.
 - [ ] Pass exact-head documentation tests, Markdown-link checks, static build and generated-output privacy audit.
 - [ ] Verify the GitHub repository privacy and eligible account-plan requirements without buying or upgrading a plan.
 - [ ] Obtain explicit owner authorisation for GitHub Pages publication.
 - [ ] Verify the successful production deployment, public URL and exact deployed commit before describing the site as live.
 - [ ] Keep PR #8 draft and unmerged until exact-head verification and review are complete.
-
-
-
-- [ ] Complete and approve the professional visual redesign across all public pages and shared components.
-- [ ] Review every public route on wide desktop and standard laptop screens; confirm narrow browser layouts remain readable as a website.
-- [ ] Capture genuine screenshots from current running desktop builds of the Suite and all ten products, with evidence recorded.
-- [ ] Verify every documented workflow on each desktop operating system it claims to support: Windows, macOS and Linux.
-- [ ] Complete keyboard, visible-focus, contrast and screen-reader review.
-- [ ] Pass exact-head automated tests, Markdown-link checks, Jekyll build and public-output privacy audit.
-- [ ] Verify the Cloudflare production deployment, HTTPS and deployed commit at the permanent customer address.
-- [ ] Keep the source repository private and keep PR #6 in draft until every publication gate is complete.
