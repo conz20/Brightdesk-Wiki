@@ -45,13 +45,14 @@ test('shared guide entry points are discoverable', () => {
   assert.ok(decks.includes('decks-slide-shows.html'));
 });
 
-test('Technical Documentation has its own fourteen-page search index', () => {
+test('Technical Documentation has its own seventeen-page search index', () => {
   const layout = read('docs/_layouts/technical.html');
   const allowlist = layout.match(/assign public_technical_paths = "([^"]+)"/);
   assert.ok(allowlist);
   assert.deepEqual(allowlist[1].split('|'), [
     '/technical/index.html','/technical/system-overview.html',
     '/technical/file-formats.html','/technical/data-and-privacy.html',
+    '/technical/guides/install-update.html','/technical/guides/languages-and-spelling.html','/technical/guides/troubleshooting.html',
     ...products.map(product => '/technical/products/' + product + '.html')
   ]);
   assert.match(layout, /Search Technical Documentation/);
@@ -139,5 +140,39 @@ test('both help areas explain the browser translation privacy boundary', () => {
     assert.match(layout, /that provider may process page text/);
     assert.match(layout, /Check its translation and privacy settings before using the feature/);
     assert.match(layout, /Brightdesk Help does not run a separate translation service/);
+  }
+});
+
+
+
+test('breadcrumbs avoid repeating a page as its own parent section', () => {
+  const layout = read('docs/_layouts/default.html');
+  const match = layout.match(/<nav class="page-breadcrumb" aria-label="Breadcrumb">([\s\S]*?)<\/nav>/);
+  assert.ok(match, 'shared layout must provide breadcrumbs');
+  const breadcrumb = match[1];
+  assert.match(breadcrumb, /if page\.url contains '\/products\/'/);
+  assert.match(breadcrumb, /index\.html#directory-title/);
+  assert.match(breadcrumb, /unless page\.url == '\/everyday\/index\.html'/);
+  assert.match(breadcrumb, /unless page\.url == '\/technical\/index\.html'/);
+  assert.doesNotMatch(breadcrumb, /customer-start-here\.html/);
+});
+
+
+test('technical sidebar groups all ten applications and reuses their approved product icons', () => {
+  const layout = read('docs/_layouts/technical.html');
+  for (const group of ['Create and communicate', 'Work with information', 'Plan and organise']) {
+    assert.ok(layout.includes(group), 'Technical navigation must include ' + group);
+  }
+  for (const product of products) {
+    assert.ok(layout.includes('/technical/products/' + product + '.html'), 'Sidebar must link to ' + product);
+    assert.ok(layout.includes('/assets/images/product-icons/' + product + '.svg'), 'Sidebar must use the approved ' + product + ' icon');
+    assert.ok(layout.includes('class="technical-nav-icon"'), 'Sidebar icons must have the decorative-image class');
+    assert.ok(layout.includes('aria-hidden="true"'), 'Sidebar icons must be hidden from assistive technology because the link text names the product');
+  }
+  for (const guide of ['install-update', 'languages-and-spelling', 'troubleshooting']) {
+    assert.ok(layout.includes('/technical/guides/' + guide + '.html'), 'Sidebar must include the technical ' + guide + ' guide');
+    const page = read('docs/technical/guides/' + guide + '.md');
+    assert.match(page, /^layout: technical$/m);
+    assert.ok(page.includes('../../everyday/' + guide + '.html'), 'Technical guide must link to its plain-English companion');
   }
 });

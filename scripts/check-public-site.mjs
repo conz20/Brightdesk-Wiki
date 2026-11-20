@@ -17,6 +17,9 @@ const TECHNICAL_PAGES = [
   'technical/system-overview.html',
   'technical/file-formats.html',
   'technical/data-and-privacy.html',
+  'technical/guides/install-update.html',
+  'technical/guides/languages-and-spelling.html',
+  'technical/guides/troubleshooting.html',
   ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
 ];
 const PRODUCT_LABELS = new Map([
@@ -318,9 +321,15 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       /^assets\/images\/product-icons\/(?:pages|sheets|decks|notes|database|forms|lists|planner|to-do|workspace)\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
       imageAttribute(imageTag, 'alt') === '' &&
       hasTextBearingAnchor(imageTag, 'home-product-link');
+    const isDecorativeTechnicalProductIcon = imageTag =>
+      imageAttribute(imageTag, 'class') === 'technical-nav-icon' &&
+      /^\/assets\/images\/product-icons\/(?:pages|sheets|decks|notes|database|forms|lists|planner|to-do|workspace)\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
+      imageAttribute(imageTag, 'alt') === '' &&
+      imageAttribute(imageTag, 'aria-hidden') === 'true' &&
+      hasTextBearingAnchor(imageTag, 'technical-nav-link');
     if (imageTags.some(imageTag => {
       const alternative = imageAttribute(imageTag, 'alt');
-      return alternative === null || (!alternative.trim() && !isDecorativeBrandMark(imageTag) && !isDecorativeProductIcon(imageTag));
+      return alternative === null || (!alternative.trim() && !isDecorativeBrandMark(imageTag) && !isDecorativeProductIcon(imageTag) && !isDecorativeTechnicalProductIcon(imageTag));
     })) {
       fail(file + ' does not provide the required meaningful alternative text or a justified decorative-image alternative for each image');
     }
@@ -328,10 +337,11 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       const source = imageAttribute(imageTag, 'src') || '';
       const className = imageAttribute(imageTag, 'class') || '';
       const isProductIcon = /^(?:\.\.\/){0,2}assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
+      const isTechnicalNavIcon = className === 'technical-nav-icon' && isDecorativeTechnicalProductIcon(imageTag);
       const isApprovedBrandMark = isBrandMark(imageTag);
       const isSuiteMark = className === 'product-card-mark-img' && source === '../favicon.svg' &&
         imageAttribute(imageTag, 'alt') === 'Brightdesk Suite brand mark';
-      return !isProductIcon && !isApprovedBrandMark && !isSuiteMark;
+      return !isProductIcon && !isTechnicalNavIcon && !isApprovedBrandMark && !isSuiteMark;
     })) {
       fail(file + ' contains an image outside the approved local Brightdesk brand and product-icon library');
     }
