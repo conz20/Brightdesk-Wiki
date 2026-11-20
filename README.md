@@ -1,13 +1,18 @@
 # Brightdesk Wiki
 
-Private source repository for the separate Brightdesk customer Help website.
+Source repository for the separate Brightdesk customer Help website. GitHub currently reports this repository as **public** (checked 21 November 2026), which conflicts with the requirement that all 27 Brightdesk repositories remain private. No visibility or permission settings were changed.
 
-## Website addresses
+## Publishing status
 
-- **Customer Help:** https://brightdesk-help.pages.dev/ — the permanent public address. It uses the free Cloudflare Pages address; no paid domain, subscription or DNS change is required.
-- **PR #6 review preview:** https://reconcile-customer-help-main.brightdesk-help.pages.dev/ — a review-only preview address, not the production website.
+**No public customer Help website is currently verified as deployed.** Do not advertise a customer URL or describe the site as live until the approved GitHub Pages configuration, production deployment, public URL and deployed commit have all been verified.
 
-When the latest preview build fails, the stable preview address may continue to show an older successful build. It is not proof that the current PR commit has deployed. The source repository remains private. Do not replace the permanent customer address with a temporary preview URL.
+GitHub is the only approved publishing platform. Do not create, connect, configure or use Cloudflare Pages or any other external hosting provider. No custom domain, paid add-on, external database, account system or publishing service is approved.
+
+The current repository tree contains the quality workflow but no GitHub Pages deployment workflow. The latest PR quality run verifies a static build and output checks; it is not a deployment result. GitHub Pages settings and the account's current plan have not been verified.
+
+The repository is currently public. Public GitHub Pages may be available on GitHub Free, but that would leave the source public and would not meet the all-private portfolio requirement. If the source repository is private, publishing a public GitHub Pages site from it requires GitHub Pro or a higher eligible plan. The account plan is not verified; do not buy, trial or upgrade a plan. Do not change repository visibility as part of this task.
+
+Until the owner-approved privacy and plan conditions are met, keep the Markdown source in GitHub and leave the public customer site unpublished.
 
 ## What Brightdesk Help covers
 
@@ -34,36 +39,30 @@ There will be **no mobile application, mobile app version, Android release or iO
 
 The Brightdesk Help website may reflow so its pages remain readable in a narrow browser window. That is responsive website presentation only; it does not mean Brightdesk software is available on phones or tablets.
 
-## Help structure
+## Approved customer-help scope
 
-The website provides two connected but separate reading areas:
+The customer-facing help centre is limited to:
 
-- **Everyday Help:** simple, plain-English, task-first instructions for customers.
-- **Technical Documentation:** deeper product, file-format, system and privacy references.
+- One Brightdesk Help homepage.
+- One plain-English Brightdesk Suite getting-started guide.
+- Exactly ten product guides: Pages, Sheets, Decks, Notes, Database, Forms, Lists, Planner, To Do and Workspace.
+- Local CSS and only the navigation required to reach those pages.
 
-Each area has its own navigation and local-only search. Visitors can move between the two areas without needing an account.
+Do not add separate engineering, development, architecture, security, release-management, maintainer, owner-operation or internal administration pages. Do not add other product areas, accounts, comments, uploads, forms or edit controls. Customers may only browse the published static help pages.
 
-## Current release status
+## Current release status — 21 November 2026
 
-**Draft — not production.** Keep [PR #6](https://github.com/conz20/Brightdesk-Wiki/pull/6) in draft and unmerged until the publication gates below are complete.
+**Draft — not production.** The former Wiki PR #3 was merged on 13 November 2026. Its current successor is [PR #8](https://github.com/conz20/Brightdesk-Wiki/pull/8), open and draft on `redesign/artcraft-inspired-help-2026-11-15`, exact head `2b43a808130f4b2fb9f89c512abd9d1f5a516e98`, based on main `457408c41266b3e48c7487a3daf5e3666438a99c`.
 
-The earlier completed [quality run #464](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43587357146) passed 96 automated tests, Markdown-link checks, the Jekyll build and the earlier 27-page/52-file generated-output privacy audit. Its Cloudflare preview succeeded and its read-only launch audit scored 99/100 (A). That result does not validate the expanded current site.
+Exact-head quality run [44473651228](https://github.com/conz20/Brightdesk-Wiki/actions/runs/44473651228) passed the Node.js 24.22.2 and Ruby 3.4.4 setup, documentation regression tests, Markdown link checks, Jekyll static build and generated-output privacy audit. This verifies that workflow only; it does **not** configure or deploy GitHub Pages and does not make the site live.
 
-The current draft expands the approved customer output to **31 HTML pages, 24 local assets and one `_headers` policy file (56 files total)**. It adds shared Suite install/update, languages-and-spelling and troubleshooting guides, plus a focused Decks slide-show guide. The exact allowlist and regression fixture have been updated. The new guide pages are not verified by a successful current-head test run yet.
-
-[Quality run #492](https://github.com/conz20/Brightdesk-Wiki/actions/runs/43593738729) on the preceding head `db6f1cb2bd9ce07e9b29e9b5d9d6918acd150cdf` failed before any workflow step ran. GitHub reports zero workflow steps, no runner log and no test execution. This is a runner/provisioning failure, not evidence that the source tests failed. The cause is not exposed by the repository check; do not enable paid usage or make the repository public as a workaround. See [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions) and [GitHub Billing → Budgets and alerts](https://github.com/settings/billing).
-
-The Cloudflare Pages deployment for that same preceding head also failed with only a generic check result. Its account-only [Cloudflare build log](https://dash.cloudflare.com/?to=/a7ac2321cd83b2afb1be0dcca520f9d7/pages/view/brightdesk-help/04b58934-07f7-49d5-b033-d3615645d249) is required to identify the provider-side cause. Do not guess further source changes without that diagnostic.
-
-The permanent production website has not been changed. The current PR head still requires exact-head automated tests, Markdown-link checks, a Jekyll build, the 56-file privacy audit and a successful Cloudflare preview before publication.
-
-The repository uses only the read-only Cloudflare documentation MCP server. It does not require a Cloudflare API token or GitHub Agents secret.
+The current PR #8 source still contains internal development, architecture, security, release and technical-reference material, in addition to customer guides. That material is outside the approved customer-help scope and must be removed from the Wiki source or moved to a separate owner-only location before publication. The customer output must contain only the homepage, Suite getting-started guide and exactly ten product guides.
 
 ## Help guide structure
 
-The draft adds shared Suite install/update, languages-and-spelling and troubleshooting guides, plus a focused Decks slide-show guide. Product homes remain the entry points for overview, getting started, workflows, troubleshooting and technical references. These additions do not imply that every Craft Wiki feature exists in Brightdesk.
+The Suite guide explains how to get started and choose among the ten approved products. Each product guide should use plain English, verified interface labels and short task steps, with expected results and safe troubleshooting where evidence exists.
 
-The homepage search remains prominent and local. Everyday Help and Technical Documentation retain separate search indexes. New routes remain draft content and must pass the exact-head build and privacy checks before publication.
+Label every workflow accurately as Verified, Source-confirmed, Planned, Under test, Not available or Needs review. A successful static site build does not prove that a product workflow works. Use genuine screenshots only when captured from a running product build and tied to the exact product version, operating system, source commit and successful verification evidence.
 
 ## Design and content
 
@@ -77,13 +76,29 @@ Brightdesk is free forever. There are no subscriptions, trials, paid tiers, lice
 
 The generated website must remain static and read-only. Do not add customer uploads, comments, public editing, analytics, visitor tracking, advertising, cookies, visitor storage, remote AI, third-party scripts, external fonts, external images or customer-data collection. Search must not send visitor search terms anywhere. Keep internal architecture, development, security, release and maintainer material out of public output.
 
-The hosting provider necessarily processes technical request metadata to deliver and protect the site; do not describe that as Brightdesk analytics or visitor tracking.
+GitHub Pages processes visitor IP addresses and other technical request metadata for security and service delivery. Do not claim visitor metadata is never processed. Brightdesk must not add analytics, tracking or unnecessary data collection.
 
 ## Hosting
 
-Cloudflare Pages Free is the approved hosting route. Use the permanent address above. No paid custom domain, paid upgrade, subscription, DNS change or nameserver change is required. Do not change Cloudflare settings or DNS without explicit approval.
+GitHub Pages is the only approved publishing target. No GitHub Pages configuration, production deployment, deployed commit or public customer URL has been verified. The available workflow evidence is a quality/static-build check only.
+
+If the source remains private, public GitHub Pages requires an eligible GitHub Pro or higher plan. The current account plan is unverified and no paid upgrade is authorised. Do not make the repository public to bypass this gate; the current public repository state is already a privacy-policy discrepancy that must be reported, not treated as approval.
+
+Keep publication separate from Brightdesk software builds and releases. The Wiki must never be installed, bundled, linked into product UI or required for offline product use.
 
 ## Publication checklist
+
+- [ ] Reduce the Wiki to one homepage, one Suite getting-started guide and exactly ten product guides.
+- [ ] Remove internal development, architecture, security, release, maintainer and owner-operation material from the Wiki source and customer navigation.
+- [ ] Review all customer instructions against current source, tests and genuinely verified product workflows.
+- [ ] Complete keyboard, visible-focus, contrast and screen-reader review.
+- [ ] Pass exact-head documentation tests, Markdown-link checks, static build and generated-output privacy audit.
+- [ ] Verify the GitHub repository privacy and eligible account-plan requirements without buying or upgrading a plan.
+- [ ] Obtain explicit owner authorisation for GitHub Pages publication.
+- [ ] Verify the successful production deployment, public URL and exact deployed commit before describing the site as live.
+- [ ] Keep PR #8 draft and unmerged until exact-head verification and review are complete.
+
+
 
 - [ ] Complete and approve the professional visual redesign across all public pages and shared components.
 - [ ] Review every public route on wide desktop and standard laptop screens; confirm narrow browser layouts remain readable as a website.
