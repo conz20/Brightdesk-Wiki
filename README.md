@@ -50,13 +50,15 @@ The customer-facing help centre is limited to:
 
 Do not add separate engineering, development, architecture, security, release-management, maintainer, owner-operation or internal administration pages. Do not add other product areas, accounts, comments, uploads, forms or edit controls. Customers may only browse the published static help pages.
 
-## Current release status — 21 November 2026
+## Current release status — 22 November 2026
 
-**Draft — not production.** The former Wiki PR #3 was merged on 13 November 2026. Its current successor is [PR #8](https://github.com/conz20/Brightdesk-Wiki/pull/8), open and draft on `redesign/artcraft-inspired-help-2026-11-15`, exact head `2b43a808130f4b2fb9f89c512abd9d1f5a516e98`, based on main `457408c41266b3e48c7487a3daf5e3666438a99c`.
+**Draft — not production.** The former Wiki PR #3 was merged on 13 November 2026. Its current successor [PR #8](https://github.com/conz20/Brightdesk-Wiki/pull/8) remains open, draft and unmerged. This branch is a review change, not a production deployment.
 
-Exact-head quality run [44473651228](https://github.com/conz20/Brightdesk-Wiki/actions/runs/44473651228) passed the Node.js 24.22.2 and Ruby 3.4.4 setup, documentation regression tests, Markdown link checks, Jekyll static build and generated-output privacy audit. This verifies that workflow only; it does **not** configure or deploy GitHub Pages and does not make the site live.
+The latest exact-head quality run before this maintenance change, [#44828532172](https://github.com/conz20/Brightdesk-Wiki/actions/runs/44828532172), was for pre-fix head `f78b5b2f6dc77ef9ec17ebd8e47a17befdf8b028` and failed during `npm test`: **101 of 103 tests passed**. Two legacy policy tests tried to read `docs/development/cloudflare-pages.md`, which had already been removed. The Markdown link check, Jekyll build and generated-output audit were skipped after the test failure. Earlier run [#44473651228](https://github.com/conz20/Brightdesk-Wiki/actions/runs/44473651228) belongs to an older head and is not current. This update removes the obsolete provider integration and replaces those tests with the current GitHub-only publication gate. A new exact-head run is required; no pass is claimed here.
 
-The current PR #8 source still contains internal development, architecture, security, release and technical-reference material, in addition to customer guides. That material is outside the approved customer-help scope and must be removed from the Wiki source or moved to a separate owner-only location before publication. The customer output must contain only the homepage, Suite getting-started guide and exactly ten product guides.
+No GitHub Pages configuration, production deployment, deployed commit or public customer URL has been verified. The quality workflow is a static build and output check only; it does not deploy. The account plan remains unverified. The repository is currently public, which conflicts with the all-private portfolio requirement. Do not change visibility, buy or upgrade a plan, or publish without explicit owner authorisation. If the repository becomes private, public GitHub Pages requires an eligible GitHub Pro or higher plan; do not assume eligibility.
+
+All ten product guides remain **Needs review** pending walkthroughs in current installed builds. No genuine product screenshots are claimed.
 
 ## Help guide structure
 
