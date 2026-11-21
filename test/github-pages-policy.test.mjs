@@ -23,7 +23,7 @@ test('GitHub Pages remains a gated future target, not a configured deployment', 
   assert.match(readme, /No public customer Help website is currently verified as deployed/);
   assert.match(readme, /GitHub Pages settings and the account's current plan have not been verified/);
   assert.match(readme, /If the source repository is private, publishing a public GitHub Pages site from it requires GitHub Pro/);
-  assert.match(readme, /Do not buy, trial or upgrade a plan/);
+  assert.match(readme, /do not buy, trial or upgrade a plan/i);
   assert.match(policy, /No GitHub Pages configuration, production deployment, deployed commit or public customer URL is verified/);
   assert.match(policy, /explicit authorisation/);
   assert.equal(packageJson.scripts['build:cloudflare'], undefined);
