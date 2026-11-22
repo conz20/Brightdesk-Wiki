@@ -1,6 +1,6 @@
 # GitHub Pages publication gate (maintainer-only)
 
-**Status: not configured and not deployed.** GitHub Pages is the only approved future publishing target for Brightdesk Help. No public customer URL or deployed commit is verified.
+**Status: not configured and not deployed.** GitHub Pages is the only approved future publishing target for Brightdesk Help. No GitHub Pages configuration, production deployment, deployed commit or public customer URL is verified.
 
 ## Source privacy and account-plan gate
 
