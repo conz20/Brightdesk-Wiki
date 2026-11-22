@@ -177,19 +177,12 @@ function decodeHtmlCharacterReferences(value) {
 }
 
 function stripApprovedMetadataUrls(html) {
-  const withoutApprovedStructuredDataUrls = html.replace(
+  // The schema.org context is inert metadata, not a resource request. No
+  // public customer URL is approved while the GitHub Pages gate is closed.
+  return html.replace(
     /<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi,
-    tag => tag
-      .replace(/https:\/\/schema\.org/gi, '')
-      .replace(/https:\/\/brightdesk-help\.pages\.dev\//gi, '')
+    tag => tag.replace(/https:\/\/schema\.org/gi, '')
   );
-  return withoutApprovedStructuredDataUrls.replace(/<(?:link|meta)\b[^>]*>/gi, tag => {
-    const canonical = /<link\b/i.test(tag) && /\brel\s*=\s*(["'])canonical\1/i.test(tag);
-    const openGraph = /<meta\b/i.test(tag) && /\bproperty\s*=\s*(["'])og:(?:url|image)\1/i.test(tag);
-    const twitter = /<meta\b/i.test(tag) && /\bname\s*=\s*(["'])twitter:image\1/i.test(tag);
-    if (!canonical && !openGraph && !twitter) return tag;
-    return tag.replace(/https:\/\/brightdesk-help\.pages\.dev(?=\/)/gi, '');
-  });
 }
 
 function getNormalizedUrlAttributes(html) {
@@ -396,13 +389,12 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     } catch {
       fail(file + ' contains invalid JSON-LD structured data');
     }
-    const expectedStructuredDataKeys = ['@context', '@type', 'name', 'url', 'description', 'inLanguage'].sort();
+    const expectedStructuredDataKeys = ['@context', '@type', 'name', 'description', 'inLanguage'].sort();
     if (Object.keys(structuredData).sort().join('|') !== expectedStructuredDataKeys.join('|') ||
         structuredData['@context'] !== 'https://schema.org' ||
         structuredData['@type'] !== 'WebSite' ||
         structuredData.name !== 'Brightdesk Help' ||
-        structuredData.url !== 'https://brightdesk-help.pages.dev/' ||
-        structuredData.description !== 'Public, read-only customer help for Brightdesk desktop products.' ||
+        structuredData.description !== 'Separate, read-only customer help for Brightdesk desktop products.' ||
         structuredData.inLanguage !== 'en-AU') {
       fail(file + ' contains unapproved or non-first-party structured data');
     }
