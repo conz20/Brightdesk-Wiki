@@ -9,6 +9,7 @@ const config = read('../_config.yml');
 const workflow = read('../.github/workflows/quality.yml');
 const packageJson = JSON.parse(read('../package.json'));
 const layout = read('../docs/_layouts/default.html');
+const publicCheck = read('../scripts/check-public-site.mjs');
 
 test('no Cloudflare or external hosting integration is configured for the Wiki', () => {
   assert.equal(fs.existsSync(new URL('../.github/mcp.json', import.meta.url)), false);
@@ -16,6 +17,7 @@ test('no Cloudflare or external hosting integration is configured for the Wiki',
   assert.doesNotMatch(config, /pages\.dev|cloudflare|wrangler/i);
   assert.doesNotMatch(JSON.stringify(packageJson), /cloudflare|wrangler/i);
   assert.doesNotMatch(layout, /pages\\.dev|cloudflare|wrangler/i);
+  assert.doesNotMatch(publicCheck, /pages\\.dev|cloudflare|wrangler/i);
   assert.doesNotMatch(workflow, /cloudflare|wrangler|pages:\s*write|id-token:\s*write|actions\/deploy-pages|actions\/upload-pages-artifact|actions\/configure-pages|github-pages/i);
   assert.match(readme, /Do not create, connect, configure or use Cloudflare Pages/);
 });
