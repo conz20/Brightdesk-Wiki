@@ -22,7 +22,7 @@ permalink: /products/decks.html
 Use Decks to build and present a slide presentation.
 
 <nav class="guide-contents" aria-label="Sections in this guide">
-  <a href="#overview">Overview</a> · <a href="#getting-started">Getting started</a> · <a href="#workflows">Workflows</a> · <a href="decks-slide-shows.html">Slide shows</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
+  <a href="#overview">Overview</a> · <a href="#getting-started">Getting started</a> · <a href="#workflows">Workflows</a> · <a href="#troubleshooting-and-common-questions">Troubleshooting</a>
 </nav>
 
 
@@ -61,7 +61,7 @@ You can also open **Insert** and choose **Title slide** or **Text slide** to add
 4. During the presentation, click or use the arrow keys to move between slides.
 5. Press **Esc** to leave presentation mode.
 
-For a focused walkthrough, see [Present a slide show in Brightdesk Decks](decks-slide-shows.html).
+
 
 ### Open, save and export
 
@@ -117,9 +117,3 @@ Decks provides a core slide-editing and presenting workflow. Advanced layouts, t
 ## Guide status
 
 **Needs review.** These steps are based on the current Decks interface and product documentation. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Decks technical reference](../technical/products/decks.html).
-
-[Back to Brightdesk Help](../index.html)

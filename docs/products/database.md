@@ -127,9 +127,3 @@ Database is a local table-and-record tool. SQL query execution, table relationsh
 ## Guide status
 
 **Needs review.** These steps are based on the current Database interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Database technical reference](../technical/products/database.html).
-
-[Back to Brightdesk Help](../index.html)

@@ -104,9 +104,3 @@ The current Notes workflow is a quick-note editor. Notebook hierarchies, section
 ## Guide status
 
 **Needs review.** These steps are based on the current Notes interface and product documentation. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Notes technical reference](../technical/products/notes.html).
-
-[Back to Brightdesk Help](../index.html)

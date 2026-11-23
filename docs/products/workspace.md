@@ -122,9 +122,3 @@ Workspace supports local workspaces and pages with text, heading, bullet, callou
 ## Guide status
 
 **Needs review.** These steps are based on the current Workspace interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Workspace technical reference](../technical/products/workspace.html).
-
-[Back to Brightdesk Help](../index.html)

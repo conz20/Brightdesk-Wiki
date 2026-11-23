@@ -122,9 +122,3 @@ Pages provides core document writing, formatting and page setup. It is not full 
 ## Guide status
 
 **Needs review.** These steps are based on the current Pages interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Pages technical reference](../technical/products/pages.html).
-
-[Back to Brightdesk Help](../index.html)

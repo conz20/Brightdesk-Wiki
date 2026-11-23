@@ -6,22 +6,6 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
-const SHARED_HELP_PAGES = [
-  'everyday/install-update.html',
-  'everyday/languages-and-spelling.html',
-  'everyday/troubleshooting.html',
-  'products/decks-slide-shows.html'
-];
-const TECHNICAL_PAGES = [
-  'technical/index.html',
-  'technical/system-overview.html',
-  'technical/file-formats.html',
-  'technical/data-and-privacy.html',
-  'technical/guides/install-update.html',
-  'technical/guides/languages-and-spelling.html',
-  'technical/guides/troubleshooting.html',
-  ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
-];
 const PRODUCT_LABELS = new Map([
   ['pages', 'Pages'], ['sheets', 'Sheets'], ['decks', 'Decks'], ['notes', 'Notes'],
   ['database', 'Database'], ['forms', 'Forms'], ['lists', 'Lists'], ['planner', 'Planner'],
@@ -31,9 +15,8 @@ const PRODUCT_ICON_FILES = PRODUCTS.map(product => 'assets/images/product-icons/
 const PRODUCT_WORKFLOW_FILES = PRODUCTS.map(product => 'assets/images/workflows/guide-' + product + '.svg');
 const BRAND_IMAGE_FILES = ['favicon.svg', 'assets/images/brightdesk-help-social.svg'];
 const APPROVED_SVG_FILES = [...PRODUCT_ICON_FILES, ...PRODUCT_WORKFLOW_FILES, ...BRAND_IMAGE_FILES];
-const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js','_headers', ...BRAND_IMAGE_FILES, ...SHARED_HELP_PAGES]
+const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js','_headers', ...BRAND_IMAGE_FILES]
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
-  .concat(TECHNICAL_PAGES)
   .concat(APPROVED_SVG_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle', 'text', 'g', 'defs', 'linearGradient', 'stop']);
@@ -424,7 +407,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     "Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; upgrade-insecure-requests"
   ];
   if (!headers.startsWith('/*') || !requiredHeaders.every(header => headers.includes(header))) {
-    fail('Cloudflare response headers must enforce the approved privacy and browser security policy');
+    fail('Response headers must enforce the approved privacy and browser security policy');
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
@@ -446,7 +429,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try {
     const siteRoot = process.argv[2] ? path.resolve(process.argv[2]) : DEFAULT_SITE_ROOT;
     const result = checkPublicSite({ siteRoot });
-    console.log('Public Wiki check passed: ' + result.htmlPages + ' Everyday Help and technical pages and ' + result.files +
+    console.log('Public Wiki check passed: ' + result.htmlPages + ' approved customer pages and ' + result.files +
       ' static files; no private repository links, internal docs or external resources.');
   } catch (error) {
     console.error(error.message);

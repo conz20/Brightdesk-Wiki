@@ -114,9 +114,3 @@ Forms collects responses locally on the device. Online publishing, public respon
 ## Guide status
 
 **Needs review.** These steps are based on the current Forms interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Forms technical reference](../technical/products/forms.html).
-
-[Back to Brightdesk Help](../index.html)

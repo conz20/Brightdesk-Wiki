@@ -121,9 +121,3 @@ Lists is a local structured-list tool. Shared editing, user permissions, attachm
 ## Guide status
 
 **Needs review.** These steps are based on the current Lists interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Lists technical reference](../technical/products/lists.html).
-
-[Back to Brightdesk Help](../index.html)
