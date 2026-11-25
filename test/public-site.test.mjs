@@ -453,23 +453,20 @@ test('the shared Brightdesk site logo is separate from the two required product 
 });
 
 
-test('technical product references may use their approved local product icon two folders above', t => {
+test('approved product guides may reference their matching local product icon', t => {
   const siteRoot = siteFixture(t);
-  const file = path.join(siteRoot, 'technical/products/database.html');
-  const html = fs.readFileSync(file, 'utf8').replace(
-    '<body><input id="help-search" type="search"></body>',
-    '<body><input id="help-search" type="search"><img class="technical-product-icon" src="../../assets/images/product-icons/database.svg" alt="Brightdesk Database application icon"></body>'
-  );
-  fs.writeFileSync(file, html);
+  const file = path.join(siteRoot, 'products/database.html');
+  const html = fs.readFileSync(file, 'utf8');
+  assert.match(html, /src="\.\.\/assets\/images\/product-icons\/database\.svg"/);
   assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
 });
 
-test('product icons cannot escape the generated site through a third parent directory', t => {
+test('product icons cannot escape the generated site through a parent-directory path', t => {
   const siteRoot = siteFixture(t);
-  const file = path.join(siteRoot, 'technical/products/database.html');
+  const file = path.join(siteRoot, 'products/database.html');
   fs.writeFileSync(
     file,
-    '<!doctype html><img src="../../../assets/images/product-icons/database.svg" alt="Brightdesk Database application icon"><input id="help-search" type="search">'
+    '<!doctype html><img src="../../assets/images/product-icons/database.svg" alt="Brightdesk Database application icon"><input id="help-search" type="search">'
   );
   assert.throws(
     () => checkPublicSite({ siteRoot }),
