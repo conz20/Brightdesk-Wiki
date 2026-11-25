@@ -51,7 +51,7 @@ test('each product guide remains self-contained and links only to approved custo
 test('the Suite guide keeps first-use, language and troubleshooting guidance on the page', () => {
   const suite = read('docs/customer-start-here.md');
   assert.match(suite, /Settings/);
-  assert.match(suite, /Languages and dictionaries/);
+  assert.match(suite, /Languages & dictionaries/);
   assert.match(suite, /Troubleshooting and common questions/);
   assert.doesNotMatch(suite, /technical\/|everyday\/|decks-slide-shows/);
 });
