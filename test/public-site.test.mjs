@@ -461,7 +461,7 @@ test('approved product guides may reference their matching local product icon', 
   assert.doesNotThrow(() => checkPublicSite({ siteRoot }));
 });
 
-test('product icons cannot escape the generated site through a parent-directory path', t => {
+test('product guide icons reject parent-directory escapes from the public help tree', t => {
   const siteRoot = siteFixture(t);
   const file = path.join(siteRoot, 'products/database.html');
   fs.writeFileSync(
@@ -470,7 +470,7 @@ test('product icons cannot escape the generated site through a parent-directory 
   );
   assert.throws(
     () => checkPublicSite({ siteRoot }),
-    /outside the approved local Brightdesk brand and product-icon library/i
+    /must contain exactly one product icon and one workflow diagram/i
   );
 });
 
