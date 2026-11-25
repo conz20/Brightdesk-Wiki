@@ -148,12 +148,15 @@ test('technical reference layout provides the same keyboard and screen-reader es
 
 const homepage = fs.readFileSync(new URL('../docs/index.md', import.meta.url), 'utf8');
 
-test('homepage exposes one primary heading and named section landmarks', () => {
+test('homepage exposes one primary heading and the approved customer-help structure', () => {
   assert.match(homepage, /<header class="home-hero" aria-labelledby="home-title">/);
   assert.equal(homepage.split('<h1').length - 1, 1, 'The homepage must have one primary heading');
+  assert.match(homepage, /<div class="home-search" role="search" aria-labelledby="help-search-label">/);
+  assert.match(homepage, /<section class="home-suite-start" aria-labelledby="suite-start-title">/);
   assert.match(homepage, /<section class="home-directory" aria-labelledby="directory-title">/);
-  assert.match(homepage, /<section class="home-guides" aria-labelledby="guides-title">/);
   assert.match(homepage, /<section class="home-reassurance" aria-labelledby="reassurance-title">/);
+  assert.equal((homepage.match(/class="home-product-link"/g) || []).length, 10,
+    'The homepage must link to exactly the ten approved customer products');
   assert.ok(homepage.includes('<h2 id="reassurance-title">Clear help. No extra hurdles.</h2>'));
 });
 
@@ -166,11 +169,26 @@ test('homepage description is long enough to explain the Help site in search res
 });
 
 
-test('directory landing pages use page headers and non-article wrappers', () => {
-  const everydayIndex = fs.readFileSync(new URL('../docs/everyday/index.md', import.meta.url), 'utf8');
-  const technicalIndex = fs.readFileSync(new URL('../docs/technical/index.md', import.meta.url), 'utf8');
-  assert.match(everydayIndex, /<header class="portal-hero" aria-labelledby="everyday-title">/);
-  assert.match(technicalIndex, /<header class="technical-hero" aria-labelledby="technical-title">/);
-  assert.ok(layout.includes('portal_page_paths = "/index.html|/everyday/index.html"'));
-  assert.ok(technicalLayout.includes("page.url == '/technical/index.html'"));
+const siteConfig = fs.readFileSync(new URL('../_config.yml', import.meta.url), 'utf8');
+
+test('public output is limited to the Suite guide and exactly ten product guides', () => {
+  const publicPathMatch = layout.match(/public_help_paths = "([^"]+)" \| split: "\|"/);
+  assert.ok(publicPathMatch, 'The public help-page allowlist must be explicit');
+  assert.deepEqual(publicPathMatch[1].split('|'), [
+    '/index.html',
+    '/customer-start-here.html',
+    '/products/pages.html',
+    '/products/sheets.html',
+    '/products/decks.html',
+    '/products/notes.html',
+    '/products/database.html',
+    '/products/forms.html',
+    '/products/lists.html',
+    '/products/planner.html',
+    '/products/to-do.html',
+    '/products/workspace.html'
+  ]);
+  assert.match(layout, /portal_page_paths = "\/index\.html" \| split: "\|"/);
+  assert.match(siteConfig, /exclude:[\s\S]*- everyday[\s\S]*- technical[\s\S]*- products\/decks-slide-shows\.md/);
+  assert.doesNotMatch(layout, /\/everyday\/|\/technical\//);
 });
