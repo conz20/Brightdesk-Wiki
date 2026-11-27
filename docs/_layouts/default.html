@@ -97,6 +97,7 @@
           <a href="{{ '/index.html#directory-title' | relative_url }}">Products</a>
           <span aria-hidden="true">/</span>
                 <span aria-current="page">{{ page.title | default: "Guide" | escape }}</span>
+        {% endif %}
       </nav>
       {% endunless %}
       {% if portal_page_paths contains page.url %}
