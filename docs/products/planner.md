@@ -115,9 +115,3 @@ Planner currently provides local plans and task boards. Connected user directori
 ## Guide status
 
 **Needs review.** These steps are based on the current Planner interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Planner technical reference](../technical/products/planner.html).
-
-[Back to Brightdesk Help](../index.html)

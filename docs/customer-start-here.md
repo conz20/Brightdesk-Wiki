@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Brightdesk Suite: getting started"
-description: Install Brightdesk Suite, choose products, open workspaces and manage local files.
+description: Get started with Brightdesk Suite, choose from its ten products, open workspaces and manage your local documents and project files.
 status: Source-confirmed
 permalink: /customer-start-here.html
 ---
@@ -20,7 +20,7 @@ Brightdesk is free forever. Brightdesk Suite, all ten approved products and this
 
 ## Before you start
 
-For the focused walkthrough, see [Install and update Brightdesk](everyday/install-update.html). The steps below remain the Suite getting-started summary.
+The steps below are the Suite getting-started summary. Check current release instructions before installing or updating.
 
 1. Use the official Brightdesk installer for your computer when a verified release is available.
 2. Open the installer and follow the instructions shown by your operating system.
@@ -172,7 +172,7 @@ The export is a separate copy. Keep a Brightdesk project file as well when you w
 
 ## Notifications, Settings and languages
 
-For the full step-by-step language walkthrough, see [Languages and spelling](everyday/languages-and-spelling.html).
+
 
 - Select the **Notifications** bell to view notification history. Choose **Clear all** only when you intend to clear that history.
 - Select the **Settings** cogwheel in the top-right corner.

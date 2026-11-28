@@ -1,6 +1,6 @@
 title: Brightdesk Help
-description: Public, read-only customer help for Brightdesk desktop products.
-url: "https://brightdesk-help.pages.dev"
+description: Separate read-only customer help for Brightdesk desktop products.
+url: ""
 baseurl: ""
 include:
   - _headers
@@ -12,9 +12,12 @@ strict_front_matter: true
 safe: true
 show_excerpts: false
 
-# Only customer-help pages are built. Maintainer and internal documents stay private.
+# Only customer-help pages are built. Maintainer and internal documents stay out of the public output.
 exclude:
   - architecture
   - development
   - security
   - releases
+  - everyday
+  - technical
+  - products/decks-slide-shows.md

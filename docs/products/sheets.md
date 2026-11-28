@@ -115,9 +115,3 @@ Sheets is a basic spreadsheet foundation. VBA and macros, pivot tables, advanced
 ## Guide status
 
 **Needs review.** These steps are based on the current Sheets interface, calculation engine and product documentation. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk Sheets technical reference](../technical/products/sheets.html).
-
-[Back to Brightdesk Help](../index.html)

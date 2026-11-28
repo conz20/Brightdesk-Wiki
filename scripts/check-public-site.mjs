@@ -6,19 +6,6 @@ import { fileURLToPath } from 'node:url';
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_SITE_ROOT = path.resolve(SCRIPT_DIR, '..', '_site');
 const PRODUCTS = ['pages','sheets','decks','notes','database','forms','lists','planner','to-do','workspace'];
-const SHARED_HELP_PAGES = [
-  'everyday/install-update.html',
-  'everyday/languages-and-spelling.html',
-  'everyday/troubleshooting.html',
-  'products/decks-slide-shows.html'
-];
-const TECHNICAL_PAGES = [
-  'technical/index.html',
-  'technical/system-overview.html',
-  'technical/file-formats.html',
-  'technical/data-and-privacy.html',
-  ...PRODUCTS.map(product => 'technical/products/' + product + '.html')
-];
 const PRODUCT_LABELS = new Map([
   ['pages', 'Pages'], ['sheets', 'Sheets'], ['decks', 'Decks'], ['notes', 'Notes'],
   ['database', 'Database'], ['forms', 'Forms'], ['lists', 'Lists'], ['planner', 'Planner'],
@@ -28,9 +15,8 @@ const PRODUCT_ICON_FILES = PRODUCTS.map(product => 'assets/images/product-icons/
 const PRODUCT_WORKFLOW_FILES = PRODUCTS.map(product => 'assets/images/workflows/guide-' + product + '.svg');
 const BRAND_IMAGE_FILES = ['favicon.svg', 'assets/images/brightdesk-help-social.svg'];
 const APPROVED_SVG_FILES = [...PRODUCT_ICON_FILES, ...PRODUCT_WORKFLOW_FILES, ...BRAND_IMAGE_FILES];
-const REQUIRED_FILES = ['index.html','everyday/index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js','_headers', ...BRAND_IMAGE_FILES, ...SHARED_HELP_PAGES]
+const REQUIRED_FILES = ['index.html','customer-start-here.html','assets/css/site.css','assets/js/search.js','_headers', ...BRAND_IMAGE_FILES]
   .concat(PRODUCTS.map(product => 'products/' + product + '.html'))
-  .concat(TECHNICAL_PAGES)
   .concat(APPROVED_SVG_FILES);
 const ALLOWED_FILES = new Set(REQUIRED_FILES);
 const SVG_ELEMENTS = new Set(['svg', 'title', 'desc', 'rect', 'path', 'ellipse', 'circle', 'text', 'g', 'defs', 'linearGradient', 'stop']);
@@ -174,19 +160,12 @@ function decodeHtmlCharacterReferences(value) {
 }
 
 function stripApprovedMetadataUrls(html) {
-  const withoutApprovedStructuredDataUrls = html.replace(
+  // The schema.org context is inert metadata, not a resource request. No
+  // public customer URL is approved while the GitHub Pages gate is closed.
+  return html.replace(
     /<script\b(?=[^>]*\btype=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi,
-    tag => tag
-      .replace(/https:\/\/schema\.org/gi, '')
-      .replace(/https:\/\/brightdesk-help\.pages\.dev\//gi, '')
+    tag => tag.replace(/https:\/\/schema\.org/gi, '')
   );
-  return withoutApprovedStructuredDataUrls.replace(/<(?:link|meta)\b[^>]*>/gi, tag => {
-    const canonical = /<link\b/i.test(tag) && /\brel\s*=\s*(["'])canonical\1/i.test(tag);
-    const openGraph = /<meta\b/i.test(tag) && /\bproperty\s*=\s*(["'])og:(?:url|image)\1/i.test(tag);
-    const twitter = /<meta\b/i.test(tag) && /\bname\s*=\s*(["'])twitter:image\1/i.test(tag);
-    if (!canonical && !openGraph && !twitter) return tag;
-    return tag.replace(/https:\/\/brightdesk-help\.pages\.dev(?=\/)/gi, '');
-  });
 }
 
 function getNormalizedUrlAttributes(html) {
@@ -318,9 +297,15 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       /^assets\/images\/product-icons\/(?:pages|sheets|decks|notes|database|forms|lists|planner|to-do|workspace)\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
       imageAttribute(imageTag, 'alt') === '' &&
       hasTextBearingAnchor(imageTag, 'home-product-link');
+    const isDecorativeTechnicalProductIcon = imageTag =>
+      imageAttribute(imageTag, 'class') === 'technical-nav-icon' &&
+      /^\/assets\/images\/product-icons\/(?:pages|sheets|decks|notes|database|forms|lists|planner|to-do|workspace)\.svg$/i.test(imageAttribute(imageTag, 'src') || '') &&
+      imageAttribute(imageTag, 'alt') === '' &&
+      imageAttribute(imageTag, 'aria-hidden') === 'true' &&
+      hasTextBearingAnchor(imageTag, 'technical-nav-link');
     if (imageTags.some(imageTag => {
       const alternative = imageAttribute(imageTag, 'alt');
-      return alternative === null || (!alternative.trim() && !isDecorativeBrandMark(imageTag) && !isDecorativeProductIcon(imageTag));
+      return alternative === null || (!alternative.trim() && !isDecorativeBrandMark(imageTag) && !isDecorativeProductIcon(imageTag) && !isDecorativeTechnicalProductIcon(imageTag));
     })) {
       fail(file + ' does not provide the required meaningful alternative text or a justified decorative-image alternative for each image');
     }
@@ -328,10 +313,11 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
       const source = imageAttribute(imageTag, 'src') || '';
       const className = imageAttribute(imageTag, 'class') || '';
       const isProductIcon = /^(?:\.\.\/){0,2}assets\/images\/product-icons\/[a-z-]+\.svg$/i.test(source);
+      const isTechnicalNavIcon = className === 'technical-nav-icon' && isDecorativeTechnicalProductIcon(imageTag);
       const isApprovedBrandMark = isBrandMark(imageTag);
       const isSuiteMark = className === 'product-card-mark-img' && source === '../favicon.svg' &&
         imageAttribute(imageTag, 'alt') === 'Brightdesk Suite brand mark';
-      return !isProductIcon && !isApprovedBrandMark && !isSuiteMark;
+      return !isProductIcon && !isTechnicalNavIcon && !isApprovedBrandMark && !isSuiteMark;
     })) {
       fail(file + ' contains an image outside the approved local Brightdesk brand and product-icon library');
     }
@@ -386,13 +372,12 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     } catch {
       fail(file + ' contains invalid JSON-LD structured data');
     }
-    const expectedStructuredDataKeys = ['@context', '@type', 'name', 'url', 'description', 'inLanguage'].sort();
+    const expectedStructuredDataKeys = ['@context', '@type', 'name', 'description', 'inLanguage'].sort();
     if (Object.keys(structuredData).sort().join('|') !== expectedStructuredDataKeys.join('|') ||
         structuredData['@context'] !== 'https://schema.org' ||
         structuredData['@type'] !== 'WebSite' ||
         structuredData.name !== 'Brightdesk Help' ||
-        structuredData.url !== 'https://brightdesk-help.pages.dev/' ||
-        structuredData.description !== 'Public, read-only customer help for Brightdesk desktop products.' ||
+        structuredData.description !== 'Separate, read-only customer help for Brightdesk desktop products.' ||
         structuredData.inLanguage !== 'en-AU') {
       fail(file + ' contains unapproved or non-first-party structured data');
     }
@@ -422,7 +407,7 @@ export function checkPublicSite({ siteRoot = DEFAULT_SITE_ROOT } = {}) {
     "Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; upgrade-insecure-requests"
   ];
   if (!headers.startsWith('/*') || !requiredHeaders.every(header => headers.includes(header))) {
-    fail('Cloudflare response headers must enforce the approved privacy and browser security policy');
+    fail('Response headers must enforce the approved privacy and browser security policy');
   }
 
   const css = fs.readFileSync(path.join(rootDir, 'assets/css/site.css'), 'utf8');
@@ -444,7 +429,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try {
     const siteRoot = process.argv[2] ? path.resolve(process.argv[2]) : DEFAULT_SITE_ROOT;
     const result = checkPublicSite({ siteRoot });
-    console.log('Public Wiki check passed: ' + result.htmlPages + ' Everyday Help and technical pages and ' + result.files +
+    console.log('Public Wiki check passed: ' + result.htmlPages + ' approved customer pages and ' + result.files +
       ' static files; no private repository links, internal docs or external resources.');
   } catch (error) {
     console.error(error.message);

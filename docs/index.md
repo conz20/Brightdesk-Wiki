@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Brightdesk Help
-description: Clear, practical help for Brightdesk Suite and ten desktop products. Search everyday guides, browse products and open detailed technical references.
+description: Clear, practical help for Brightdesk Suite and ten desktop products. Start with the Suite guide or browse a product guide.
 permalink: /index.html
 ---
 
@@ -17,26 +17,12 @@ permalink: /index.html
     <input id="help-search" type="search" autocomplete="off"
       placeholder="Search a task or product"
       aria-describedby="help-search-hint help-search-status" aria-controls="help-search-results">
-    <p id="help-search-hint" class="search-hint">Search Everyday Help, the Suite guide and all ten product guides. Your search stays in this browser.</p>
+    <p id="help-search-hint" class="search-hint">Search the Suite guide and all ten product guides. Your search stays in this browser.</p>
     <p id="help-search-status" class="search-status" role="status" aria-live="polite">Type a word or task to find a guide.</p>
     <ul id="help-search-results" class="search-results" aria-label="Matching help guides" hidden></ul>
   </div>
 
-  <nav class="home-pathways" aria-label="Choose a help area">
-    <a class="home-pathway" href="everyday/index.html">
-      <span class="home-pathway-kicker">PLAIN-ENGLISH GUIDANCE</span>
-      <strong>Everyday Help</strong>
-      <span>Step-by-step instructions for everyday tasks, setup and common questions.</span>
-      <span class="home-pathway-action">Explore Everyday Help <span aria-hidden="true">→</span></span>
-    </a>
-    <a class="home-pathway" href="technical/index.html">
-      <span class="home-pathway-kicker">DETAILED REFERENCE</span>
-      <strong>Technical Documentation</strong>
-      <span>Product references, file formats, system behaviour and data boundaries.</span>
-      <span class="home-pathway-action">Explore technical references <span aria-hidden="true">→</span></span>
-    </a>
-  </nav>
-</header>
+  </header>
 
 <section class="home-suite-start" aria-labelledby="suite-start-title">
   <div>
@@ -94,19 +80,6 @@ permalink: /index.html
   </div>
 </section>
 
-<section class="home-guides" aria-labelledby="guides-title">
-  <div class="home-guides-intro">
-    <p class="home-section-kicker">COMMON HELP TOPICS</p>
-    <h2 id="guides-title">A good place to start</h2>
-    <p>Open a focused guide for common setup and support questions.</p>
-  </div>
-  <div class="home-guide-list">
-    <a href="everyday/install-update.html"><span>01</span><span><strong>Install and update</strong><small>Installation, product workspaces and updates</small></span><span class="home-arrow" aria-hidden="true">→</span></a>
-    <a href="everyday/languages-and-spelling.html"><span>02</span><span><strong>Languages and spelling</strong><small>Display language, proofing and dictionaries</small></span><span class="home-arrow" aria-hidden="true">→</span></a>
-    <a href="everyday/troubleshooting.html"><span>03</span><span><strong>Troubleshooting</strong><small>Find safe next steps for common issues</small></span><span class="home-arrow" aria-hidden="true">→</span></a>
-    <a href="products/decks-slide-shows.html"><span>04</span><span><strong>Decks slide shows</strong><small>Start a slide show and move through a presentation</small></span><span class="home-arrow" aria-hidden="true">→</span></a>
-  </div>
-</section>
 
 <section class="home-reassurance" aria-labelledby="reassurance-title">
   <div>
@@ -115,6 +88,6 @@ permalink: /index.html
   </div>
   <div>
     <p>Brightdesk Help is free to read, static and read-only. You do not need an account, and you never need to upload your documents here.</p>
-    <p>It supports Brightdesk desktop software for Windows, macOS and Linux. Search stays in your browser, and you can move between everyday instructions and deeper technical references at any time.</p>
+    <p>It supports Brightdesk desktop software for Windows, macOS and Linux. Search stays in your browser, and you can open the Suite guide or any of the ten product guides.</p>
   </div>
 </section>

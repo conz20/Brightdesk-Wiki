@@ -112,9 +112,3 @@ To Do currently supports personal local task lists. Operating-system notificatio
 ## Guide status
 
 **Needs review.** These steps are based on the current To Do interface and source. They still need to be run from start to finish in a current installed desktop build before the guide can be approved for customers.
-
-## Need the technical detail?
-
-For product behaviour, file handling and technical boundaries, see the [Brightdesk To Do technical reference](../technical/products/to-do.html).
-
-[Back to Brightdesk Help](../index.html)
